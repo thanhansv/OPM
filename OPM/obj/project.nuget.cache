@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "dgSpecHash": "SZTn0qqFIkBvskIw6SaTXdUGf2blxpYrCBYsA0HlAqmyqAQb+y5MG2vObvLyEExMhddUPyPegRAbNvNavR6VtQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Johan\\source\\repos\\OPM\\OPM\\OPM.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Johan\\.nuget\\packages\\rawprint\\0.5.0\\rawprint.0.5.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'RawPrint 0.5.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "RawPrint",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
+}

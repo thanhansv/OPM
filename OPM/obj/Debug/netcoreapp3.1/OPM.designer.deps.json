@@ -1,0 +1,28 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "RawPrint/0.5.0": {
+        "runtime": {
+          "lib/net40/RawPrint.dll": {
+            "assemblyVersion": "0.5.0.0",
+            "fileVersion": "0.5.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "RawPrint/0.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-MbQu5siz3sXUXht1IeXIQbb5daTPDmEOxo6Crms+b5N2F7tqCOXl3Rn6r5Y+ystz/Cy8lRBPfkMDpZGQnzzxcQ==",
+      "path": "rawprint/0.5.0",
+      "hashPath": "rawprint.0.5.0.nupkg.sha512"
+    }
+  }
+}

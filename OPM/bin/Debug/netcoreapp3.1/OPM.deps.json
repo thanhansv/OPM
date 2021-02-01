@@ -1,0 +1,83 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "OPM/1.0.0": {
+        "dependencies": {
+          "RawPrint": "0.5.0",
+          "Interop.Microsoft.Office.Core": "2.5.0.0",
+          "Interop.Microsoft.Office.Interop.Word": "8.5.0.0",
+          "Interop.Microsoft.Office.Interop.Excel": "1.7.0.0"
+        },
+        "runtime": {
+          "OPM.dll": {}
+        }
+      },
+      "RawPrint/0.5.0": {
+        "runtime": {
+          "lib/net40/RawPrint.dll": {
+            "assemblyVersion": "0.5.0.0",
+            "fileVersion": "0.5.0.0"
+          }
+        }
+      },
+      "Interop.Microsoft.Office.Core/2.5.0.0": {
+        "runtime": {
+          "Interop.Microsoft.Office.Core.dll": {
+            "assemblyVersion": "2.5.0.0",
+            "fileVersion": "2.5.0.0"
+          }
+        }
+      },
+      "Interop.Microsoft.Office.Interop.Word/8.5.0.0": {
+        "runtime": {
+          "Interop.Microsoft.Office.Interop.Word.dll": {
+            "assemblyVersion": "8.5.0.0",
+            "fileVersion": "8.5.0.0"
+          }
+        }
+      },
+      "Interop.Microsoft.Office.Interop.Excel/1.7.0.0": {
+        "runtime": {
+          "Interop.Microsoft.Office.Interop.Excel.dll": {
+            "assemblyVersion": "1.7.0.0",
+            "fileVersion": "1.7.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "OPM/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "RawPrint/0.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-MbQu5siz3sXUXht1IeXIQbb5daTPDmEOxo6Crms+b5N2F7tqCOXl3Rn6r5Y+ystz/Cy8lRBPfkMDpZGQnzzxcQ==",
+      "path": "rawprint/0.5.0",
+      "hashPath": "rawprint.0.5.0.nupkg.sha512"
+    },
+    "Interop.Microsoft.Office.Core/2.5.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Interop.Microsoft.Office.Interop.Word/8.5.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Interop.Microsoft.Office.Interop.Excel/1.7.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
