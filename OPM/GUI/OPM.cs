@@ -22,6 +22,7 @@ using System.Threading;
 using RawPrint;
 using xWord = Microsoft.Office.Interop.Word;
 using System.Reflection;
+using OPM.EmailHandler;
 
 namespace OPM
 {
@@ -60,6 +61,7 @@ namespace OPM
 
         private void button4_Click(object sender, EventArgs e)
         {
+
             //OpmWordHandler _wordhandle = new OpmWordHandler();
             //_wordhandle.FileName="DoanTD";
             //_wordhandle.fCreate_BLTU_Contract(@"F:\07. Digital Tranfrom\Tài liệu quy trình\Template\Contract\Bảo Lãnh Tạm Ứng.docx", @"F:\07. Digital Tranfrom\Tài liệu quy trình\OPM_Doc\Contract\Bảo Lãnh Tạm Ứng.docx", "PO1", "SSDCDCMS-050121-1113-19", "29/10/1989", "22/01/1989");
@@ -73,8 +75,13 @@ namespace OPM
             //IPrinter printer = new Printer();
             //printer.PrintRawFile(PrinterName, Filepath, Filename);
 
-            OpmWordHandler _opmWordHandler = new OpmWordHandler();
-            _opmWordHandler.fPrintDocument(@"E:\Cetificate\AAA.doc");
+            /*OK for Printer*/
+            //OpmWordHandler _opmWordHandler = new OpmWordHandler();
+            //_opmWordHandler.fPrintDocument(@"E:\Cetificate\AAA.doc");
+
+            OPMEmailHandler.fSendEmail("AAAAA");
+
+
 
         }
     }
