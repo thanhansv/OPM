@@ -23,6 +23,7 @@ using RawPrint;
 using xWord = Microsoft.Office.Interop.Word;
 using System.Reflection;
 using OPM.EmailHandler;
+using System.Data.SqlClient;
 
 namespace OPM
 {
@@ -79,11 +80,30 @@ namespace OPM
             //OpmWordHandler _opmWordHandler = new OpmWordHandler();
             //_opmWordHandler.fPrintDocument(@"E:\Cetificate\AAA.doc");
 
-            OPMEmailHandler.fSendEmail("AAAAA");
+            /*OK for Sending Email*/
+            //OPMEmailHandler.fSendEmail("AAAAA");
 
+            //String strconnection = @"Data Source=JOHAN-LAPTOP\SQLOPM; Initial Catalog = OpmDB; User ID = sa; Password=Pa$$w0rd";
+            //String strconnection = @"Server=10.2.8.96,1433; Database = OpmDB; User ID = sa; Password=Pa$$w0rd";
+            //String strconnection = @"Data Source = 127.0.0.1,1433; Initial Catalog = OpmDB; User ID = sa; Password = Pa$$w0rd";
+            
+            //String OK_1
+            String strconnection1 = @"Data Source=DOANTD; Initial Catalog = OpmDB; User ID = sa; Password=Pa$$w0rd";
 
+            String strconnection2 = @"Data Source=MSI\PHANTOM_OPM; Initial Catalog = OpmDB; User ID = sa; Password=Pa$$w0rd";
+            SqlConnection con = new SqlConnection(strconnection2);
+            con.Open();
 
-        }
+            string querry = @"INSERT INTO Site_Info(id, type, headquater_info, address, phonenumber, tin, account, representative) VALUES('TTCUVT-TPDN', '', '125 Hai Ba Trung, TP.HCM', '12/1 Nguyen Thi Minh Khai, TP.HCM', '02835282338', '0300954529', '0071001103921', 'Mr Ho Minh Kiet')";
+            using (SqlCommand insertCommand = con.CreateCommand())
+            {
+                insertCommand.CommandText = querry;
+                var row = insertCommand.ExecuteNonQuery();
+            }    
+            con.Close();
+            con.Dispose();
+            //con = null;
+         } 
     }
 }
 
