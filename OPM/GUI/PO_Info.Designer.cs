@@ -29,9 +29,9 @@ namespace OPM.GUI
 		/// </summary>
 		private void InitializeComponent()
 		{
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("STT");
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Tên Tỉnh/TP");
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Tổng số lượng");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("STT");
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Tên Tỉnh/TP");
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Tổng số lượng");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PO_Info));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -39,7 +39,7 @@ namespace OPM.GUI
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txbPOCode = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
@@ -52,7 +52,7 @@ namespace OPM.GUI
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btPOSave = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -108,48 +108,48 @@ namespace OPM.GUI
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listView1.HideSelection = false;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3});
+            listViewItem4,
+            listViewItem5,
+            listViewItem6});
             this.listView1.Location = new System.Drawing.Point(10, 341);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(377, 85);
+            this.listView1.Size = new System.Drawing.Size(410, 85);
             this.listView1.TabIndex = 5;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
-            // textBox1
+            // txbPOCode
             // 
-            this.textBox1.Location = new System.Drawing.Point(150, 20);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(236, 23);
-            this.textBox1.TabIndex = 6;
+            this.txbPOCode.Location = new System.Drawing.Point(150, 20);
+            this.txbPOCode.Name = "txbPOCode";
+            this.txbPOCode.Size = new System.Drawing.Size(270, 23);
+            this.txbPOCode.TabIndex = 6;
             // 
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(150, 50);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(236, 23);
+            this.textBox2.Size = new System.Drawing.Size(270, 23);
             this.textBox2.TabIndex = 7;
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(150, 80);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(236, 23);
+            this.dateTimePicker1.Size = new System.Drawing.Size(270, 23);
             this.dateTimePicker1.TabIndex = 8;
             // 
             // dateTimePicker2
             // 
             this.dateTimePicker2.Location = new System.Drawing.Point(150, 110);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(236, 23);
+            this.dateTimePicker2.Size = new System.Drawing.Size(270, 23);
             this.dateTimePicker2.TabIndex = 9;
             // 
             // dateTimePicker3
             // 
             this.dateTimePicker3.Location = new System.Drawing.Point(150, 140);
             this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(236, 23);
+            this.dateTimePicker3.Size = new System.Drawing.Size(270, 23);
             this.dateTimePicker3.TabIndex = 10;
             // 
             // label6
@@ -192,38 +192,39 @@ namespace OPM.GUI
             // 
             this.textBox3.Location = new System.Drawing.Point(150, 170);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(236, 23);
+            this.textBox3.Size = new System.Drawing.Size(270, 23);
             this.textBox3.TabIndex = 15;
             // 
             // textBox4
             // 
             this.textBox4.Location = new System.Drawing.Point(150, 202);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(236, 23);
+            this.textBox4.Size = new System.Drawing.Size(270, 23);
             this.textBox4.TabIndex = 16;
             // 
             // textBox5
             // 
             this.textBox5.Location = new System.Drawing.Point(150, 231);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(236, 23);
+            this.textBox5.Size = new System.Drawing.Size(270, 23);
             this.textBox5.TabIndex = 17;
             // 
             // textBox6
             // 
             this.textBox6.Location = new System.Drawing.Point(150, 260);
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(236, 23);
+            this.textBox6.Size = new System.Drawing.Size(270, 23);
             this.textBox6.TabIndex = 18;
             // 
-            // button1
+            // btPOSave
             // 
-            this.button1.Location = new System.Drawing.Point(311, 445);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btPOSave.Location = new System.Drawing.Point(345, 441);
+            this.btPOSave.Name = "btPOSave";
+            this.btPOSave.Size = new System.Drawing.Size(75, 23);
+            this.btPOSave.TabIndex = 20;
+            this.btPOSave.Text = "Save";
+            this.btPOSave.UseVisualStyleBackColor = true;
+            this.btPOSave.Click += new System.EventHandler(this.btPOSave_Click);
             // 
             // label10
             // 
@@ -254,7 +255,7 @@ namespace OPM.GUI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btPOSave);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox4);
@@ -267,7 +268,7 @@ namespace OPM.GUI
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txbPOCode);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -276,7 +277,7 @@ namespace OPM.GUI
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.SystemColors.Desktop;
             this.Name = "PO_Info";
-            this.Size = new System.Drawing.Size(396, 479);
+            this.Size = new System.Drawing.Size(429, 479);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -290,7 +291,7 @@ namespace OPM.GUI
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txbPOCode;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
@@ -303,7 +304,7 @@ namespace OPM.GUI
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btPOSave;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button2;
     }

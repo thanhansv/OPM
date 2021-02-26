@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using OPM.GUI;
 
 namespace OPM
 {
@@ -17,7 +18,7 @@ namespace OPM
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new OPM());
+            Application.Run(new OPMDASHBOARDA());
         }
     }
 }

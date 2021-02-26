@@ -5,7 +5,7 @@ using System.Drawing.Printing;
 
 namespace OPM.PrinterHandler
 {
-    class OPMPrinterHanlder
+    class OPMPrinterHanlder: IPrinterHandler
     {
     }
 }

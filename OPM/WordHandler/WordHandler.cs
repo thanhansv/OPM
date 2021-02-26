@@ -8,7 +8,7 @@ using System.Reflection;
 
 namespace OPM.WordHandler
 {
-    class OpmWordHandler
+    class OpmWordHandler: IWordHandler
     {
         private string _nameWordfile;
         public OpmWordHandler()

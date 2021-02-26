@@ -90,7 +90,7 @@ namespace OPM.GUI
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(272, 23);
             this.textBox1.TabIndex = 5;
-            this.textBox1.Text = "Import File Excel";
+            this.textBox1.Text = "Import PackageList File Excel";
             // 
             // button1
             // 

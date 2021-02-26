@@ -1,30 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using OPM.EmailHandler;
 using OPM.ExcelHandler;
-using OPM.WordHandler;
-using xExcel=Microsoft.Office.Interop.Excel;
-using System.Runtime.InteropServices;
-using System.IO;
-using OPM.Enginee;
-using System.Drawing.Printing;
-using Microsoft.Win32;
-using System.Windows;
-using System.Diagnostics;
-using System.Threading;
-using RawPrint;
-using xWord = Microsoft.Office.Interop.Word;
-using System.Reflection;
-using OPM.EmailHandler;
-using System.Data.SqlClient;
-
+using OPM.DBHandler;
+using OPM.OPMEnginee;
 namespace OPM
 {
     public partial class OPM : Form
@@ -34,29 +16,33 @@ namespace OPM
             InitializeComponent();
             OPMEmailHandler oPMEmailHandler = new OPMEmailHandler();
             //See if any printers are installed  
-            if (PrinterSettings.InstalledPrinters.Count <= 0)
-            {
-                MessageBox.Show("Printer not found!");
-                return;
-            }
+            //if (PrinterSettings.InstalledPrinters.Count <= 0)
+            //{
+            //    MessageBox.Show("Printer not found!");
+            //    return;
+            //}
 
-            //Get all available printers and add them to the combo box  
-            List<string> printersList = new List<string>();
-            foreach (String printer in PrinterSettings.InstalledPrinters)
-            {
-                printersList.Add(printer.ToString());
-            }
-
+            ////Get all available printers and add them to the combo box  
+            //List<string> printersList = new List<string>();
+            //foreach (String printer in PrinterSettings.InstalledPrinters)
+            //{
+            //    printersList.Add(printer.ToString());
+            //}
         }
 
 
 
-        private void treeViewA_MouseDown(object sender, MouseEventArgs e)
+        private void twPanel_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
             {
-                TreeNode selectedNode = treeViewA.GetNodeAt(e.X, e.Y);
-                MessageBox.Show("You clicked on node: " + selectedNode.Text);
+                //TreeNode selectedNode = twPanel.GetNodeAt(e.X, e.Y);
+                //MessageBox.Show("You clicked on node: " + selectedNode.Text);
+                /*Check Type of Note*/
+                /*Display the Context Menu*/
+                ctmPanel.Show();
+                
+
             }
         }
 
@@ -88,22 +74,115 @@ namespace OPM
             //String strconnection = @"Data Source = 127.0.0.1,1433; Initial Catalog = OpmDB; User ID = sa; Password = Pa$$w0rd";
             
             //String OK_1
-            String strconnection1 = @"Data Source=DOANTD; Initial Catalog = OpmDB; User ID = sa; Password=Pa$$w0rd";
+            //String strconnection1 = @"Data Source=DOANTD; Initial Catalog = OpmDB; User ID = sa; Password=Pa$$w0rd";
 
-            String strconnection2 = @"Data Source=MSI\PHANTOM_OPM; Initial Catalog = OpmDB; User ID = sa; Password=Pa$$w0rd";
-            SqlConnection con = new SqlConnection(strconnection2);
-            con.Open();
+            //String strconnection2 = @"Data Source=MSI\PHANTOM_OPM; Initial Catalog = OpmDB; User ID = sa; Password=Pa$$w0rd";
+            //SqlConnection con = new SqlConnection(strconnection2);
+            //con.Open();
 
             string querry = @"INSERT INTO Site_Info(id, type, headquater_info, address, phonenumber, tin, account, representative) VALUES('TTCUVT-TPDN', '', '125 Hai Ba Trung, TP.HCM', '12/1 Nguyen Thi Minh Khai, TP.HCM', '02835282338', '0300954529', '0071001103921', 'Mr Ho Minh Kiet')";
-            using (SqlCommand insertCommand = con.CreateCommand())
-            {
-                insertCommand.CommandText = querry;
-                var row = insertCommand.ExecuteNonQuery();
-            }    
-            con.Close();
-            con.Dispose();
+            //using (SqlCommand insertCommand = con.CreateCommand())
+            //{
+            //    insertCommand.CommandText = querry;
+            //    var row = insertCommand.ExecuteNonQuery();
+            //}    
+            //con.Close();
+            //con.Dispose();
             //con = null;
-         } 
+            OPMDBHandler.fInsertData(querry);
+
+
+         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            DataSet result = new DataSet();
+            
+            string[] Chosen_Files=null;
+            try
+            {
+                List<Packagelist> oPackagelists = new List<Packagelist>();
+                //string[] Chosen_File = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+                //openFileDialog.InitialDirectory = Chosen_File;
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    Chosen_Files = openFileDialog.FileNames;
+                }
+                if (Chosen_Files.Count() == 0)
+                {
+                    return;
+                }
+                //tbx_plfile.Text = Chosen_File;
+
+                int ret = OpmExcelHandler.fReadPackageListFiles(Chosen_Files, ref oPackagelists);
+                /**/
+                /**/
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Sorry, Error");
+                return;
+
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string Chosen_File = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                openFileDialog.InitialDirectory = Chosen_File;
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    Chosen_File = openFileDialog.FileName;
+                }
+                if (Chosen_File.ToString() == string.Empty)
+                {
+                    return;
+                }
+
+                int ret = OpmExcelHandler.fReadExcelFile(Chosen_File);
+                if (0 == ret)
+                {
+                    return;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Sorry, Error");
+                return;
+
+            }
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
+        
+        private void OPM_Load(object sender, EventArgs e)
+        {
+            //GUI.Contract_Info contract_InfoDashboard = new GUI.Contract_Info();
+            //contract_InfoDashboard.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            //| System.Windows.Forms.AnchorStyles.Left) 
+            //| System.Windows.Forms.AnchorStyles.Right)));
+            //contract_InfoDashboard.Location = new System.Drawing.Point(20, 70);
+            //contract_InfoDashboard.Name = "contract_InfoDashboard";
+            //contract_InfoDashboard.Size = new System.Drawing.Size(562, 518);
+            //contract_InfoDashboard.TabIndex = 0;
+
+            //this.splitContainer1.Panel2.Controls.Add(contract_InfoDashboard);
+            ////contract_InfoDashboard.Hide();
+            ///
+
+            GUI.UsrCtltabHeader usrCtltabHeader = new GUI.UsrCtltabHeader();
+            this.splitContainer1.Panel1.Controls.Add(usrCtltabHeader);
+            usrCtltabHeader.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+        }
     }
 }
 

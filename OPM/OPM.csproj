@@ -25,7 +25,7 @@
     </COMReference>
     <COMReference Include="Microsoft.Office.Excel.dll">
       <WrapperTool>tlbimp</WrapperTool>
-      <VersionMinor>7</VersionMinor>
+      <VersionMinor>6</VersionMinor>
       <VersionMajor>1</VersionMajor>
       <Guid>00020813-0000-0000-c000-000000000046</Guid>
       <Lcid>0</Lcid>
@@ -38,6 +38,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="ExcelDataReader" Version="3.6.0" />
+    <PackageReference Include="ExcelDataReader.DataSet" Version="3.6.0" />
     <PackageReference Include="RawPrint" Version="0.5.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
   </ItemGroup>

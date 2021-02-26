@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace OPM.DBHandler
@@ -6,11 +7,25 @@ namespace OPM.DBHandler
 
     class OPMDBHandler
     {
+        public static int GetConnection(ref SqlConnection con)
+        {
+            try 
+            {
+                string strconnection = @"Data Source=DOANTD; Initial Catalog = OpmDB; User ID = sa; Password=Pa$$w0rd";
+                con = new SqlConnection(strconnection);
+                return 1;
+            }
+            catch(Exception)
+            {
+                return 0;
+            }
+        }
 
         public static int fInsertData(string strSqlCommand)
         {
             String strconnection = @"Data Source=DOANTD; Initial Catalog = OpmDB; User ID = sa; Password=Pa$$w0rd";
             SqlConnection con = new SqlConnection(strconnection);
+
             try
             {
                 con.Open();
@@ -19,21 +34,23 @@ namespace OPM.DBHandler
                     insertCommand.CommandText = strSqlCommand;
                     var row = insertCommand.ExecuteNonQuery();
                 }
-                con.Close();
-                con.Dispose();
-                con = null;
+                //con.Close();
+                //con.Dispose();
+                //con = null;
+                CloseConnection(con);
                 return 1;
             }
-            catch(Exception e)
+            catch(Exception)
             {
-                con.Close();
-                con.Dispose();
-                con = null;
+                //con.Close();
+                //con.Dispose();
+                //con = null;
+                CloseConnection(con);
                 return 0;
             }
 
         }
-        public static int fQuerryData(string strQuerry)
+        public static int fQuerryData1(string strQuerry)
         {
             String strconnection = @"Data Source=DOANTD; Initial Catalog = OpmDB; User ID = sa; Password=Pa$$w0rd";
             SqlConnection con = new SqlConnection(strconnection);
@@ -59,19 +76,56 @@ namespace OPM.DBHandler
 
                     }    
                 }
-                con.Close();
-                con.Dispose();
-                con = null;
+                //con.Close();
+                //con.Dispose();
+                //con = null;
+                CloseConnection(con);
                 return 1;
 
             }
-            catch(Exception e)
+            catch (Exception)
             {
-                con.Close();
-                con.Dispose();
-                con = null;
+                //con.Close();
+                //con.Dispose();
+                //con = null;
+                CloseConnection(con);
                 return 0;
             }
+        }
+
+        public static int fQuerryData(string strQuerry, ref DataSet ds)
+        {
+            String strconnection = @"Data Source=DOANTD; Initial Catalog = OpmDB; User ID = sa; Password=Pa$$w0rd";
+            SqlConnection con = new SqlConnection(strconnection);
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            SqlCommand command;
+
+            try
+            {
+                con.Open();
+                command = new SqlCommand(strQuerry, con);
+                adapter.SelectCommand = command;
+                adapter.Fill(ds, "SQL Temp Table");
+
+                adapter.Dispose();
+                command.Dispose();
+                CloseConnection(con);
+                return 1;
+
+            }
+            catch (Exception)
+            {
+                adapter.Dispose();
+                CloseConnection(con);
+                return 0;
+            }
+        }
+        public static int CloseConnection(SqlConnection con)
+        {
+            con.Close();
+            con.Dispose();
+            con = null;
+            return 1;
         }
     }
 }

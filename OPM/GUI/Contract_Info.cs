@@ -14,5 +14,35 @@ namespace OPM.GUI
 		{
 			InitializeComponent();
 		}
-	}
+
+        private void btEdit_Click(object sender, EventArgs e)
+        {
+            return;
+        }
+
+        private void btRemove_Click(object sender, EventArgs e)
+        {
+            return;
+        }
+
+        private void btSave_Click(object sender, EventArgs e)
+        {
+            /*Save The Edited Contract Info */
+            return;
+            
+
+        }
+
+        private void btDesSiteB_Click(object sender, EventArgs e)
+        {
+            /*Display SiteB Info*/
+            return;
+        }
+
+        private void btDescSiteA_Click(object sender, EventArgs e)
+        {
+            /*Display SiteA Info*/
+            return;
+        }
+    }
 }
