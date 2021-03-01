@@ -16,12 +16,14 @@ C:\Users\Johan\source\repos\OPM\OPM\bin\Debug\netcoreapp3.1\runtimes\win\lib\net
 C:\Users\Johan\source\repos\OPM\OPM\bin\Debug\netcoreapp3.1\Interop.Microsoft.Office.Core.dll
 C:\Users\Johan\source\repos\OPM\OPM\bin\Debug\netcoreapp3.1\Interop.Microsoft.Office.Interop.Word.dll
 C:\Users\Johan\source\repos\OPM\OPM\bin\Debug\netcoreapp3.1\Interop.Microsoft.Office.Interop.Excel.dll
+C:\Users\Johan\source\repos\OPM\OPM\obj\Debug\netcoreapp3.1\OPM.csprojAssemblyReference.cache
 C:\Users\Johan\source\repos\OPM\OPM\obj\Debug\netcoreapp3.1\Interop.Microsoft.Office.Core.dll
 C:\Users\Johan\source\repos\OPM\OPM\obj\Debug\netcoreapp3.1\Interop.Microsoft.Office.Interop.Word.dll
 C:\Users\Johan\source\repos\OPM\OPM\obj\Debug\netcoreapp3.1\Interop.Microsoft.Office.Interop.Excel.dll
 C:\Users\Johan\source\repos\OPM\OPM\obj\Debug\netcoreapp3.1\OPM.csproj.ResolveComReference.cache
 C:\Users\Johan\source\repos\OPM\OPM\obj\Debug\netcoreapp3.1\OPM.GUI.ContractInfoChildForm.resources
 C:\Users\Johan\source\repos\OPM\OPM\obj\Debug\netcoreapp3.1\OPM.GUI.Contract_Info.resources
+C:\Users\Johan\source\repos\OPM\OPM\obj\Debug\netcoreapp3.1\OPM.GUI.NewItem.resources
 C:\Users\Johan\source\repos\OPM\OPM\obj\Debug\netcoreapp3.1\OPM.OPM.resources
 C:\Users\Johan\source\repos\OPM\OPM\obj\Debug\netcoreapp3.1\OPM.GUI.OPM2.resources
 C:\Users\Johan\source\repos\OPM\OPM\obj\Debug\netcoreapp3.1\OPM.GUI.OPMDASHBOARDA.resources

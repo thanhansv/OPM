@@ -7,6 +7,9 @@
     <Compile Update="GUI\Contract_Info.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="GUI\NewItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="GUI\OPM.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -11,7 +11,14 @@ namespace OPM.GUI
 {
     public partial class UsrPanelCatalog : UserControl
     {
-        private string selectednode;
+        private  string selectednode;
+        private  string strChangeNodesignal;
+
+        public string SignalChangeNode
+        {
+            set { strChangeNodesignal = value; }
+            get { return strChangeNodesignal; }
+        }
 
         public event AddControlFlowHandler DisplayControlFlow;
 
@@ -88,6 +95,11 @@ namespace OPM.GUI
         private string TypeOfSelectedNode(string strSelectedNode)
         {
             return "PO";
+        }
+
+        public void ChangeNode()
+        {
+            return;
         }
     }
 }

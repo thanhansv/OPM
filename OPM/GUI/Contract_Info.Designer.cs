@@ -43,19 +43,20 @@ namespace OPM.GUI
             this.tbContract = new System.Windows.Forms.TextBox();
             this.tbBidName = new System.Windows.Forms.TextBox();
             this.tbAccountingCode = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txbTypeContract = new System.Windows.Forms.TextBox();
+            this.tbxValueContract = new System.Windows.Forms.TextBox();
+            this.tbxDurationPO = new System.Windows.Forms.TextBox();
+            this.tbxSiteA = new System.Windows.Forms.TextBox();
+            this.tbxSiteB = new System.Windows.Forms.TextBox();
             this.tbActiveDate = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.tbxDateSigned = new System.Windows.Forms.TextBox();
+            this.tbxDurationContract = new System.Windows.Forms.TextBox();
             this.btDescSiteA = new System.Windows.Forms.Button();
             this.btDesSiteB = new System.Windows.Forms.Button();
             this.btEdit = new System.Windows.Forms.Button();
             this.btRemove = new System.Windows.Forms.Button();
             this.btSave = new System.Windows.Forms.Button();
+            this.newPO = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbContract
@@ -189,40 +190,40 @@ namespace OPM.GUI
             this.tbAccountingCode.Size = new System.Drawing.Size(290, 23);
             this.tbAccountingCode.TabIndex = 2;
             // 
-            // textBox1
+            // txbTypeContract
             // 
-            this.textBox1.Location = new System.Drawing.Point(180, 172);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(290, 23);
-            this.textBox1.TabIndex = 2;
+            this.txbTypeContract.Location = new System.Drawing.Point(180, 172);
+            this.txbTypeContract.Name = "txbTypeContract";
+            this.txbTypeContract.Size = new System.Drawing.Size(290, 23);
+            this.txbTypeContract.TabIndex = 2;
             // 
-            // textBox3
+            // tbxValueContract
             // 
-            this.textBox3.Location = new System.Drawing.Point(180, 292);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(290, 23);
-            this.textBox3.TabIndex = 2;
+            this.tbxValueContract.Location = new System.Drawing.Point(180, 292);
+            this.tbxValueContract.Name = "tbxValueContract";
+            this.tbxValueContract.Size = new System.Drawing.Size(290, 23);
+            this.tbxValueContract.TabIndex = 2;
             // 
-            // textBox4
+            // tbxDurationPO
             // 
-            this.textBox4.Location = new System.Drawing.Point(180, 332);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(290, 23);
-            this.textBox4.TabIndex = 2;
+            this.tbxDurationPO.Location = new System.Drawing.Point(180, 332);
+            this.tbxDurationPO.Name = "tbxDurationPO";
+            this.tbxDurationPO.Size = new System.Drawing.Size(290, 23);
+            this.tbxDurationPO.TabIndex = 2;
             // 
-            // textBox5
+            // tbxSiteA
             // 
-            this.textBox5.Location = new System.Drawing.Point(180, 372);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(224, 23);
-            this.textBox5.TabIndex = 2;
+            this.tbxSiteA.Location = new System.Drawing.Point(180, 372);
+            this.tbxSiteA.Name = "tbxSiteA";
+            this.tbxSiteA.Size = new System.Drawing.Size(224, 23);
+            this.tbxSiteA.TabIndex = 2;
             // 
-            // textBox6
+            // tbxSiteB
             // 
-            this.textBox6.Location = new System.Drawing.Point(180, 412);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(224, 23);
-            this.textBox6.TabIndex = 2;
+            this.tbxSiteB.Location = new System.Drawing.Point(180, 412);
+            this.tbxSiteB.Name = "tbxSiteB";
+            this.tbxSiteB.Size = new System.Drawing.Size(224, 23);
+            this.tbxSiteB.TabIndex = 2;
             // 
             // tbActiveDate
             // 
@@ -231,19 +232,19 @@ namespace OPM.GUI
             this.tbActiveDate.Size = new System.Drawing.Size(290, 23);
             this.tbActiveDate.TabIndex = 2;
             // 
-            // textBox8
+            // tbxDateSigned
             // 
-            this.textBox8.Location = new System.Drawing.Point(180, 132);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(290, 23);
-            this.textBox8.TabIndex = 2;
+            this.tbxDateSigned.Location = new System.Drawing.Point(180, 132);
+            this.tbxDateSigned.Name = "tbxDateSigned";
+            this.tbxDateSigned.Size = new System.Drawing.Size(290, 23);
+            this.tbxDateSigned.TabIndex = 2;
             // 
-            // textBox9
+            // tbxDurationContract
             // 
-            this.textBox9.Location = new System.Drawing.Point(180, 212);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(290, 23);
-            this.textBox9.TabIndex = 2;
+            this.tbxDurationContract.Location = new System.Drawing.Point(180, 212);
+            this.tbxDurationContract.Name = "tbxDurationContract";
+            this.tbxDurationContract.Size = new System.Drawing.Size(290, 23);
+            this.tbxDurationContract.TabIndex = 2;
             // 
             // btDescSiteA
             // 
@@ -272,7 +273,7 @@ namespace OPM.GUI
             this.btEdit.ForeColor = System.Drawing.SystemColors.Desktop;
             this.btEdit.Location = new System.Drawing.Point(180, 459);
             this.btEdit.Name = "btEdit";
-            this.btEdit.Size = new System.Drawing.Size(75, 23);
+            this.btEdit.Size = new System.Drawing.Size(63, 23);
             this.btEdit.TabIndex = 4;
             this.btEdit.Text = "Edit";
             this.btEdit.UseVisualStyleBackColor = true;
@@ -281,9 +282,9 @@ namespace OPM.GUI
             // btRemove
             // 
             this.btRemove.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btRemove.Location = new System.Drawing.Point(286, 459);
+            this.btRemove.Location = new System.Drawing.Point(249, 459);
             this.btRemove.Name = "btRemove";
-            this.btRemove.Size = new System.Drawing.Size(75, 23);
+            this.btRemove.Size = new System.Drawing.Size(65, 23);
             this.btRemove.TabIndex = 4;
             this.btRemove.Text = "Remove";
             this.btRemove.UseVisualStyleBackColor = true;
@@ -292,31 +293,41 @@ namespace OPM.GUI
             // btSave
             // 
             this.btSave.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btSave.Location = new System.Drawing.Point(395, 459);
+            this.btSave.Location = new System.Drawing.Point(320, 459);
             this.btSave.Name = "btSave";
-            this.btSave.Size = new System.Drawing.Size(75, 23);
+            this.btSave.Size = new System.Drawing.Size(63, 23);
             this.btSave.TabIndex = 4;
             this.btSave.Text = "Save";
             this.btSave.UseVisualStyleBackColor = true;
             this.btSave.Click += new System.EventHandler(this.btSave_Click);
             // 
+            // newPO
+            // 
+            this.newPO.Location = new System.Drawing.Point(399, 459);
+            this.newPO.Name = "newPO";
+            this.newPO.Size = new System.Drawing.Size(65, 23);
+            this.newPO.TabIndex = 5;
+            this.newPO.Text = "New PO";
+            this.newPO.UseVisualStyleBackColor = true;
+            // 
             // Contract_Info
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.newPO);
             this.Controls.Add(this.btSave);
             this.Controls.Add(this.btRemove);
             this.Controls.Add(this.btEdit);
             this.Controls.Add(this.btDesSiteB);
             this.Controls.Add(this.btDescSiteA);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox9);
+            this.Controls.Add(this.tbxSiteB);
+            this.Controls.Add(this.tbxSiteA);
+            this.Controls.Add(this.tbxDurationPO);
+            this.Controls.Add(this.tbxDurationContract);
             this.Controls.Add(this.tbActiveDate);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbxValueContract);
+            this.Controls.Add(this.tbxDateSigned);
+            this.Controls.Add(this.txbTypeContract);
             this.Controls.Add(this.tbAccountingCode);
             this.Controls.Add(this.tbBidName);
             this.Controls.Add(this.tbContract);
@@ -355,18 +366,19 @@ namespace OPM.GUI
         private System.Windows.Forms.TextBox tbContract;
         private System.Windows.Forms.TextBox tbBidName;
         private System.Windows.Forms.TextBox tbAccountingCode;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txbTypeContract;
+        private System.Windows.Forms.TextBox tbxValueContract;
+        private System.Windows.Forms.TextBox tbxDurationPO;
+        private System.Windows.Forms.TextBox tbxSiteA;
+        private System.Windows.Forms.TextBox tbxSiteB;
         private System.Windows.Forms.TextBox tbActiveDate;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox tbxDateSigned;
+        private System.Windows.Forms.TextBox tbxDurationContract;
         private System.Windows.Forms.Button btDescSiteA;
         private System.Windows.Forms.Button btDesSiteB;
         private System.Windows.Forms.Button btEdit;
         private System.Windows.Forms.Button btRemove;
         private System.Windows.Forms.Button btSave;
+        private System.Windows.Forms.Button newPO;
     }
 }

@@ -9,6 +9,7 @@ using System.Windows.Forms;
 namespace OPM.GUI
 {
     public delegate void AddControlFlowHandler();
+    public delegate void AddResponseCatalog(string strAddedCatalog);
     public partial class OPM2 : Form
     {
         public OPM2()
@@ -37,8 +38,17 @@ namespace OPM.GUI
             contract_Info.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top)
             | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
+
+            Contract_Info contract_Info1 = new Contract_Info();
+            contract_Info1.AddCatalog += Contract_Info1_AddCatalog;
         }
 
+        private void Contract_Info1_AddCatalog(string strAddedCatalog)
+        {
+            return;
+        }
+
+        /*Function Event On DashBoard*/
         private void UsrPanelCatalog_DisplayControlFlow()
         {
             GUI.Contract_Info contract_Info = new Contract_Info();

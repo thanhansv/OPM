@@ -30,37 +30,40 @@ namespace OPM.GUI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Node1");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Node2");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Node3");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Node4");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Node5");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Node6");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Node0", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("NTKT1");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("PO1", new System.Windows.Forms.TreeNode[] {
+            treeNode1});
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("PO2");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("PO3");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("PO4");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("PO5");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("PO6");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("2020", new System.Windows.Forms.TreeNode[] {
             treeNode2,
             treeNode3,
             treeNode4,
             treeNode5,
-            treeNode6});
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Node8");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Node9");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Node10");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Node11");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Node7", new System.Windows.Forms.TreeNode[] {
-            treeNode8,
+            treeNode6,
+            treeNode7});
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("PO1");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("PO2");
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("PO3");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("PO4");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("2019", new System.Windows.Forms.TreeNode[] {
             treeNode9,
             treeNode10,
-            treeNode11});
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Node13");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Node14");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Node15");
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Node16");
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Node12", new System.Windows.Forms.TreeNode[] {
-            treeNode13,
+            treeNode11,
+            treeNode12});
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("PO1");
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("PO2");
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("PO3");
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("PO4");
+            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("2018", new System.Windows.Forms.TreeNode[] {
             treeNode14,
             treeNode15,
-            treeNode16});
+            treeNode16,
+            treeNode17});
+            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("2021");
             this.panHeader = new System.Windows.Forms.Panel();
             this.panCatalog = new System.Windows.Forms.Panel();
             this.treeView1 = new System.Windows.Forms.TreeView();
@@ -98,48 +101,55 @@ namespace OPM.GUI
             // treeView1
             // 
             this.treeView1.ContextMenuStrip = this.contextMenuStrip;
+            this.treeView1.LabelEdit = true;
             this.treeView1.Location = new System.Drawing.Point(8, 12);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "Node1";
-            treeNode1.Text = "Node1";
-            treeNode2.Name = "Node2";
-            treeNode2.Text = "Node2";
-            treeNode3.Name = "Node3";
-            treeNode3.Text = "Node3";
-            treeNode4.Name = "Node4";
-            treeNode4.Text = "Node4";
-            treeNode5.Name = "Node5";
-            treeNode5.Text = "Node5";
-            treeNode6.Name = "Node6";
-            treeNode6.Text = "Node6";
-            treeNode7.Name = "Node0";
-            treeNode7.Text = "Node0";
-            treeNode8.Name = "Node8";
-            treeNode8.Text = "Node8";
-            treeNode9.Name = "Node9";
-            treeNode9.Text = "Node9";
-            treeNode10.Name = "Node10";
-            treeNode10.Text = "Node10";
-            treeNode11.Name = "Node11";
-            treeNode11.Text = "Node11";
-            treeNode12.Name = "Node7";
-            treeNode12.Text = "Node7";
-            treeNode13.Name = "Node13";
-            treeNode13.Text = "Node13";
-            treeNode14.Name = "Node14";
-            treeNode14.Text = "Node14";
-            treeNode15.Name = "Node15";
-            treeNode15.Text = "Node15";
-            treeNode16.Name = "Node16";
-            treeNode16.Text = "Node16";
-            treeNode17.Name = "Node12";
-            treeNode17.Text = "Node12";
+            treeNode1.Name = "NTKT_PO1_2020";
+            treeNode1.Text = "NTKT1";
+            treeNode2.Name = "PO_2020_1";
+            treeNode2.Text = "PO1";
+            treeNode3.Name = "PO_2020_2";
+            treeNode3.Text = "PO2";
+            treeNode4.Name = "PO_2020_3";
+            treeNode4.Text = "PO3";
+            treeNode5.Name = "PO_2020_4";
+            treeNode5.Text = "PO4";
+            treeNode6.Name = "PO_2020_5";
+            treeNode6.Text = "PO5";
+            treeNode7.Name = "PO_2020_6";
+            treeNode7.Text = "PO6";
+            treeNode8.Name = "Year_2020";
+            treeNode8.Text = "2020";
+            treeNode9.Name = "PO_2019_1";
+            treeNode9.Text = "PO1";
+            treeNode10.Name = "PO_2019_2";
+            treeNode10.Text = "PO2";
+            treeNode11.Name = "PO_2019_3";
+            treeNode11.Text = "PO3";
+            treeNode12.Name = "PO_2019_4";
+            treeNode12.Text = "PO4";
+            treeNode13.Name = "Year_2019";
+            treeNode13.Text = "2019";
+            treeNode14.Name = "PO_2018_1";
+            treeNode14.Text = "PO1";
+            treeNode15.Name = "PO_2018_2";
+            treeNode15.Text = "PO2";
+            treeNode16.Name = "PO_2018_3";
+            treeNode16.Text = "PO3";
+            treeNode17.Name = "PO_2018_4";
+            treeNode17.Text = "PO4";
+            treeNode18.Name = "Year_2018";
+            treeNode18.Text = "2018";
+            treeNode19.Name = "2021";
+            treeNode19.Text = "2021";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode7,
-            treeNode12,
-            treeNode17});
+            treeNode8,
+            treeNode13,
+            treeNode18,
+            treeNode19});
             this.treeView1.Size = new System.Drawing.Size(200, 430);
             this.treeView1.TabIndex = 0;
+            this.treeView1.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeView1_AfterLabelEdit);
             this.treeView1.DoubleClick += new System.EventHandler(this.treeView1_DoubleClick);
             this.treeView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.treeView1_MouseClick);
             // 
@@ -194,7 +204,7 @@ namespace OPM.GUI
             this.panContent.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panContent.Location = new System.Drawing.Point(261, 5);
             this.panContent.Name = "panContent";
-            this.panContent.Size = new System.Drawing.Size(446, 550);
+            this.panContent.Size = new System.Drawing.Size(471, 550);
             this.panContent.TabIndex = 2;
             // 
             // panel1
@@ -202,9 +212,9 @@ namespace OPM.GUI
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Location = new System.Drawing.Point(697, 5);
+            this.panel1.Location = new System.Drawing.Point(738, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(275, 550);
+            this.panel1.Size = new System.Drawing.Size(234, 550);
             this.panel1.TabIndex = 3;
             // 
             // OPMDASHBOARDA
@@ -218,6 +228,7 @@ namespace OPM.GUI
             this.Controls.Add(this.panHeader);
             this.Name = "OPMDASHBOARDA";
             this.Text = "OPMDASHBOARDA";
+            this.Load += new System.EventHandler(this.OPMDASHBOARDA_Load);
             this.panCatalog.ResumeLayout(false);
             this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);

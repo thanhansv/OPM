@@ -30,17 +30,7 @@ namespace OPM.GUI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Node1");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Node2");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Node3");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Node4");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Node5");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Node0", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3,
-            treeNode4,
-            treeNode5});
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("2021");
             this.ctxRightMouse = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmRefresh = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmCreateNew = new System.Windows.Forms.ToolStripMenuItem();
@@ -92,21 +82,11 @@ namespace OPM.GUI
             // 
             this.tvCatalog.Location = new System.Drawing.Point(0, 0);
             this.tvCatalog.Name = "tvCatalog";
-            treeNode1.Name = "Node1";
-            treeNode1.Text = "Node1";
-            treeNode2.Name = "Node2";
-            treeNode2.Text = "Node2";
-            treeNode3.Name = "Node3";
-            treeNode3.Text = "Node3";
-            treeNode4.Name = "Node4";
-            treeNode4.Text = "Node4";
-            treeNode5.Name = "Node5";
-            treeNode5.Text = "Node5";
-            treeNode6.Name = "Node0";
-            treeNode6.Text = "Node0";
+            treeNode1.Name = "Year_2021";
+            treeNode1.Text = "2021";
             this.tvCatalog.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode6});
-            this.tvCatalog.Size = new System.Drawing.Size(155, 305);
+            treeNode1});
+            this.tvCatalog.Size = new System.Drawing.Size(314, 379);
             this.tvCatalog.TabIndex = 1;
             this.tvCatalog.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lvCatalog_MouseClick);
             // 

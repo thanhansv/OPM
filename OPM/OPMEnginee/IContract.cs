@@ -7,7 +7,7 @@ namespace OPM.OPMEnginee
     interface IContract
     {
         //public List<ContractMdl> GetAllContract();
-        public int InsertNewContract(IContract contract);
+        public int InsertNewContract(ContractObj contract);
         public IContract GetDetailContract(string strIdContract);
         public List<IContract> GetAllContract();
 

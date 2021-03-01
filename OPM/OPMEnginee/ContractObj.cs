@@ -10,15 +10,23 @@ namespace OPM.OPMEnginee
     class ContractObj :IContract
     {
         private string _idContract;
+        private string _nameContract;
+        private string _codeAccounting;
         private string _dateSigned;
         private string _paymentMethod;
         private string _typeContract;
         private string _durationContract;
+        private string _valueContract;
+        private string _activeDateContract;
         private string _durationGuranteePO;
         private string _phuluc;
         private string _vbGuranteeDoc;
+        private string _siteA;
+        private string _siteB;
         public ContractObj()
-        { 
+        {
+            _phuluc = String.Empty;
+            _vbGuranteeDoc = String.Empty;
         }
         ~ContractObj()
         {
@@ -29,6 +37,28 @@ namespace OPM.OPMEnginee
             set { _idContract = value; }
             get { return _idContract; }
         }
+        public string NameContract
+        {
+            set { _nameContract = value; }
+            get { return _nameContract; }
+        }
+        public string ValueContract
+        {
+            set { _valueContract = value; }
+            get { return _valueContract; }
+        }
+        public string CodeAccounting
+        {
+            set { _codeAccounting = value; }
+            get { return _codeAccounting; }
+        }
+
+        public string ActiveDateContract
+        {
+            set { _activeDateContract = value; }
+            get { return _activeDateContract; }
+        }
+
         public string DateSigned
         {
             set { _dateSigned = value; }
@@ -63,12 +93,30 @@ namespace OPM.OPMEnginee
             get { return _vbGuranteeDoc; }
         }
 
+        public string Phuluc
+        {
+            set { _phuluc = value; }
+            get { return _phuluc; }
+        }
+
+        public string SiteA
+        {
+            set { _siteA = value; }
+            get { return _siteA; }
+        }
+
+        public string SiteB
+        {
+            set { _siteB = value; }
+            get { return _siteB; }
+        }
+
         public List<IContract> GetAllContract()
         {
             throw new NotImplementedException();
         }
 
-        public IContract GetDetailContract(string strIdContract)
+        public ContractObj GetDetailContract(string strIdContract)
         {
             string strQueryOne = "select * from Contract where id=" + "/'" + strIdContract + "/'";
             ContractObj contract = new ContractObj();
@@ -85,7 +133,51 @@ namespace OPM.OPMEnginee
             return contract;
         }
 
+        public int InsertNewContract(ContractObj newContract)
+        {
+            string strInsertContractNew = "insert into Contract values (";
+            strInsertContractNew += "'";
+            strInsertContractNew += newContract.IdContract;
+            strInsertContractNew += "','";
+            strInsertContractNew += newContract.NameContract;
+            strInsertContractNew += "','";
+            strInsertContractNew += newContract.CodeAccounting;
+            strInsertContractNew += "','";
+            strInsertContractNew += newContract.DateSigned;
+            strInsertContractNew += "','";
+            strInsertContractNew += newContract.TypeContract;
+            strInsertContractNew += "','";
+            strInsertContractNew += newContract.DurationContract;
+            strInsertContractNew += "','";
+            strInsertContractNew += newContract.ActiveDateContract;
+            strInsertContractNew += "','";
+            strInsertContractNew += newContract.ValueContract;
+            strInsertContractNew += "','";
+            strInsertContractNew += newContract.DurationGuranteePO;
+            strInsertContractNew += "','";
+            strInsertContractNew += newContract.SiteA;
+            strInsertContractNew += "','";
+            strInsertContractNew += newContract.SiteB;
+            strInsertContractNew += "','";
+            strInsertContractNew += newContract.Phuluc;
+            strInsertContractNew += "','";
+            strInsertContractNew += newContract.VbGuranteeDoc;
+            strInsertContractNew += "')";
+            int ret = OPMDBHandler.fInsertData(strInsertContractNew);
+            if(0==ret)
+            {
+                return ret;
+            }
+            return 1;
+
+        }
+
         public int InsertNewContract(IContract contract)
+        {
+            throw new NotImplementedException();
+        }
+
+        IContract IContract.GetDetailContract(string strIdContract)
         {
             throw new NotImplementedException();
         }
