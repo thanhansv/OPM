@@ -30,47 +30,47 @@ namespace OPM.GUI
         private void InitializeComponent()
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabContent = new System.Windows.Forms.TabPage();
+            this.tabSearch = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.tabSearch.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabContent);
+            this.tabControl1.Controls.Add(this.tabSearch);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(315, 111);
+            this.tabControl1.Size = new System.Drawing.Size(292, 111);
             this.tabControl1.TabIndex = 0;
             // 
-            // tabPage1
+            // tabContent
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.Gray;
-            this.tabPage1.Location = new System.Drawing.Point(4, 24);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(307, 83);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.tabContent.BackColor = System.Drawing.Color.Gray;
+            this.tabContent.Location = new System.Drawing.Point(4, 24);
+            this.tabContent.Name = "tabContent";
+            this.tabContent.Padding = new System.Windows.Forms.Padding(3);
+            this.tabContent.Size = new System.Drawing.Size(284, 83);
+            this.tabContent.TabIndex = 0;
+            this.tabContent.Text = "Content";
             // 
-            // tabPage2
+            // tabSearch
             // 
-            this.tabPage2.BackColor = System.Drawing.Color.Gray;
-            this.tabPage2.Controls.Add(this.button1);
-            this.tabPage2.Controls.Add(this.textBox1);
-            this.tabPage2.Controls.Add(this.label1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(307, 83);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabSearch.BackColor = System.Drawing.Color.Gray;
+            this.tabSearch.Controls.Add(this.button1);
+            this.tabSearch.Controls.Add(this.textBox1);
+            this.tabSearch.Controls.Add(this.label1);
+            this.tabSearch.Location = new System.Drawing.Point(4, 24);
+            this.tabSearch.Name = "tabSearch";
+            this.tabSearch.Padding = new System.Windows.Forms.Padding(3);
+            this.tabSearch.Size = new System.Drawing.Size(284, 83);
+            this.tabSearch.TabIndex = 1;
+            this.tabSearch.Text = "Search";
             // 
             // button1
             // 
@@ -79,7 +79,7 @@ namespace OPM.GUI
             this.button1.ForeColor = System.Drawing.SystemColors.Desktop;
             this.button1.Location = new System.Drawing.Point(231, 29);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(73, 23);
+            this.button1.Size = new System.Drawing.Size(50, 23);
             this.button1.TabIndex = 3;
             this.button1.Text = "Search";
             this.button1.UseVisualStyleBackColor = true;
@@ -108,10 +108,10 @@ namespace OPM.GUI
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.Controls.Add(this.tabControl1);
             this.Name = "UsrCtltabHeader";
-            this.Size = new System.Drawing.Size(315, 110);
+            this.Size = new System.Drawing.Size(296, 110);
             this.tabControl1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            this.tabSearch.ResumeLayout(false);
+            this.tabSearch.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -119,8 +119,8 @@ namespace OPM.GUI
         #endregion
 
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabContent;
+        private System.Windows.Forms.TabPage tabSearch;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;

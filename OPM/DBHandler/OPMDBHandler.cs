@@ -34,17 +34,11 @@ namespace OPM.DBHandler
                     insertCommand.CommandText = strSqlCommand;
                     var row = insertCommand.ExecuteNonQuery();
                 }
-                //con.Close();
-                //con.Dispose();
-                //con = null;
                 CloseConnection(con);
                 return 1;
             }
             catch(Exception)
             {
-                //con.Close();
-                //con.Dispose();
-                //con = null;
                 CloseConnection(con);
                 return 0;
             }
@@ -76,18 +70,12 @@ namespace OPM.DBHandler
 
                     }    
                 }
-                //con.Close();
-                //con.Dispose();
-                //con = null;
                 CloseConnection(con);
                 return 1;
 
             }
             catch (Exception)
             {
-                //con.Close();
-                //con.Dispose();
-                //con = null;
                 CloseConnection(con);
                 return 0;
             }

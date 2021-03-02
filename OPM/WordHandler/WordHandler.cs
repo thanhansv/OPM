@@ -93,7 +93,7 @@ namespace OPM.WordHandler
             MessageBox.Show("File Created!");
         }
 
-        public void fCreate_BLTU_Contract(object filename, object SaveAs, string strPOnumber, string strIdContract, string strSigndate, string strPOdate)
+        public void Create_BLTU_Contract(object filename, object SaveAs, string strPOnumber, string strIdContract, string strSigndate, string strPOdate)
         {
             WordOffice.Application wordApp = new WordOffice.Application();
             object missing = Missing.Value;
@@ -136,15 +136,15 @@ namespace OPM.WordHandler
             wordApp.Quit();
             MessageBox.Show("File Created!");
         }
-        public void fCreate_BLTH_PO(object filename, object SaveAs)
+        public void Create_BLTH_PO(object filename, object SaveAs)
         { }
-        public void fCreate_BLTU_PO(object filename, object SaveAs)
+        public void Create_BLTU_PO(object filename, object SaveAs)
         { }
-        public void fCreate_DNTU_PO(object filename, object SaveAs)
+        public void Create_DNTU_PO(object filename, object SaveAs)
         { }
-        public void fCreate_NTKTHH(object filename, object SaveAs)
+        public void Create_NTKTHH(object filename, object SaveAs)
         { }
-        public void fPrintDocument(object filename)
+        public void PrintDocument(object filename)
         {
             WordOffice.Application wordApp = new WordOffice.Application();
             object missing = Missing.Value;

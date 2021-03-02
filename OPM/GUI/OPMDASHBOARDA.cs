@@ -42,6 +42,7 @@ namespace OPM.GUI
 
         public void treeView1_DoubleClick(object sender, EventArgs e)
         {
+            /*OK Important for Comunicate*/
             ContractInfoChildForm contractInfoChildForm = new ContractInfoChildForm();
             contractInfoChildForm.UpdateCatalogPanel = new ContractInfoChildForm.UpdateCatalogDelegate(GetCatalogvalue);
             OpenChidForm(contractInfoChildForm);
@@ -137,6 +138,8 @@ namespace OPM.GUI
 
         private void treeView1_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
         {
+            /*Check What Lalel was Editted*/
+            /*Update On DataBase*/
             return;
         }
 
@@ -149,7 +152,7 @@ namespace OPM.GUI
             | System.Windows.Forms.AnchorStyles.Right)));
 
         }
-
+        /*OK Important for Comunicate*/
         public void GetCatalogvalue(string strvalue)
         {
             treeView1.Nodes[0].Nodes.Add(strvalue);
