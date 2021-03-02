@@ -176,5 +176,9 @@ namespace OPM.WordHandler
             MessageBox.Show("File Created!");
         }
 
+        public void PrintDocumentA(object filename)
+
+
+
     }
 }
