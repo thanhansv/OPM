@@ -167,7 +167,7 @@ namespace OPM.GUI
             // 
             this.panCatalog.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.panCatalog.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panCatalog.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panCatalog.Controls.Add(this.treeView1);
             this.panCatalog.Location = new System.Drawing.Point(5, 100);
             this.panCatalog.Name = "panCatalog";

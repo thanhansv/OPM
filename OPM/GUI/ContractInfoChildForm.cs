@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using OPM.WordHandler;
 
 using OPM.OPMEnginee;
 
@@ -54,6 +55,10 @@ namespace OPM.GUI
                 UpdateCatalogPanel(tbContract.Text);
             }
             return;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
         }
     }
 }

@@ -177,6 +177,9 @@ namespace OPM.WordHandler
         }
 
         public void PrintDocumentA(object filename)
+        {
+            return;
+        }
 
 
 
