@@ -8,8 +8,9 @@ namespace OPM.OPMEnginee
     {
         //public List<ContractMdl> GetAllContract();
         public int InsertNewContract(ContractObj contract);
-        public IContract GetDetailContract(string strIdContract);
+        public int GetDetailContract(string strIdContract);
         public List<IContract> GetAllContract();
+        public int UpdateExistedContract(ContractObj newContract);
 
     }
 }

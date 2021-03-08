@@ -42,9 +42,24 @@ namespace OPM.GUI
 
         public void treeView1_DoubleClick(object sender, EventArgs e)
         {
-            /*OK Important for Comunicate*/
+            /*OK Important for Communication*/
+
+            /*Check What Label Checked and it's parent Checked*/
+            MessageBox.Show(treeView1.SelectedNode.Name.ToString());
+            if(null != treeView1.SelectedNode.Parent)
+            {
+                MessageBox.Show(treeView1.SelectedNode.Parent.Text);
+            }    
+            else
+            {
+                MessageBox.Show("No Parent Node");
+            }    
+            /*Get Detail Infor On Database*/
+
+            /*Display Gui Related*/
             ContractInfoChildForm contractInfoChildForm = new ContractInfoChildForm();
             contractInfoChildForm.UpdateCatalogPanel = new ContractInfoChildForm.UpdateCatalogDelegate(GetCatalogvalue);
+            contractInfoChildForm.SetValueItemForm();
             OpenChidForm(contractInfoChildForm);
         }
 
@@ -81,6 +96,8 @@ namespace OPM.GUI
             else
             {
                 //Do Something
+                MessageBox.Show("Wanna Delete this Node?");
+
             }
 
 
@@ -155,6 +172,8 @@ namespace OPM.GUI
         /*OK Important for Comunicate*/
         public void GetCatalogvalue(string strvalue)
         {
+            System.Windows.Forms.TreeNode newTreeNode= new TreeNode(strvalue);
+
             treeView1.Nodes[0].Nodes.Add(strvalue);
             return;
         }

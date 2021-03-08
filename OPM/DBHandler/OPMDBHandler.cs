@@ -98,6 +98,10 @@ namespace OPM.DBHandler
                 adapter.Dispose();
                 command.Dispose();
                 CloseConnection(con);
+                if(null == ds)
+                {
+                    return 0;
+                }    
                 return 1;
 
             }

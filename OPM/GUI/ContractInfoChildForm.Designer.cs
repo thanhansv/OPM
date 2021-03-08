@@ -56,7 +56,7 @@ namespace OPM.GUI
             this.btnNewPO = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -283,14 +283,15 @@ namespace OPM.GUI
             this.button6.Text = "Remove";
             this.button6.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnSave
             // 
-            this.button4.Location = new System.Drawing.Point(292, 402);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Save";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnSave.Location = new System.Drawing.Point(292, 402);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 5;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // button3
             // 
@@ -309,7 +310,7 @@ namespace OPM.GUI
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(456, 550);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.btnNewPO);
@@ -374,7 +375,7 @@ namespace OPM.GUI
         private System.Windows.Forms.Button btnNewPO;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox tbxSiteB;
         private System.Windows.Forms.Button button3;
     }

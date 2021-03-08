@@ -116,7 +116,7 @@ namespace OPM.OPMEnginee
             throw new NotImplementedException();
         }
 
-        public ContractObj GetDetailContract(string strIdContract)
+        public int GetDetailContract(string strIdContract)
         {
             string strQueryOne = "select * from Contract where id=" + "/'" + strIdContract + "/'";
             ContractObj contract = new ContractObj();
@@ -128,9 +128,9 @@ namespace OPM.OPMEnginee
             }
             else
             {
-                return null;
+                return 0;
             }
-            return contract;
+            return 1;
         }
 
         public int InsertNewContract(ContractObj newContract)
@@ -172,14 +172,14 @@ namespace OPM.OPMEnginee
 
         }
 
+        public int UpdateExistedContract(ContractObj newContract)
+        {
+            return 1;
+        }
         public int InsertNewContract(IContract contract)
         {
             throw new NotImplementedException();
         }
 
-        IContract IContract.GetDetailContract(string strIdContract)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -74,8 +74,8 @@ namespace OPM.GUI
 
             string strTemp = TypeOfSelectedNode(this.selectednode);
             IContract contract = new ContractObj();
-            contract = contract.GetDetailContract(strTemp);
-            if(null == contract)
+            int ret = contract.GetDetailContract(strTemp);
+            if(0 == ret)
             {
                 //GUI.OPM2.flowLayoutPanelContent.Controls.Add(Contract_Info);
                 //GUI.Contract_Info contract_Info = new GUI.Contract_Info();

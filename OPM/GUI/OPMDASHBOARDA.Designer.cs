@@ -107,6 +107,7 @@ namespace OPM.GUI
             // 
             // tabControl1
             // 
+            this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.tabControl1.Controls.Add(this.tabContent);
             this.tabControl1.Controls.Add(this.tabSearch);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
@@ -117,10 +118,10 @@ namespace OPM.GUI
             // 
             // tabContent
             // 
-            this.tabContent.Location = new System.Drawing.Point(4, 24);
+            this.tabContent.Location = new System.Drawing.Point(4, 27);
             this.tabContent.Name = "tabContent";
             this.tabContent.Padding = new System.Windows.Forms.Padding(3);
-            this.tabContent.Size = new System.Drawing.Size(251, 72);
+            this.tabContent.Size = new System.Drawing.Size(251, 69);
             this.tabContent.TabIndex = 0;
             this.tabContent.Text = "Content";
             this.tabContent.UseVisualStyleBackColor = true;
@@ -130,10 +131,10 @@ namespace OPM.GUI
             this.tabSearch.Controls.Add(this.textBox1);
             this.tabSearch.Controls.Add(this.label1);
             this.tabSearch.Controls.Add(this.btnEnter);
-            this.tabSearch.Location = new System.Drawing.Point(4, 24);
+            this.tabSearch.Location = new System.Drawing.Point(4, 27);
             this.tabSearch.Name = "tabSearch";
             this.tabSearch.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSearch.Size = new System.Drawing.Size(251, 72);
+            this.tabSearch.Size = new System.Drawing.Size(251, 69);
             this.tabSearch.TabIndex = 1;
             this.tabSearch.Text = "Search";
             this.tabSearch.UseVisualStyleBackColor = true;
@@ -156,7 +157,7 @@ namespace OPM.GUI
             // 
             // btnEnter
             // 
-            this.btnEnter.Location = new System.Drawing.Point(185, 25);
+            this.btnEnter.Location = new System.Drawing.Point(185, 24);
             this.btnEnter.Name = "btnEnter";
             this.btnEnter.Size = new System.Drawing.Size(54, 23);
             this.btnEnter.TabIndex = 0;
@@ -169,9 +170,9 @@ namespace OPM.GUI
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panCatalog.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panCatalog.Controls.Add(this.treeView1);
-            this.panCatalog.Location = new System.Drawing.Point(5, 100);
+            this.panCatalog.Location = new System.Drawing.Point(9, 100);
             this.panCatalog.Name = "panCatalog";
-            this.panCatalog.Size = new System.Drawing.Size(250, 455);
+            this.panCatalog.Size = new System.Drawing.Size(246, 455);
             this.panCatalog.TabIndex = 1;
             // 
             // treeView1
@@ -179,7 +180,9 @@ namespace OPM.GUI
             this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.treeView1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.treeView1.ContextMenuStrip = this.contextMenuStrip;
+            this.treeView1.ItemHeight = 20;
             this.treeView1.LabelEdit = true;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
@@ -234,7 +237,7 @@ namespace OPM.GUI
             treeNode17,
             treeNode22,
             treeNode23});
-            this.treeView1.Size = new System.Drawing.Size(250, 442);
+            this.treeView1.Size = new System.Drawing.Size(246, 455);
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeView1_AfterLabelEdit);
             this.treeView1.DoubleClick += new System.EventHandler(this.treeView1_DoubleClick);
