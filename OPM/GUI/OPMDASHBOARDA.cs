@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using OPM.OPMEnginee;
 
 namespace OPM.GUI
 {
@@ -16,9 +17,55 @@ namespace OPM.GUI
         public OPMDASHBOARDA()
         {
             InitializeComponent();
-            /*Load The TreeView Content*/
-            treeView1.Nodes[0].Nodes[0].Nodes.Add("DoanTD");
-            /*Load The TreeView Content*/
+            TreeNode node = null;
+            InitCatalogAdmin(node, null);
+        }
+
+        private int LoadCatalogAdmin()
+        {
+            List<CatalogAdmin> lstCatalogAdmins = new List<CatalogAdmin>();
+            int ret = CatalogAdmin.GetFamilyNodes(ref lstCatalogAdmins);
+
+            treeView1.Nodes.Clear();
+
+            foreach(CatalogAdmin catalogAdmin in lstCatalogAdmins)
+            {
+                TreeNode a = treeView1.Nodes.Add(catalogAdmin.CatalogParent);
+                
+                AddChildTreeNode(ref a, catalogAdmin.GetListChildNode());
+
+            }    
+            return 1;
+        }
+
+        private int InitCatalogAdmin(TreeNode parentNode, string parent)
+        {
+            DataSet ds = new DataSet();
+            int ret = CatalogAdmin.GetCatalogNodes(ref ds, parent);
+            if(0 == ret)
+            {
+                return 0;
+            }
+
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                TreeNode node = new TreeNode();
+                node.Text = dr["ctlname"].ToString();
+                node.Name = dr["ctlID"].ToString();
+                string strChildID = dr["ctlID"].ToString();
+                if(null == parentNode|| null==parent)
+                {
+                    InitCatalogAdmin(node, strChildID);
+                    treeView1.Nodes.Add(node);
+                }
+                else
+                {
+                    InitCatalogAdmin(node, strChildID);
+                    parentNode.Nodes.Add(node);
+
+                }    
+            }
+            return 1;
         }
         public  void UpdateTreeView(string strNewNode)
         {
@@ -82,9 +129,6 @@ namespace OPM.GUI
             else if (e.ClickedItem.Name == "toolStripMenuEdit")
             {
                 //Do Something
-                //treeView1.Nodes[1].Nodes.Add("DoanTD");
-                //treeView1.Nodes[0].Nodes.Add("DoanTD");
-                //treeView1.Nodes[0].Nodes[0].Nodes.Add("DoanTD");
                 TreeNode a = treeView1.Nodes[0];
                 List<string> MyList4 = new List<string>();
                 MyList4.Add("Free");
