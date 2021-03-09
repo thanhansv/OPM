@@ -7,7 +7,13 @@
     <Compile Update="GUI\Contract_Info.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="GUI\DeliverPartInforDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="GUI\NewItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\NTKTInfor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="GUI\OPM.cs">
@@ -19,11 +25,17 @@
     <Compile Update="GUI\OPMDASHBOARDA.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="GUI\PackageListInfor.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="GUI\PL_Info.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="GUI\PO_Info.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GUI\PurchaseOderInfor.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Update="GUI\UsrCtltabHeader.cs">
       <SubType>UserControl</SubType>

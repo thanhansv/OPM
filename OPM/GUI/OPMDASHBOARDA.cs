@@ -93,21 +93,55 @@ namespace OPM.GUI
 
             /*Check What Label Checked and it's parent Checked*/
             MessageBox.Show(treeView1.SelectedNode.Name.ToString());
-            if(null != treeView1.SelectedNode.Parent)
+
+            string strNodeID = treeView1.SelectedNode.Name.ToString();
+            if (null != treeView1.SelectedNode.Parent)
             {
+                string strParentNodeID = treeView1.SelectedNode.Parent.Name.ToString();
                 MessageBox.Show(treeView1.SelectedNode.Parent.Text);
             }    
             else
             {
                 MessageBox.Show("No Parent Node");
-            }    
+            }
+            string[] temp = strNodeID.Split('_');
+            temp[0] += "_";
             /*Get Detail Infor On Database*/
-
-            /*Display Gui Related*/
-            ContractInfoChildForm contractInfoChildForm = new ContractInfoChildForm();
-            contractInfoChildForm.UpdateCatalogPanel = new ContractInfoChildForm.UpdateCatalogDelegate(GetCatalogvalue);
-            contractInfoChildForm.SetValueItemForm();
-            OpenChidForm(contractInfoChildForm);
+            switch (temp[0])
+            {
+                case ConstantVar.ContractType:
+                    /*Display Gui Contract*/
+                    ContractInfoChildForm contractInfoChildForm = new ContractInfoChildForm();
+                    contractInfoChildForm.UpdateCatalogPanel = new ContractInfoChildForm.UpdateCatalogDelegate(GetCatalogvalue);
+                    contractInfoChildForm.SetValueItemForm();
+                    OpenChidForm(contractInfoChildForm);
+                    break;
+                case ConstantVar.POType:
+                    /*Display PO */
+                    PurchaseOderInfor purchaseOderInfor  = new PurchaseOderInfor();
+                    //purchaseOderInfor.UpdateCatalogPanel = new ContractInfoChildForm.UpdateCatalogDelegate(GetCatalogvalue);
+                    //contractInfoChildForm.SetValueItemForm();
+                    OpenChidForm(purchaseOderInfor);
+                    break;
+                case ConstantVar.DPType:
+                    /*Display DP */
+                    DeliverPartInforDetail deliverPartInforDetail = new DeliverPartInforDetail();
+                    OpenChidForm(deliverPartInforDetail);
+                    break;
+                case ConstantVar.NTKTType:
+                    /*Display NTKT */
+                    NTKTInfor nTKTInfor = new NTKTInfor();
+                    OpenChidForm(nTKTInfor);
+                    break;
+                case ConstantVar.PLType:
+                    /*Display PL */
+                    PackageListInfor packageListInfor = new PackageListInfor();
+                    OpenChidForm(packageListInfor);
+                    break;
+                default:
+                    Console.WriteLine("Invalid grade");
+                    break;
+            }
         }
 
         private void contextMenuStrip_Click(object sender, EventArgs e)
