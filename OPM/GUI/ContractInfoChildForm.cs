@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using OPM.WordHandler;
 
 using OPM.OPMEnginee;
+using OPM.EmailHandler;
 
 namespace OPM.GUI
 {
@@ -17,6 +18,7 @@ namespace OPM.GUI
     {
         public delegate void UpdateCatalogDelegate(string value);
         public UpdateCatalogDelegate UpdateCatalogPanel;
+        public UpdateCatalogDelegate OpenPurchaseOrderInforGUI;
 
         public ContractInfoChildForm()
         {
@@ -37,28 +39,7 @@ namespace OPM.GUI
 
         private void btnNewPO_Click(object sender, EventArgs e)
         {
-            /*Save The Edited Contract Info */
-            ContractObj newContract = new ContractObj();
-            newContract.IdContract = tbContract.Text;
-            newContract.NameContract = tbBidName.Text;
-            newContract.CodeAccounting = tbAccountingCode.Text;
-            newContract.DateSigned = tbxDateSigned.Text;
-            newContract.TypeContract = txbTypeContract.Text;
-            newContract.DurationContract = tbxDurationContract.Text;
-            newContract.ActiveDateContract = tbActiveDate.Text;
-            newContract.ValueContract = tbxValueContract.Text;
-            newContract.DurationGuranteePO = tbxDurationPO.Text;
-            newContract.SiteA = tbxSiteA.Text;
-            newContract.SiteB = tbxSiteB.Text;
-            int ret = newContract.InsertNewContract(newContract);
-            if (0 == ret)
-            {
-                MessageBox.Show(ConstantVar.CreateNewContractFail);
-            }
-            else
-            {
-                UpdateCatalogPanel(tbContract.Text);
-            }
+            OpenPurchaseOrderInforGUI(tbContract.Text);
             return;
         }
 
@@ -94,6 +75,14 @@ namespace OPM.GUI
                 {
                     UpdateCatalogPanel(tbContract.Text);
                 }
+
+                /*Create Bao Lanh Thuc Hien Hop Dong*/
+                string filename = @"F:\LP\MSTT_Template.docx";
+                string strBLHPName = @"F:\LP\MSTT.docx";
+                OpmWordHandler.CreateBLTH_Contract(filename, strBLHPName, tbContract.Text, tbBidName.Text, tbxDateSigned.Text);
+
+                /*Send Email To DF*/
+                OPMEmailHandler.fSendEmail("Mail From DoanTD Gmail");
             }
             else
             {

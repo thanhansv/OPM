@@ -8,7 +8,7 @@ using System.Reflection;
 
 namespace OPM.WordHandler
 {
-    class OpmWordHandler: IWordHandler
+    class OpmWordHandler
     {
         private string _nameWordfile;
         public OpmWordHandler()
@@ -22,7 +22,7 @@ namespace OPM.WordHandler
             set { _nameWordfile = value; }
             get { return _nameWordfile; }
         }
-        public void FindAndReplace(WordOffice.Application wordApp, object ToFindText, object replaceWithText)
+        public static void FindAndReplace(WordOffice.Application wordApp, object ToFindText, object replaceWithText)
         {
             object matchCase = true;
             object matchWholeWord = true;
@@ -49,7 +49,7 @@ namespace OPM.WordHandler
                 ref matchDiactitics, ref matchAlefHamza,
                 ref matchControl);
         }
-        public void CreateWordDocument(object filename, object SaveAs, string strName, string strFirstname, string strBirthday, string strDate)
+        public static void CreateWordDocument(object filename, object SaveAs, string strName, string strFirstname, string strBirthday, string strDate)
         {
             WordOffice.Application wordApp = new WordOffice.Application();
             object missing = Missing.Value;
@@ -69,12 +69,12 @@ namespace OPM.WordHandler
                 myWordDoc.Activate();
 
                 //find and replace
-                this.FindAndReplace(wordApp, "<name>", strName);
-                this.FindAndReplace(wordApp, "<firstname>", strFirstname);
+                FindAndReplace(wordApp, "<name>", strName);
+                FindAndReplace(wordApp, "<firstname>", strFirstname);
                 //this.FindAndReplace(wordApp, "<birthday>", dateTimePicker1.Value.ToShortDateString());
-                this.FindAndReplace(wordApp, "<birthday>", strBirthday);
+                FindAndReplace(wordApp, "<birthday>", strBirthday);
                 //this.FindAndReplace(wordApp, "<date>", DateTime.Now.ToShortDateString());
-                this.FindAndReplace(wordApp, "<date>", strDate);
+                FindAndReplace(wordApp, "<date>", strDate);
             }
             else
             {
@@ -93,7 +93,7 @@ namespace OPM.WordHandler
             MessageBox.Show("File Created!");
         }
 
-        public void Create_BLTU_Contract(object filename, object SaveAs, string strPOnumber, string strIdContract, string strSigndate, string strPOdate)
+        public static void Create_BLTU_Contract(object filename, object SaveAs, string strPOnumber, string strIdContract, string strSigndate, string strPOdate)
         {
             WordOffice.Application wordApp = new WordOffice.Application();
             object missing = Missing.Value;
@@ -113,12 +113,12 @@ namespace OPM.WordHandler
                 myWordDoc.Activate();
 
                 //find and replace
-                this.FindAndReplace(wordApp, "<tempPO>", strPOnumber);
-                this.FindAndReplace(wordApp, "<temp_IdContract>", strIdContract);
+                FindAndReplace(wordApp, "<tempPO>", strPOnumber);
+                FindAndReplace(wordApp, "<temp_IdContract>", strIdContract);
                 //this.FindAndReplace(wordApp, "<birthday>", dateTimePicker1.Value.ToShortDateString());
-                this.FindAndReplace(wordApp, "<tmp_signdate>", strSigndate);
+                FindAndReplace(wordApp, "<tmp_signdate>", strSigndate);
                 //this.FindAndReplace(wordApp, "<date>", DateTime.Now.ToShortDateString());
-                this.FindAndReplace(wordApp, "<date_po>", strPOdate);
+                FindAndReplace(wordApp, "<date_po>", strPOdate);
             }
             else
             {
@@ -136,15 +136,15 @@ namespace OPM.WordHandler
             wordApp.Quit();
             MessageBox.Show("File Created!");
         }
-        public void Create_BLTH_PO(object filename, object SaveAs)
+        public static void Create_BLTH_PO(object filename, object SaveAs)
         { }
-        public void Create_BLTU_PO(object filename, object SaveAs)
+        public static void Create_BLTU_PO(object filename, object SaveAs)
         { }
-        public void Create_DNTU_PO(object filename, object SaveAs)
+        public static void Create_DNTU_PO(object filename, object SaveAs)
         { }
-        public void Create_NTKTHH(object filename, object SaveAs)
+        public static void Create_NTKTHH(object filename, object SaveAs)
         { }
-        public void PrintDocument(object filename)
+        public static void PrintDocument(object filename)
         {
             WordOffice.Application wordApp = new WordOffice.Application();
             object missing = Missing.Value;
@@ -176,11 +176,51 @@ namespace OPM.WordHandler
             MessageBox.Show("File Created!");
         }
 
-        public void PrintDocumentA(object filename)
+        public static void PrintDocumentA(object filename)
         {
             return;
         }
 
+        public static void  CreateBLTH_Contract(object filename, object SaveAs, string strContractCode, string strContractName, string strSigneddate)
+        {
+            WordOffice.Application wordApp = new WordOffice.Application();
+            object missing = Missing.Value;
+            WordOffice.Document myWordDoc = null;
+
+            if (File.Exists((string)filename))
+            {
+                object readOnly = false;
+                object isVisible = false;
+                wordApp.Visible = false;
+
+                myWordDoc = wordApp.Documents.Open(ref filename, ref missing, ref readOnly,
+                                        ref missing, ref missing, ref missing,
+                                        ref missing, ref missing, ref missing,
+                                        ref missing, ref missing, ref missing,
+                                        ref missing, ref missing, ref missing, ref missing);
+                myWordDoc.Activate();
+
+                //find and replace
+                FindAndReplace(wordApp, "<Contract_Code>", strContractCode);
+                FindAndReplace(wordApp, "<Contract_Name>", strContractName);
+                FindAndReplace(wordApp, "<Signed_Date>", strSigneddate);
+            }
+            else
+            {
+                MessageBox.Show("File not Found!");
+            }
+
+            //Save as
+            myWordDoc.SaveAs2(ref SaveAs, ref missing, ref missing, ref missing,
+                            ref missing, ref missing, ref missing,
+                            ref missing, ref missing, ref missing,
+                            ref missing, ref missing, ref missing,
+                            ref missing, ref missing, ref missing);
+
+            myWordDoc.Close();
+            wordApp.Quit();
+            MessageBox.Show("File Bảo Lãnh Thực Hiện Hợp Đồng Đã Được Tạo");
+        }
 
 
     }

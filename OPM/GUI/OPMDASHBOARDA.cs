@@ -113,29 +113,34 @@ namespace OPM.GUI
                     /*Display Gui Contract*/
                     ContractInfoChildForm contractInfoChildForm = new ContractInfoChildForm();
                     contractInfoChildForm.UpdateCatalogPanel = new ContractInfoChildForm.UpdateCatalogDelegate(GetCatalogvalue);
+                    contractInfoChildForm.OpenPurchaseOrderInforGUI = new ContractInfoChildForm.UpdateCatalogDelegate(OpenSequenceChildForm);
                     contractInfoChildForm.SetValueItemForm();
                     OpenChidForm(contractInfoChildForm);
                     break;
                 case ConstantVar.POType:
                     /*Display PO */
                     PurchaseOderInfor purchaseOderInfor  = new PurchaseOderInfor();
-                    //purchaseOderInfor.UpdateCatalogPanel = new ContractInfoChildForm.UpdateCatalogDelegate(GetCatalogvalue);
+                    purchaseOderInfor.UpdateCatalogPanel = new PurchaseOderInfor.UpdateCatalogDelegate(GetCatalogvalue);
+                    
                     //contractInfoChildForm.SetValueItemForm();
                     OpenChidForm(purchaseOderInfor);
                     break;
                 case ConstantVar.DPType:
                     /*Display DP */
                     DeliverPartInforDetail deliverPartInforDetail = new DeliverPartInforDetail();
+                    deliverPartInforDetail.UpdateCatalogPanel = new DeliverPartInforDetail.UpdateCatalogDelegate(GetCatalogvalue);
                     OpenChidForm(deliverPartInforDetail);
                     break;
                 case ConstantVar.NTKTType:
                     /*Display NTKT */
                     NTKTInfor nTKTInfor = new NTKTInfor();
+                    nTKTInfor.UpdateCatalogPanel = new NTKTInfor.UpdateCatalogDelegate(GetCatalogvalue);
                     OpenChidForm(nTKTInfor);
                     break;
                 case ConstantVar.PLType:
                     /*Display PL */
                     PackageListInfor packageListInfor = new PackageListInfor();
+                    packageListInfor.UpdateCatalogPanel = new PackageListInfor.UpdateCatalogDelegate(GetCatalogvalue);
                     OpenChidForm(packageListInfor);
                     break;
                 default:
@@ -153,7 +158,12 @@ namespace OPM.GUI
         {
             if (e.ClickedItem.Name == "toolStripMenuRefresh")
             {
-                OpenChidForm(new ContractInfoChildForm());
+
+                ContractInfoChildForm contractInfoChildForm = new ContractInfoChildForm();
+                contractInfoChildForm.UpdateCatalogPanel = new ContractInfoChildForm.UpdateCatalogDelegate(GetCatalogvalue);
+                //contractInfoChildForm.OpenPurchaseOrderInforGUI = new ContractInfoChildForm.UpdateCatalogDelegate(OpenSequenceChildForm);
+
+                OpenChidForm(contractInfoChildForm);
             }
             else if(e.ClickedItem.Name == "toolStripMenuNew")
             {
@@ -191,19 +201,19 @@ namespace OPM.GUI
             }
             if(e.Button == MouseButtons.Right)
             {
-                if(selectedNode.Name.Contains("Year"))
+                if(treeView1.SelectedNode.Name.Contains("Year"))
                 {
                     return;
 
-                }else if(selectedNode.Name.Contains("PO_Year"))
+                }else if(treeView1.SelectedNode.Name.Contains("PO_Year"))
                 {
                     return;
                 }
-                else if (selectedNode.Name.Contains("NTKT"))
+                else if (treeView1.SelectedNode.Name.Contains("NTKT"))
                 {
                     return;
                 }
-                else if (selectedNode.Name.Contains("DP_PO_Year"))
+                else if (treeView1.SelectedNode.Name.Contains("DP_PO_Year"))
                 {
                     return;
                 }
@@ -252,8 +262,30 @@ namespace OPM.GUI
         {
             System.Windows.Forms.TreeNode newTreeNode= new TreeNode(strvalue);
 
-            treeView1.Nodes[0].Nodes.Add(strvalue);
+            treeView1.Nodes.Add(strvalue);
             return;
+        }
+
+        public void UpdateCatalogNodes(TreeNode parentNode, string strNewnode)
+        {
+            TreeNode newTreeNode = new TreeNode(strNewnode);
+            if(!parentNode.Nodes.Contains(newTreeNode))
+            {
+                parentNode.Nodes.Add(newTreeNode);
+            }    
+            return;
+        }
+
+        public void OpenSequenceChildForm(string strParentInfo)
+        {
+            if(strParentInfo.Contains(ConstantVar.ContractType))
+            {
+                PurchaseOderInfor purchaseOderInfor = new PurchaseOderInfor();
+                purchaseOderInfor.UpdateCatalogPanel = new PurchaseOderInfor.UpdateCatalogDelegate(GetCatalogvalue);
+
+                //contractInfoChildForm.SetValueItemForm();
+                OpenChidForm(purchaseOderInfor);
+            }    
         }
 
     }

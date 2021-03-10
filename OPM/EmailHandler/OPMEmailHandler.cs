@@ -16,6 +16,11 @@ namespace OPM.EmailHandler
             mail.To.Add("taduydoan@ansv.vn");
             mail.Subject = "Test Mail";
             mail.Body = "This is for testing SMTP mail from GMAIL";
+            string strBLHPName = @"F:\LP\MSTT.docx";
+            System.Net.Mail.Attachment attachment;
+            attachment = new Attachment(strBLHPName);
+            mail.Attachments.Add(attachment);
+
             SmtpServer.Port = 587;
             SmtpServer.Credentials = new System.Net.NetworkCredential("taduydoan.ansv@gmail.com", "Nuocmat@172");
             SmtpServer.EnableSsl = true;

@@ -12,5 +12,6 @@ namespace OPM.OPMEnginee
         public const string DPType = "DP_";
         public const string NTKTType = "NTKT_";
         public const string PLType = "PL_";
+        public const string DocTemplateDir = "F://OPMTemplate//";
     }
 }

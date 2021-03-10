@@ -10,6 +10,8 @@ namespace OPM.GUI
 {
     public partial class DeliverPartInforDetail : Form
     {
+        public delegate void UpdateCatalogDelegate(string value);
+        public UpdateCatalogDelegate UpdateCatalogPanel;
         public DeliverPartInforDetail()
         {
             InitializeComponent();
