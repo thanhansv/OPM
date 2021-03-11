@@ -181,7 +181,7 @@ namespace OPM.WordHandler
             return;
         }
 
-        public static void  CreateBLTH_Contract(object filename, object SaveAs, string strContractCode, string strContractName, string strSigneddate)
+        public static void  CreateBLTH_Contract(object filename, object SaveAs, string strContractCode, string strContractName, string strSigneddate,string tbxSiteB,string txbGaranteeValue,string txbGaranteeActiveDate)
         {
             WordOffice.Application wordApp = new WordOffice.Application();
             object missing = Missing.Value;
@@ -204,6 +204,10 @@ namespace OPM.WordHandler
                 FindAndReplace(wordApp, "<Contract_Code>", strContractCode);
                 FindAndReplace(wordApp, "<Contract_Name>", strContractName);
                 FindAndReplace(wordApp, "<Signed_Date>", strSigneddate);
+                FindAndReplace(wordApp, "<Site_B>", tbxSiteB);
+                FindAndReplace(wordApp, "<Grt_Val>", txbGaranteeValue);
+                FindAndReplace(wordApp, "<Grt_Act_Date>", txbGaranteeActiveDate);
+
             }
             else
             {

@@ -58,11 +58,17 @@ namespace OPM.GUI
             this.button6 = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.txbGaranteeValue = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txbGaranteeActiveDate = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(373, 313);
+            this.button1.Location = new System.Drawing.Point(369, 373);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -93,7 +99,7 @@ namespace OPM.GUI
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(373, 342);
+            this.button2.Location = new System.Drawing.Point(369, 405);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 2;
@@ -177,14 +183,14 @@ namespace OPM.GUI
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(10, 277);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(126, 15);
+            this.label9.Size = new System.Drawing.Size(107, 15);
             this.label9.TabIndex = 3;
-            this.label9.Text = "Thời Hạn Bảo Lãnh PO";
+            this.label9.Text = "Thời Hạn Bảo Lãnh";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(10, 313);
+            this.label10.Location = new System.Drawing.Point(12, 381);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(34, 15);
             this.label10.TabIndex = 3;
@@ -193,7 +199,7 @@ namespace OPM.GUI
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(10, 341);
+            this.label11.Location = new System.Drawing.Point(10, 414);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(33, 15);
             this.label11.TabIndex = 3;
@@ -243,21 +249,21 @@ namespace OPM.GUI
             // 
             // tbxSiteA
             // 
-            this.tbxSiteA.Location = new System.Drawing.Point(143, 310);
+            this.tbxSiteA.Location = new System.Drawing.Point(143, 373);
             this.tbxSiteA.Name = "tbxSiteA";
             this.tbxSiteA.Size = new System.Drawing.Size(202, 23);
             this.tbxSiteA.TabIndex = 1;
             // 
             // tbxSiteB
             // 
-            this.tbxSiteB.Location = new System.Drawing.Point(143, 339);
+            this.tbxSiteB.Location = new System.Drawing.Point(143, 406);
             this.tbxSiteB.Name = "tbxSiteB";
             this.tbxSiteB.Size = new System.Drawing.Size(202, 23);
             this.tbxSiteB.TabIndex = 1;
             // 
             // btnNewPO
             // 
-            this.btnNewPO.Location = new System.Drawing.Point(369, 402);
+            this.btnNewPO.Location = new System.Drawing.Point(369, 457);
             this.btnNewPO.Name = "btnNewPO";
             this.btnNewPO.Size = new System.Drawing.Size(75, 23);
             this.btnNewPO.TabIndex = 4;
@@ -267,7 +273,7 @@ namespace OPM.GUI
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(211, 402);
+            this.button5.Location = new System.Drawing.Point(203, 457);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 23);
             this.button5.TabIndex = 4;
@@ -276,7 +282,7 @@ namespace OPM.GUI
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(130, 402);
+            this.button6.Location = new System.Drawing.Point(122, 457);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(75, 23);
             this.button6.TabIndex = 4;
@@ -285,7 +291,7 @@ namespace OPM.GUI
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(292, 402);
+            this.btnSave.Location = new System.Drawing.Point(284, 457);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 5;
@@ -295,7 +301,7 @@ namespace OPM.GUI
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(12, 402);
+            this.button3.Location = new System.Drawing.Point(10, 457);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(95, 23);
             this.button3.TabIndex = 6;
@@ -303,12 +309,67 @@ namespace OPM.GUI
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // txbGaranteeValue
+            // 
+            this.txbGaranteeValue.Location = new System.Drawing.Point(143, 307);
+            this.txbGaranteeValue.Name = "txbGaranteeValue";
+            this.txbGaranteeValue.Size = new System.Drawing.Size(100, 23);
+            this.txbGaranteeValue.TabIndex = 7;
+            this.txbGaranteeValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(12, 315);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(91, 15);
+            this.label12.TabIndex = 3;
+            this.label12.Text = "Giá Trị Bảo Lãnh";
+            // 
+            // txbGaranteeActiveDate
+            // 
+            this.txbGaranteeActiveDate.Location = new System.Drawing.Point(145, 345);
+            this.txbGaranteeActiveDate.Name = "txbGaranteeActiveDate";
+            this.txbGaranteeActiveDate.Size = new System.Drawing.Size(98, 23);
+            this.txbGaranteeActiveDate.TabIndex = 7;
+            this.txbGaranteeActiveDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(10, 348);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(137, 15);
+            this.label13.TabIndex = 3;
+            this.label13.Text = "Ngày Hiệu Lực Bảo Lãnh";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label14.Location = new System.Drawing.Point(249, 310);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(21, 20);
+            this.label14.TabIndex = 3;
+            this.label14.Text = "%";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(249, 348);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(188, 15);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "ngày làm việc kể từ ngày đặt hàng";
+            // 
             // ContractInfoChildForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(456, 550);
+            this.Controls.Add(this.txbGaranteeActiveDate);
+            this.Controls.Add(this.txbGaranteeValue);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.button6);
@@ -316,6 +377,10 @@ namespace OPM.GUI
             this.Controls.Add(this.btnNewPO);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -378,5 +443,11 @@ namespace OPM.GUI
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox tbxSiteB;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox txbGaranteeValue;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txbGaranteeActiveDate;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
     }
 }

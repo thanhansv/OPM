@@ -87,6 +87,30 @@ namespace OPM.GUI
 
         }
 
+        private void OpenChidForm2(Form childForm, string strTypeForm, object strParam)
+        {
+            if (null != activeForm)
+                activeForm.Close();
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            /*Set Properties Child Form*/
+            switch (strTypeForm)
+            {
+                case "PurchaseOderInfor":
+                    break;
+                default:
+                    break;
+            }    
+            panContent.Controls.Add(childForm);
+            panContent.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+
+        }
+
+
         public void treeView1_DoubleClick(object sender, EventArgs e)
         {
             /*OK Important for Communication*/
@@ -168,7 +192,9 @@ namespace OPM.GUI
             else if(e.ClickedItem.Name == "toolStripMenuNew")
             {
                 //Do Something
-                OpenChidForm(new NewItem());
+                PurchaseOderInfor purchaseOderInfor = new PurchaseOderInfor();
+                purchaseOderInfor.UpdateCatalogPanel = new PurchaseOderInfor.UpdateCatalogDelegate(GetCatalogvalue);
+                OpenChidForm(purchaseOderInfor);
             }
             else if (e.ClickedItem.Name == "toolStripMenuEdit")
             {
@@ -282,7 +308,9 @@ namespace OPM.GUI
             {
                 PurchaseOderInfor purchaseOderInfor = new PurchaseOderInfor();
                 purchaseOderInfor.UpdateCatalogPanel = new PurchaseOderInfor.UpdateCatalogDelegate(GetCatalogvalue);
-
+                /*Set Properties For Purchase Order Form*/
+                string strTemp = strParentInfo.Replace("Contract_", "");
+                purchaseOderInfor.SetTxbIDContract(strTemp);
                 //contractInfoChildForm.SetValueItemForm();
                 OpenChidForm(purchaseOderInfor);
             }    

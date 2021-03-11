@@ -8,7 +8,7 @@ namespace OPM.EmailHandler
 {
     class OPMEmailHandler: IEmailHandler
     {
-        public static void fSendEmail(string htmlString)
+        public static void fSendEmail(string htmlString, string strSendFile)
         {
             MailMessage mail = new MailMessage();
             SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
@@ -16,9 +16,8 @@ namespace OPM.EmailHandler
             mail.To.Add("taduydoan@ansv.vn");
             mail.Subject = "Test Mail";
             mail.Body = "This is for testing SMTP mail from GMAIL";
-            string strBLHPName = @"F:\LP\MSTT.docx";
             System.Net.Mail.Attachment attachment;
-            attachment = new Attachment(strBLHPName);
+            attachment = new Attachment(strSendFile);
             mail.Attachments.Add(attachment);
 
             SmtpServer.Port = 587;

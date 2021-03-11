@@ -9,6 +9,7 @@ using OPM.WordHandler;
 
 using OPM.OPMEnginee;
 using OPM.EmailHandler;
+using System.IO;
 
 namespace OPM.GUI
 {
@@ -39,7 +40,7 @@ namespace OPM.GUI
 
         private void btnNewPO_Click(object sender, EventArgs e)
         {
-            OpenPurchaseOrderInforGUI(tbContract.Text);
+            OpenPurchaseOrderInforGUI("Contract_"+tbContract.Text.ToString());
             return;
         }
 
@@ -63,9 +64,26 @@ namespace OPM.GUI
             newContract.DurationGuranteePO = tbxDurationPO.Text;
             newContract.SiteA = tbxSiteA.Text;
             newContract.SiteB = tbxSiteB.Text;
+            
             ret = newContract.GetDetailContract(tbContract.Text);
             if(0==ret)
             {
+                /*Create Folder Contract on F Disk*/
+                string strContractDirectory = "F:\\OPM\\" + tbContract.Text;
+                strContractDirectory = strContractDirectory.Replace('/','_');
+                strContractDirectory = strContractDirectory.Replace('-', '_');
+                if (!Directory.Exists(strContractDirectory))
+                {
+
+                    Directory.CreateDirectory(strContractDirectory);
+                    MessageBox.Show("Folder have been created!!!");
+                }
+
+                else
+                {
+                    MessageBox.Show("Folder already exist!!!");
+
+                }
                 ret = newContract.InsertNewContract(newContract);
                 if (0 == ret)
                 {
@@ -77,12 +95,13 @@ namespace OPM.GUI
                 }
 
                 /*Create Bao Lanh Thuc Hien Hop Dong*/
-                string filename = @"F:\LP\MSTT_Template.docx";
-                string strBLHPName = @"F:\LP\MSTT.docx";
-                OpmWordHandler.CreateBLTH_Contract(filename, strBLHPName, tbContract.Text, tbBidName.Text, tbxDateSigned.Text);
+                string filename =  @"F:\LP\MSTT_Template.docx";
+                string strBLHPName = strContractDirectory + "\\Bao_Lanh_Hop_Dong.docx";
+
+                OpmWordHandler.CreateBLTH_Contract(filename, strBLHPName, tbContract.Text, tbBidName.Text, tbxDateSigned.Text, tbxSiteB.Text, txbGaranteeValue.Text,txbGaranteeActiveDate.Text);
 
                 /*Send Email To DF*/
-                OPMEmailHandler.fSendEmail("Mail From DoanTD Gmail");
+                OPMEmailHandler.fSendEmail("Mail From DoanTD Gmail", strBLHPName);
             }
             else
             {

@@ -13,5 +13,7 @@ namespace OPM.OPMEnginee
         public const string NTKTType = "NTKT_";
         public const string PLType = "PL_";
         public const string DocTemplateDir = "F://OPMTemplate//";
+
+        public const string CreateNewPOFail = "Tạo Mới PO Thất Bại";
     }
 }

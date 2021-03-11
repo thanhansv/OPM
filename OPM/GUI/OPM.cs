@@ -19,7 +19,7 @@ namespace OPM
 
 
             OPMEmailHandler oPMEmailHandler = new OPMEmailHandler();
-            OPMEmailHandler.fSendEmail("AAAA");
+            //OPMEmailHandler.fSendEmail("AAAA");
             //See if any printers are installed  
             //if (PrinterSettings.InstalledPrinters.Count <= 0)
             //{
