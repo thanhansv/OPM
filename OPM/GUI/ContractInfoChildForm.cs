@@ -56,10 +56,10 @@ namespace OPM.GUI
             newContract.IdContract = tbContract.Text;
             newContract.NameContract = tbBidName.Text;
             newContract.CodeAccounting = tbAccountingCode.Text;
-            newContract.DateSigned = tbxDateSigned.Text;
+            newContract.DateSigned = dateTimePickerDateSignedPO.Value.ToString("yyyy-MM-dd");
             newContract.TypeContract = txbTypeContract.Text;
             newContract.DurationContract = tbxDurationContract.Text;
-            newContract.ActiveDateContract = tbActiveDate.Text;
+            newContract.ActiveDateContract = dateTimePickerActiveDateContract.Value.ToString("yyyy-MM-dd");
             newContract.ValueContract = tbxValueContract.Text;
             newContract.DurationGuranteePO = tbxDurationPO.Text;
             newContract.SiteA = tbxSiteA.Text;
@@ -92,16 +92,17 @@ namespace OPM.GUI
                 else
                 {
                     UpdateCatalogPanel(tbContract.Text);
+                    /*Create Bao Lanh Thuc Hien Hop Dong*/
+                    this.Cursor = Cursors.WaitCursor;
+
+                    string filename = @"F:\LP\MSTT_Template.docx";
+                    string strBLHPName = strContractDirectory + "\\Bao_Lanh_Hop_Dong.docx";
+
+                    OpmWordHandler.CreateBLTH_Contract(filename, strBLHPName, tbContract.Text, tbBidName.Text, tbxDateSigned.Text, tbxSiteB.Text, txbGaranteeValue.Text, txbGaranteeActiveDate.Text);
+                    this.Cursor = Cursors.Default;
+                    /*Send Email To DF*/
+                    OPMEmailHandler.fSendEmail("Mail From DoanTD Gmail", strBLHPName);
                 }
-
-                /*Create Bao Lanh Thuc Hien Hop Dong*/
-                string filename =  @"F:\LP\MSTT_Template.docx";
-                string strBLHPName = strContractDirectory + "\\Bao_Lanh_Hop_Dong.docx";
-
-                OpmWordHandler.CreateBLTH_Contract(filename, strBLHPName, tbContract.Text, tbBidName.Text, tbxDateSigned.Text, tbxSiteB.Text, txbGaranteeValue.Text,txbGaranteeActiveDate.Text);
-
-                /*Send Email To DF*/
-                OPMEmailHandler.fSendEmail("Mail From DoanTD Gmail", strBLHPName);
             }
             else
             {

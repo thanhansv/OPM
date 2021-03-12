@@ -37,19 +37,16 @@ namespace OPM.GUI
             newPO.DeadLinePO = TimePickerDeadLinePO.Value.ToString("yyyy-MM-dd");
             newPO.TotalValuePO = float.Parse(txbValuePO.Text);
 
+            /*Create Folder Contract on F Disk*/
+            string strContractDirectory = txbIDContract.Text.Replace('/', '_');
+            strContractDirectory = strContractDirectory.Replace('-', '_');
+            string strPODirectory = "F:\\OPM\\" + strContractDirectory + "\\" + txbPOName.Text;
 
             ret = newPO.GetDetailPO(txbPOCode.Text);
             if (0 == ret)
             {
-                /*Create Folder Contract on F Disk*/
-                string strContractDirectory = txbIDContract.Text.Replace('/', '_');
-                strContractDirectory = strContractDirectory.Replace('-', '_');
-
-                string strPODirectory = "F:\\OPM\\" + strContractDirectory + "\\" + txbPOName.Text;
-
                 if (!Directory.Exists(strPODirectory))
                 {
-
                     Directory.CreateDirectory(strPODirectory);
                     MessageBox.Show("Folder have been created!!!");
                 }
@@ -66,7 +63,15 @@ namespace OPM.GUI
                 }
                 else
                 {
-                    //UpdateCatalogPanel(txbIDContract.Text, txbPOName.Text);
+                    MessageBox.Show(ConstantVar.CreateNewPOSuccess);
+                    UpdateCatalogPanel(txbPOName.Text);
+                    /*Create Bao Lanh Thuc Hien Hop Dong*/
+                    string fileBLTUPO_temp = @"F:\LP\BLPO_Template.docx";
+                    string strBLTUPOName = strPODirectory + "\\De nghi Bao lanh thuc hien & tam ung PO MSTT.docx";
+                    /*truy Suất thông tin của Contract*/
+                    ContractObj contractObj = new ContractObj();
+                    ContractObj.GetObjectContract(txbIDContract.Text, ref contractObj);
+                    OpmWordHandler.Create_BLTU_PO(fileBLTUPO_temp, strBLTUPOName, txbPOName.Text, txbIDContract.Text, contractObj.NameContract, contractObj.DateSigned, TimePickerDateCreatedPO.Value.ToString("yyyy-MM-dd"),txbValuePO.Text, txbTUPO.Text );
                 }
 
                 /*Create Bao Lanh Thuc Hien Hop Dong*/

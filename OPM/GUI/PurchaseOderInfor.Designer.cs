@@ -55,12 +55,15 @@ namespace OPM.GUI
             this.txbValuePO = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.TimePickerDateCreatedPO = new System.Windows.Forms.DateTimePicker();
+            this.txbTUPO = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(13, 503);
+            this.btnSave.Location = new System.Drawing.Point(12, 515);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 0;
@@ -86,7 +89,7 @@ namespace OPM.GUI
             // 
             // btnNewDP
             // 
-            this.btnNewDP.Location = new System.Drawing.Point(369, 503);
+            this.btnNewDP.Location = new System.Drawing.Point(369, 515);
             this.btnNewDP.Name = "btnNewDP";
             this.btnNewDP.Size = new System.Drawing.Size(75, 23);
             this.btnNewDP.TabIndex = 3;
@@ -256,7 +259,7 @@ namespace OPM.GUI
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 378);
+            this.dataGridView1.Location = new System.Drawing.Point(13, 396);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.Size = new System.Drawing.Size(431, 101);
@@ -269,12 +272,40 @@ namespace OPM.GUI
             this.TimePickerDateCreatedPO.Size = new System.Drawing.Size(200, 23);
             this.TimePickerDateCreatedPO.TabIndex = 4;
             // 
+            // txbTUPO
+            // 
+            this.txbTUPO.Location = new System.Drawing.Point(117, 363);
+            this.txbTUPO.Name = "txbTUPO";
+            this.txbTUPO.Size = new System.Drawing.Size(100, 23);
+            this.txbTUPO.TabIndex = 6;
+            this.txbTUPO.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(12, 371);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(74, 15);
+            this.label12.TabIndex = 2;
+            this.label12.Text = "Tạm Ứng PO";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label13.Location = new System.Drawing.Point(223, 366);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(21, 20);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "%";
+            // 
             // PurchaseOderInfor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Yellow;
             this.ClientSize = new System.Drawing.Size(456, 550);
+            this.Controls.Add(this.txbTUPO);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.TimePickerDeadLinePO);
             this.Controls.Add(this.TimepickerDefaultActive);
@@ -282,6 +313,8 @@ namespace OPM.GUI
             this.Controls.Add(this.TimePickerDateConfirmPO);
             this.Controls.Add(this.btnNewDP);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label7);
@@ -338,5 +371,8 @@ namespace OPM.GUI
         private System.Windows.Forms.TextBox txbValuePO;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DateTimePicker TimePickerDateCreatedPO;
+        private System.Windows.Forms.TextBox txbTUPO;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
     }
 }

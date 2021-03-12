@@ -136,10 +136,52 @@ namespace OPM.WordHandler
             wordApp.Quit();
             MessageBox.Show("File Created!");
         }
-        public static void Create_BLTH_PO(object filename, object SaveAs)
+        public static void Create_BLTH_PO(object filename, object SaveAs,string strPOnumber)
         { }
-        public static void Create_BLTU_PO(object filename, object SaveAs)
-        { }
+        public static void Create_BLTU_PO(object filename, object SaveAs,string strPOnumber, string strIdContract, string strContractName, string strSigneddateContract, string strPOSigneddate, string strPOValueNotVAT, string strPOValueTU)
+        {
+            WordOffice.Application wordApp = new WordOffice.Application();
+            object missing = Missing.Value;
+            WordOffice.Document myWordDoc = null;
+
+            if (File.Exists((string)filename))
+            {
+                object readOnly = false;
+                object isVisible = false;
+                wordApp.Visible = false;
+
+                myWordDoc = wordApp.Documents.Open(ref filename, ref missing, ref readOnly,
+                                        ref missing, ref missing, ref missing,
+                                        ref missing, ref missing, ref missing,
+                                        ref missing, ref missing, ref missing,
+                                        ref missing, ref missing, ref missing, ref missing);
+                myWordDoc.Activate();
+
+                //find and replace
+                FindAndReplace(wordApp, "<PO_Name>", strPOnumber);
+                FindAndReplace(wordApp, "<Contract_ID>", strIdContract);
+                FindAndReplace(wordApp, "<Contract_Name>", strContractName);
+                FindAndReplace(wordApp, "<Signed_DateContract>", strSigneddateContract);
+                FindAndReplace(wordApp, "<Signed_DatePO>", strPOSigneddate);
+                FindAndReplace(wordApp, "<Total_Value>", strPOValueNotVAT);
+                FindAndReplace(wordApp, "<Value_Tamung>", strPOValueTU);
+            }
+            else
+            {
+                MessageBox.Show("File not Found!");
+            }
+
+            //Save as
+            myWordDoc.SaveAs2(ref SaveAs, ref missing, ref missing, ref missing,
+                            ref missing, ref missing, ref missing,
+                            ref missing, ref missing, ref missing,
+                            ref missing, ref missing, ref missing,
+                            ref missing, ref missing, ref missing);
+
+            myWordDoc.Close();
+            wordApp.Quit();
+            MessageBox.Show("File Created!");
+        }
         public static void Create_DNTU_PO(object filename, object SaveAs)
         { }
         public static void Create_NTKTHH(object filename, object SaveAs)

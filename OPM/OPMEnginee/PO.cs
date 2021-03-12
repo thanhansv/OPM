@@ -6,7 +6,7 @@ using System.Text;
 
 namespace OPM.OPMEnginee
 {
-    class PO : IPO
+    class PO :ContractObj, IPO
     {
         private string _idPO;
         private string _idContract;

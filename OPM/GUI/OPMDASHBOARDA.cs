@@ -17,6 +17,7 @@ namespace OPM.GUI
         public OPMDASHBOARDA()
         {
             InitializeComponent();
+            //var addedDate = DateTime.Now.Date.AddDays(10);
             TreeNode node = null;
             InitCatalogAdmin(node, null);
         }
@@ -286,9 +287,12 @@ namespace OPM.GUI
         /*OK Important for Comunicate*/
         public void GetCatalogvalue(string strvalue)
         {
-            System.Windows.Forms.TreeNode newTreeNode= new TreeNode(strvalue);
+            //System.Windows.Forms.TreeNode newTreeNode= new TreeNode(strvalue);
+            //treeView1.Nodes.Add(strvalue);
+            treeView1.Nodes.Clear();
+            TreeNode node = null;
+            InitCatalogAdmin(node, null);
 
-            treeView1.Nodes.Add(strvalue);
             return;
         }
 

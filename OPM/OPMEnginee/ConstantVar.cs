@@ -15,5 +15,6 @@ namespace OPM.OPMEnginee
         public const string DocTemplateDir = "F://OPMTemplate//";
 
         public const string CreateNewPOFail = "Tạo Mới PO Thất Bại";
+        public const string CreateNewPOSuccess = "Tạo Mới PO Thành Công";
     }
 }

@@ -118,13 +118,41 @@ namespace OPM.OPMEnginee
 
         public int GetDetailContract(string strIdContract)
         {
-            string strQueryOne = "select * from Contract where id=" + "/'" + strIdContract + "/'";
+            string strQueryOne = "select * from Contract where id=" + "'" + strIdContract + "'";
             ContractObj contract = new ContractObj();
             DataSet ds = new DataSet();
             int ret = OPMDBHandler.fQuerryData(strQueryOne, ref ds);
             if (0 != ds.Tables.Count)
             {
                     contract.IdContract = (string)ds.Tables[0].Rows[0].ItemArray[0];
+            }
+            else
+            {
+                return 0;
+            }
+            return 1;
+        }
+
+        public static int GetObjectContract(string strIdContract, ref ContractObj contract)
+        {
+            string strQueryOne = "select * from Contract where id=" + "'" + strIdContract + "'";
+            DataSet ds = new DataSet();
+            int ret = OPMDBHandler.fQuerryData(strQueryOne, ref ds);
+            if (0 != ds.Tables.Count)
+            {
+                contract.IdContract = (string)ds.Tables[0].Rows[0].ItemArray[0];
+                contract.NameContract = (string)ds.Tables[0].Rows[0].ItemArray[1];
+                contract.CodeAccounting = (string)ds.Tables[0].Rows[0].ItemArray[2];
+                //contract.DateSigned = ds.Tables[0].Rows[0].ItemArray[3].ToString("yyyy-MM-dd");
+                contract.TypeContract = (string)ds.Tables[0].Rows[0].ItemArray[4];
+                contract.DurationContract = (string)ds.Tables[0].Rows[0].ItemArray[5];
+                contract.ValueContract = (string)ds.Tables[0].Rows[0].ItemArray[7];
+                contract.DurationGuranteePO = (string)ds.Tables[0].Rows[0].ItemArray[8];
+                //contract.ActiveDateContract = ds.Tables[0].Rows[0].ItemArray[6].ToString("yyyy-MM-dd");
+                contract.Phuluc = (string)ds.Tables[0].Rows[0].ItemArray[11];
+                contract.VbGuranteeDoc = (string)ds.Tables[0].Rows[0].ItemArray[12];
+                contract.SiteA = (string)ds.Tables[0].Rows[0].ItemArray[9];
+                contract.SiteB = (string)ds.Tables[0].Rows[0].ItemArray[10];
             }
             else
             {

@@ -1,4 +1,6 @@
 ﻿
+using System.Drawing;
+
 namespace OPM.GUI
 {
     partial class ContractInfoChildForm
@@ -64,6 +66,9 @@ namespace OPM.GUI
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.dateTimePickerDateSignedPO = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerDurationDateContract = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerActiveDateContract = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // button1
@@ -78,6 +83,7 @@ namespace OPM.GUI
             // 
             // tbContract
             // 
+            this.tbContract.BackColor = System.Drawing.SystemColors.Window;
             this.tbContract.Location = new System.Drawing.Point(143, 26);
             this.tbContract.Name = "tbContract";
             this.tbContract.Size = new System.Drawing.Size(305, 23);
@@ -109,6 +115,7 @@ namespace OPM.GUI
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Location = new System.Drawing.Point(10, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 15);
@@ -209,14 +216,14 @@ namespace OPM.GUI
             // 
             this.tbxDateSigned.Location = new System.Drawing.Point(143, 114);
             this.tbxDateSigned.Name = "tbxDateSigned";
-            this.tbxDateSigned.Size = new System.Drawing.Size(305, 23);
+            this.tbxDateSigned.Size = new System.Drawing.Size(78, 23);
             this.tbxDateSigned.TabIndex = 1;
             // 
             // tbxDurationContract
             // 
             this.tbxDurationContract.Location = new System.Drawing.Point(143, 148);
             this.tbxDurationContract.Name = "tbxDurationContract";
-            this.tbxDurationContract.Size = new System.Drawing.Size(305, 23);
+            this.tbxDurationContract.Size = new System.Drawing.Size(78, 23);
             this.tbxDurationContract.TabIndex = 1;
             // 
             // txbTypeContract
@@ -230,7 +237,7 @@ namespace OPM.GUI
             // 
             this.tbActiveDate.Location = new System.Drawing.Point(143, 217);
             this.tbActiveDate.Name = "tbActiveDate";
-            this.tbActiveDate.Size = new System.Drawing.Size(305, 23);
+            this.tbActiveDate.Size = new System.Drawing.Size(78, 23);
             this.tbActiveDate.TabIndex = 1;
             // 
             // tbxValueContract
@@ -362,12 +369,37 @@ namespace OPM.GUI
             this.label15.TabIndex = 3;
             this.label15.Text = "ngày làm việc kể từ ngày đặt hàng";
             // 
+            // dateTimePickerDateSignedPO
+            // 
+            this.dateTimePickerDateSignedPO.Location = new System.Drawing.Point(249, 114);
+            this.dateTimePickerDateSignedPO.Name = "dateTimePickerDateSignedPO";
+            this.dateTimePickerDateSignedPO.Size = new System.Drawing.Size(200, 23);
+            this.dateTimePickerDateSignedPO.TabIndex = 8;
+            // 
+            // dateTimePickerDurationDateContract
+            // 
+            this.dateTimePickerDurationDateContract.Location = new System.Drawing.Point(249, 147);
+            this.dateTimePickerDurationDateContract.Name = "dateTimePickerDurationDateContract";
+            this.dateTimePickerDurationDateContract.Size = new System.Drawing.Size(200, 23);
+            this.dateTimePickerDurationDateContract.TabIndex = 9;
+            // 
+            // dateTimePickerActiveDateContract
+            // 
+            this.dateTimePickerActiveDateContract.Location = new System.Drawing.Point(249, 217);
+            this.dateTimePickerActiveDateContract.Name = "dateTimePickerActiveDateContract";
+            this.dateTimePickerActiveDateContract.Size = new System.Drawing.Size(200, 23);
+            this.dateTimePickerActiveDateContract.TabIndex = 10;
+            // 
             // ContractInfoChildForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(456, 550);
+            this.Controls.Add(this.dateTimePickerActiveDateContract);
+            this.Controls.Add(this.dateTimePickerDurationDateContract);
+            this.Controls.Add(this.dateTimePickerDateSignedPO);
             this.Controls.Add(this.txbGaranteeActiveDate);
             this.Controls.Add(this.txbGaranteeValue);
             this.Controls.Add(this.button3);
@@ -449,5 +481,8 @@ namespace OPM.GUI
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDateSignedPO;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDurationDateContract;
+        private System.Windows.Forms.DateTimePicker dateTimePickerActiveDateContract;
     }
 }
