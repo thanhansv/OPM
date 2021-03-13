@@ -58,6 +58,8 @@ namespace OPM.GUI
             this.txbTUPO = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.txbActiveAfter = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -195,7 +197,7 @@ namespace OPM.GUI
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(191, 211);
+            this.label8.Location = new System.Drawing.Point(194, 212);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(56, 15);
             this.label8.TabIndex = 2;
@@ -203,7 +205,7 @@ namespace OPM.GUI
             // 
             // TimepickerDefaultActive
             // 
-            this.TimepickerDefaultActive.Location = new System.Drawing.Point(158, 245);
+            this.TimepickerDefaultActive.Location = new System.Drawing.Point(244, 245);
             this.TimepickerDefaultActive.Name = "TimepickerDefaultActive";
             this.TimepickerDefaultActive.Size = new System.Drawing.Size(200, 23);
             this.TimepickerDefaultActive.TabIndex = 4;
@@ -299,6 +301,23 @@ namespace OPM.GUI
             this.label13.TabIndex = 2;
             this.label13.Text = "%";
             // 
+            // txbActiveAfter
+            // 
+            this.txbActiveAfter.Location = new System.Drawing.Point(132, 245);
+            this.txbActiveAfter.Name = "txbActiveAfter";
+            this.txbActiveAfter.Size = new System.Drawing.Size(56, 23);
+            this.txbActiveAfter.TabIndex = 1;
+            this.txbActiveAfter.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(191, 251);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(56, 15);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "Ngày -->";
+            // 
             // PurchaseOderInfor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -319,12 +338,14 @@ namespace OPM.GUI
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label10);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txbDeadLine);
+            this.Controls.Add(this.txbActiveAfter);
             this.Controls.Add(this.txbDurationConfirm);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txbValuePO);
@@ -374,5 +395,7 @@ namespace OPM.GUI
         private System.Windows.Forms.TextBox txbTUPO;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txbActiveAfter;
+        private System.Windows.Forms.Label label14;
     }
 }

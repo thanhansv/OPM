@@ -143,14 +143,14 @@ namespace OPM.OPMEnginee
                 contract.IdContract = (string)ds.Tables[0].Rows[0].ItemArray[0];
                 contract.NameContract = (string)ds.Tables[0].Rows[0].ItemArray[1];
                 contract.CodeAccounting = (string)ds.Tables[0].Rows[0].ItemArray[2];
-                //contract.DateSigned = ds.Tables[0].Rows[0].ItemArray[3].ToString("yyyy-MM-dd");
+                contract.DateSigned = ((DateTime)ds.Tables[0].Rows[0].ItemArray[3]).ToString("yyyy-MM-dd");
                 contract.TypeContract = (string)ds.Tables[0].Rows[0].ItemArray[4];
-                contract.DurationContract = (string)ds.Tables[0].Rows[0].ItemArray[5];
-                contract.ValueContract = (string)ds.Tables[0].Rows[0].ItemArray[7];
-                contract.DurationGuranteePO = (string)ds.Tables[0].Rows[0].ItemArray[8];
-                //contract.ActiveDateContract = ds.Tables[0].Rows[0].ItemArray[6].ToString("yyyy-MM-dd");
-                contract.Phuluc = (string)ds.Tables[0].Rows[0].ItemArray[11];
-                contract.VbGuranteeDoc = (string)ds.Tables[0].Rows[0].ItemArray[12];
+                contract.DurationContract = ds.Tables[0].Rows[0].ItemArray[5].ToString();
+                contract.ValueContract = ds.Tables[0].Rows[0].ItemArray[7].ToString();
+                contract.DurationGuranteePO = (ds.Tables[0].Rows[0].ItemArray[8]).ToString();
+                contract.ActiveDateContract = ((DateTime)ds.Tables[0].Rows[0].ItemArray[6]).ToString("yyyy-MM-dd");
+                contract.Phuluc = ds.Tables[0].Rows[0].ItemArray[11].ToString();
+                contract.VbGuranteeDoc = ds.Tables[0].Rows[0].ItemArray[12].ToString();
                 contract.SiteA = (string)ds.Tables[0].Rows[0].ItemArray[9];
                 contract.SiteB = (string)ds.Tables[0].Rows[0].ItemArray[10];
             }

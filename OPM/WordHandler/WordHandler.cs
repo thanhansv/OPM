@@ -138,7 +138,7 @@ namespace OPM.WordHandler
         }
         public static void Create_BLTH_PO(object filename, object SaveAs,string strPOnumber)
         { }
-        public static void Create_BLTU_PO(object filename, object SaveAs,string strPOnumber, string strIdContract, string strContractName, string strSigneddateContract, string strPOSigneddate, string strPOValueNotVAT, string strPOValueTU)
+        public static void Create_BLTU_PO(object filename, object SaveAs,string strPOnumber, string strIdContract, string strContractName, string strSigneddateContract, string strPOSigneddate, string strPOValueNotVAT, string strPOValueTU, string strSiteB, string strActiveDatePO)
         {
             WordOffice.Application wordApp = new WordOffice.Application();
             object missing = Missing.Value;
@@ -165,6 +165,8 @@ namespace OPM.WordHandler
                 FindAndReplace(wordApp, "<Signed_DatePO>", strPOSigneddate);
                 FindAndReplace(wordApp, "<Total_Value>", strPOValueNotVAT);
                 FindAndReplace(wordApp, "<Value_Tamung>", strPOValueTU);
+                FindAndReplace(wordApp, "<Site_B>", strSiteB);
+                FindAndReplace(wordApp, "<Active_Date>", strActiveDatePO);
             }
             else
             {

@@ -71,7 +71,11 @@ namespace OPM.GUI
                     /*truy Suất thông tin của Contract*/
                     ContractObj contractObj = new ContractObj();
                     ContractObj.GetObjectContract(txbIDContract.Text, ref contractObj);
-                    OpmWordHandler.Create_BLTU_PO(fileBLTUPO_temp, strBLTUPOName, txbPOName.Text, txbIDContract.Text, contractObj.NameContract, contractObj.DateSigned, TimePickerDateCreatedPO.Value.ToString("yyyy-MM-dd"),txbValuePO.Text, txbTUPO.Text );
+                    this.Cursor = Cursors.WaitCursor;
+                    OpmWordHandler.Create_BLTU_PO(fileBLTUPO_temp, strBLTUPOName, txbPOName.Text, txbIDContract.Text, contractObj.NameContract, contractObj.DateSigned, TimePickerDateCreatedPO.Value.ToString("yyyy-MM-dd"),txbValuePO.Text, txbTUPO.Text, contractObj.SiteB, txbActiveAfter.Text);
+                    /*Send Email To DF*/
+                    OPMEmailHandler.fSendEmail("Mail From DoanTD Gmail", strBLTUPOName);
+                    this.Cursor = Cursors.Default;
                 }
 
                 /*Create Bao Lanh Thuc Hien Hop Dong*/
