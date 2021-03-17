@@ -16,5 +16,7 @@ namespace OPM.OPMEnginee
 
         public const string CreateNewPOFail = "Tạo Mới PO Thất Bại";
         public const string CreateNewPOSuccess = "Tạo Mới PO Thành Công";
+        public const string CreateNewNTKTSuccess = "Tạo Mới Cơ Sở Dữ Liệu Nghiệm Thu Kỹ Thuật Thành Công";
+        public const string CreateNewNTKTFail = "Tạo Cơ Sở Dữ Liệu Thất Bại";
     }
 }

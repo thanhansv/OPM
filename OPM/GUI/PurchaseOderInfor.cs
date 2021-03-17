@@ -14,8 +14,13 @@ namespace OPM.GUI
 {
     public partial class PurchaseOderInfor : Form
     {
+        /*Delegate Request Dashboard Update Catalog Admin*/
         public delegate void UpdateCatalogDelegate(string value);
         public UpdateCatalogDelegate UpdateCatalogPanel;
+
+        /*Delegate Request Dashboard Open NTKT form*/
+        public delegate void RequestDashBoardOpenNTKTForm(string strIDContract, string strKHMS, string strPONumber, string strPOID);
+        public RequestDashBoardOpenNTKTForm requestDashBoardOpenNTKTForm;
 
         public PurchaseOderInfor()
         {
@@ -94,6 +99,19 @@ namespace OPM.GUI
         public void SetTxbIDContract(string strIDContract)
         {
             this.txbIDContract.Text = strIDContract;
+        }
+        public void SetTxbKHMS(string strKHMS)
+        {
+            this.txbKHMS.Text = strKHMS;
+        }
+        private void btnNTKT_Click(object sender, EventArgs e)
+        {
+            /*Request DashBoard Open NTKT Form*/
+            string strContract = "Contract_" + txbIDContract.Text.ToString();
+            /*Request DashBoard Open PO Form*/
+            requestDashBoardOpenNTKTForm(txbKHMS.Text, strContract, txbPOCode.Text, txbPOName.Text) ;
+            return;
+
         }
     }
 }

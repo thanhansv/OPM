@@ -93,12 +93,12 @@ namespace OPM.DBHandler
                 con.Open();
                 command = new SqlCommand(strQuerry, con);
                 adapter.SelectCommand = command;
-                adapter.Fill(ds, "SQL Temp Table");
+                adapter.Fill(ds, "SQL Temp");
 
                 adapter.Dispose();
                 command.Dispose();
                 CloseConnection(con);
-                if(null == ds)
+                if(0 == ds.Tables[0].Rows.Count)
                 {
                     return 0;
                 }    

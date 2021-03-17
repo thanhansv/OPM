@@ -69,6 +69,8 @@ namespace OPM.GUI
             this.dateTimePickerDateSignedPO = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerDurationDateContract = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerActiveDateContract = new System.Windows.Forms.DateTimePicker();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txbKHMS = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -390,6 +392,22 @@ namespace OPM.GUI
             this.dateTimePickerActiveDateContract.Size = new System.Drawing.Size(200, 23);
             this.dateTimePickerActiveDateContract.TabIndex = 10;
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(12, 9);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(111, 15);
+            this.label16.TabIndex = 11;
+            this.label16.Text = "Kế Hoạch Mua Sắm";
+            // 
+            // txbKHMS
+            // 
+            this.txbKHMS.Location = new System.Drawing.Point(143, 1);
+            this.txbKHMS.Name = "txbKHMS";
+            this.txbKHMS.Size = new System.Drawing.Size(306, 23);
+            this.txbKHMS.TabIndex = 12;
+            // 
             // ContractInfoChildForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -397,6 +415,8 @@ namespace OPM.GUI
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(456, 550);
+            this.Controls.Add(this.txbKHMS);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.dateTimePickerActiveDateContract);
             this.Controls.Add(this.dateTimePickerDurationDateContract);
             this.Controls.Add(this.dateTimePickerDateSignedPO);
@@ -484,5 +504,7 @@ namespace OPM.GUI
         private System.Windows.Forms.DateTimePicker dateTimePickerDateSignedPO;
         private System.Windows.Forms.DateTimePicker dateTimePickerDurationDateContract;
         private System.Windows.Forms.DateTimePicker dateTimePickerActiveDateContract;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txbKHMS;
     }
 }

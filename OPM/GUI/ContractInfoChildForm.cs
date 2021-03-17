@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using OPM.WordHandler;
-
 using OPM.OPMEnginee;
 using OPM.EmailHandler;
 using System.IO;
@@ -17,9 +16,17 @@ namespace OPM.GUI
 
     public partial class ContractInfoChildForm : Form
     {
+        /*Delegate For Request Dashboard Update Catalog Admin*/
         public delegate void UpdateCatalogDelegate(string value);
         public UpdateCatalogDelegate UpdateCatalogPanel;
         public UpdateCatalogDelegate OpenPurchaseOrderInforGUI;
+
+        /*Delegate For Request Dashboard Open PO Form*/
+        public delegate void RequestDashBoardOpenChildForm(string strIDContract, string strKHMS);
+        public RequestDashBoardOpenChildForm RequestDashBoardOpenPOForm;
+
+        /*Object Contract for Contract form*/
+        private ContractObj newContract = new ContractObj();
 
         public ContractInfoChildForm()
         {
@@ -40,7 +47,10 @@ namespace OPM.GUI
 
         private void btnNewPO_Click(object sender, EventArgs e)
         {
-            OpenPurchaseOrderInforGUI("Contract_"+tbContract.Text.ToString());
+            string strContract = "Contract_" + tbContract.Text.ToString();
+            //OpenPurchaseOrderInforGUI(temp);
+            /*Request DashBoard Open PO Form*/
+            RequestDashBoardOpenPOForm(strContract, txbKHMS.Text);
             return;
         }
 
@@ -52,7 +62,8 @@ namespace OPM.GUI
         {
             int ret = 0;
             /*Save The Edited Contract Info */
-            ContractObj newContract = new ContractObj();
+            //ContractObj newContract = new ContractObj();
+            newContract.KHMS = txbKHMS.Text;
             newContract.IdContract = tbContract.Text;
             newContract.NameContract = tbBidName.Text;
             newContract.CodeAccounting = tbAccountingCode.Text;
@@ -76,7 +87,7 @@ namespace OPM.GUI
                 {
 
                     Directory.CreateDirectory(strContractDirectory);
-                    MessageBox.Show("Folder have been created!!!");
+                    MessageBox.Show("Folder Contract have been created!!!");
                 }
 
                 else
@@ -94,14 +105,12 @@ namespace OPM.GUI
                     UpdateCatalogPanel(tbContract.Text);
                     /*Create Bao Lanh Thuc Hien Hop Dong*/
                     this.Cursor = Cursors.WaitCursor;
-
                     string filename = @"F:\LP\MSTT_Template.docx";
                     string strBLHPName = strContractDirectory + "\\Bao_Lanh_Hop_Dong.docx";
-
                     OpmWordHandler.CreateBLTH_Contract(filename, strBLHPName, tbContract.Text, tbBidName.Text, tbxDateSigned.Text, tbxSiteB.Text, txbGaranteeValue.Text, txbGaranteeActiveDate.Text);
-                    this.Cursor = Cursors.Default;
                     /*Send Email To DF*/
                     OPMEmailHandler.fSendEmail("Mail From DoanTD Gmail", strBLHPName);
+                    this.Cursor = Cursors.Default;
                 }
             }
             else

@@ -14,6 +14,9 @@ namespace OPM.GUI
         
         private TreeNode selectedNode;
 
+        public PurchaseOderInfor objPurchaseOder= new PurchaseOderInfor();
+
+
         public OPMDASHBOARDA()
         {
             InitializeComponent();
@@ -135,12 +138,17 @@ namespace OPM.GUI
             switch (temp[0])
             {
                 case ConstantVar.ContractType:
-                    /*Display Gui Contract*/
+                    /*DASHBOARD Display Gui Contract*/
                     ContractInfoChildForm contractInfoChildForm = new ContractInfoChildForm();
                     contractInfoChildForm.UpdateCatalogPanel = new ContractInfoChildForm.UpdateCatalogDelegate(GetCatalogvalue);
-                    contractInfoChildForm.OpenPurchaseOrderInforGUI = new ContractInfoChildForm.UpdateCatalogDelegate(OpenSequenceChildForm);
+                    /*DASHBOAD GET REQEST FROM CONTRACT GUI*/
+                    contractInfoChildForm.RequestDashBoardOpenPOForm = new ContractInfoChildForm.RequestDashBoardOpenChildForm(OpenPOForm);
                     contractInfoChildForm.SetValueItemForm();
-                    OpenChidForm(contractInfoChildForm);
+
+                    //PurchaseOderInfor purchaseOderInfor1 = new PurchaseOderInfor();
+                    //purchaseOderInfor1.requestDashBoardOpenNTKTForm = new PurchaseOderInfor.RequestDashBoardOpenNTKTForm(OpenNTKTForm);
+
+                    OpenChidForm(contractInfoChildForm); 
                     break;
                 case ConstantVar.POType:
                     /*Display PO */
@@ -183,10 +191,20 @@ namespace OPM.GUI
         {
             if (e.ClickedItem.Name == "toolStripMenuRefresh")
             {
-
+                /*DashBoard Call Contract Child Form*/
                 ContractInfoChildForm contractInfoChildForm = new ContractInfoChildForm();
                 contractInfoChildForm.UpdateCatalogPanel = new ContractInfoChildForm.UpdateCatalogDelegate(GetCatalogvalue);
-                //contractInfoChildForm.OpenPurchaseOrderInforGUI = new ContractInfoChildForm.UpdateCatalogDelegate(OpenSequenceChildForm);
+
+                /*DASHBOAD GET REQEST FROM CONTRACT GUI*/
+                contractInfoChildForm.RequestDashBoardOpenPOForm = new ContractInfoChildForm.RequestDashBoardOpenChildForm(OpenPOForm);
+                /*end of DashBoard Call Contract Child Form*/
+
+                //Vừa thêm vào xem có chạy hay không đây
+                PurchaseOderInfor purchaseOderInfor = new PurchaseOderInfor();
+                purchaseOderInfor.UpdateCatalogPanel = new PurchaseOderInfor.UpdateCatalogDelegate(GetCatalogvalue);
+
+                /*Open NTKT Form*/
+                purchaseOderInfor.requestDashBoardOpenNTKTForm = new PurchaseOderInfor.RequestDashBoardOpenNTKTForm(OpenNTKTForm);
 
                 OpenChidForm(contractInfoChildForm);
             }
@@ -228,6 +246,10 @@ namespace OPM.GUI
             }
             if(e.Button == MouseButtons.Right)
             {
+                if(null == treeView1.SelectedNode)
+                {
+                    return;
+                }    
                 if(treeView1.SelectedNode.Name.Contains("Year"))
                 {
                     return;
@@ -277,18 +299,16 @@ namespace OPM.GUI
 
         private void OPMDASHBOARDA_Load(object sender, EventArgs e)
         {
-            GUI.UsrCtltabHeader usrCtltabHeader = new GUI.UsrCtltabHeader();
-            this.panHeader.Controls.Add(usrCtltabHeader);
-            usrCtltabHeader.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)
-            | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            //GUI.UsrCtltabHeader usrCtltabHeader = new GUI.UsrCtltabHeader();
+            //this.panHeader.Controls.Add(usrCtltabHeader);
+            //usrCtltabHeader.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)
+            //| System.Windows.Forms.AnchorStyles.Left)
+            //| System.Windows.Forms.AnchorStyles.Right)));
 
         }
         /*OK Important for Comunicate*/
         public void GetCatalogvalue(string strvalue)
         {
-            //System.Windows.Forms.TreeNode newTreeNode= new TreeNode(strvalue);
-            //treeView1.Nodes.Add(strvalue);
             treeView1.Nodes.Clear();
             TreeNode node = null;
             InitCatalogAdmin(node, null);
@@ -318,6 +338,35 @@ namespace OPM.GUI
                 //contractInfoChildForm.SetValueItemForm();
                 OpenChidForm(purchaseOderInfor);
             }    
+        }
+
+        public void OpenPOForm(string strIDContract, string strKHMS)
+        {
+            PurchaseOderInfor purchaseOderInfor = new PurchaseOderInfor();
+            purchaseOderInfor.UpdateCatalogPanel = new PurchaseOderInfor.UpdateCatalogDelegate(GetCatalogvalue);
+
+            purchaseOderInfor.requestDashBoardOpenNTKTForm = new PurchaseOderInfor.RequestDashBoardOpenNTKTForm(OpenNTKTForm);
+
+            strIDContract = strIDContract.Replace("Contract_","");
+            purchaseOderInfor.SetTxbIDContract(strIDContract);
+            purchaseOderInfor.SetTxbKHMS(strKHMS);
+            OpenChidForm(purchaseOderInfor);
+            return;
+
+        }
+
+        public void OpenNTKTForm(string strKHMS, string strContractID, string strPOID, string strPONumber)
+        {
+            NTKTInfor nTKTInfor= new NTKTInfor();
+            nTKTInfor.UpdateCatalogPanel = new NTKTInfor.UpdateCatalogDelegate(GetCatalogvalue);
+            nTKTInfor.SetKHMS(strKHMS);
+
+            strContractID = strContractID.Replace("Contract_","");
+            nTKTInfor.SetContractID(strContractID);
+            nTKTInfor.SetPOID(strPOID);
+            nTKTInfor.SetPONumber(strPONumber);
+            OpenChidForm(nTKTInfor);
+            return;
         }
 
     }

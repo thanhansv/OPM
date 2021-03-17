@@ -5,6 +5,7 @@ using System.IO;
 using System.Windows.Forms;
 using WordOffice = Microsoft.Office.Interop.Word;
 using System.Reflection;
+using OPM.OPMEnginee;
 
 namespace OPM.WordHandler
 {
@@ -113,12 +114,12 @@ namespace OPM.WordHandler
                 myWordDoc.Activate();
 
                 //find and replace
-                FindAndReplace(wordApp, "<tempPO>", strPOnumber);
-                FindAndReplace(wordApp, "<temp_IdContract>", strIdContract);
+                FindAndReplace(wordApp, "<tempPO>" , " " + strPOnumber + " ");
+                FindAndReplace(wordApp, "<temp_IdContract>", " " + strIdContract + " ");
                 //this.FindAndReplace(wordApp, "<birthday>", dateTimePicker1.Value.ToShortDateString());
-                FindAndReplace(wordApp, "<tmp_signdate>", strSigndate);
+                FindAndReplace(wordApp, "<tmp_signdate>", " " + strSigndate + " ");
                 //this.FindAndReplace(wordApp, "<date>", DateTime.Now.ToShortDateString());
-                FindAndReplace(wordApp, "<date_po>", strPOdate);
+                FindAndReplace(wordApp, "<date_po>", " " + strPOdate + " ");
             }
             else
             {
@@ -158,15 +159,15 @@ namespace OPM.WordHandler
                 myWordDoc.Activate();
 
                 //find and replace
-                FindAndReplace(wordApp, "<PO_Name>", strPOnumber);
-                FindAndReplace(wordApp, "<Contract_ID>", strIdContract);
-                FindAndReplace(wordApp, "<Contract_Name>", strContractName);
-                FindAndReplace(wordApp, "<Signed_DateContract>", strSigneddateContract);
-                FindAndReplace(wordApp, "<Signed_DatePO>", strPOSigneddate);
-                FindAndReplace(wordApp, "<Total_Value>", strPOValueNotVAT);
-                FindAndReplace(wordApp, "<Value_Tamung>", strPOValueTU);
-                FindAndReplace(wordApp, "<Site_B>", strSiteB);
-                FindAndReplace(wordApp, "<Active_Date>", strActiveDatePO);
+                FindAndReplace(wordApp, "<PO_Name>", " " + strPOnumber);
+                FindAndReplace(wordApp, "<Contract_ID>", " " + strIdContract);
+                FindAndReplace(wordApp, "<Contract_Name>", " " + strContractName);
+                FindAndReplace(wordApp, "<Signed_DateContract>", " " + strSigneddateContract);
+                FindAndReplace(wordApp, "<Signed_DatePO>", " " + strPOSigneddate);
+                FindAndReplace(wordApp, "<Total_Value>", " " + strPOValueNotVAT);
+                FindAndReplace(wordApp, "<Value_Tamung>", " " + strPOValueTU);
+                FindAndReplace(wordApp, "<Site_B>", " " + strSiteB);
+                FindAndReplace(wordApp, "<Active_Date>", " " + strActiveDatePO);
             }
             else
             {
@@ -182,12 +183,74 @@ namespace OPM.WordHandler
 
             myWordDoc.Close();
             wordApp.Quit();
-            MessageBox.Show("File Created!");
+            MessageBox.Show("File Bảo Lãnh Thực Hiện Created!");
         }
         public static void Create_DNTU_PO(object filename, object SaveAs)
         { }
-        public static void Create_NTKTHH(object filename, object SaveAs)
-        { }
+        public static void Create_RQNTKT_PO(object filename, object SaveAs, NTKT nTKT, PO objPO, ContractObj contractObj)
+        {
+            WordOffice.Application wordApp = new WordOffice.Application();
+            object missing = Missing.Value;
+            WordOffice.Document myWordDoc = null;
+
+            if (File.Exists((string)filename))
+            {
+                object readOnly = false;
+                object isVisible = false;
+                wordApp.Visible = false;
+
+                myWordDoc = wordApp.Documents.Open(ref filename, ref missing, ref readOnly,
+                                        ref missing, ref missing, ref missing,
+                                        ref missing, ref missing, ref missing,
+                                        ref missing, ref missing, ref missing,
+                                        ref missing, ref missing, ref missing, ref missing);
+                myWordDoc.Activate();
+
+                //find and replace
+                FindAndReplace(wordApp, "<dd>"," " + DateTime.Now.ToString("dd") + " ");
+                FindAndReplace(wordApp, "<MM>", " " + DateTime.Now.ToString("MM") + " ");
+                FindAndReplace(wordApp, "<yyyy>", " " + DateTime.Now.ToString("yyyy") + " ");
+
+                FindAndReplace(wordApp, "<NTKT_ID>", " " + nTKT.ID_NTKT + " ");
+                FindAndReplace(wordApp, "<Date_NTKT_DuKien>", " " + nTKT.DateDuKienNTKT + " ");
+
+                FindAndReplace(wordApp, "<PO_Number>", " " + nTKT.PONumber + " ");
+                FindAndReplace(wordApp, "<PO_ID>", " " + nTKT.POID + " ");
+                FindAndReplace(wordApp, "<Created_DatePO>", " " + objPO.DateCreatedPO + " ");
+
+                FindAndReplace(wordApp, "<KHMS>", " " + nTKT.KHMS + " ");
+                FindAndReplace(wordApp, "<Contract_ID>", " " + nTKT.IDContract + " ");
+                FindAndReplace(wordApp, "<Contract_Name>", " " + contractObj.NameContract + " ");
+                FindAndReplace(wordApp, "<SignedDate_Contract>", " " + contractObj.DateSigned + " ");
+                FindAndReplace(wordApp, "<Site_B>", " " + contractObj.SiteB + " ");
+
+                FindAndReplace(wordApp, "<Mr_PhoBan>", " " + nTKT.MrPhoBan + " ");
+                FindAndReplace(wordApp, "<Mobile>", " " + nTKT.MrPhoBanMobile + " ");
+
+                FindAndReplace(wordApp, "<Mr_GD_HTKT_CSKH>", " " + nTKT.MrGD_CSKH + " ");
+                FindAndReplace(wordApp, "<Mr_GD_Mobile>", " " + nTKT.MrGD_CSKH_mobile + " ");
+
+                FindAndReplace(wordApp, "<MrGDLandLine>", " " + nTKT.MrGD_CSKH_Landline + " ");
+                FindAndReplace(wordApp, "<Ext>", " " + nTKT.MrrGD_CSKH_LandlineExt + " ");
+
+            }
+            else
+            {
+                MessageBox.Show("File not Found!");
+            }
+
+            //Save as
+            myWordDoc.SaveAs2(ref SaveAs, ref missing, ref missing, ref missing,
+                            ref missing, ref missing, ref missing,
+                            ref missing, ref missing, ref missing,
+                            ref missing, ref missing, ref missing,
+                            ref missing, ref missing, ref missing);
+
+            myWordDoc.Close();
+            wordApp.Quit();
+            MessageBox.Show("File Yêu Cầu Nghiệm Thu Kỹ Thuật Đã Được Created!");
+        }
+
         public static void PrintDocument(object filename)
         {
             WordOffice.Application wordApp = new WordOffice.Application();
@@ -245,12 +308,12 @@ namespace OPM.WordHandler
                 myWordDoc.Activate();
 
                 //find and replace
-                FindAndReplace(wordApp, "<Contract_Code>", strContractCode);
-                FindAndReplace(wordApp, "<Contract_Name>", strContractName);
-                FindAndReplace(wordApp, "<Signed_Date>", strSigneddate);
-                FindAndReplace(wordApp, "<Site_B>", tbxSiteB);
-                FindAndReplace(wordApp, "<Grt_Val>", txbGaranteeValue);
-                FindAndReplace(wordApp, "<Grt_Act_Date>", txbGaranteeActiveDate);
+                FindAndReplace(wordApp, "<Contract_Code>", " " + strContractCode + " ");
+                FindAndReplace(wordApp, "<Contract_Name>", " " + strContractName + " ");
+                FindAndReplace(wordApp, "<Signed_Date>", " " + strSigneddate + " ");
+                FindAndReplace(wordApp, "<Site_B>", " " + tbxSiteB + " ");
+                FindAndReplace(wordApp, "<Grt_Val>", " " + txbGaranteeValue + " ");
+                FindAndReplace(wordApp, "<Grt_Act_Date>", " " + txbGaranteeActiveDate + " ");
 
             }
             else

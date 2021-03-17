@@ -60,6 +60,9 @@ namespace OPM.GUI
             this.label13 = new System.Windows.Forms.Label();
             this.txbActiveAfter = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txbKHMS = new System.Windows.Forms.TextBox();
+            this.btnNTKT = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,7 +103,7 @@ namespace OPM.GUI
             // 
             // txbIDContract
             // 
-            this.txbIDContract.Location = new System.Drawing.Point(117, 33);
+            this.txbIDContract.Location = new System.Drawing.Point(117, 41);
             this.txbIDContract.Name = "txbIDContract";
             this.txbIDContract.Size = new System.Drawing.Size(327, 23);
             this.txbIDContract.TabIndex = 1;
@@ -108,7 +111,7 @@ namespace OPM.GUI
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 33);
+            this.label2.Location = new System.Drawing.Point(12, 44);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 15);
             this.label2.TabIndex = 2;
@@ -119,9 +122,9 @@ namespace OPM.GUI
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 112);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(83, 15);
+            this.label3.Size = new System.Drawing.Size(70, 15);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Thư Đặt Hàng ";
+            this.label3.Text = "PO Number";
             // 
             // txbPOName
             // 
@@ -318,12 +321,41 @@ namespace OPM.GUI
             this.label14.TabIndex = 2;
             this.label14.Text = "Ngày -->";
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(12, 16);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(111, 15);
+            this.label15.TabIndex = 7;
+            this.label15.Text = "Kế Hoạch Mua Sắm";
+            // 
+            // txbKHMS
+            // 
+            this.txbKHMS.Location = new System.Drawing.Point(132, 10);
+            this.txbKHMS.Name = "txbKHMS";
+            this.txbKHMS.Size = new System.Drawing.Size(312, 23);
+            this.txbKHMS.TabIndex = 8;
+            // 
+            // btnNTKT
+            // 
+            this.btnNTKT.Location = new System.Drawing.Point(274, 515);
+            this.btnNTKT.Name = "btnNTKT";
+            this.btnNTKT.Size = new System.Drawing.Size(75, 23);
+            this.btnNTKT.TabIndex = 9;
+            this.btnNTKT.Text = "New NTKT";
+            this.btnNTKT.UseVisualStyleBackColor = true;
+            this.btnNTKT.Click += new System.EventHandler(this.btnNTKT_Click);
+            // 
             // PurchaseOderInfor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Yellow;
             this.ClientSize = new System.Drawing.Size(456, 550);
+            this.Controls.Add(this.btnNTKT);
+            this.Controls.Add(this.txbKHMS);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.txbTUPO);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.TimePickerDeadLinePO);
@@ -397,5 +429,8 @@ namespace OPM.GUI
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txbActiveAfter;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txbKHMS;
+        private System.Windows.Forms.Button btnNTKT;
     }
 }

@@ -9,6 +9,7 @@ namespace OPM.OPMEnginee
 {
     class ContractObj :IContract
     {
+        private string _KHMS;
         private string _idContract;
         private string _nameContract;
         private string _codeAccounting;
@@ -31,6 +32,11 @@ namespace OPM.OPMEnginee
         ~ContractObj()
         {
 
+        }
+        public string KHMS
+        {
+            set { _KHMS = value; }
+            get { return _KHMS; }
         }
         public string IdContract
         {
@@ -122,7 +128,7 @@ namespace OPM.OPMEnginee
             ContractObj contract = new ContractObj();
             DataSet ds = new DataSet();
             int ret = OPMDBHandler.fQuerryData(strQueryOne, ref ds);
-            if (0 != ds.Tables.Count)
+            if (0 != ret)
             {
                     contract.IdContract = (string)ds.Tables[0].Rows[0].ItemArray[0];
             }
@@ -166,13 +172,13 @@ namespace OPM.OPMEnginee
             string strInsertContractNew = "insert into Contract values (";
             strInsertContractNew += "'";
             strInsertContractNew += newContract.IdContract;
-            strInsertContractNew += "','";
+            strInsertContractNew += "',N'";
             strInsertContractNew += newContract.NameContract;
             strInsertContractNew += "','";
             strInsertContractNew += newContract.CodeAccounting;
             strInsertContractNew += "','";
             strInsertContractNew += newContract.DateSigned;
-            strInsertContractNew += "','";
+            strInsertContractNew += "',N'";
             strInsertContractNew += newContract.TypeContract;
             strInsertContractNew += "','";
             strInsertContractNew += newContract.DurationContract;
@@ -182,14 +188,16 @@ namespace OPM.OPMEnginee
             strInsertContractNew += newContract.ValueContract;
             strInsertContractNew += "','";
             strInsertContractNew += newContract.DurationGuranteePO;
-            strInsertContractNew += "','";
+            strInsertContractNew += "',N'";
             strInsertContractNew += newContract.SiteA;
-            strInsertContractNew += "','";
+            strInsertContractNew += "',N'";
             strInsertContractNew += newContract.SiteB;
-            strInsertContractNew += "','";
+            strInsertContractNew += "',N'";
             strInsertContractNew += newContract.Phuluc;
-            strInsertContractNew += "','";
+            strInsertContractNew += "',N'";
             strInsertContractNew += newContract.VbGuranteeDoc;
+            strInsertContractNew += "',N'";
+            strInsertContractNew += newContract.KHMS;
             strInsertContractNew += "')";
             int ret = OPMDBHandler.fInsertData(strInsertContractNew);
             if(0==ret)
