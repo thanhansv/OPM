@@ -72,6 +72,14 @@ namespace OPM.GUI
         {
         }
 
+        private void TextBox_Changed(object sender, EventArgs e)
+        {
+            if(tbxDurationContract.SelectionLength > 0)
+            {
+                dateTimePickerDurationDateContract.Value = dateTimePickerDateSignedPO.Value.AddDays(Convert.ToInt32(tbxDurationContract.Text));
+            }
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             int ret = 0;
@@ -81,11 +89,11 @@ namespace OPM.GUI
             newContract.IdContract = tbContract.Text;
             newContract.NameContract = tbBidName.Text;
             newContract.CodeAccounting = tbAccountingCode.Text;
-            newContract.DateSigned = dateTimePickerDateSignedPO.Value.ToString("yyyy-MM-dd");
+            newContract.DateSigned = dateTimePickerDateSignedPO.Value.ToString("dd-MM-yyyy");
             newContract.TypeContract = txbTypeContract.Text;
             newContract.DurationContract = tbxDurationContract.Text;
-            newContract.ActiveDateContract = dateTimePickerActiveDateContract.Value.ToString("yyyy-MM-dd");
-            newContract.ActiveDateContract = 
+            dateTimePickerDurationDateContract.Value = dateTimePickerDateSignedPO.Value.AddDays(Convert.ToInt32(tbxDurationContract.Text));
+            newContract.ActiveDateContract = dateTimePickerActiveDateContract.Value.ToString("dd-MM-yyyy");
             newContract.ValueContract = tbxValueContract.Text;
             newContract.DurationGuranteePO = tbxDurationPO.Text;
             newContract.SiteA = tbxSiteA.Text;

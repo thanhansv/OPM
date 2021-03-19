@@ -22,6 +22,10 @@ namespace OPM.GUI
         public delegate void RequestDashBoardOpenNTKTForm(string strIDContract, string strKHMS, string strPONumber, string strPOID);
         public RequestDashBoardOpenNTKTForm requestDashBoardOpenNTKTForm;
 
+        /*Delegate Request Dashboard Open Confirm form*/
+        public delegate void RequestDashBoardOpenConfirmForm(string strIDContract, string strKHMS, string strPONumber, string strPOID);
+        public RequestDashBoardOpenConfirmForm requestDashBoardOpenConfirmPOForm;
+
         public PurchaseOderInfor()
         {
             InitializeComponent();
@@ -37,10 +41,10 @@ namespace OPM.GUI
             newPO.IDPO = txbPOCode.Text;
             newPO.PONumber = txbPOName.Text;
             newPO.NumberOfDevice = float.Parse(txbNumberDevice.Text);
-            newPO.DateCreatedPO = TimePickerDateCreatedPO.Value.ToString("yyyy-MM-dd");
-            newPO.DurationConfirmPO = TimePickerDateConfirmPO.Value.ToString("yyyy-MM-dd");
-            newPO.DefaultActiveDatePO = TimepickerDefaultActive.Value.ToString("yyyy-MM-dd");
-            newPO.DeadLinePO = TimePickerDeadLinePO.Value.ToString("yyyy-MM-dd");
+            newPO.DateCreatedPO = TimePickerDateCreatedPO.Value.ToString("dd-MM-yyyy");
+            newPO.DurationConfirmPO = TimePickerDateConfirmPO.Value.ToString("dd-MM-yyyy");
+            newPO.DefaultActiveDatePO = TimepickerDefaultActive.Value.ToString("dd-MM-yyyy");
+            newPO.DeadLinePO = TimePickerDeadLinePO.Value.ToString("dd-MM-yyyy");
             newPO.TotalValuePO = float.Parse(txbValuePO.Text);
 
             /*Create Folder Contract on F Disk*/
@@ -80,6 +84,7 @@ namespace OPM.GUI
                     this.Cursor = Cursors.WaitCursor;
                     OpmWordHandler.Create_BLTU_PO(fileBLTUPO_temp, strBLTUPOName, txbPOName.Text, txbIDContract.Text, contractObj.NameContract, contractObj.DateSigned, TimePickerDateCreatedPO.Value.ToString("yyyy-MM-dd"),txbValuePO.Text, txbTUPO.Text, contractObj.SiteB, txbActiveAfter.Text);
                     /*Send Email To DF*/
+
                     OPMEmailHandler.fSendEmail("Mail From DoanTD Gmail", strBLTUPOName);
                     this.Cursor = Cursors.Default;
                 }
@@ -114,10 +119,23 @@ namespace OPM.GUI
             return;
 
         }
-
-        private void label2_Click(object sender, EventArgs e)
+        private void btnBaoHiem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnNewDP_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnConfirmPO_Click(object sender, EventArgs e)
+        {
+            /*Request DashBoard Open Confirm PO Form*/
+            string strContract = "Contract_" + txbIDContract.Text.ToString();
+            /*Request DashBoard Open PO Form*/
+            requestDashBoardOpenConfirmPOForm(txbKHMS.Text, strContract, txbPOCode.Text, txbPOName.Text);
+            return;
         }
     }
 }

@@ -345,8 +345,13 @@ namespace OPM.GUI
             PurchaseOderInfor purchaseOderInfor = new PurchaseOderInfor();
             purchaseOderInfor.UpdateCatalogPanel = new PurchaseOderInfor.UpdateCatalogDelegate(GetCatalogvalue);
 
+            /*Receipt Request Open Nghiệm Thu Kỹ Thuật Form*/
             purchaseOderInfor.requestDashBoardOpenNTKTForm = new PurchaseOderInfor.RequestDashBoardOpenNTKTForm(OpenNTKTForm);
 
+            /*Receipt Request Open Xác Nhận Đơn Hàng Form*/
+            purchaseOderInfor.requestDashBoardOpenConfirmPOForm = new PurchaseOderInfor.RequestDashBoardOpenConfirmForm(OpenConfirmPOForm);
+
+            /**/
             strIDContract = strIDContract.Replace("Contract_","");
             purchaseOderInfor.SetTxbIDContract(strIDContract);
             purchaseOderInfor.SetTxbKHMS(strKHMS);
@@ -368,6 +373,20 @@ namespace OPM.GUI
             OpenChidForm(nTKTInfor);
             return;
         }
+
+        public void OpenConfirmPOForm(string strKHMS, string strContractID, string strPOID, string strPONumber)
+        {
+            ConfirmPOInfor confirmPO = new ConfirmPOInfor();
+            confirmPO.SetKHMS(strKHMS);
+
+            strContractID = strContractID.Replace("Contract_", "");
+            confirmPO.SetContractID(strContractID);
+            confirmPO.SetPOID(strPOID);
+            confirmPO.SetPONumber(strPONumber);
+            OpenChidForm(confirmPO);
+            return;
+        }
+
 
     }
 }

@@ -59,6 +59,8 @@ namespace OPM.GUI
             this.label15 = new System.Windows.Forms.Label();
             this.txbKHMS = new System.Windows.Forms.TextBox();
             this.btnNTKT = new System.Windows.Forms.Button();
+            this.btnBaoHiem = new System.Windows.Forms.Button();
+            this.btnConfirmPO = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,6 +98,7 @@ namespace OPM.GUI
             this.btnNewDP.TabIndex = 3;
             this.btnNewDP.Text = "New DP";
             this.btnNewDP.UseVisualStyleBackColor = true;
+            this.btnNewDP.Click += new System.EventHandler(this.btnNewDP_Click);
             // 
             // txbIDContract
             // 
@@ -112,7 +115,6 @@ namespace OPM.GUI
             this.label2.Size = new System.Drawing.Size(82, 15);
             this.label2.TabIndex = 2;
             this.label2.Text = "Mã Hợp Đồng";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -310,12 +312,34 @@ namespace OPM.GUI
             this.btnNTKT.UseVisualStyleBackColor = true;
             this.btnNTKT.Click += new System.EventHandler(this.btnNTKT_Click);
             // 
+            // btnBaoHiem
+            // 
+            this.btnBaoHiem.Location = new System.Drawing.Point(194, 515);
+            this.btnBaoHiem.Name = "btnBaoHiem";
+            this.btnBaoHiem.Size = new System.Drawing.Size(75, 23);
+            this.btnBaoHiem.TabIndex = 10;
+            this.btnBaoHiem.Text = "Bảo Hiểm";
+            this.btnBaoHiem.UseVisualStyleBackColor = true;
+            this.btnBaoHiem.Click += new System.EventHandler(this.btnBaoHiem_Click);
+            // 
+            // btnConfirmPO
+            // 
+            this.btnConfirmPO.Location = new System.Drawing.Point(113, 515);
+            this.btnConfirmPO.Name = "btnConfirmPO";
+            this.btnConfirmPO.Size = new System.Drawing.Size(75, 23);
+            this.btnConfirmPO.TabIndex = 11;
+            this.btnConfirmPO.Text = "ConfirmPO";
+            this.btnConfirmPO.UseVisualStyleBackColor = true;
+            this.btnConfirmPO.Click += new System.EventHandler(this.btnConfirmPO_Click);
+            // 
             // PurchaseOderInfor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Yellow;
             this.ClientSize = new System.Drawing.Size(456, 550);
+            this.Controls.Add(this.btnConfirmPO);
+            this.Controls.Add(this.btnBaoHiem);
             this.Controls.Add(this.btnNTKT);
             this.Controls.Add(this.txbKHMS);
             this.Controls.Add(this.label15);
@@ -387,5 +411,7 @@ namespace OPM.GUI
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txbKHMS;
         private System.Windows.Forms.Button btnNTKT;
+        private System.Windows.Forms.Button btnBaoHiem;
+        private System.Windows.Forms.Button btnConfirmPO;
     }
 }
