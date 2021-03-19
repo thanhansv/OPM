@@ -38,7 +38,6 @@ namespace OPM.GUI
             this.label3 = new System.Windows.Forms.Label();
             this.txbPOName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txbDateCreated = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txbNumberDevice = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -144,13 +143,6 @@ namespace OPM.GUI
             this.label4.Size = new System.Drawing.Size(76, 15);
             this.label4.TabIndex = 2;
             this.label4.Text = "Ngày Tạo PO";
-            // 
-            // txbDateCreated
-            // 
-            this.txbDateCreated.Location = new System.Drawing.Point(117, 140);
-            this.txbDateCreated.Name = "txbDateCreated";
-            this.txbDateCreated.Size = new System.Drawing.Size(71, 23);
-            this.txbDateCreated.TabIndex = 1;
             // 
             // label5
             // 
@@ -407,7 +399,6 @@ namespace OPM.GUI
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txbValuePO);
             this.Controls.Add(this.txbNumberDevice);
-            this.Controls.Add(this.txbDateCreated);
             this.Controls.Add(this.txbPOName);
             this.Controls.Add(this.txbIDContract);
             this.Controls.Add(this.txbPOCode);
@@ -432,7 +423,6 @@ namespace OPM.GUI
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txbPOName;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txbDateCreated;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txbNumberDevice;
         private System.Windows.Forms.Label label6;
