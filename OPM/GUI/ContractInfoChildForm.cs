@@ -31,6 +31,7 @@ namespace OPM.GUI
 
         public void SetValueItemForm(string idContract)
         {
+            //Add New Comment
             ContractObj contract = new ContractObj();
             contract.GetDisplayContract(idContract, ref contract);
             this.txbKHMS.Text = contract.KHMS;
