@@ -332,7 +332,71 @@ namespace OPM.WordHandler
             wordApp.Quit();
             MessageBox.Show("File Bảo Lãnh Thực Hiện Hợp Đồng Đã Được Tạo");
         }
+           
+        public static void Create_VBConfirm_PO(object filename, object SaveAs, ConfirmPO confirmPO, PO objPO, ContractObj contractObj)
+        {
+            WordOffice.Application wordApp = new WordOffice.Application();
+            object missing = Missing.Value;
+            WordOffice.Document myWordDoc = null;
 
+            if (File.Exists((string)filename))
+            {
+                object readOnly = false;
+                object isVisible = false;
+                wordApp.Visible = false;
+
+                myWordDoc = wordApp.Documents.Open(ref filename, ref missing, ref readOnly,
+                                        ref missing, ref missing, ref missing,
+                                        ref missing, ref missing, ref missing,
+                                        ref missing, ref missing, ref missing,
+                                        ref missing, ref missing, ref missing, ref missing);
+                myWordDoc.Activate();
+
+                //find and replace
+                FindAndReplace(wordApp, "<dd>", " " + DateTime.Now.ToString("dd") + " ");
+                FindAndReplace(wordApp, "<MM>", " " + DateTime.Now.ToString("MM") + " ");
+                FindAndReplace(wordApp, "<yyyy>", " " + DateTime.Now.ToString("yyyy") + " ");
+
+                FindAndReplace(wordApp, "<XNDH_ID>", " " + confirmPO.ConfirmPOID + " ");
+                FindAndReplace(wordApp, "<DateNow>", " " + DateTime.Now.ToString("dd/MM/yyyy") + " ");
+
+
+                FindAndReplace(wordApp, "<PO_Number>", " " + confirmPO.PONumber + " ");
+                FindAndReplace(wordApp, "<PO_ID>", " " + confirmPO.POID + " ");
+                FindAndReplace(wordApp, "<PO_DateCreated>", " " + objPO.DateCreatedPO + " ");
+
+                FindAndReplace(wordApp, "<KHMS>", " " + confirmPO.KHMS + " ");
+                FindAndReplace(wordApp, "<Contract_ID>", " " + confirmPO.IDContract + " ");
+                FindAndReplace(wordApp, "<Contract_Name>", " " + contractObj.NameContract + " ");
+                FindAndReplace(wordApp, "<Contract_DateSigned>", " " + contractObj.DateSigned + " ");
+                FindAndReplace(wordApp, "<Site_B>", " " + contractObj.SiteB + " ");
+
+                FindAndReplace(wordApp, "<MrPhoBan>", " " + confirmPO.MrPhoBan + " ");
+                FindAndReplace(wordApp, "<Mobile>", " " + confirmPO.MrPhoBanMobile + " ");
+
+                FindAndReplace(wordApp, "<MrGDCSKH>", " " + confirmPO.MrGD_CSKH + " ");
+                FindAndReplace(wordApp, "<MrGDMobile>", " " + confirmPO.MrGD_CSKH_mobile + " ");
+
+                FindAndReplace(wordApp, "<LandLine>", " " + confirmPO.MrGD_CSKH_Landline + " ");
+                FindAndReplace(wordApp, "<Ext>", " " + confirmPO.MrrGD_CSKH_LandlineExt + " ");
+
+            }
+            else
+            {
+                MessageBox.Show("File Xác Nhận Đơn Hàng Not Found!");
+            }
+
+            //Save as
+            myWordDoc.SaveAs2(ref SaveAs, ref missing, ref missing, ref missing,
+                            ref missing, ref missing, ref missing,
+                            ref missing, ref missing, ref missing,
+                            ref missing, ref missing, ref missing,
+                            ref missing, ref missing, ref missing);
+
+            myWordDoc.Close();
+            wordApp.Quit();
+            MessageBox.Show("File Xác Nhận Đơn Hàng Đã Được Created!");
+        }
 
     }
 }
