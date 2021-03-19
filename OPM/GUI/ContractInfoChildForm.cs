@@ -32,7 +32,7 @@ namespace OPM.GUI
         public void SetValueItemForm(string idContract)
         {
             //Add New Comment+ Edit From local
-            //Add New Comment Level2+ Edit From Local Lan 2
+            //Add New Comment Level2+ Edit From Local Lan 2+Commit Linh Tinh From Other
             ContractObj contract = new ContractObj();
             contract.GetDisplayContract(idContract, ref contract);
             this.txbKHMS.Text = contract.KHMS;
