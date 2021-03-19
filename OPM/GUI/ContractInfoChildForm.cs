@@ -34,9 +34,23 @@ namespace OPM.GUI
             
         }
 
-        public void SetValueItemForm()
+        public void SetValueItemForm(string idContract)
         {
-            this.tbContract.Text = "AAAAA";
+            ContractObj contract = new ContractObj();
+            contract.GetDisplayContract(idContract, ref contract);
+            this.txbKHMS.Text = contract.KHMS;
+            this.tbContract.Text = contract.IdContract;
+            this.tbBidName.Text = contract.NameContract;
+            this.tbAccountingCode.Text = contract.CodeAccounting;
+            dateTimePickerDateSignedPO.Value= Convert.ToDateTime(contract.DateSigned.ToString());
+            dateTimePickerDurationDateContract.Value = dateTimePickerDateSignedPO.Value.AddDays(Convert.ToInt32(contract.DurationContract));
+            this.txbTypeContract.Text = contract.TypeContract;
+            this.tbxDurationContract.Text = contract.DurationContract;
+            dateTimePickerActiveDateContract.Value = Convert.ToDateTime(contract.ActiveDateContract.ToString());
+            this.tbxValueContract.Text = contract.ValueContract;
+            this.tbxDurationPO.Text = contract.DurationGuranteePO;
+            this.tbxSiteA.Text = contract.SiteA;
+            this.tbxSiteB.Text = contract.SiteB;
             return;
         }
         private IContract contract = new ContractObj();
@@ -71,6 +85,7 @@ namespace OPM.GUI
             newContract.TypeContract = txbTypeContract.Text;
             newContract.DurationContract = tbxDurationContract.Text;
             newContract.ActiveDateContract = dateTimePickerActiveDateContract.Value.ToString("yyyy-MM-dd");
+            newContract.ActiveDateContract = 
             newContract.ValueContract = tbxValueContract.Text;
             newContract.DurationGuranteePO = tbxDurationPO.Text;
             newContract.SiteA = tbxSiteA.Text;
@@ -107,7 +122,7 @@ namespace OPM.GUI
                     this.Cursor = Cursors.WaitCursor;
                     string filename = @"F:\LP\MSTT_Template.docx";
                     string strBLHPName = strContractDirectory + "\\Bao_Lanh_Hop_Dong.docx";
-                    OpmWordHandler.CreateBLTH_Contract(filename, strBLHPName, tbContract.Text, tbBidName.Text, tbxDateSigned.Text, tbxSiteB.Text, txbGaranteeValue.Text, txbGaranteeActiveDate.Text);
+                    OpmWordHandler.CreateBLTH_Contract(filename, strBLHPName, tbContract.Text, tbBidName.Text, dateTimePickerDateSignedPO.Value.ToString(), tbxSiteB.Text, txbGaranteeValue.Text, txbGaranteeActiveDate.Text);
                     /*Send Email To DF*/
                     OPMEmailHandler.fSendEmail("Mail From DoanTD Gmail", strBLHPName);
                     this.Cursor = Cursors.Default;

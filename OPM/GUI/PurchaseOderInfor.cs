@@ -36,6 +36,7 @@ namespace OPM.GUI
             newPO.IDContract = txbIDContract.Text ;
             newPO.IDPO = txbPOCode.Text;
             newPO.PONumber = txbPOName.Text;
+            newPO.NumberOfDevice = float.Parse(txbNumberDevice.Text);
             newPO.DateCreatedPO = TimePickerDateCreatedPO.Value.ToString("yyyy-MM-dd");
             newPO.DurationConfirmPO = TimePickerDateConfirmPO.Value.ToString("yyyy-MM-dd");
             newPO.DefaultActiveDatePO = TimepickerDefaultActive.Value.ToString("yyyy-MM-dd");
@@ -111,6 +112,11 @@ namespace OPM.GUI
             /*Request DashBoard Open PO Form*/
             requestDashBoardOpenNTKTForm(txbKHMS.Text, strContract, txbPOCode.Text, txbPOName.Text) ;
             return;
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
 
         }
     }

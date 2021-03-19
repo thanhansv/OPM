@@ -47,10 +47,8 @@ namespace OPM.GUI
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.tbxDateSigned = new System.Windows.Forms.TextBox();
             this.tbxDurationContract = new System.Windows.Forms.TextBox();
             this.txbTypeContract = new System.Windows.Forms.TextBox();
-            this.tbActiveDate = new System.Windows.Forms.TextBox();
             this.tbxValueContract = new System.Windows.Forms.TextBox();
             this.tbxDurationPO = new System.Windows.Forms.TextBox();
             this.tbxSiteA = new System.Windows.Forms.TextBox();
@@ -71,11 +69,13 @@ namespace OPM.GUI
             this.dateTimePickerActiveDateContract = new System.Windows.Forms.DateTimePicker();
             this.label16 = new System.Windows.Forms.Label();
             this.txbKHMS = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(369, 373);
+            this.button1.Location = new System.Drawing.Point(369, 365);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -86,28 +86,28 @@ namespace OPM.GUI
             // tbContract
             // 
             this.tbContract.BackColor = System.Drawing.SystemColors.Window;
-            this.tbContract.Location = new System.Drawing.Point(143, 26);
+            this.tbContract.Location = new System.Drawing.Point(140, 35);
             this.tbContract.Name = "tbContract";
             this.tbContract.Size = new System.Drawing.Size(305, 23);
             this.tbContract.TabIndex = 1;
             // 
             // tbBidName
             // 
-            this.tbBidName.Location = new System.Drawing.Point(143, 55);
+            this.tbBidName.Location = new System.Drawing.Point(140, 65);
             this.tbBidName.Name = "tbBidName";
             this.tbBidName.Size = new System.Drawing.Size(305, 23);
             this.tbBidName.TabIndex = 1;
             // 
             // tbAccountingCode
             // 
-            this.tbAccountingCode.Location = new System.Drawing.Point(143, 84);
+            this.tbAccountingCode.Location = new System.Drawing.Point(140, 95);
             this.tbAccountingCode.Name = "tbAccountingCode";
             this.tbAccountingCode.Size = new System.Drawing.Size(305, 23);
             this.tbAccountingCode.TabIndex = 1;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(369, 405);
+            this.button2.Location = new System.Drawing.Point(369, 395);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 2;
@@ -118,7 +118,7 @@ namespace OPM.GUI
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(10, 26);
+            this.label1.Location = new System.Drawing.Point(10, 40);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 15);
             this.label1.TabIndex = 3;
@@ -127,7 +127,7 @@ namespace OPM.GUI
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 54);
+            this.label2.Location = new System.Drawing.Point(10, 70);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 15);
             this.label2.TabIndex = 3;
@@ -136,7 +136,7 @@ namespace OPM.GUI
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 80);
+            this.label3.Location = new System.Drawing.Point(10, 100);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 15);
             this.label3.TabIndex = 3;
@@ -145,7 +145,7 @@ namespace OPM.GUI
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(10, 114);
+            this.label4.Location = new System.Drawing.Point(10, 130);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(50, 15);
             this.label4.TabIndex = 3;
@@ -154,7 +154,7 @@ namespace OPM.GUI
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(10, 151);
+            this.label5.Location = new System.Drawing.Point(10, 160);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(112, 15);
             this.label5.TabIndex = 3;
@@ -163,7 +163,7 @@ namespace OPM.GUI
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(10, 193);
+            this.label6.Location = new System.Drawing.Point(10, 190);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(87, 15);
             this.label6.TabIndex = 3;
@@ -190,7 +190,7 @@ namespace OPM.GUI
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(10, 277);
+            this.label9.Location = new System.Drawing.Point(10, 280);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(107, 15);
             this.label9.TabIndex = 3;
@@ -199,7 +199,7 @@ namespace OPM.GUI
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(12, 381);
+            this.label10.Location = new System.Drawing.Point(10, 370);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(34, 15);
             this.label10.TabIndex = 3;
@@ -208,64 +208,50 @@ namespace OPM.GUI
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(10, 414);
+            this.label11.Location = new System.Drawing.Point(10, 400);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(33, 15);
             this.label11.TabIndex = 3;
             this.label11.Text = "SiteB";
             // 
-            // tbxDateSigned
-            // 
-            this.tbxDateSigned.Location = new System.Drawing.Point(143, 114);
-            this.tbxDateSigned.Name = "tbxDateSigned";
-            this.tbxDateSigned.Size = new System.Drawing.Size(78, 23);
-            this.tbxDateSigned.TabIndex = 1;
-            // 
             // tbxDurationContract
             // 
-            this.tbxDurationContract.Location = new System.Drawing.Point(143, 148);
+            this.tbxDurationContract.Location = new System.Drawing.Point(140, 155);
             this.tbxDurationContract.Name = "tbxDurationContract";
             this.tbxDurationContract.Size = new System.Drawing.Size(78, 23);
             this.tbxDurationContract.TabIndex = 1;
             // 
             // txbTypeContract
             // 
-            this.txbTypeContract.Location = new System.Drawing.Point(143, 185);
+            this.txbTypeContract.Location = new System.Drawing.Point(140, 185);
             this.txbTypeContract.Name = "txbTypeContract";
             this.txbTypeContract.Size = new System.Drawing.Size(305, 23);
             this.txbTypeContract.TabIndex = 1;
             // 
-            // tbActiveDate
-            // 
-            this.tbActiveDate.Location = new System.Drawing.Point(143, 217);
-            this.tbActiveDate.Name = "tbActiveDate";
-            this.tbActiveDate.Size = new System.Drawing.Size(78, 23);
-            this.tbActiveDate.TabIndex = 1;
-            // 
             // tbxValueContract
             // 
-            this.tbxValueContract.Location = new System.Drawing.Point(143, 246);
+            this.tbxValueContract.Location = new System.Drawing.Point(140, 245);
             this.tbxValueContract.Name = "tbxValueContract";
-            this.tbxValueContract.Size = new System.Drawing.Size(305, 23);
+            this.tbxValueContract.Size = new System.Drawing.Size(250, 23);
             this.tbxValueContract.TabIndex = 1;
             // 
             // tbxDurationPO
             // 
-            this.tbxDurationPO.Location = new System.Drawing.Point(143, 277);
+            this.tbxDurationPO.Location = new System.Drawing.Point(140, 275);
             this.tbxDurationPO.Name = "tbxDurationPO";
-            this.tbxDurationPO.Size = new System.Drawing.Size(305, 23);
+            this.tbxDurationPO.Size = new System.Drawing.Size(250, 23);
             this.tbxDurationPO.TabIndex = 1;
             // 
             // tbxSiteA
             // 
-            this.tbxSiteA.Location = new System.Drawing.Point(143, 373);
+            this.tbxSiteA.Location = new System.Drawing.Point(140, 365);
             this.tbxSiteA.Name = "tbxSiteA";
             this.tbxSiteA.Size = new System.Drawing.Size(202, 23);
             this.tbxSiteA.TabIndex = 1;
             // 
             // tbxSiteB
             // 
-            this.tbxSiteB.Location = new System.Drawing.Point(143, 406);
+            this.tbxSiteB.Location = new System.Drawing.Point(140, 395);
             this.tbxSiteB.Name = "tbxSiteB";
             this.tbxSiteB.Size = new System.Drawing.Size(202, 23);
             this.tbxSiteB.TabIndex = 1;
@@ -312,7 +298,7 @@ namespace OPM.GUI
             // 
             this.button3.Location = new System.Drawing.Point(10, 457);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(95, 23);
+            this.button3.Size = new System.Drawing.Size(100, 23);
             this.button3.TabIndex = 6;
             this.button3.Text = "Tạo Bảo Lãnh";
             this.button3.UseVisualStyleBackColor = true;
@@ -320,7 +306,7 @@ namespace OPM.GUI
             // 
             // txbGaranteeValue
             // 
-            this.txbGaranteeValue.Location = new System.Drawing.Point(143, 307);
+            this.txbGaranteeValue.Location = new System.Drawing.Point(140, 305);
             this.txbGaranteeValue.Name = "txbGaranteeValue";
             this.txbGaranteeValue.Size = new System.Drawing.Size(100, 23);
             this.txbGaranteeValue.TabIndex = 7;
@@ -329,7 +315,7 @@ namespace OPM.GUI
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(12, 315);
+            this.label12.Location = new System.Drawing.Point(12, 310);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(91, 15);
             this.label12.TabIndex = 3;
@@ -337,26 +323,26 @@ namespace OPM.GUI
             // 
             // txbGaranteeActiveDate
             // 
-            this.txbGaranteeActiveDate.Location = new System.Drawing.Point(145, 345);
+            this.txbGaranteeActiveDate.Location = new System.Drawing.Point(140, 335);
             this.txbGaranteeActiveDate.Name = "txbGaranteeActiveDate";
-            this.txbGaranteeActiveDate.Size = new System.Drawing.Size(98, 23);
+            this.txbGaranteeActiveDate.Size = new System.Drawing.Size(100, 23);
             this.txbGaranteeActiveDate.TabIndex = 7;
             this.txbGaranteeActiveDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(10, 348);
+            this.label13.Location = new System.Drawing.Point(10, 340);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(137, 15);
+            this.label13.Size = new System.Drawing.Size(106, 15);
             this.label13.TabIndex = 3;
-            this.label13.Text = "Ngày Hiệu Lực Bảo Lãnh";
+            this.label13.Text = "Hiệu Lực Bảo Lãnh";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(249, 310);
+            this.label14.Location = new System.Drawing.Point(240, 308);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(21, 20);
             this.label14.TabIndex = 3;
@@ -365,7 +351,7 @@ namespace OPM.GUI
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(249, 348);
+            this.label15.Location = new System.Drawing.Point(249, 335);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(188, 15);
             this.label15.TabIndex = 3;
@@ -373,21 +359,21 @@ namespace OPM.GUI
             // 
             // dateTimePickerDateSignedPO
             // 
-            this.dateTimePickerDateSignedPO.Location = new System.Drawing.Point(249, 114);
+            this.dateTimePickerDateSignedPO.Location = new System.Drawing.Point(245, 125);
             this.dateTimePickerDateSignedPO.Name = "dateTimePickerDateSignedPO";
             this.dateTimePickerDateSignedPO.Size = new System.Drawing.Size(200, 23);
             this.dateTimePickerDateSignedPO.TabIndex = 8;
             // 
             // dateTimePickerDurationDateContract
             // 
-            this.dateTimePickerDurationDateContract.Location = new System.Drawing.Point(249, 147);
+            this.dateTimePickerDurationDateContract.Location = new System.Drawing.Point(245, 155);
             this.dateTimePickerDurationDateContract.Name = "dateTimePickerDurationDateContract";
             this.dateTimePickerDurationDateContract.Size = new System.Drawing.Size(200, 23);
             this.dateTimePickerDurationDateContract.TabIndex = 9;
             // 
             // dateTimePickerActiveDateContract
             // 
-            this.dateTimePickerActiveDateContract.Location = new System.Drawing.Point(249, 217);
+            this.dateTimePickerActiveDateContract.Location = new System.Drawing.Point(245, 215);
             this.dateTimePickerActiveDateContract.Name = "dateTimePickerActiveDateContract";
             this.dateTimePickerActiveDateContract.Size = new System.Drawing.Size(200, 23);
             this.dateTimePickerActiveDateContract.TabIndex = 10;
@@ -395,7 +381,7 @@ namespace OPM.GUI
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(12, 9);
+            this.label16.Location = new System.Drawing.Point(10, 10);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(111, 15);
             this.label16.TabIndex = 11;
@@ -403,10 +389,28 @@ namespace OPM.GUI
             // 
             // txbKHMS
             // 
-            this.txbKHMS.Location = new System.Drawing.Point(143, 1);
+            this.txbKHMS.Location = new System.Drawing.Point(140, 5);
             this.txbKHMS.Name = "txbKHMS";
-            this.txbKHMS.Size = new System.Drawing.Size(306, 23);
+            this.txbKHMS.Size = new System.Drawing.Size(305, 23);
             this.txbKHMS.TabIndex = 12;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(399, 250);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(31, 15);
+            this.label17.TabIndex = 13;
+            this.label17.Text = "VND";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(399, 280);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(35, 15);
+            this.label18.TabIndex = 14;
+            this.label18.Text = "Ngày";
             // 
             // ContractInfoChildForm
             // 
@@ -415,6 +419,8 @@ namespace OPM.GUI
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(456, 550);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.label17);
             this.Controls.Add(this.txbKHMS);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.dateTimePickerActiveDateContract);
@@ -447,10 +453,8 @@ namespace OPM.GUI
             this.Controls.Add(this.tbxSiteA);
             this.Controls.Add(this.tbxDurationPO);
             this.Controls.Add(this.tbxValueContract);
-            this.Controls.Add(this.tbActiveDate);
             this.Controls.Add(this.txbTypeContract);
             this.Controls.Add(this.tbxDurationContract);
-            this.Controls.Add(this.tbxDateSigned);
             this.Controls.Add(this.tbAccountingCode);
             this.Controls.Add(this.tbBidName);
             this.Controls.Add(this.tbContract);
@@ -481,10 +485,8 @@ namespace OPM.GUI
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox tbxDateSigned;
         private System.Windows.Forms.TextBox tbxDurationContract;
         private System.Windows.Forms.TextBox txbTypeContract;
-        private System.Windows.Forms.TextBox tbActiveDate;
         private System.Windows.Forms.TextBox tbxValueContract;
         private System.Windows.Forms.TextBox tbxDurationPO;
         private System.Windows.Forms.TextBox tbxSiteA;
@@ -506,5 +508,7 @@ namespace OPM.GUI
         private System.Windows.Forms.DateTimePicker dateTimePickerActiveDateContract;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txbKHMS;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
     }
 }

@@ -13,7 +13,7 @@ namespace OPM.EmailHandler
             MailMessage mail = new MailMessage();
             SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
             mail.From = new MailAddress("taduydoan.ansv@gmail.com");
-            mail.To.Add("taduydoan@ansv.vn");
+            mail.To.Add("phongbui@gmail.com");
             mail.Subject = "Test Mail";
             mail.Body = "This is for testing SMTP mail from GMAIL";
             System.Net.Mail.Attachment attachment;

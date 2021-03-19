@@ -143,7 +143,7 @@ namespace OPM.GUI
                     contractInfoChildForm.UpdateCatalogPanel = new ContractInfoChildForm.UpdateCatalogDelegate(GetCatalogvalue);
                     /*DASHBOAD GET REQEST FROM CONTRACT GUI*/
                     contractInfoChildForm.RequestDashBoardOpenPOForm = new ContractInfoChildForm.RequestDashBoardOpenChildForm(OpenPOForm);
-                    contractInfoChildForm.SetValueItemForm();
+                    contractInfoChildForm.SetValueItemForm(temp[1]);
 
                     //PurchaseOderInfor purchaseOderInfor1 = new PurchaseOderInfor();
                     //purchaseOderInfor1.requestDashBoardOpenNTKTForm = new PurchaseOderInfor.RequestDashBoardOpenNTKTForm(OpenNTKTForm);
