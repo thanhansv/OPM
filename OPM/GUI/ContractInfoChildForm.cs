@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using OPM.WordHandler;
 using OPM.OPMEnginee;
@@ -36,6 +31,8 @@ namespace OPM.GUI
 
         public void SetValueItemForm(string idContract)
         {
+            //Add New Comment+ Edit From local
+            //Add New Comment Level2+ Edit From Local Lan 2+Change Local Lan 2
             ContractObj contract = new ContractObj();
             contract.GetDisplayContract(idContract, ref contract);
             this.txbKHMS.Text = contract.KHMS;
