@@ -102,6 +102,27 @@ namespace OPM.GUI
             }
         }
 
+        public void SetValueItemForPO(string idPO)
+        {
+            PO pO = new PO();
+            string namecontract = null, KHMS= null;
+            pO.DisplayPO(idPO,ref namecontract,ref KHMS);
+            pO.GetDisplayPO(idPO, ref pO);
+            this.txbKHMS.Text = KHMS;
+            
+            this.txbIDContract.Text = pO.IdContract;
+            this.txbPOCode.Text = pO.IDPO;
+            this.txbPOName.Text = pO.PONumber;
+            TimePickerDateCreatedPO.Value = Convert.ToDateTime(pO.DateCreatedPO);
+            this.txbNumberDevice.Text = pO.NumberOfDevice.ToString();
+            TimePickerDateConfirmPO.Value = Convert.ToDateTime(pO.DurationConfirmPO);
+            TimepickerDefaultActive.Value = Convert.ToDateTime(pO.DefaultActiveDatePO);
+            TimePickerDeadLinePO.Value = Convert.ToDateTime(pO.DeadLinePO);
+            this.txbValuePO.Text = pO.TotalValuePO.ToString();
+            return;
+
+        }
+
         public void SetTxbIDContract(string strIDContract)
         {
             this.txbIDContract.Text = strIDContract;
@@ -136,6 +157,28 @@ namespace OPM.GUI
             /*Request DashBoard Open PO Form*/
             requestDashBoardOpenConfirmPOForm(txbKHMS.Text, strContract, txbPOCode.Text, txbPOName.Text);
             return;
+        }
+
+        private void btnKTKT_Click(object sender, EventArgs e)
+        {
+            string strContractDirectory = txbIDContract.Text.Replace('/', '_');
+            strContractDirectory = strContractDirectory.Replace('-', '_');
+            string strPODirectory = @"F:\\OPM\\" + strContractDirectory + "\\" + txbPOName.Text;
+
+            /*Create Bao Lanh Thuc Hien Hop Dong*/
+            int ret = 0;
+            string fileBBKTKTHH_temp = @"F:\LP\Bien_Ban_KTKT_HH_Template.docx";
+            string strBBKTKT = strPODirectory + "\\Biên Bản Kiểm Tra Kỹ Thuật_" + txbPOName.Text + "_" + txbIDContract.Text + ".docx";
+            strBBKTKT = strBBKTKT.Replace("/", "_");
+            ContractObj contractObj = new ContractObj();
+            ret = ContractObj.GetObjectContract(txbIDContract.Text, ref contractObj);
+            PO pO = new PO();
+            ret = PO.GetObjectPO(txbPOCode.Text, ref pO);
+            NTKT nTKT = new NTKT();
+            nTKT.GetObjectNTKTByIDPO(txbPOCode.Text, ref nTKT);
+            this.Cursor = Cursors.WaitCursor;
+            OpmWordHandler.Create_BBKTKT_HH(fileBBKTKTHH_temp,strBBKTKT, contractObj, pO, nTKT);
+            this.Cursor = Cursors.Default;
         }
     }
 }

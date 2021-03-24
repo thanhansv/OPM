@@ -398,5 +398,64 @@ namespace OPM.WordHandler
             MessageBox.Show("File Xác Nhận Đơn Hàng Đã Được Created!");
         }
 
+
+        public static void Create_BBKTKT_HH(object filename, object SaveAs,ContractObj contractObject ,PO objPO, NTKT nTKT)
+        {
+            WordOffice.Application wordApp = new WordOffice.Application();
+            object missing = Missing.Value;
+            WordOffice.Document myWordDoc = null;
+
+            if (File.Exists((string)filename))
+            {
+                object readOnly = false;
+                object isVisible = false;
+                wordApp.Visible = false;
+
+                myWordDoc = wordApp.Documents.Open(ref filename, ref missing, ref readOnly,
+                                        ref missing, ref missing, ref missing,
+                                        ref missing, ref missing, ref missing,
+                                        ref missing, ref missing, ref missing,
+                                        ref missing, ref missing, ref missing, ref missing);
+                myWordDoc.Activate();
+
+                //find and replace
+                FindAndReplace(wordApp, "<PO_Number>", " " + objPO.PONumber + " ");
+                FindAndReplace(wordApp, "<PO_ID>", " " + objPO.IDPO + " ");
+                FindAndReplace(wordApp, "<PO_CreatedDate>", " " + objPO.DateCreatedPO + " ");
+                FindAndReplace(wordApp, "<XNDH_ID>", " " + objPO.IDPO + " ");
+                FindAndReplace(wordApp, "<XNDH_CreatedDate>", " " + objPO.DefaultActiveDatePO + " ");
+                FindAndReplace(wordApp, "<NTKT_ID>", " " + nTKT.ID_NTKT + " ");
+                FindAndReplace(wordApp, "<NTKT_CreatedDate>", " " + nTKT.getCreateDate + " ");
+                FindAndReplace(wordApp, "<DateNow>", " " + DateTime.Now.ToString("dd/MM/yyyy") + " ");
+                FindAndReplace(wordApp, "<Contract_ID>", " " + contractObject.IdContract + " ");
+                FindAndReplace(wordApp, "<Contract_Name>", " " + contractObject.NameContract + " ");
+                FindAndReplace(wordApp, "<KHMS>", " " + contractObject.KHMS + " ");
+                FindAndReplace(wordApp, "<Contract_DateSigned>", " " + contractObject.DateSigned + " ");
+                FindAndReplace(wordApp, "<Site_B>", " " + contractObject.SiteB + " ");
+
+                /*FindAndReplace(wordApp, "<Address_Site_B>", " " + confirmPO.ID_NTKT + " ");
+                FindAndReplace(wordApp, "<LandLine_Site_B>", " " + confirmPO.ID_NTKT + " ");
+                FindAndReplace(wordApp, "<Fax_Site_B>", " " + confirmPO.ID_NTKT + " ");
+                FindAndReplace(wordApp, "<LandLine_Site_A>", " " + confirmPO.ID_NTKT + " ");
+                FindAndReplace(wordApp, "<Fax_Site_A>", " " + confirmPO.ID_NTKT + " ");*/
+
+
+            }
+            else
+            {
+                MessageBox.Show("File not Found!");
+            }
+
+            //Save as
+            myWordDoc.SaveAs2(ref SaveAs, ref missing, ref missing, ref missing,
+                            ref missing, ref missing, ref missing,
+                            ref missing, ref missing, ref missing,
+                            ref missing, ref missing, ref missing,
+                            ref missing, ref missing, ref missing);
+
+            myWordDoc.Close();
+            wordApp.Quit();
+            MessageBox.Show("File Biên Bản Kiểm Tra Kĩ Thuật Hàng Hóa Được Tạo");
+        }
     }
 }

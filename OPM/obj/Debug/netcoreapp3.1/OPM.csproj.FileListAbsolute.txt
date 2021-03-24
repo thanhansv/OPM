@@ -77,3 +77,4 @@ E:\OPMA\OPM\OPM\obj\Debug\netcoreapp3.1\OPM.csproj.CopyComplete
 E:\OPMA\OPM\OPM\obj\Debug\netcoreapp3.1\OPM.dll
 E:\OPMA\OPM\OPM\obj\Debug\netcoreapp3.1\OPM.pdb
 E:\OPMA\OPM\OPM\obj\Debug\netcoreapp3.1\OPM.genruntimeconfig.cache
+E:\OPMA\OPM\OPM\obj\Debug\netcoreapp3.1\OPM.csprojAssemblyReference.cache

@@ -94,13 +94,14 @@ namespace OPM.OPMEnginee
             string strQueryOne = "select * from PO where id=" + "'" + strIdPO + "'";
             DataSet ds = new DataSet();
             int ret = OPMDBHandler.fQuerryData(strQueryOne, ref ds);
+            Console.Write(ds);
             if (0 != ds.Tables.Count)
             {
                 objPO.IDPO = (string)ds.Tables[0].Rows[0].ItemArray[0];
                 objPO.IdContract = (string)ds.Tables[0].Rows[0].ItemArray[1];
                 objPO.PONumber = (string)ds.Tables[0].Rows[0].ItemArray[2];
                 objPO.NumberOfDevice = (float)(double)ds.Tables[0].Rows[0].ItemArray[3];
-                objPO.DateCreatedPO =((DateTime)ds.Tables[0].Rows[0].ItemArray[4]).ToString("yyyy-MM-dd");   
+                objPO.DateCreatedPO =((DateTime)ds.Tables[0].Rows[0].ItemArray[4]).ToString("yyyy-MM-dd");  
                 objPO.DurationConfirmPO = ((DateTime)ds.Tables[0].Rows[0].ItemArray[6]).ToString("yyyy-MM-dd");
                 objPO.DefaultActiveDatePO = ((DateTime)ds.Tables[0].Rows[0].ItemArray[7]).ToString("yyyy-MM-dd");
                 objPO.DeadLinePO = ((DateTime)ds.Tables[0].Rows[0].ItemArray[8]).ToString("yyyy-MM-dd");
@@ -113,6 +114,51 @@ namespace OPM.OPMEnginee
             }
             return 1;
         }
+
+        public int GetDisplayPO(string strIdPO, ref PO objPO)
+        {
+            string strQueryOne = "select * from PO where id=" + "'" + strIdPO + "'";
+            DataSet ds = new DataSet();
+            int ret = OPMDBHandler.fQuerryData(strQueryOne, ref ds);
+            Console.Write(ds);
+            if (0 != ds.Tables.Count)
+            {
+                objPO.IDPO = (string)ds.Tables[0].Rows[0].ItemArray[0];
+                objPO.IdContract = (string)ds.Tables[0].Rows[0].ItemArray[1];
+                objPO.PONumber = (string)ds.Tables[0].Rows[0].ItemArray[2];
+                objPO.NumberOfDevice = (float)(double)ds.Tables[0].Rows[0].ItemArray[3];
+                objPO.DateCreatedPO = ((DateTime)ds.Tables[0].Rows[0].ItemArray[4]).ToString("yyyy-MM-dd");
+                objPO.DurationConfirmPO = ((DateTime)ds.Tables[0].Rows[0].ItemArray[6]).ToString("yyyy-MM-dd");
+                objPO.DefaultActiveDatePO = ((DateTime)ds.Tables[0].Rows[0].ItemArray[7]).ToString("yyyy-MM-dd");
+                objPO.DeadLinePO = ((DateTime)ds.Tables[0].Rows[0].ItemArray[8]).ToString("yyyy-MM-dd");
+                objPO.TotalValuePO = (float)(double)ds.Tables[0].Rows[0].ItemArray[12];
+                    
+            }
+            else
+            {
+                return 0;
+            }
+            return 1;
+        }
+
+        public int DisplayPO(string idPO, ref string namecontract, ref string KHMS)
+        {
+            string strQueryOne = "SELECT DISTINCT Contract.namecontract, Contract.KHMS FROM Contract INNER JOIN PO ON PO.id_contract = Contract.id WHERE PO.id =" + "'" + idPO + "'";
+            DataSet ds = new DataSet();
+            int ret = OPMDBHandler.fQuerryData(strQueryOne, ref ds);
+
+            if (0 != ds.Tables.Count)
+            {
+                namecontract= (string)ds.Tables[0].Rows[0].ItemArray[0];
+                KHMS = ds.Tables[0].Rows[0].ItemArray[1].ToString();
+            }
+            else
+            {
+                return 0;
+            }
+            return 1;
+        }
+
 
         public int InsertListPO(IPO po, string strInsertQuery)
         {

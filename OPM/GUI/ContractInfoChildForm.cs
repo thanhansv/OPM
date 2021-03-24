@@ -53,6 +53,7 @@ namespace OPM.GUI
             this.tbxSiteB.Text = contract.SiteB;
             return;
         }
+
         private IContract contract = new ContractObj();
         private void button1_Click(object sender, EventArgs e)
         {
@@ -72,13 +73,13 @@ namespace OPM.GUI
         {
         }
 
-        private void TextBox_Changed(object sender, EventArgs e)
+/*        private void TextBox_Changed(object sender, EventArgs e)
         {
             if(tbxDurationContract.SelectionLength > 0)
             {
                 dateTimePickerDurationDateContract.Value = dateTimePickerDateSignedPO.Value.AddDays(Convert.ToInt32(tbxDurationContract.Text));
             }
-        }
+        }*/
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -146,6 +147,28 @@ namespace OPM.GUI
             }
             
             return;
+        }
+
+        private static bool isNumber(string val)
+        {
+            if (val != "")
+            {
+                return System.Text.RegularExpressions.Regex.IsMatch(val, "[^0-9]");
+            }
+              else return true;
+        }
+
+        private void tbxDurationContract_TextChanged(object sender, EventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            if (isNumber(tbxDurationContract.Text) != true)
+            {
+                dateTimePickerDurationDateContract.Value= dateTimePickerDateSignedPO.Value.AddDays(Convert.ToInt32(tbxDurationContract.Text));
+            } else
+            {
+                MessageBox.Show("only allow input numbers");
+                tbxDurationContract.Text = "";
+            }
         }
     }
 }
