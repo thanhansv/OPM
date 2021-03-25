@@ -14,7 +14,7 @@
           "System.Data.SqlClient": "4.8.2",
           "Interop.Microsoft.Office.Core": "2.5.0.0",
           "Interop.Microsoft.Office.Interop.Word": "8.5.0.0",
-          "Interop.Microsoft.Office.Interop.Excel": "1.9.0.0"
+          "Interop.Microsoft.Office.Interop.Excel": "1.6.0.0"
         },
         "runtime": {
           "OPM.dll": {}
@@ -138,11 +138,11 @@
           }
         }
       },
-      "Interop.Microsoft.Office.Interop.Excel/1.9.0.0": {
+      "Interop.Microsoft.Office.Interop.Excel/1.6.0.0": {
         "runtime": {
           "Interop.Microsoft.Office.Interop.Excel.dll": {
-            "assemblyVersion": "1.9.0.0",
-            "fileVersion": "1.9.0.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       }
@@ -248,7 +248,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Interop.Microsoft.Office.Interop.Excel/1.9.0.0": {
+    "Interop.Microsoft.Office.Interop.Excel/1.6.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
