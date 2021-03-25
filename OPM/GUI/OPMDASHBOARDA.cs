@@ -168,6 +168,7 @@ namespace OPM.GUI
                     /*Display NTKT */
                     NTKTInfor nTKTInfor = new NTKTInfor();
                     nTKTInfor.UpdateCatalogPanel = new NTKTInfor.UpdateCatalogDelegate(GetCatalogvalue);
+                    nTKTInfor.setValueItemForNTKT(temp[1]);
                     OpenChidForm(nTKTInfor);
                     break;
                 case ConstantVar.PLType:
