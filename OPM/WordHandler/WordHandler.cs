@@ -399,7 +399,7 @@ namespace OPM.WordHandler
         }
 
 
-        public static void Create_BBKTKT_HH(object filename, object SaveAs,ContractObj contractObject ,PO objPO, NTKT nTKT)
+        public static void Create_BBKTKT_HH(object filename, object SaveAs,ContractObj contractObject ,PO objPO, NTKT nTKT, SiteInfo siteInfo)
         {
             WordOffice.Application wordApp = new WordOffice.Application();
             object missing = Missing.Value;
@@ -426,6 +426,8 @@ namespace OPM.WordHandler
                 FindAndReplace(wordApp, "<XNDH_CreatedDate>", " " + objPO.DefaultActiveDatePO + " ");
                 FindAndReplace(wordApp, "<NTKT_ID>", " " + nTKT.ID_NTKT + " ");
                 FindAndReplace(wordApp, "<NTKT_CreatedDate>", " " + nTKT.getCreateDate + " ");
+                FindAndReplace(wordApp, "<DC>", " " + objPO.NumberOfDevice + " ");
+                FindAndReplace(wordApp, "<PDC>", " " + (Math.Round((objPO.NumberOfDevice)*0.02)) + " ");
                 FindAndReplace(wordApp, "<DateNow>", " " + DateTime.Now.ToString("dd/MM/yyyy") + " ");
                 FindAndReplace(wordApp, "<Contract_ID>", " " + contractObject.IdContract + " ");
                 FindAndReplace(wordApp, "<Contract_Name>", " " + contractObject.NameContract + " ");
@@ -433,11 +435,11 @@ namespace OPM.WordHandler
                 FindAndReplace(wordApp, "<Contract_DateSigned>", " " + contractObject.DateSigned + " ");
                 FindAndReplace(wordApp, "<Site_B>", " " + contractObject.SiteB + " ");
 
-                /*FindAndReplace(wordApp, "<Address_Site_B>", " " + confirmPO.ID_NTKT + " ");
-                FindAndReplace(wordApp, "<LandLine_Site_B>", " " + confirmPO.ID_NTKT + " ");
-                FindAndReplace(wordApp, "<Fax_Site_B>", " " + confirmPO.ID_NTKT + " ");
-                FindAndReplace(wordApp, "<LandLine_Site_A>", " " + confirmPO.ID_NTKT + " ");
-                FindAndReplace(wordApp, "<Fax_Site_A>", " " + confirmPO.ID_NTKT + " ");*/
+                FindAndReplace(wordApp, "<Address_Site_B>", " " + siteInfo.Address + " ");
+                FindAndReplace(wordApp, "<LandLine_Site_B>", " " + siteInfo.Phonenumber + " ");
+                FindAndReplace(wordApp, "<Fax_Site_B>", " " + siteInfo.Tin + " ");
+                FindAndReplace(wordApp, "<LandLine_Site_A>", " " + siteInfo.LandlineSiteA + " ");
+                FindAndReplace(wordApp, "<Fax_Site_A>", " " + siteInfo.FaxSiteA + " ");
 
 
             }

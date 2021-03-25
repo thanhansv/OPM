@@ -176,8 +176,10 @@ namespace OPM.GUI
             ret = PO.GetObjectPO(txbPOCode.Text, ref pO);
             NTKT nTKT = new NTKT();
             nTKT.GetObjectNTKTByIDPO(txbPOCode.Text, ref nTKT);
+            SiteInfo siteInfo = new SiteInfo();
+            siteInfo.GetSiteInfoObject(txbIDContract.Text, ref siteInfo);
             this.Cursor = Cursors.WaitCursor;
-            OpmWordHandler.Create_BBKTKT_HH(fileBBKTKTHH_temp,strBBKTKT, contractObj, pO, nTKT);
+            OpmWordHandler.Create_BBKTKT_HH(fileBBKTKTHH_temp,strBBKTKT, contractObj, pO, nTKT,siteInfo);
             this.Cursor = Cursors.Default;
         }
     }
