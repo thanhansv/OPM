@@ -154,7 +154,7 @@ namespace OPM.OPMEnginee
             {
                 nTKT.ID_NTKT = (string)ds.Tables[0].Rows[0].ItemArray[0];
                 nTKT.POID = (string)ds.Tables[0].Rows[0].ItemArray[1];
-                nTKT.NumberOfDevice = (float)(double)ds.Tables[0].Rows[0].ItemArray[2];
+                nTKT.NumberOfDevice = (int)ds.Tables[0].Rows[0].ItemArray[2];
                 nTKT.DateDuKienNTKT = ((DateTime)ds.Tables[0].Rows[0].ItemArray[3]).ToString("yyyy-MM-dd");
                 nTKT.getCreateDate = ((DateTime)ds.Tables[0].Rows[0].ItemArray[5]).ToString("yyyy-MM-dd");
             }
@@ -197,6 +197,24 @@ namespace OPM.OPMEnginee
                 nTKT.PONumber = (string)ds.Tables[0].Rows[0].ItemArray[4];
                 nTKT.IDContract = (string)ds.Tables[0].Rows[0].ItemArray[5];
                 nTKT.KHMS = (string)ds.Tables[0].Rows[0].ItemArray[6];
+            }
+            else
+            {
+                return 0;
+            }
+            return 1;
+        }
+        //@Dưỡng Bùi -- Lấy thông tin mã PO, PO number, idContract bằng mã NTKT
+        public int getPOinfor(string idNTKT, ref string idPO, ref string PONumber, ref string idContract)
+        {
+            string strQueryOne = "SELECT DISTINCT PO.id, PO.po_number, PO.id_contract FROM NTKT INNER JOIN PO ON NTKT.id_po = PO.id WHERE NTKT.id = " + "'" + idNTKT + "'";
+            DataSet ds = new DataSet();
+            int ret = OPMDBHandler.fQuerryData(strQueryOne, ref ds);
+            if (0 != ds.Tables.Count)
+            {
+                idPO = (string)ds.Tables[0].Rows[0].ItemArray[0];
+                PONumber = ds.Tables[0].Rows[0].ItemArray[1].ToString();
+                idContract = ds.Tables[0].Rows[0].ItemArray[2].ToString();
             }
             else
             {
