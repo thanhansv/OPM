@@ -61,6 +61,7 @@ namespace OPM.GUI
             this.btnNTKT = new System.Windows.Forms.Button();
             this.btnBaoHiem = new System.Windows.Forms.Button();
             this.btnConfirmPO = new System.Windows.Forms.Button();
+            this.btnKTKT = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,7 +69,7 @@ namespace OPM.GUI
             // 
             this.btnSave.Location = new System.Drawing.Point(12, 515);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(41, 23);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -304,7 +305,7 @@ namespace OPM.GUI
             // 
             // btnNTKT
             // 
-            this.btnNTKT.Location = new System.Drawing.Point(274, 515);
+            this.btnNTKT.Location = new System.Drawing.Point(299, 515);
             this.btnNTKT.Name = "btnNTKT";
             this.btnNTKT.Size = new System.Drawing.Size(75, 23);
             this.btnNTKT.TabIndex = 9;
@@ -314,7 +315,7 @@ namespace OPM.GUI
             // 
             // btnBaoHiem
             // 
-            this.btnBaoHiem.Location = new System.Drawing.Point(194, 515);
+            this.btnBaoHiem.Location = new System.Drawing.Point(218, 515);
             this.btnBaoHiem.Name = "btnBaoHiem";
             this.btnBaoHiem.Size = new System.Drawing.Size(75, 23);
             this.btnBaoHiem.TabIndex = 10;
@@ -324,7 +325,7 @@ namespace OPM.GUI
             // 
             // btnConfirmPO
             // 
-            this.btnConfirmPO.Location = new System.Drawing.Point(113, 515);
+            this.btnConfirmPO.Location = new System.Drawing.Point(137, 515);
             this.btnConfirmPO.Name = "btnConfirmPO";
             this.btnConfirmPO.Size = new System.Drawing.Size(75, 23);
             this.btnConfirmPO.TabIndex = 11;
@@ -332,12 +333,23 @@ namespace OPM.GUI
             this.btnConfirmPO.UseVisualStyleBackColor = true;
             this.btnConfirmPO.Click += new System.EventHandler(this.btnConfirmPO_Click);
             // 
+            // btnKTKT
+            // 
+            this.btnKTKT.Location = new System.Drawing.Point(59, 515);
+            this.btnKTKT.Name = "btnKTKT";
+            this.btnKTKT.Size = new System.Drawing.Size(76, 23);
+            this.btnKTKT.TabIndex = 12;
+            this.btnKTKT.Text = "Export KTKT";
+            this.btnKTKT.UseVisualStyleBackColor = true;
+            this.btnKTKT.Click += new System.EventHandler(this.btnKTKT_Click);
+            // 
             // PurchaseOderInfor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Yellow;
-            this.ClientSize = new System.Drawing.Size(456, 550);
+            this.ClientSize = new System.Drawing.Size(463, 593);
+            this.Controls.Add(this.btnKTKT);
             this.Controls.Add(this.btnConfirmPO);
             this.Controls.Add(this.btnBaoHiem);
             this.Controls.Add(this.btnNTKT);
@@ -413,5 +425,6 @@ namespace OPM.GUI
         private System.Windows.Forms.Button btnNTKT;
         private System.Windows.Forms.Button btnBaoHiem;
         private System.Windows.Forms.Button btnConfirmPO;
+        private System.Windows.Forms.Button btnKTKT;
     }
 }

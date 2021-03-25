@@ -154,8 +154,8 @@ namespace OPM.GUI
                     /*Display PO */
                     PurchaseOderInfor purchaseOderInfor  = new PurchaseOderInfor();
                     purchaseOderInfor.UpdateCatalogPanel = new PurchaseOderInfor.UpdateCatalogDelegate(GetCatalogvalue);
-                    
-                    //contractInfoChildForm.SetValueItemForm();
+                    MessageBox.Show(temp[1]);
+                    purchaseOderInfor.SetValueItemForPO(temp[1]);
                     OpenChidForm(purchaseOderInfor);
                     break;
                 case ConstantVar.DPType:

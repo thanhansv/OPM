@@ -77,6 +77,7 @@ E:\OPMA\OPM\OPM\obj\Debug\netcoreapp3.1\OPM.csproj.CopyComplete
 E:\OPMA\OPM\OPM\obj\Debug\netcoreapp3.1\OPM.dll
 E:\OPMA\OPM\OPM\obj\Debug\netcoreapp3.1\OPM.pdb
 E:\OPMA\OPM\OPM\obj\Debug\netcoreapp3.1\OPM.genruntimeconfig.cache
+<<<<<<< HEAD
 F:\07. Digital Tranfrom\Source\OPM_DASHBOARD\OPM\OPM\bin\Debug\netcoreapp3.1\OPM.exe
 F:\07. Digital Tranfrom\Source\OPM_DASHBOARD\OPM\OPM\bin\Debug\netcoreapp3.1\OPM.deps.json
 F:\07. Digital Tranfrom\Source\OPM_DASHBOARD\OPM\OPM\bin\Debug\netcoreapp3.1\OPM.runtimeconfig.json
@@ -117,3 +118,6 @@ F:\07. Digital Tranfrom\Source\OPM_DASHBOARD\OPM\OPM\obj\Debug\netcoreapp3.1\OPM
 F:\07. Digital Tranfrom\Source\OPM_DASHBOARD\OPM\OPM\obj\Debug\netcoreapp3.1\OPM.dll
 F:\07. Digital Tranfrom\Source\OPM_DASHBOARD\OPM\OPM\obj\Debug\netcoreapp3.1\OPM.pdb
 F:\07. Digital Tranfrom\Source\OPM_DASHBOARD\OPM\OPM\obj\Debug\netcoreapp3.1\OPM.genruntimeconfig.cache
+=======
+E:\OPMA\OPM\OPM\obj\Debug\netcoreapp3.1\OPM.csprojAssemblyReference.cache
+>>>>>>> 7198b9db026ee03093662e057000111b6689fd03

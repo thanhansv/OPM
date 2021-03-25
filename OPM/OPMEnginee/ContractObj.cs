@@ -159,7 +159,7 @@ namespace OPM.OPMEnginee
                 contract.VbGuranteeDoc = ds.Tables[0].Rows[0].ItemArray[12].ToString();
                 contract.SiteA = (string)ds.Tables[0].Rows[0].ItemArray[9];
                 contract.SiteB = (string)ds.Tables[0].Rows[0].ItemArray[10];
-                contract.KHMS = (string)ds.Tables[0].Rows[0].ItemArray[13];
+                contract.KHMS = ds.Tables[0].Rows[0].ItemArray[13].ToString();
             }
             else
             {
@@ -188,7 +188,7 @@ namespace OPM.OPMEnginee
                 contract.VbGuranteeDoc = ds.Tables[0].Rows[0].ItemArray[12].ToString();
                 contract.SiteA = (string)ds.Tables[0].Rows[0].ItemArray[9];
                 contract.SiteB = (string)ds.Tables[0].Rows[0].ItemArray[10];
-                contract.KHMS = (string)ds.Tables[0].Rows[0].ItemArray[13];
+                contract.KHMS = ds.Tables[0].Rows[0].ItemArray[13].ToString();
             }
             else
             {

@@ -220,6 +220,7 @@ namespace OPM.GUI
             this.tbxDurationContract.Name = "tbxDurationContract";
             this.tbxDurationContract.Size = new System.Drawing.Size(78, 23);
             this.tbxDurationContract.TabIndex = 1;
+            this.tbxDurationContract.TextChanged += new System.EventHandler(this.tbxDurationContract_TextChanged);
             // 
             // txbTypeContract
             // 

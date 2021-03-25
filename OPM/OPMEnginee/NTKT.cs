@@ -27,6 +27,7 @@ namespace OPM.OPMEnginee
         private string _typeOfDevice;
         private string _deliverDateExpected;
         private string _emailRequeststatus;
+        private string _createDate;
 
         /*Add New*/
         public float NumberOfDevice
@@ -104,6 +105,11 @@ namespace OPM.OPMEnginee
             set { _mrGD_CSKH_LandlineExt = value; }
             get { return _mrGD_CSKH_LandlineExt; }
         }
+        public string getCreateDate
+        {
+            set { _createDate = value; }
+            get { return _createDate; }
+        }
 
         public int CheckExistNTKT(string strIDNTKT)
         {
@@ -150,6 +156,27 @@ namespace OPM.OPMEnginee
                 nTKT.POID = (string)ds.Tables[0].Rows[0].ItemArray[1];
                 nTKT.NumberOfDevice = (float)(double)ds.Tables[0].Rows[0].ItemArray[2];
                 nTKT.DateDuKienNTKT = ((DateTime)ds.Tables[0].Rows[0].ItemArray[3]).ToString("yyyy-MM-dd");
+                nTKT.getCreateDate = ((DateTime)ds.Tables[0].Rows[0].ItemArray[5]).ToString("yyyy-MM-dd");
+            }
+            else
+            {
+                return 0;
+            }
+            return 1;
+        }
+
+        public int GetObjectNTKTByIDPO(string strIdPO, ref NTKT nTKT)
+        {
+            string strQueryOne = "select * from NTKT where id_po=" + "'" + strIdPO + "'";
+            DataSet ds = new DataSet();
+            int ret = OPMDBHandler.fQuerryData(strQueryOne, ref ds);
+            if (0 != ds.Tables.Count)
+            {
+                nTKT.ID_NTKT = (string)ds.Tables[0].Rows[0].ItemArray[0];
+                nTKT.POID = (string)ds.Tables[0].Rows[0].ItemArray[1];
+                nTKT.NumberOfDevice = (int)ds.Tables[0].Rows[0].ItemArray[2];
+                nTKT.DateDuKienNTKT = ((DateTime)ds.Tables[0].Rows[0].ItemArray[3]).ToString("yyyy-MM-dd");
+                nTKT.getCreateDate = ((DateTime)ds.Tables[0].Rows[0].ItemArray[5]).ToString("yyyy-MM-dd");
             }
             else
             {
