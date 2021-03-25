@@ -12,7 +12,7 @@ namespace OPM.EmailHandler
         {
             MailMessage mail = new MailMessage();
             SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-            mail.From = new MailAddress("taduydoan.ansv@gmail.com");
+            mail.From = new MailAddress("johantesttoiec10@gmail.com");
             mail.To.Add("phongbui@gmail.com");
             mail.Subject = "Test Mail";
             mail.Body = "This is for testing SMTP mail from GMAIL";
@@ -21,7 +21,7 @@ namespace OPM.EmailHandler
             mail.Attachments.Add(attachment);
 
             SmtpServer.Port = 587;
-            SmtpServer.Credentials = new System.Net.NetworkCredential("taduydoan.ansv@gmail.com", "Nuocmat@172");
+            SmtpServer.Credentials = new System.Net.NetworkCredential("johantesttoiec10@gmail.com", "nuocmat172");
             SmtpServer.EnableSsl = true;
             SmtpServer.Send(mail);
         }
