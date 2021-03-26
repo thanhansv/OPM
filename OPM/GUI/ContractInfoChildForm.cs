@@ -29,6 +29,22 @@ namespace OPM.GUI
             
         }
 
+        public void State(bool state)
+        {
+            txbKHMS.Enabled = state;
+            tbContract.Enabled = state;
+            tbBidName.Enabled = state;
+            tbAccountingCode.Enabled = state;
+            tbxDurationContract.Enabled = state;
+            txbTypeContract.Enabled = state;
+            tbxValueContract.Enabled = state;
+            tbxDurationPO.Enabled = state;
+            txbGaranteeValue.Enabled = state;
+            txbGaranteeActiveDate.Enabled = state;
+            tbxSiteA.Enabled = state;
+            tbxSiteB.Enabled = state;
+        }
+
         public void SetValueItemForm(string idContract)
         {
             //Add New Comment+ Edit From local
@@ -48,6 +64,7 @@ namespace OPM.GUI
             this.tbxDurationPO.Text = contract.DurationGuranteePO;
             this.tbxSiteA.Text = contract.SiteA;
             this.tbxSiteB.Text = contract.SiteB;
+            State(false);
             return;
         }
 
@@ -87,11 +104,10 @@ namespace OPM.GUI
             newContract.IdContract = tbContract.Text;
             newContract.NameContract = tbBidName.Text;
             newContract.CodeAccounting = tbAccountingCode.Text;
-            newContract.DateSigned = dateTimePickerDateSignedPO.Value.ToString("dd-MM-yyyy");
+            newContract.DateSigned = dateTimePickerDateSignedPO.Value.ToString("yyyy-MM-dd");
             newContract.TypeContract = txbTypeContract.Text;
             newContract.DurationContract = tbxDurationContract.Text;
-            dateTimePickerDurationDateContract.Value = dateTimePickerDateSignedPO.Value.AddDays(Convert.ToInt32(tbxDurationContract.Text));
-            newContract.ActiveDateContract = dateTimePickerActiveDateContract.Value.ToString("dd-MM-yyyy");
+            newContract.ActiveDateContract = dateTimePickerActiveDateContract.Value.ToString("yyyy-MM-dd");
             newContract.ValueContract = tbxValueContract.Text;
             newContract.DurationGuranteePO = tbxDurationPO.Text;
             newContract.SiteA = tbxSiteA.Text;
@@ -137,9 +153,15 @@ namespace OPM.GUI
             else
             {
                 ret = newContract.UpdateExistedContract(newContract);
+                
                 if (0 == ret)
                 {
                     MessageBox.Show(ConstantVar.CreateNewContractFail);
+                }
+                else
+                {
+                    MessageBox.Show("Update Success");
+                    State(false);
                 }
             }
             
@@ -158,7 +180,7 @@ namespace OPM.GUI
         private void tbxDurationContract_TextChanged(object sender, EventArgs e)
         {
             TextBox textBox = sender as TextBox;
-            if (isNumber(tbxDurationContract.Text) != true)
+            if (isNumber(tbxDurationContract.Text) != true && (tbxDurationContract.Text) !=null)
             {
                 dateTimePickerDurationDateContract.Value= dateTimePickerDateSignedPO.Value.AddDays(Convert.ToInt32(tbxDurationContract.Text));
             } else
@@ -166,6 +188,11 @@ namespace OPM.GUI
                 MessageBox.Show("only allow input numbers");
                 tbxDurationContract.Text = "";
             }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            State(true);
         }
     }
 }

@@ -111,5 +111,22 @@ namespace OPM.GUI
         {
             return;
         }
+        //@Dưỡng Bùi -- Show thông tin NTKT lên UI
+        public void setValueItemForNTKT(string IDNTKT)
+        {
+            NTKT nTKT = new NTKT();
+            nTKT.GetObjectNTKT(IDNTKT, ref nTKT);
+            string idPO = null, poNumber = null, idContract = null;
+            int ret = nTKT.getPOinfor(IDNTKT, ref idPO, ref poNumber, ref idContract);
+            PO pO = new PO();
+            string namecontract = null, KHMS = null;
+            pO.DisplayPO(idPO, ref namecontract, ref KHMS);
+            this.txbKHMS.Text = (string)KHMS;
+            this.txbIDContract.Text = (string)idContract;
+            this.txbPOID.Text = (string)nTKT.POID;
+            this.txbPONumber.Text = (string)poNumber;
+            this.txbNTKTID.Text = (string)nTKT.ID_NTKT;
+            dateTimePickerNTKT.Value = Convert.ToDateTime(nTKT.DateDuKienNTKT);
+        }
     }
 }
