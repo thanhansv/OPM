@@ -130,7 +130,7 @@ namespace OPM.GUI
             this.panCatalog.Controls.Add(this.treeView1);
             this.panCatalog.Location = new System.Drawing.Point(9, 100);
             this.panCatalog.Name = "panCatalog";
-            this.panCatalog.Size = new System.Drawing.Size(246, 465);
+            this.panCatalog.Size = new System.Drawing.Size(246, 504);
             this.panCatalog.TabIndex = 1;
             // 
             // treeView1
@@ -144,7 +144,7 @@ namespace OPM.GUI
             this.treeView1.LabelEdit = true;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(246, 465);
+            this.treeView1.Size = new System.Drawing.Size(246, 504);
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeView1_AfterLabelEdit);
             this.treeView1.DoubleClick += new System.EventHandler(this.treeView1_DoubleClick);
@@ -201,7 +201,7 @@ namespace OPM.GUI
             this.panContent.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panContent.Location = new System.Drawing.Point(261, 5);
             this.panContent.Name = "panContent";
-            this.panContent.Size = new System.Drawing.Size(488, 560);
+            this.panContent.Size = new System.Drawing.Size(488, 599);
             this.panContent.TabIndex = 2;
             // 
             // panDescription
@@ -211,14 +211,14 @@ namespace OPM.GUI
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panDescription.Location = new System.Drawing.Point(738, 5);
             this.panDescription.Name = "panDescription";
-            this.panDescription.Size = new System.Drawing.Size(262, 560);
+            this.panDescription.Size = new System.Drawing.Size(262, 599);
             this.panDescription.TabIndex = 3;
             // 
             // OPMDASHBOARDA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1001, 571);
+            this.ClientSize = new System.Drawing.Size(1001, 610);
             this.Controls.Add(this.panDescription);
             this.Controls.Add(this.panContent);
             this.Controls.Add(this.panCatalog);

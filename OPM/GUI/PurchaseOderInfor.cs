@@ -29,6 +29,10 @@ namespace OPM.GUI
         public delegate void RequestDashBoardPurchaseOderForm(string strIDPO, string strKHMS);
         public RequestDashBoardPurchaseOderForm requestDashBoardPurchaseOderForm;
 
+        //open excel handle
+        public delegate void RequestDasckboardOpenExcel();
+        public RequestDasckboardOpenExcel requestDasckboardOpenExcel;
+
         public PurchaseOderInfor()
         {
             InitializeComponent();
@@ -184,6 +188,11 @@ namespace OPM.GUI
             this.Cursor = Cursors.WaitCursor;
             OpmWordHandler.Create_BBKTKT_HH(fileBBKTKTHH_temp,strBBKTKT, contractObj, pO, nTKT,siteInfo);
             this.Cursor = Cursors.Default;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            requestDasckboardOpenExcel();
         }
     }
 }

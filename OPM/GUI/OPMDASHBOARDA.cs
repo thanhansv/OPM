@@ -375,6 +375,7 @@ namespace OPM.GUI
             purchaseOderInfor.requestDashBoardOpenConfirmPOForm = new PurchaseOderInfor.RequestDashBoardOpenConfirmForm(OpenConfirmPOForm);
 
             /**/
+            purchaseOderInfor.requestDasckboardOpenExcel = new PurchaseOderInfor.RequestDasckboardOpenExcel(OpenExcel);
             ContractInfoChildForm contractInfoChildForm = new ContractInfoChildForm();
             contractInfoChildForm.requestDashBoardOpendescriptionForm = new ContractInfoChildForm.RequestDashBoardOpenDescriptionForm(OpenDescription);
             strIDContract = strIDContract.Replace("Contract_","");
@@ -428,6 +429,12 @@ namespace OPM.GUI
             OpenChidForm1(descriptionSiteForm);
             return;
         }
+        public void OpenExcel()
+        {
 
+            HandlerExcel handlerExcel = new HandlerExcel();
+            OpenChidForm(handlerExcel);
+            return;
+        }
     }
 }

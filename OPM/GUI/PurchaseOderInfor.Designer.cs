@@ -62,6 +62,7 @@ namespace OPM.GUI
             this.btnBaoHiem = new System.Windows.Forms.Button();
             this.btnConfirmPO = new System.Windows.Forms.Button();
             this.btnKTKT = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -343,12 +344,23 @@ namespace OPM.GUI
             this.btnKTKT.UseVisualStyleBackColor = true;
             this.btnKTKT.Click += new System.EventHandler(this.btnKTKT_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(15, 553);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(99, 23);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "Import Excel";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // PurchaseOderInfor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Yellow;
-            this.ClientSize = new System.Drawing.Size(463, 593);
+            this.ClientSize = new System.Drawing.Size(476, 593);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnKTKT);
             this.Controls.Add(this.btnConfirmPO);
             this.Controls.Add(this.btnBaoHiem);
@@ -426,5 +438,6 @@ namespace OPM.GUI
         private System.Windows.Forms.Button btnBaoHiem;
         private System.Windows.Forms.Button btnConfirmPO;
         private System.Windows.Forms.Button btnKTKT;
+        private System.Windows.Forms.Button button1;
     }
 }
