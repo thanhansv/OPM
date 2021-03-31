@@ -16,13 +16,7 @@ namespace OPM.GUI
         public delegate void RequestDashBoardOpenDescriptionForm(string siteId);
         public RequestDashBoardOpenDescriptionForm requestDashBoardOpendescriptionForm;
 
-        public void refresh()
-        {
-            this.Controls.Clear();
-            InitializeComponent();
-            SetDefaultValues();
-            
-        }
+       
         private void SetDefaultValues()
         {
             txbID.Clear();
@@ -71,6 +65,16 @@ namespace OPM.GUI
             return;
 
         }
+        public void state(bool state)
+        {
+            txbID.Enabled = state;
+            txbhead.Enabled = state;
+            txbAddress.Enabled = state;
+            txbPhone.Enabled = state;
+            txbFax.Enabled = state;
+            txbRepresen.Enabled = state;
+            txbAccount.Enabled = state;
+        }
         public DescriptionSiteForm()
         {
             InitializeComponent();
@@ -82,12 +86,31 @@ namespace OPM.GUI
 
         private void DescriptionSiteForm_Load(object sender, EventArgs e)
         {
-            //refresh();
+            state(false);
         }
 
-        private void DescriptionSiteForm_Activated(object sender, EventArgs e)
+        private void edit_Click(object sender, EventArgs e)
         {
-            refresh();
+            state(true);
+        }
+
+        private void save_Click(object sender, EventArgs e)
+        {
+            SiteInfo siteInfo = new SiteInfo();
+            siteInfo.Id = txbID.Text;
+            siteInfo.HeadquaterInfo= txbhead.Text;
+            siteInfo.Address = txbAddress.Text;
+            siteInfo.Account = txbAccount.Text;
+            siteInfo.Phonenumber = txbPhone.Text;
+            siteInfo.Tin = txbFax.Text;
+            siteInfo.Representative = txbRepresen.Text;
+            int ret= siteInfo.UpdateExistedSite(siteInfo);
+            if (ret == 0) MessageBox.Show("update ko thành công");
+            else
+            {
+                MessageBox.Show("update thành công");
+                state(false);
+            }
         }
     }
 }

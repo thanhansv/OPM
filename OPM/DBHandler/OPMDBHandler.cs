@@ -11,7 +11,7 @@ namespace OPM.DBHandler
         {
             try 
             {
-                string strconnection = @"Data Source=DESKTOP-9ILF79D\SQLEXPRESS; Initial Catalog = OPM; User ID = sa; Password=123456";
+                string strconnection = @"Data Source=10.2.8.91; Initial Catalog = OpmDB; User ID = sa; Password=Pa$$w0rd";
                 con = new SqlConnection(strconnection);
                 return 1;
             }
@@ -23,7 +23,7 @@ namespace OPM.DBHandler
 
         public static int fInsertData(string strSqlCommand)
         {
-            String strconnection = @"Data Source=DESKTOP-9ILF79D\SQLEXPRESS; Initial Catalog = OPM; User ID = sa; Password=123456";
+            String strconnection = @"Data Source=10.2.8.91; Initial Catalog = OpmDB; User ID = sa; Password=Pa$$w0rd";
             SqlConnection con = new SqlConnection(strconnection);
 
             try
@@ -46,7 +46,7 @@ namespace OPM.DBHandler
         }
         public static int fQuerryData1(string strQuerry)
         {
-            String strconnection = @"Data Source=DESKTOP-9ILF79D\SQLEXPRESS; Initial Catalog = OPM; User ID = sa; Password=123456";
+            String strconnection = @"Data Source=10.2.8.91; Initial Catalog = OpmDB; User ID = sa; Password=Pa$$w0rd";
             SqlConnection con = new SqlConnection(strconnection);
             try
             {
@@ -83,7 +83,7 @@ namespace OPM.DBHandler
 
         public static int fQuerryData(string strQuerry, ref DataSet ds)
         {
-            String strconnection = @"Data Source=DESKTOP-9ILF79D\SQLEXPRESS; Initial Catalog = OPM; User ID = sa; Password=123456";
+            String strconnection = @"Data Source=10.2.8.91; Initial Catalog = OpmDB; User ID = sa; Password=Pa$$w0rd";
             SqlConnection con = new SqlConnection(strconnection);
             SqlDataAdapter adapter = new SqlDataAdapter();
             SqlCommand command;

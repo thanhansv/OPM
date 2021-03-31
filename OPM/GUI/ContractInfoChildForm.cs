@@ -76,10 +76,7 @@ namespace OPM.GUI
         private IContract contract = new ContractObj();
         private void button1_Click(object sender, EventArgs e)
         {
-            DescriptionSiteForm descriptionSiteForm = new DescriptionSiteForm();
-           
             requestDashBoardOpendescriptionForm(tbxSiteA.Text.ToString());
-            descriptionSiteForm.Close();
             return;
         }
 
@@ -202,10 +199,7 @@ namespace OPM.GUI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            DescriptionSiteForm descriptionSiteForm = new DescriptionSiteForm();
-            
             requestDashBoardOpendescriptionForm(tbxSiteB.Text.ToString());
-            descriptionSiteForm.Close();
             return;
         }
 
