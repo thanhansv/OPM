@@ -137,6 +137,7 @@ namespace OPM.OPMEnginee
             strInsertNTKTNew += "','";
             strInsertNTKTNew += nTKT.DateDuKienNTKT;
             strInsertNTKTNew += "','";
+            strInsertNTKTNew += "','";
             strInsertNTKTNew += "')";
             int ret = OPMDBHandler.fInsertData(strInsertNTKTNew);
             if (0 == ret)

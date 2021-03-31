@@ -67,11 +67,9 @@ namespace OPM.GUI
             this.tbxDurationPO.Text = contract.DurationGuranteePO;
             this.tbxSiteA.Text = contract.SiteA;
             this.tbxSiteB.Text = contract.SiteB;
-<<<<<<< HEAD
             this.ExpirationDate.Value = Convert.ToDateTime(contract.ExperationDate.ToString());
-=======
             State(false);
->>>>>>> b509c2c9bcd2219a602f23a229b723a7d425a6d1
+
             return;
         }
 
@@ -118,10 +116,7 @@ namespace OPM.GUI
             newContract.DateSigned = dateTimePickerDateSignedPO.Value.ToString("yyyy-MM-dd");
             newContract.TypeContract = txbTypeContract.Text;
             newContract.DurationContract = tbxDurationContract.Text;
-<<<<<<< HEAD
             dateTimePickerDurationDateContract.Value = dateTimePickerDateSignedPO.Value.AddDays(Convert.ToInt32(tbxDurationContract.Text));
-=======
->>>>>>> b509c2c9bcd2219a602f23a229b723a7d425a6d1
             newContract.ActiveDateContract = dateTimePickerActiveDateContract.Value.ToString("yyyy-MM-dd");
             newContract.ValueContract = tbxValueContract.Text;
             newContract.DurationGuranteePO = tbxDurationPO.Text;
@@ -205,7 +200,6 @@ namespace OPM.GUI
             }
         }
 
-<<<<<<< HEAD
         private void button2_Click(object sender, EventArgs e)
         {
             DescriptionSiteForm descriptionSiteForm = new DescriptionSiteForm();
@@ -227,11 +221,12 @@ namespace OPM.GUI
                 MessageBox.Show("only allow input numbers");
                 txbGaranteeActiveDate.Text = "";
             }
-=======
+
+        }
+
         private void button5_Click(object sender, EventArgs e)
         {
             State(true);
->>>>>>> b509c2c9bcd2219a602f23a229b723a7d425a6d1
         }
     }
 }
