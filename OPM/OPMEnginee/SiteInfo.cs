@@ -41,10 +41,27 @@ namespace OPM.OPMEnginee
         public string Tin { get => _tin; set => _tin = value; }
         public string Account { get => _account; set => _account = value; }
         public string Representative { get => _representative; set => _representative = value; }
-
-        public int GetSiteInfo(string idSiteInfo, ISiteInfo siteInfo)
+        public int GetSiteInfo(string idSiteInfo, ref SiteInfo siteInfo)
         {
-            throw new NotImplementedException();
+            string strQueryOne = "SELECT DISTINCT * FROM Site_Info  WHERE Site_Info.id =" + "'" + idSiteInfo + "'";
+            DataSet ds = new DataSet();
+            int ret = OPMDBHandler.fQuerryData(strQueryOne, ref ds);
+            if (0 != ds.Tables.Count)
+            {
+                siteInfo.Id = (string)ds.Tables[0].Rows[0].ItemArray[0];
+                siteInfo.Type = (string)ds.Tables[0].Rows[0].ItemArray[1];
+                siteInfo.HeadquaterInfo = (string)ds.Tables[0].Rows[0].ItemArray[2];
+                siteInfo.Address = (string)ds.Tables[0].Rows[0].ItemArray[3];
+                siteInfo.Phonenumber = (string)ds.Tables[0].Rows[0].ItemArray[4];
+                siteInfo.Tin = (string)ds.Tables[0].Rows[0].ItemArray[5];
+                siteInfo.Account = (string)ds.Tables[0].Rows[0].ItemArray[6];
+                siteInfo.Representative = (string)ds.Tables[0].Rows[0].ItemArray[7];
+            }
+            else
+            {
+                return 0;
+            }
+            return 1;
         }
 
 
