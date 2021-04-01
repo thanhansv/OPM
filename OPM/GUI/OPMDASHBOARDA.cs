@@ -106,7 +106,7 @@ namespace OPM.GUI
             ClearPanel();
             panDescription.Controls.Clear();
             childForm.TopLevel = false;
-            childForm.FormBorderStyle = FormBorderStyle.None;
+            //childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
             panDescription.Controls.Add(childForm);
             panDescription.Tag = childForm;

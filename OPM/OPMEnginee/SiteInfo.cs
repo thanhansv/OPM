@@ -72,14 +72,14 @@ namespace OPM.OPMEnginee
             int ret = OPMDBHandler.fQuerryData(strQueryOne, ref ds);
             if (0 != ds.Tables.Count)
             {
-                siteInfo.Id = (string)ds.Tables[0].Rows[0].ItemArray[14];
-                siteInfo.Type = (string)ds.Tables[0].Rows[0].ItemArray[15];
-                siteInfo.HeadquaterInfo = (string)ds.Tables[0].Rows[0].ItemArray[16];
-                siteInfo.Address = (string)ds.Tables[0].Rows[0].ItemArray[17];
-                siteInfo.Phonenumber = (string)ds.Tables[0].Rows[0].ItemArray[18];
-                siteInfo.Tin = (string)ds.Tables[0].Rows[0].ItemArray[19];
-                siteInfo.Account = (string)ds.Tables[0].Rows[0].ItemArray[20];
-                siteInfo.Representative = (string)ds.Tables[0].Rows[0].ItemArray[21];
+                siteInfo.Id = (string)ds.Tables[0].Rows[0].ItemArray[15];
+                siteInfo.Type = (string)ds.Tables[0].Rows[0].ItemArray[16];
+                siteInfo.HeadquaterInfo = (string)ds.Tables[0].Rows[0].ItemArray[17];
+                siteInfo.Address = (string)ds.Tables[0].Rows[0].ItemArray[18];
+                siteInfo.Phonenumber = (string)ds.Tables[0].Rows[0].ItemArray[19];
+                siteInfo.Tin = (string)ds.Tables[0].Rows[0].ItemArray[20];
+                siteInfo.Account = (string)ds.Tables[0].Rows[0].ItemArray[21];
+                siteInfo.Representative = (string)ds.Tables[0].Rows[0].ItemArray[22];
             }
             else
             {

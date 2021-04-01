@@ -67,13 +67,13 @@ namespace OPM.GUI
         }
         public void state(bool state)
         {
-            txbID.Enabled = state;
-            txbhead.Enabled = state;
-            txbAddress.Enabled = state;
-            txbPhone.Enabled = state;
-            txbFax.Enabled = state;
-            txbRepresen.Enabled = state;
-            txbAccount.Enabled = state;
+            txbID.ReadOnly = state;
+            txbhead.ReadOnly = state;
+            txbAddress.ReadOnly = state;
+            txbPhone.ReadOnly = state;
+            txbFax.ReadOnly = state;
+            txbRepresen.ReadOnly = state;
+            txbAccount.ReadOnly = state;
         }
         public DescriptionSiteForm()
         {
@@ -86,12 +86,12 @@ namespace OPM.GUI
 
         private void DescriptionSiteForm_Load(object sender, EventArgs e)
         {
-            state(false);
+            state(true);
         }
 
         private void edit_Click(object sender, EventArgs e)
         {
-            state(true);
+            state(false);
         }
 
         private void save_Click(object sender, EventArgs e)
@@ -109,7 +109,7 @@ namespace OPM.GUI
             else
             {
                 MessageBox.Show("update thành công");
-                state(false);
+                state(true);
             }
         }
     }
