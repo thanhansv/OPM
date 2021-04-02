@@ -109,7 +109,7 @@ namespace OPM.GUI
             else
             {
                 MessageBox.Show("update thành công");
-                state(false);
+                state(true);
             }
         }
     }

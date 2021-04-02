@@ -89,7 +89,7 @@ namespace OPM.GUI
                     ContractObj contractObj = new ContractObj();
                     ContractObj.GetObjectContract(txbIDContract.Text, ref contractObj);
                     this.Cursor = Cursors.WaitCursor;
-                    OpmWordHandler.Create_BLTU_PO(fileBLTUPO_temp, strBLTUPOName, txbPOName.Text, txbIDContract.Text, contractObj.NameContract, contractObj.DateSigned, TimePickerDateCreatedPO.Value.ToString("yyyy-MM-dd"),txbValuePO.Text, txbTUPO.Text, contractObj.SiteB, txbActiveAfter.Text);
+                    OpmWordHandler.Create_BLTU_PO(fileBLTUPO_temp, strBLTUPOName, txbPOName.Text, txbIDContract.Text, contractObj.NameContract, contractObj.DateSigned, TimePickerDateCreatedPO.Value.ToString("yyyy-MM-dd"),txbValuePO.Text, txbTUPO.Text, contractObj.SiteB, TimepickerDefaultActive.Value.ToString("yyyy-MM-dd"));
                     /*Send Email To DF*/
 
                     OPMEmailHandler.fSendEmail("Mail From DoanTD Gmail", strBLTUPOName);
