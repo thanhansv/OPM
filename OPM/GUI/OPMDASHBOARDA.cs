@@ -78,9 +78,10 @@ namespace OPM.GUI
             treeView1.Nodes[0].Nodes[0].Nodes.Add(strNewNode);
         }
         private Form activeForm = null;
-        private UserControl activateUserControl = null;
+        
         private  void OpenChidForm(Form childForm)
         {
+            ClearPanel();
             if (null != activeForm)
                 activeForm.Close();
             activeForm = childForm;
@@ -89,20 +90,28 @@ namespace OPM.GUI
             childForm.Dock = DockStyle.Fill;
             panContent.Controls.Add(childForm);
             panContent.Tag = childForm;
-            childForm.BringToFront();
+            //childForm.BringToFront();
             childForm.Show();
 
         }
+        public void ClearPanel()
+        {
+            for (int ix = panDescription.Controls.Count - 1; ix >= 0; ix--)
+            {
+                if (panDescription.Controls[ix] is Form) panDescription.Controls[ix].Dispose();
+            }
+        }
         public void OpenChidForm1(Form childForm)
         {
+            ClearPanel();
+            panDescription.Controls.Clear();
             childForm.TopLevel = false;
-            childForm.FormBorderStyle = FormBorderStyle.None;
+            //childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
             panDescription.Controls.Add(childForm);
             panDescription.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
-
         }
         private void OpenChidForm2(Form childForm, string strTypeForm, object strParam)
         {
@@ -245,7 +254,6 @@ namespace OPM.GUI
                 List<string> MyList4 = new List<string>();
                 MyList4.Add("Free");
                 MyList4.Add("Education");
-
                 AddChildTreeNode(ref a, MyList4);
 
             }
@@ -417,7 +425,6 @@ namespace OPM.GUI
           
             DescriptionSiteForm descriptionSiteForm = new DescriptionSiteForm();            
             SiteInfo siteInfo = new SiteInfo();
-            
             siteInfo.GetSiteInfo(idSite, ref siteInfo);
             descriptionSiteForm.setId(siteInfo.Id);
             descriptionSiteForm.setAccount(siteInfo.Account);

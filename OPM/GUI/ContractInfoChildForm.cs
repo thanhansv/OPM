@@ -34,18 +34,18 @@ namespace OPM.GUI
 
         public void State(bool state)
         {
-            txbKHMS.Enabled = state;
-            tbContract.Enabled = state;
-            tbBidName.Enabled = state;
-            tbAccountingCode.Enabled = state;
-            tbxDurationContract.Enabled = state;
-            txbTypeContract.Enabled = state;
-            tbxValueContract.Enabled = state;
-            tbxDurationPO.Enabled = state;
-            txbGaranteeValue.Enabled = state;
-            txbGaranteeActiveDate.Enabled = state;
-            tbxSiteA.Enabled = state;
-            tbxSiteB.Enabled = state;
+            txbKHMS.ReadOnly = state;
+            tbContract.ReadOnly = state;
+            tbBidName.ReadOnly = state;
+            tbAccountingCode.ReadOnly = state;
+            tbxDurationContract.ReadOnly = state;
+            txbTypeContract.ReadOnly = state;
+            tbxValueContract.ReadOnly = state;
+            tbxDurationPO.ReadOnly = state;
+            txbGaranteeValue.ReadOnly = state;
+            txbGaranteeActiveDate.ReadOnly = state;
+            tbxSiteA.ReadOnly = state;
+            tbxSiteB.ReadOnly = state;
         }
 
         public void SetValueItemForm(string idContract)
@@ -68,7 +68,7 @@ namespace OPM.GUI
             this.tbxSiteA.Text = contract.SiteA;
             this.tbxSiteB.Text = contract.SiteB;
             this.ExpirationDate.Value = Convert.ToDateTime(contract.ExperationDate.ToString());
-            State(false);
+            State(true);
 
             return;
         }
@@ -76,10 +76,7 @@ namespace OPM.GUI
         private IContract contract = new ContractObj();
         private void button1_Click(object sender, EventArgs e)
         {
-            DescriptionSiteForm descriptionSiteForm = new DescriptionSiteForm();
-           
             requestDashBoardOpendescriptionForm(tbxSiteA.Text.ToString());
-            descriptionSiteForm.Close();
             return;
         }
 
@@ -171,7 +168,7 @@ namespace OPM.GUI
                 else
                 {
                     MessageBox.Show("Update Success");
-                    State(false);
+                    State(true);
                 }
             }
             
@@ -202,10 +199,7 @@ namespace OPM.GUI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            DescriptionSiteForm descriptionSiteForm = new DescriptionSiteForm();
-            
             requestDashBoardOpendescriptionForm(tbxSiteB.Text.ToString());
-            descriptionSiteForm.Close();
             return;
         }
 
@@ -226,7 +220,7 @@ namespace OPM.GUI
 
         private void button5_Click(object sender, EventArgs e)
         {
-            State(true);
+            State(false);
         }
     }
 }

@@ -43,6 +43,8 @@ namespace OPM.GUI
             this.label5 = new System.Windows.Forms.Label();
             this.Representative = new System.Windows.Forms.Label();
             this.txbRepresen = new System.Windows.Forms.TextBox();
+            this.edit = new System.Windows.Forms.Button();
+            this.save = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txbID
@@ -158,11 +160,33 @@ namespace OPM.GUI
             this.txbRepresen.Size = new System.Drawing.Size(130, 23);
             this.txbRepresen.TabIndex = 13;
             // 
+            // edit
+            // 
+            this.edit.Location = new System.Drawing.Point(25, 474);
+            this.edit.Name = "edit";
+            this.edit.Size = new System.Drawing.Size(75, 23);
+            this.edit.TabIndex = 14;
+            this.edit.Text = "Edit";
+            this.edit.UseVisualStyleBackColor = true;
+            this.edit.Click += new System.EventHandler(this.edit_Click);
+            // 
+            // save
+            // 
+            this.save.Location = new System.Drawing.Point(148, 474);
+            this.save.Name = "save";
+            this.save.Size = new System.Drawing.Size(75, 23);
+            this.save.TabIndex = 15;
+            this.save.Text = "Save";
+            this.save.UseVisualStyleBackColor = true;
+            this.save.Click += new System.EventHandler(this.save_Click);
+            // 
             // DescriptionSiteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(249, 494);
+            this.ClientSize = new System.Drawing.Size(249, 514);
+            this.Controls.Add(this.save);
+            this.Controls.Add(this.edit);
             this.Controls.Add(this.txbRepresen);
             this.Controls.Add(this.Representative);
             this.Controls.Add(this.label5);
@@ -179,7 +203,6 @@ namespace OPM.GUI
             this.Controls.Add(this.txbID);
             this.Name = "DescriptionSiteForm";
             this.Text = "DesscriptionSiteFormcs";
-            this.Activated += new System.EventHandler(this.DescriptionSiteForm_Activated);
             this.Load += new System.EventHandler(this.DescriptionSiteForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -202,5 +225,9 @@ namespace OPM.GUI
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label Representative;
         private System.Windows.Forms.TextBox txbRepresen;
+        private System.Windows.Forms.Button edit;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button Save;
+        private System.Windows.Forms.Button save;
     }
 }

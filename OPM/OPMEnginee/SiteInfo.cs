@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
+using System.Windows.Forms;
 
 namespace OPM.OPMEnginee
 {
@@ -55,7 +56,7 @@ namespace OPM.OPMEnginee
                 siteInfo.Phonenumber = (string)ds.Tables[0].Rows[0].ItemArray[4];
                 siteInfo.Tin = (string)ds.Tables[0].Rows[0].ItemArray[5];
                 siteInfo.Account = (string)ds.Tables[0].Rows[0].ItemArray[6];
-                siteInfo.Representative = (string)ds.Tables[0].Rows[0].ItemArray[7];
+                siteInfo.Representative = ds.Tables[0].Rows[0].ItemArray[7].ToString();
             }
             else
             {
@@ -63,7 +64,6 @@ namespace OPM.OPMEnginee
             }
             return 1;
         }
-
 
         public int GetSiteInfoObject(string idContract, ref SiteInfo siteInfo)
         {
@@ -86,6 +86,16 @@ namespace OPM.OPMEnginee
                 return 0;
             }
             return 1;
+        }
+        public int UpdateExistedSite(SiteInfo siteInfo)
+        {
+            string strUpdateContract = "update Site_Info set headquater_info = N'" + siteInfo.HeadquaterInfo + "', address = '" + siteInfo.Address + "', phonenumber = '" + siteInfo.Phonenumber + "',tin = N'" + siteInfo.Tin + "', account = '" + siteInfo.Account + "', representative='" + siteInfo.Representative + "' where id = '" + siteInfo.Id + "'";
+            int ret = OPMDBHandler.fInsertData(strUpdateContract);
+            if (ret == 0)
+            {
+                return 0;
+            }
+            else return 1;
         }
     }
 }
