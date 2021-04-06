@@ -63,12 +63,14 @@ namespace OPM.GUI
             this.btnConfirmPO = new System.Windows.Forms.Button();
             this.btnKTKT = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.txbnamefilePO = new System.Windows.Forms.TextBox();
+            this.importPO = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(12, 515);
+            this.btnSave.Location = new System.Drawing.Point(8, 515);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(41, 23);
             this.btnSave.TabIndex = 0;
@@ -94,7 +96,7 @@ namespace OPM.GUI
             // 
             // btnNewDP
             // 
-            this.btnNewDP.Location = new System.Drawing.Point(369, 515);
+            this.btnNewDP.Location = new System.Drawing.Point(380, 515);
             this.btnNewDP.Name = "btnNewDP";
             this.btnNewDP.Size = new System.Drawing.Size(75, 23);
             this.btnNewDP.TabIndex = 3;
@@ -240,7 +242,7 @@ namespace OPM.GUI
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 355);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 367);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.Size = new System.Drawing.Size(431, 142);
@@ -336,7 +338,7 @@ namespace OPM.GUI
             // 
             // btnKTKT
             // 
-            this.btnKTKT.Location = new System.Drawing.Point(59, 515);
+            this.btnKTKT.Location = new System.Drawing.Point(55, 515);
             this.btnKTKT.Name = "btnKTKT";
             this.btnKTKT.Size = new System.Drawing.Size(76, 23);
             this.btnKTKT.TabIndex = 12;
@@ -354,12 +356,31 @@ namespace OPM.GUI
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // txbnamefilePO
+            // 
+            this.txbnamefilePO.Location = new System.Drawing.Point(132, 339);
+            this.txbnamefilePO.Name = "txbnamefilePO";
+            this.txbnamefilePO.Size = new System.Drawing.Size(100, 23);
+            this.txbnamefilePO.TabIndex = 14;
+            // 
+            // importPO
+            // 
+            this.importPO.Location = new System.Drawing.Point(254, 339);
+            this.importPO.Name = "importPO";
+            this.importPO.Size = new System.Drawing.Size(91, 23);
+            this.importPO.TabIndex = 15;
+            this.importPO.Text = "Import file PO";
+            this.importPO.UseVisualStyleBackColor = true;
+            this.importPO.Click += new System.EventHandler(this.importPO_Click);
+            // 
             // PurchaseOderInfor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Yellow;
             this.ClientSize = new System.Drawing.Size(476, 593);
+            this.Controls.Add(this.importPO);
+            this.Controls.Add(this.txbnamefilePO);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnKTKT);
             this.Controls.Add(this.btnConfirmPO);
@@ -397,6 +418,7 @@ namespace OPM.GUI
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PurchaseOderInfor";
             this.Text = "Purchase Oder Infor";
+            this.Load += new System.EventHandler(this.PurchaseOderInfor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -439,5 +461,8 @@ namespace OPM.GUI
         private System.Windows.Forms.Button btnConfirmPO;
         private System.Windows.Forms.Button btnKTKT;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txbnamefilePO;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button importPO;
     }
 }

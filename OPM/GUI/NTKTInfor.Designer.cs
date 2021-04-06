@@ -61,6 +61,8 @@ namespace OPM.GUI
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.btnChoose = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
+            this.txbNoD = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.gbContact.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -348,12 +350,30 @@ namespace OPM.GUI
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // txbNoD
+            // 
+            this.txbNoD.Location = new System.Drawing.Point(254, 237);
+            this.txbNoD.Name = "txbNoD";
+            this.txbNoD.Size = new System.Drawing.Size(87, 23);
+            this.txbNoD.TabIndex = 13;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(168, 244);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(78, 15);
+            this.label16.TabIndex = 14;
+            this.label16.Text = "số lượng dive";
+            // 
             // NTKTInfor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(440, 511);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.txbNoD);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnChoose);
             this.Controls.Add(this.dateTimePickerNTKT);
@@ -375,6 +395,7 @@ namespace OPM.GUI
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "NTKTInfor";
             this.Text = "NTKTInfor";
+            this.Load += new System.EventHandler(this.NTKTInfor_Load);
             this.gbContact.ResumeLayout(false);
             this.gbContact.PerformLayout();
             this.ResumeLayout(false);
@@ -416,5 +437,7 @@ namespace OPM.GUI
         private System.Windows.Forms.TextBox txbExt;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.TextBox txbNoD;
+        private System.Windows.Forms.Label label16;
     }
 }

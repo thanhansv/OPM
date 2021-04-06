@@ -196,6 +196,7 @@ namespace OPM.GUI
                     /*Display NTKT */
                     NTKTInfor nTKTInfor = new NTKTInfor();
                     nTKTInfor.UpdateCatalogPanel = new NTKTInfor.UpdateCatalogDelegate(GetCatalogvalue);
+                    nTKTInfor.requestDashBoardPurchaseOderForm = new NTKTInfor.RequestDashBoardPurchaseOderForm(OpenPOForm);
                     nTKTInfor.setValueItemForNTKT(temp[1]);
                     OpenChidForm(nTKTInfor);
                     break;
@@ -383,6 +384,8 @@ namespace OPM.GUI
             purchaseOderInfor.requestDashBoardOpenConfirmPOForm = new PurchaseOderInfor.RequestDashBoardOpenConfirmForm(OpenConfirmPOForm);
 
             /**/
+            
+
             purchaseOderInfor.requestDasckboardOpenExcel = new PurchaseOderInfor.RequestDasckboardOpenExcel(OpenExcel);
             ContractInfoChildForm contractInfoChildForm = new ContractInfoChildForm();
             contractInfoChildForm.requestDashBoardOpendescriptionForm = new ContractInfoChildForm.RequestDashBoardOpenDescriptionForm(OpenDescription);
@@ -397,7 +400,7 @@ namespace OPM.GUI
         public void OpenNTKTForm(string strKHMS, string strContractID, string strPOID, string strPONumber)
         {
             NTKTInfor nTKTInfor= new NTKTInfor();
-            nTKTInfor.UpdateCatalogPanel = new NTKTInfor.UpdateCatalogDelegate(GetCatalogvalue);
+            //nTKTInfor.UpdateCatalogPanel = new NTKTInfor.UpdateCatalogDelegate(GetCatalogvalue);
             nTKTInfor.SetKHMS(strKHMS);
             nTKTInfor.requestDashBoardPurchaseOderForm = new NTKTInfor.RequestDashBoardPurchaseOderForm(OpenPOForm);
             strContractID = strContractID.Replace("Contract_","");

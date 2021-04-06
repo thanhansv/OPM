@@ -8,6 +8,7 @@ using ExcelOffice = Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;
 using System.Reflection;
 using System.Data;
+using System.Text.RegularExpressions;
 using ExcelDataReader;
 using OPM.OPMEnginee;
 
@@ -16,7 +17,7 @@ namespace OPM.ExcelHandler
     class OpmExcelHandler : IExcelHandler
     {
         private string _strFileName;
-         
+
 
         public string FileName
         {
@@ -27,7 +28,7 @@ namespace OPM.ExcelHandler
         { }
         ~OpmExcelHandler()
         { }
-        
+
 
         public static int readfile(string filename)
         {
@@ -46,7 +47,7 @@ namespace OPM.ExcelHandler
             ExcelOffice.Workbook xlWorkbook = null;
             ExcelOffice.Application xlApp = null;
             ExcelOffice._Worksheet xlWorksheet = null;
-            try 
+            try
             {
                 Dictionary<string, string> ListTP = new Dictionary<string, string>();
 
@@ -59,21 +60,22 @@ namespace OPM.ExcelHandler
                 int rowCount = xlRange.Rows.Count;
                 int colCount = xlRange.Columns.Count;
                 /*Get conntet Danh Sach Tinh/Tp*/
-                for(int i=2; i<= rowCount; i++)
+                for (int i = 2; i <= rowCount; i++)
                 {
                     string index = Convert.ToString((xlRange.Cells[i, 1] as ExcelOffice.Range).Text);
                     string strName = Convert.ToString((xlRange.Cells[i, 3] as ExcelOffice.Range).Text);
-                    if(string.Empty != index && string.Empty != strName)
+                    if (string.Empty != index && string.Empty != strName)
                     {
                         ListTP.Add(index, strName);
-                    }else
+                    }
+                    else
                     {
                         i = rowCount + 1;
-                    }    
-                    
-                }    
+                    }
+
+                }
                 //cleanup  
-                 GC.Collect();
+                GC.Collect();
                 GC.WaitForPendingFinalizers();
                 //rule of thumb for releasing com objects:  
                 //  never use two dots, all COM objects must be referenced and released individually  
@@ -92,7 +94,7 @@ namespace OPM.ExcelHandler
                 Marshal.ReleaseComObject(xlApp);
                 return 1;
             }
-            catch(Exception)
+            catch (Exception)
             {
                 //cleanup  
                 GC.Collect();
@@ -114,8 +116,8 @@ namespace OPM.ExcelHandler
                 Marshal.ReleaseComObject(xlApp);
                 return 0;
             }
-            
-            
+
+
         }
         private void releaseObject(object obj)
         {
@@ -267,7 +269,7 @@ namespace OPM.ExcelHandler
                 Marshal.ReleaseComObject(xlApp);
                 return 1;
             }
-            catch(Exception)
+            catch (Exception)
             {
                 //cleanup  
                 GC.Collect();
@@ -290,24 +292,24 @@ namespace OPM.ExcelHandler
                 return 0;
             }
 
-            
-        
+
+
         }
 
         public static int fReadInforFromFileName(string strFilename, Packagelist oPackagelist)
         {
-            
-            try 
+
+            try
             {
-                    string[] strInfo = strFilename.Split("-");
-                    string[] strDP = strInfo[6].Split(" ");
-                    string[] strProvince = strInfo[8].Split(" ");
-                    oPackagelist.PO_number = strDP[1];
-                    oPackagelist.Province = strProvince[0];
-                    oPackagelist.Year = strInfo[1] + strInfo[2];
+                string[] strInfo = strFilename.Split("-");
+                string[] strDP = strInfo[6].Split(" ");
+                string[] strProvince = strInfo[8].Split(" ");
+                oPackagelist.PO_number = strDP[1];
+                oPackagelist.Province = strProvince[0];
+                oPackagelist.Year = strInfo[1] + strInfo[2];
                 return 1;
             }
-            catch(Exception)
+            catch (Exception)
             {
                 return 0;
             }
@@ -318,8 +320,8 @@ namespace OPM.ExcelHandler
             return 0;
         }
 
-       
-        public static  int getExcelSheet(ref DataSet result, string file, ComboBox cbx_sheet)
+
+        public static int getExcelSheet(ref DataSet result, string file, ComboBox cbx_sheet)
         {
             try
             {
@@ -353,6 +355,101 @@ namespace OPM.ExcelHandler
             }
 
 
+        }
+        public static string convertToUnSign3(string s)
+        {
+            Regex regex = new Regex("\\p{IsCombiningDiacriticalMarks}+");
+            string temp = s.Normalize(NormalizationForm.FormD);
+            return regex.Replace(temp, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
+        }
+
+        public static int fReadExcelFilePO(string fname, string idPO, ref List<ListExpPO> listExpPOs)
+        {
+            ExcelOffice.Range xlRange = null;
+            ExcelOffice.Workbook xlWorkbook = null;
+            ExcelOffice.Application xlApp = null;
+            ExcelOffice._Worksheet xlWorksheet = null;
+            try
+            {
+
+                xlApp = new ExcelOffice.Application();
+                xlWorkbook = xlApp.Workbooks.Open(fname);
+                xlWorksheet = (ExcelOffice._Worksheet)xlWorkbook.Sheets[3];
+                xlRange = xlWorksheet.UsedRange;
+
+                string xName = xlWorksheet.Name.ToString();
+                int rowCount = xlRange.Rows.Count;
+                int colCount = xlRange.Columns.Count;
+                string nameOfD= Convert.ToString((xlRange.Cells[5, 9] as ExcelOffice.Range).Text);
+                for (int i = 6; i <= rowCount; i++)
+                {
+                    string index = Convert.ToString((xlRange.Cells[i, 1] as ExcelOffice.Range).Text);
+                    if (string.Empty != index )
+                    {
+                        ListExpPO listExpPO = new ListExpPO();
+                        string strName = Convert.ToString((xlRange.Cells[i, 2] as ExcelOffice.Range).Text);
+                        string idProvine = convertToUnSign3(strName.Trim());
+                        idProvine = idProvine.Replace(" ", "");
+                        string strNofD = Convert.ToString((xlRange.Cells[i, 11] as ExcelOffice.Range).Text);
+                        if(strNofD.Trim() == "-")
+                        {
+                            continue;
+                        }
+                        strNofD = strNofD.Replace(",", "").Trim();
+                        int NofD = Convert.ToInt32(strNofD);
+                        listExpPO.IdPO = idPO;
+                        listExpPO.IdProvince = idProvine;
+                        listExpPO.NameOfDevice = nameOfD;
+                        listExpPO.NumberOfDevice = NofD;
+                        listExpPOs.Add(listExpPO);
+                    }
+                    else
+                    {
+                        i = rowCount + 1;
+                    }
+
+                }
+                //cleanup  
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                //rule of thumb for releasing com objects:  
+                //  never use two dots, all COM objects must be referenced and released individually  
+                //  ex: [somthing].[something].[something] is bad  
+
+                //release com objects to fully kill excel process from running in the background  
+                Marshal.ReleaseComObject(xlRange);
+                Marshal.ReleaseComObject(xlWorksheet);
+
+                //close and release  
+                xlWorkbook.Close();
+                Marshal.ReleaseComObject(xlWorkbook);
+
+                //quit and release  
+                xlApp.Quit();
+                Marshal.ReleaseComObject(xlApp);
+                return 1;
+            }
+            catch (Exception)
+            {
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                //rule of thumb for releasing com objects:  
+                //  never use two dots, all COM objects must be referenced and released individually  
+                //  ex: [somthing].[something].[something] is bad  
+
+                //release com objects to fully kill excel process from running in the background  
+                Marshal.ReleaseComObject(xlRange);
+                Marshal.ReleaseComObject(xlWorksheet);
+
+                //close and release  
+                xlWorkbook.Close();
+                Marshal.ReleaseComObject(xlWorkbook);
+
+                //quit and release  
+                xlApp.Quit();
+                Marshal.ReleaseComObject(xlApp);
+                return 0;
+            }
         }
     }
 }

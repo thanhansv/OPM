@@ -9,6 +9,7 @@ using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using OPM.ExcelHandler;
 
 namespace OPM.GUI
 {
@@ -107,6 +108,34 @@ namespace OPM.GUI
 
                 //UpdateCatalogPanel(txbPOCode.Text);
             }
+            //đọc file excel--Dưỡng
+            List<ListExpPO> listExpPOs = new List<ListExpPO>();
+            if(txbnamefilePO.Text!= null)
+            {
+                int retEx = OpmExcelHandler.fReadExcelFilePO(txbnamefilePO.Text,txbPOCode.Text,ref listExpPOs);
+                if(retEx == 1){
+                    ListExpPO listExpPO = new ListExpPO();
+                    int retInsert = listExpPO.InsertMultiListPO(listExpPOs);
+                    if(retInsert == 1)
+                    {
+                        MessageBox.Show("thông tin trong File PO đã lưu thành công");
+                    }
+                    else
+                    {
+                        MessageBox.Show("thông tin trong File PO không lưu được");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Đọc file không thành công");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("chưa import file PO");
+            }
+            
         }
 
         public void SetValueItemForPO(string idPO)
@@ -183,16 +212,36 @@ namespace OPM.GUI
             ret = PO.GetObjectPO(txbPOCode.Text, ref pO);
             NTKT nTKT = new NTKT();
             nTKT.GetObjectNTKTByIDPO(txbPOCode.Text, ref nTKT);
-            SiteInfo siteInfo = new SiteInfo();
-            siteInfo.GetSiteInfoObject(txbIDContract.Text, ref siteInfo);
+            SiteInfo siteInfoB = new SiteInfo();
+            SiteInfo siteInfoA = new SiteInfo();
+            siteInfoB.GetSiteInfoObject(txbIDContract.Text, ref siteInfoB);
+            siteInfoA.GetSiteInfoA(txbIDContract.Text, ref siteInfoA);
             this.Cursor = Cursors.WaitCursor;
-            OpmWordHandler.Create_BBKTKT_HH(fileBBKTKTHH_temp,strBBKTKT, contractObj, pO, nTKT,siteInfo);
+            OpmWordHandler.Create_BBKTKT_HH(fileBBKTKTHH_temp,strBBKTKT, contractObj, pO, nTKT,siteInfoB,siteInfoA);
             this.Cursor = Cursors.Default;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             requestDasckboardOpenExcel();
+        }
+
+        private void PurchaseOderInfor_Load(object sender, EventArgs e)
+        {
+
+        }
+        public OpenFileDialog openFileExcel = new OpenFileDialog();
+        private void importPO_Click(object sender, EventArgs e)
+        {
+            openFileExcel.Multiselect = true;
+            // openFileExcel.Filter = "Excel Files(.xls)|*.xls| Excel Files(.xlsx)| *.xlsx | Excel Files(*.xlsm) | *.xlsm";
+            if (openFileExcel.ShowDialog() == DialogResult.OK)
+            {
+                foreach (string fileName in openFileExcel.FileNames)
+                {
+                    txbnamefilePO.Text += fileName ;
+                }
+            }
         }
     }
 }

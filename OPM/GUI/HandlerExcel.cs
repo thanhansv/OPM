@@ -45,6 +45,7 @@ namespace OPM.GUI
             foreach(string strFileExcel in strFile)
             {
                 OpmExcelHandler.fReadExcelFile(strFileExcel);
+
             }
             
         }
