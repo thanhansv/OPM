@@ -362,7 +362,7 @@ namespace OPM.ExcelHandler
             string temp = s.Normalize(NormalizationForm.FormD);
             return regex.Replace(temp, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
         }
-
+        //read Excel and save in database
         public static int fReadExcelFilePO(string fname, string idPO, ref List<ListExpPO> listExpPOs)
         {
             ExcelOffice.Range xlRange = null;
@@ -408,6 +408,94 @@ namespace OPM.ExcelHandler
                         i = rowCount + 1;
                     }
 
+                }
+                //cleanup  
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                //rule of thumb for releasing com objects:  
+                //  never use two dots, all COM objects must be referenced and released individually  
+                //  ex: [somthing].[something].[something] is bad  
+
+                //release com objects to fully kill excel process from running in the background  
+                Marshal.ReleaseComObject(xlRange);
+                Marshal.ReleaseComObject(xlWorksheet);
+
+                //close and release  
+                xlWorkbook.Close();
+                Marshal.ReleaseComObject(xlWorkbook);
+
+                //quit and release  
+                xlApp.Quit();
+                Marshal.ReleaseComObject(xlApp);
+                return 1;
+            }
+            catch (Exception)
+            {
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                //rule of thumb for releasing com objects:  
+                //  never use two dots, all COM objects must be referenced and released individually  
+                //  ex: [somthing].[something].[something] is bad  
+
+                //release com objects to fully kill excel process from running in the background  
+                Marshal.ReleaseComObject(xlRange);
+                Marshal.ReleaseComObject(xlWorksheet);
+
+                //close and release  
+                xlWorkbook.Close();
+                Marshal.ReleaseComObject(xlWorkbook);
+
+                //quit and release  
+                xlApp.Quit();
+                Marshal.ReleaseComObject(xlApp);
+                return 0;
+            }
+        }
+        //show data on datagridview
+        public static int fReadExcelFilePO2(string fname,ref DataTable dt)
+        {   
+            ExcelOffice.Range xlRange = null;
+            ExcelOffice.Workbook xlWorkbook = null;
+            ExcelOffice.Application xlApp = null;
+            ExcelOffice._Worksheet xlWorksheet = null;
+            DataRow row;
+            try
+            {
+
+                xlApp = new ExcelOffice.Application();
+                xlWorkbook = xlApp.Workbooks.Open(fname);
+                xlWorksheet = (ExcelOffice._Worksheet)xlWorkbook.Sheets[3];
+                xlRange = xlWorksheet.UsedRange;
+
+                string xName = xlWorksheet.Name.ToString();
+                int rowCount = xlRange.Rows.Count;
+                int colCount = xlRange.Columns.Count;
+                for (int i = 1; i <= rowCount; i++)
+                {
+                    for (int j = 1; j <= colCount; j++)
+                    {
+                        dt.Columns.Add(Convert.ToString((xlRange.Cells[i, 11] as ExcelOffice.Range).Text));
+                    }
+                    break;
+                }
+                int rowCounter ;
+                for (int i = 2; i <= rowCount; i++)
+                {
+                    row = dt.NewRow();
+                    rowCounter = 0;
+                    for(int j=1; j <= colCount; j++)
+                    {
+                        if(xlRange.Cells[i,j] != null)
+                        {
+                            row[rowCounter] = (xlRange.Cells[i, j] as ExcelOffice.Range).Text;
+                        }
+                        else
+                        {
+                            row[i] = "";
+                        }
+                        rowCounter++;
+                    }
+                    dt.Rows.Add(row);
                 }
                 //cleanup  
                 GC.Collect();

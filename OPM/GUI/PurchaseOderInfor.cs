@@ -10,6 +10,8 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using OPM.ExcelHandler;
+using System.Data.OleDb;
+using System.Data.Common;
 
 namespace OPM.GUI
 {
@@ -231,17 +233,30 @@ namespace OPM.GUI
 
         }
         public OpenFileDialog openFileExcel = new OpenFileDialog();
+        public string sConnectionString= null;
         private void importPO_Click(object sender, EventArgs e)
         {
-            openFileExcel.Multiselect = true;
-            // openFileExcel.Filter = "Excel Files(.xls)|*.xls| Excel Files(.xlsx)| *.xlsx | Excel Files(*.xlsm) | *.xlsm";
+           // openFileExcel.Multiselect = true;
+             openFileExcel.Filter = "Excel Files(.xls)|*.xls| Excel Files(.xlsx)| *.xlsx | Excel Files(*.xlsm) | *.xlsm";
             if (openFileExcel.ShowDialog() == DialogResult.OK)
             {
-                foreach (string fileName in openFileExcel.FileNames)
+                if (File.Exists(openFileExcel.FileName))
                 {
-                    txbnamefilePO.Text += fileName ;
+                    txbnamefilePO.Text = openFileExcel.FileName;
+                    string filename = openFileExcel.FileName;
+                    DataTable dt = new DataTable();
+                    int ret = OpmExcelHandler.fReadExcelFilePO2(filename, ref dt);
+                    if(ret==1)
+                    {
+                        dataGridViewPO.DataSource = dt;
+                    }
+                    else
+                    {
+                        MessageBox.Show("đọc lỗi");
+                    }
                 }
+               
             }
-        }
+        }    
     }
 }

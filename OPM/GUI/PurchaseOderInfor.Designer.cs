@@ -50,7 +50,7 @@ namespace OPM.GUI
             this.txbDeadLine = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txbValuePO = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewPO = new System.Windows.Forms.DataGridView();
             this.TimePickerDateCreatedPO = new System.Windows.Forms.DateTimePicker();
             this.txbTUPO = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -65,7 +65,8 @@ namespace OPM.GUI
             this.button1 = new System.Windows.Forms.Button();
             this.txbnamefilePO = new System.Windows.Forms.TextBox();
             this.importPO = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.label8 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPO)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSave
@@ -239,14 +240,14 @@ namespace OPM.GUI
             this.txbValuePO.Size = new System.Drawing.Size(232, 23);
             this.txbValuePO.TabIndex = 1;
             // 
-            // dataGridView1
+            // dataGridViewPO
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 367);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(431, 142);
-            this.dataGridView1.TabIndex = 5;
+            this.dataGridViewPO.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewPO.Location = new System.Drawing.Point(12, 367);
+            this.dataGridViewPO.Name = "dataGridViewPO";
+            this.dataGridViewPO.RowTemplate.Height = 25;
+            this.dataGridViewPO.Size = new System.Drawing.Size(431, 142);
+            this.dataGridViewPO.TabIndex = 5;
             // 
             // TimePickerDateCreatedPO
             // 
@@ -373,12 +374,22 @@ namespace OPM.GUI
             this.importPO.UseVisualStyleBackColor = true;
             this.importPO.Click += new System.EventHandler(this.importPO_Click);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(1, 342);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(130, 15);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "File phân bổ hợp đồng ";
+            // 
             // PurchaseOderInfor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Yellow;
             this.ClientSize = new System.Drawing.Size(476, 593);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.importPO);
             this.Controls.Add(this.txbnamefilePO);
             this.Controls.Add(this.button1);
@@ -389,7 +400,7 @@ namespace OPM.GUI
             this.Controls.Add(this.txbKHMS);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.txbTUPO);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridViewPO);
             this.Controls.Add(this.TimePickerDeadLinePO);
             this.Controls.Add(this.TimepickerDefaultActive);
             this.Controls.Add(this.TimePickerDateCreatedPO);
@@ -419,7 +430,7 @@ namespace OPM.GUI
             this.Name = "PurchaseOderInfor";
             this.Text = "Purchase Oder Infor";
             this.Load += new System.EventHandler(this.PurchaseOderInfor_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPO)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -448,7 +459,7 @@ namespace OPM.GUI
         private System.Windows.Forms.TextBox txbDeadLine;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txbValuePO;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewPO;
         private System.Windows.Forms.DateTimePicker TimePickerDateCreatedPO;
         private System.Windows.Forms.TextBox txbTUPO;
         private System.Windows.Forms.Label label12;
@@ -464,5 +475,6 @@ namespace OPM.GUI
         private System.Windows.Forms.TextBox txbnamefilePO;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button importPO;
+        private System.Windows.Forms.Label label8;
     }
 }
