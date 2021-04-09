@@ -11,6 +11,7 @@ using System.Data;
 using System.Text.RegularExpressions;
 using ExcelDataReader;
 using OPM.OPMEnginee;
+using Microsoft.Office.Interop.Excel;
 
 namespace OPM.ExcelHandler
 {
@@ -152,24 +153,10 @@ namespace OPM.ExcelHandler
                 items.Add(xName);
 
             }
-            //ExcelOffice.Range xlRange = xlWorksheet.UsedRange;
-            //string xName = xlWorksheet.Name.ToString();
-
-            //int rowCount = xlRange.Rows.Count;
-            //int colCount = xlRange.Columns.Count;
-
-            //cleanup  
+            
             GC.Collect();
             GC.WaitForPendingFinalizers();
-            //rule of thumb for releasing com objects:  
-            //  never use two dots, all COM objects must be referenced and released individually  
-            //  ex: [somthing].[something].[something] is bad  
-
-            //release com objects to fully kill excel process from running in the background  
-            //Marshal.ReleaseComObject(xlRange);
-            //Marshal.ReleaseComObject(xlWorksheet);
-
-            //close and release  
+            
             xlWorkbook.Close();
             Marshal.ReleaseComObject(xlWorkbook);
 
@@ -452,7 +439,7 @@ namespace OPM.ExcelHandler
             }
         }
         //show data on datagridview
-        public static int fReadExcelFilePO2(string fname,ref DataTable dt)
+        public static int fReadExcelFilePO2(string fname,ref System.Data.DataTable dt)
         {   
             ExcelOffice.Range xlRange = null;
             ExcelOffice.Workbook xlWorkbook = null;
@@ -470,24 +457,22 @@ namespace OPM.ExcelHandler
                 string xName = xlWorksheet.Name.ToString();
                 int rowCount = xlRange.Rows.Count;
                 int colCount = xlRange.Columns.Count;
-                for (int i = 1; i <= rowCount; i++)
-                {
-                    for (int j = 1; j <= colCount; j++)
-                    {
-                        dt.Columns.Add(Convert.ToString((xlRange.Cells[i, 11] as ExcelOffice.Range).Text));
-                    }
-                    break;
-                }
+                int[] arrcolum = { 1, 2, 11 };
+                
                 int rowCounter ;
-                for (int i = 2; i <= rowCount; i++)
+                
+                dt.Columns.Add("STT");
+                dt.Columns.Add("Tên tỉnh");
+                dt.Columns.Add("Số lượng thiết bị");
+                for (int i = 6; i <= rowCount; i++)
                 {
                     row = dt.NewRow();
                     rowCounter = 0;
-                    for(int j=1; j <= colCount; j++)
+                    foreach(int j in arrcolum)
                     {
                         if(xlRange.Cells[i,j] != null)
                         {
-                            row[rowCounter] = (xlRange.Cells[i, j] as ExcelOffice.Range).Text;
+                          row[rowCounter] = (xlRange.Cells[i, j] as ExcelOffice.Range).Text;
                         }
                         else
                         {
@@ -515,6 +500,81 @@ namespace OPM.ExcelHandler
                 //quit and release  
                 xlApp.Quit();
                 Marshal.ReleaseComObject(xlApp);
+                return 1;
+            }
+            catch (Exception)
+            {
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                //rule of thumb for releasing com objects:  
+                //  never use two dots, all COM objects must be referenced and released individually  
+                //  ex: [somthing].[something].[something] is bad  
+
+                //release com objects to fully kill excel process from running in the background  
+                Marshal.ReleaseComObject(xlRange);
+                Marshal.ReleaseComObject(xlWorksheet);
+
+                //close and release  
+                xlWorkbook.Close();
+                Marshal.ReleaseComObject(xlWorkbook);
+
+                //quit and release  
+                xlApp.Quit();
+                Marshal.ReleaseComObject(xlApp);
+                return 0;
+            }
+        }
+        public static int FindAndReplace(string filename,string filesave, string idDp, string idContract, string site, string dateRequest, string dateOut, string addressB, string purpose, string accountanceCode, string numOfD)
+        {
+            object m = Type.Missing;
+            ExcelOffice.Range xlRange = null;
+            ExcelOffice.Workbook xlWorkbook = null;
+            ExcelOffice.Application xlApp = null;
+            ExcelOffice._Worksheet xlWorksheet = null;
+            
+            try
+            {
+
+                xlApp = new ExcelOffice.Application();
+                xlWorkbook = xlApp.Workbooks.Open(filename, m, false, m, m, m, m, m, m, m, m, m, m, m, m);
+                xlWorksheet = (ExcelOffice._Worksheet)xlWorkbook.Sheets[1];
+                xlRange = xlWorksheet.UsedRange;
+
+                bool success =(bool) xlRange.Replace("<IdDP>",idDp,XlLookAt.xlWhole, XlSearchOrder.xlByColumns, true,m,m,m);
+                bool success1 = (bool)xlRange.Replace("<IdContract>", idContract, XlLookAt.xlWhole, XlSearchOrder.xlByColumns, true, m, m, m);
+                bool success2 = (bool)xlRange.Replace("<dateRequest>", dateRequest, XlLookAt.xlWhole, XlSearchOrder.xlByColumns, true, m, m, m);
+                bool success3 = (bool)xlRange.Replace("<dateOut>", dateOut, XlLookAt.xlWhole, XlSearchOrder.xlByColumns, true, m, m, m);
+                bool success4 = (bool)xlRange.Replace("<siteB>", site, XlLookAt.xlWhole, XlSearchOrder.xlByColumns, true, m, m, m);
+                bool success5 = (bool)xlRange.Replace("<addressB>", addressB, XlLookAt.xlWhole, XlSearchOrder.xlByColumns, true, m, m, m);
+                bool success6 = (bool)xlRange.Replace("<purpose>", purpose, XlLookAt.xlWhole, XlSearchOrder.xlByColumns, true, m, m, m);
+                bool success7 = (bool)xlRange.Replace("<accountanceCode>", accountanceCode, XlLookAt.xlWhole, XlSearchOrder.xlByColumns, true, m, m, m);
+
+                ExcelOffice._Worksheet xlWorksheet2 = (ExcelOffice._Worksheet)xlWorkbook.Sheets[2];
+                ExcelOffice.Range xlRange2 = xlWorksheet.UsedRange;
+
+                //bool success8 = (bool)xlRange2.Replace("<NumOfD>", numOfD, XlLookAt.xlWhole, XlSearchOrder.xlByRows, true, m, m, m);
+                xlWorkbook.SaveAs(filesave+"\\DP_"+ idDp + ".xlsx", Type.Missing, Type.Missing,
+            Type.Missing, Type.Missing, Type.Missing, XlSaveAsAccessMode.xlExclusive,
+            Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                //rule of thumb for releasing com objects:  
+                //  never use two dots, all COM objects must be referenced and released individually  
+                //  ex: [somthing].[something].[something] is bad  
+
+                //release com objects to fully kill excel process from running in the background  
+                Marshal.ReleaseComObject(xlRange);
+                Marshal.ReleaseComObject(xlWorksheet);
+
+                //close and release  
+                xlWorkbook.Close();
+                Marshal.ReleaseComObject(xlWorkbook);
+
+                //quit and release  
+                xlApp.Quit();
+                Marshal.ReleaseComObject(xlApp);
+
                 return 1;
             }
             catch (Exception)

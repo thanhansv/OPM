@@ -36,6 +36,10 @@ namespace OPM.GUI
         public delegate void RequestDasckboardOpenExcel();
         public RequestDasckboardOpenExcel requestDasckboardOpenExcel;
 
+        //open new DP
+        public delegate void RequestDaskboardOpenDP(string idpo, string idcontract);
+        public RequestDaskboardOpenDP requestDaskboardOpenDP;
+
         public PurchaseOderInfor()
         {
             InitializeComponent();
@@ -76,6 +80,7 @@ namespace OPM.GUI
                     MessageBox.Show("Folder already exist!!!");
 
                 }
+                
                 ret = newPO.InsertNewPO(newPO);
                 if (0 == ret)
                 {
@@ -120,6 +125,7 @@ namespace OPM.GUI
                     int retInsert = listExpPO.InsertMultiListPO(listExpPOs);
                     if(retInsert == 1)
                     {
+
                         MessageBox.Show("thông tin trong File PO đã lưu thành công");
                     }
                     else
@@ -185,7 +191,7 @@ namespace OPM.GUI
 
         private void btnNewDP_Click(object sender, EventArgs e)
         {
-
+            requestDaskboardOpenDP(txbPOCode.Text, txbIDContract.Text);
         }
 
         private void btnConfirmPO_Click(object sender, EventArgs e)
@@ -230,7 +236,7 @@ namespace OPM.GUI
 
         private void PurchaseOderInfor_Load(object sender, EventArgs e)
         {
-
+            txbnamefilePO.ReadOnly = true;
         }
         public OpenFileDialog openFileExcel = new OpenFileDialog();
         public string sConnectionString= null;

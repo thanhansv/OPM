@@ -183,7 +183,7 @@ namespace OPM.GUI
                     MessageBox.Show(temp[1]);
                     purchaseOderInfor.requestDashBoardOpenNTKTForm = new PurchaseOderInfor.RequestDashBoardOpenNTKTForm(OpenNTKTForm);
                     purchaseOderInfor.SetValueItemForPO(temp[1]);
-
+                    purchaseOderInfor.requestDaskboardOpenDP = new PurchaseOderInfor.RequestDaskboardOpenDP(OpenDpForm);
                     OpenChidForm(purchaseOderInfor);
                     break;
                 case ConstantVar.DPType:
@@ -236,7 +236,7 @@ namespace OPM.GUI
 
                 /*Open NTKT Form*/
                 purchaseOderInfor.requestDashBoardOpenNTKTForm = new PurchaseOderInfor.RequestDashBoardOpenNTKTForm(OpenNTKTForm);
-
+                purchaseOderInfor.requestDaskboardOpenDP = new PurchaseOderInfor.RequestDaskboardOpenDP(OpenDpForm);
                 contractInfoChildForm.requestDashBoardOpendescriptionForm = new ContractInfoChildForm.RequestDashBoardOpenDescriptionForm(OpenDescription);
 
                 OpenChidForm(contractInfoChildForm);
@@ -384,8 +384,8 @@ namespace OPM.GUI
             purchaseOderInfor.requestDashBoardOpenConfirmPOForm = new PurchaseOderInfor.RequestDashBoardOpenConfirmForm(OpenConfirmPOForm);
 
             /**/
-            
 
+            purchaseOderInfor.requestDaskboardOpenDP = new PurchaseOderInfor.RequestDaskboardOpenDP(OpenDpForm);
             purchaseOderInfor.requestDasckboardOpenExcel = new PurchaseOderInfor.RequestDasckboardOpenExcel(OpenExcel);
             ContractInfoChildForm contractInfoChildForm = new ContractInfoChildForm();
             contractInfoChildForm.requestDashBoardOpendescriptionForm = new ContractInfoChildForm.RequestDashBoardOpenDescriptionForm(OpenDescription);
@@ -444,6 +444,21 @@ namespace OPM.GUI
 
             HandlerExcel handlerExcel = new HandlerExcel();
             OpenChidForm(handlerExcel);
+            return;
+        }
+        public void OpenDpForm(string idPO, string idContract)
+        {
+            DeliverPartInforDetail deliverPartInforDetail = new DeliverPartInforDetail();
+            string contractName = null;
+            PO po = new PO();
+            int retPo = PO.GetObjectPO(idPO, ref po);
+            ContractObj contractObj = new ContractObj();
+            int retContract = ContractObj.GetObjectContract(idContract, ref contractObj);
+            deliverPartInforDetail.setIdPO(idPO);
+            deliverPartInforDetail.setIdcontract(idContract);
+            deliverPartInforDetail.setKHMS(contractObj.KHMS);
+            deliverPartInforDetail.setPoname(po.PONumber);
+            OpenChidForm(deliverPartInforDetail);
             return;
         }
     }
