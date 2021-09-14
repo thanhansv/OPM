@@ -174,7 +174,6 @@ namespace OPM.GUI
 
                     OpenChidForm(contractInfoChildForm);
                     contractInfoChildForm.requestDashBoardOpendescriptionForm = new ContractInfoChildForm.RequestDashBoardOpenDescriptionForm(OpenDescription);
-
                     break;
                 case ConstantVar.POType:
                     /*Display PO */
@@ -423,10 +422,25 @@ namespace OPM.GUI
             OpenChidForm(confirmPO);
             return;
         }
-        public void OpenDescription(String idSite)
-        {
+        //public void OpenDescription(String idSite)
+        //{
           
-            DescriptionSiteForm descriptionSiteForm = new DescriptionSiteForm();            
+        //    DescriptionSiteForm descriptionSiteForm = new DescriptionSiteForm();            
+        //    SiteInfo siteInfo = new SiteInfo();
+        //    siteInfo.GetSiteInfo(idSite, ref siteInfo);
+        //    descriptionSiteForm.setId(siteInfo.Id);
+        //    descriptionSiteForm.setAccount(siteInfo.Account);
+        //    descriptionSiteForm.setAddress(siteInfo.Address);
+        //    descriptionSiteForm.setFax(siteInfo.Tin);
+        //    descriptionSiteForm.setHeadquater(siteInfo.HeadquaterInfo);
+        //    descriptionSiteForm.setPhone(siteInfo.Phonenumber);
+        //    descriptionSiteForm.setRepresentative(siteInfo.Representative);
+        //    OpenChidForm1(descriptionSiteForm);
+        //    return;
+        //}
+        public void OpenDescription(String idSite, DescriptionSiteForm.SetIdSite setIdSite)
+        {
+            DescriptionSiteForm descriptionSiteForm = new DescriptionSiteForm();
             SiteInfo siteInfo = new SiteInfo();
             siteInfo.GetSiteInfo(idSite, ref siteInfo);
             descriptionSiteForm.setId(siteInfo.Id);
@@ -437,6 +451,7 @@ namespace OPM.GUI
             descriptionSiteForm.setPhone(siteInfo.Phonenumber);
             descriptionSiteForm.setRepresentative(siteInfo.Representative);
             OpenChidForm1(descriptionSiteForm);
+            descriptionSiteForm.setIdSite = setIdSite;
             return;
         }
         public void OpenExcel()

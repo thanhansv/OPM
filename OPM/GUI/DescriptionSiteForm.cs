@@ -17,7 +17,11 @@ namespace OPM.GUI
         public delegate void RequestDashBoardOpenDescriptionForm(string siteId);
         public RequestDashBoardOpenDescriptionForm requestDashBoardOpendescriptionForm;
 
-       
+        //Truyền giá trị của Id_Site về Form Contract
+        public delegate void SetIdSite(string idSite);
+        public SetIdSite setIdSite;
+
+
         private void SetDefaultValues()
         {
             txbID.Clear();
@@ -103,6 +107,7 @@ namespace OPM.GUI
             else
             {
                 state(true);
+                setIdSite(txbID.Text.Trim());
             }
         }
         //Kiểm tra sự tồn tại của siteInfo.Id

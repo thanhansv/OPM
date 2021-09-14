@@ -21,7 +21,7 @@ namespace OPM.GUI
         public RequestDashBoardOpenChildForm RequestDashBoardOpenPOForm;
 
         /*Delegate For Request Dashboard Open Description Form*/
-        public delegate void RequestDashBoardOpenDescriptionForm(string siteId);
+        public delegate void RequestDashBoardOpenDescriptionForm(string siteId, DescriptionSiteForm.SetIdSite setIdSite);
         public RequestDashBoardOpenDescriptionForm requestDashBoardOpendescriptionForm;
 
         /*Object Contract for Contract form*/
@@ -31,7 +31,14 @@ namespace OPM.GUI
         {
             InitializeComponent();
         }
-
+        void SetIdSiteA(string value)
+        {
+            tbxSiteA.Text = value;
+        }
+        void SetIdSiteB(string value)
+        {
+            tbxSiteB.Text = value;
+        }
         public void State(bool state)
         {
             txbKHMS.ReadOnly = state;
@@ -76,7 +83,7 @@ namespace OPM.GUI
         private IContract contract = new ContractObj();
         private void button1_Click(object sender, EventArgs e)
         {
-            requestDashBoardOpendescriptionForm(tbxSiteA.Text.ToString());
+            requestDashBoardOpendescriptionForm(tbxSiteA.Text.ToString(),SetIdSiteA);
             return;
         }
 
@@ -199,7 +206,7 @@ namespace OPM.GUI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            requestDashBoardOpendescriptionForm(tbxSiteB.Text.ToString());
+            requestDashBoardOpendescriptionForm(tbxSiteB.Text.ToString(),SetIdSiteB);
             return;
         }
 
