@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using OPM.DBHandler;
 using OPM.OPMEnginee;
 namespace OPM.GUI
 {
@@ -96,21 +97,65 @@ namespace OPM.GUI
 
         private void save_Click(object sender, EventArgs e)
         {
-            SiteInfo siteInfo = new SiteInfo();
-            siteInfo.Id = txbID.Text;
-            siteInfo.HeadquaterInfo= txbhead.Text;
-            siteInfo.Address = txbAddress.Text;
-            siteInfo.Account = txbAccount.Text;
-            siteInfo.Phonenumber = txbPhone.Text;
-            siteInfo.Tin = txbFax.Text;
-            siteInfo.Representative = txbRepresen.Text;
-            int ret= siteInfo.UpdateExistedSite(siteInfo);
+            //Cập nhật hoặc thêm mới Site_Info
+            int ret = InsertOrUpdate(txbID.Text.Trim());
             if (ret == 0) MessageBox.Show("update ko thành công");
             else
             {
-                MessageBox.Show("update thành công");
                 state(true);
             }
+        }
+        //Kiểm tra sự tồn tại của siteInfo.Id
+        bool Exist(string id)
+        {
+            try
+            {
+                string query = string.Format("SELECT * FROM dbo.Site_Info WHERE id = '{0}'", id);
+                DataTable table = DataProvider.ExecuteQuery(query);
+                return table.Rows.Count > 0;
+            }
+            catch
+            {
+
+            }
+            return false;
+        }
+        //Cập nhật hoặc thêm mới Site_Info
+        int InsertOrUpdate(string id)
+        {
+            int ret = 0;
+            if (id == null)
+                MessageBox.Show("Id chưa khởi tạo!");
+            else
+            {
+                if (Exist(id))
+                {
+                    string query = string.Format("UPDATE dbo.Site_Info SET headquater_info = '{1}', address= '{2}', phonenumber = '{3}', tin= '{4}', account = '{5}',representative = '{6}' WHERE id = '{0}'", txbID.Text, txbhead.Text, txbAddress.Text, txbPhone.Text, txbFax.Text, txbAccount.Text, txbRepresen.Text);
+                    try
+                    {
+                        ret = DataProvider.ExecuteNonQuery(query);
+                        MessageBox.Show(string.Format("Cập nhật thành công Site_Info {0} !", id));
+                    }
+                    catch
+                    {
+                        ret = 0;
+                    }
+                }
+                else
+                {
+                    string query = string.Format(@"INSERT INTO dbo.Site_Info(id, headquater_info, address, phonenumber, tin, account, representative) VALUES('{0}','{1}','{2}','{3}','{4}','{5}','{6}')", id, txbhead.Text, txbAddress.Text, txbPhone.Text, txbFax.Text, txbAccount.Text, txbRepresen.Text);
+                    try
+                    {
+                        ret = DataProvider.ExecuteNonQuery(query);
+                        MessageBox.Show(string.Format("Tạo mới thành công Site_Info {0} !", id));
+                    }
+                    catch
+                    {
+                        ret = 0;
+                    }
+                }
+            }
+            return ret;
         }
     }
 }
