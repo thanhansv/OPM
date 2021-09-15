@@ -164,7 +164,7 @@ namespace OPM.OPMEnginee
                 contract.SiteA = (string)ds.Tables[0].Rows[0].ItemArray[9];
                 contract.SiteB = (string)ds.Tables[0].Rows[0].ItemArray[10];
                 contract.KHMS = ds.Tables[0].Rows[0].ItemArray[13].ToString();
-                contract.ExperationDate= ds.Tables[0].Rows[0].ItemArray[14].ToString();
+                contract.ExperationDate= ((DateTime)ds.Tables[0].Rows[0].ItemArray[14]).ToString("dd-MM-yyyy");
             }
             else
             {
@@ -178,7 +178,7 @@ namespace OPM.OPMEnginee
             string strQueryOne = "select * from Contract where id=" + "'" + strIdContract + "'";
             DataSet ds = new DataSet();
             int ret = OPMDBHandler.fQuerryData(strQueryOne, ref ds);
-            if (0 != ds.Tables.Count)
+            if (0 != ds.Tables[0].Rows.Count)
             {
                 contract.IdContract = (string)ds.Tables[0].Rows[0].ItemArray[0];
                 contract.NameContract = (string)ds.Tables[0].Rows[0].ItemArray[1];
@@ -194,7 +194,7 @@ namespace OPM.OPMEnginee
                 contract.SiteA = (string)ds.Tables[0].Rows[0].ItemArray[9];
                 contract.SiteB = (string)ds.Tables[0].Rows[0].ItemArray[10];
                 contract.KHMS = ds.Tables[0].Rows[0].ItemArray[13].ToString();
-                contract.ExperationDate = ds.Tables[0].Rows[0].ItemArray[14].ToString();
+                contract.ExperationDate = ((DateTime)ds.Tables[0].Rows[0].ItemArray[14]).ToString("dd-MM-yyyy");
             }
             else
             {

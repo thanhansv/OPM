@@ -44,13 +44,13 @@ namespace OPM.OPMEnginee
         public string Representative { get => _representative; set => _representative = value; }
         public int GetSiteInfo(string idSiteInfo, ref SiteInfo siteInfo)
         {
-            string strQueryOne = "SELECT DISTINCT * FROM Site_Info  WHERE Site_Info.id =" + "'" + idSiteInfo + "'";
+            string strQueryOne = "SELECT DISTINCT * FROM Site_Info  WHERE Site_Info.id =" + "N'" + idSiteInfo + "'";
             DataSet ds = new DataSet();
             int ret = OPMDBHandler.fQuerryData(strQueryOne, ref ds);
-            if (0 != ds.Tables.Count)
+            if (0 != ds.Tables[0].Rows.Count)
             {
                 siteInfo.Id = (string)ds.Tables[0].Rows[0].ItemArray[0];
-                siteInfo.Type = (string)ds.Tables[0].Rows[0].ItemArray[1];
+                siteInfo.Type = ds.Tables[0].Rows[0].ItemArray[1].ToString();
                 siteInfo.HeadquaterInfo = (string)ds.Tables[0].Rows[0].ItemArray[2];
                 siteInfo.Address = (string)ds.Tables[0].Rows[0].ItemArray[3];
                 siteInfo.Phonenumber = (string)ds.Tables[0].Rows[0].ItemArray[4];

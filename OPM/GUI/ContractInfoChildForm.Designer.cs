@@ -54,10 +54,10 @@ namespace OPM.GUI
             this.tbxSiteA = new System.Windows.Forms.TextBox();
             this.tbxSiteB = new System.Windows.Forms.TextBox();
             this.btnNewPO = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnCreateGarantee = new System.Windows.Forms.Button();
             this.txbGaranteeValue = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -81,7 +81,7 @@ namespace OPM.GUI
             this.btnDescriptionA.TabIndex = 0;
             this.btnDescriptionA.Text = "Desc...";
             this.btnDescriptionA.UseVisualStyleBackColor = true;
-            this.btnDescriptionA.Click += new System.EventHandler(this.button1_Click);
+            this.btnDescriptionA.Click += new System.EventHandler(this.IdSiteA_Click);
             // 
             // tbContract
             // 
@@ -113,7 +113,7 @@ namespace OPM.GUI
             this.button2.TabIndex = 2;
             this.button2.Text = "Desc...";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.IdSiteB_Click);
             // 
             // label1
             // 
@@ -221,6 +221,7 @@ namespace OPM.GUI
             this.tbxDurationContract.Name = "tbxDurationContract";
             this.tbxDurationContract.Size = new System.Drawing.Size(78, 23);
             this.tbxDurationContract.TabIndex = 1;
+            this.tbxDurationContract.Text = "0";
             this.tbxDurationContract.TextChanged += new System.EventHandler(this.tbxDurationContract_TextChanged);
             // 
             // txbTypeContract
@@ -236,7 +237,8 @@ namespace OPM.GUI
             this.tbxValueContract.Name = "tbxValueContract";
             this.tbxValueContract.Size = new System.Drawing.Size(250, 23);
             this.tbxValueContract.TabIndex = 1;
-            //this.tbxValueContract.TextChanged += new System.EventHandler(this.tbxValueContract_TextChanged);
+            this.tbxValueContract.Text = "0";
+            this.tbxValueContract.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // tbxDurationPO
             // 
@@ -244,6 +246,8 @@ namespace OPM.GUI
             this.tbxDurationPO.Name = "tbxDurationPO";
             this.tbxDurationPO.Size = new System.Drawing.Size(250, 23);
             this.tbxDurationPO.TabIndex = 1;
+            this.tbxDurationPO.Text = "0";
+            this.tbxDurationPO.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // tbxSiteA
             // 
@@ -269,24 +273,25 @@ namespace OPM.GUI
             this.btnNewPO.UseVisualStyleBackColor = true;
             this.btnNewPO.Click += new System.EventHandler(this.btnNewPO_Click);
             // 
-            // button5
+            // btnEdit
             // 
-            this.button5.Location = new System.Drawing.Point(203, 457);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "Edit";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.btnEdit.Location = new System.Drawing.Point(203, 457);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnEdit.TabIndex = 4;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
-            // button6
+            // btnRemove
             // 
-            this.button6.Location = new System.Drawing.Point(122, 457);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 4;
-            this.button6.Text = "Remove";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnRemove.Location = new System.Drawing.Point(122, 457);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(75, 23);
+            this.btnRemove.TabIndex = 4;
+            this.btnRemove.Text = "Remove";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnSave
             // 
@@ -298,15 +303,15 @@ namespace OPM.GUI
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // button3
+            // btnCreateGarantee
             // 
-            this.button3.Location = new System.Drawing.Point(10, 457);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 23);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Tạo Bảo Lãnh";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnCreateGarantee.Location = new System.Drawing.Point(10, 457);
+            this.btnCreateGarantee.Name = "btnCreateGarantee";
+            this.btnCreateGarantee.Size = new System.Drawing.Size(100, 23);
+            this.btnCreateGarantee.TabIndex = 6;
+            this.btnCreateGarantee.Text = "Tạo Bảo Lãnh";
+            this.btnCreateGarantee.UseVisualStyleBackColor = true;
+            this.btnCreateGarantee.Click += new System.EventHandler(this.btnCreateGarantee_Click);
             // 
             // txbGaranteeValue
             // 
@@ -314,6 +319,7 @@ namespace OPM.GUI
             this.txbGaranteeValue.Name = "txbGaranteeValue";
             this.txbGaranteeValue.Size = new System.Drawing.Size(100, 23);
             this.txbGaranteeValue.TabIndex = 7;
+            this.txbGaranteeValue.Text = "0";
             this.txbGaranteeValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label12
@@ -431,10 +437,10 @@ namespace OPM.GUI
             this.Controls.Add(this.dateTimePickerDurationDateContract);
             this.Controls.Add(this.dateTimePickerDateSignedPO);
             this.Controls.Add(this.txbGaranteeValue);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnCreateGarantee);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.btnRemove);
+            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnNewPO);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
@@ -494,11 +500,11 @@ namespace OPM.GUI
         private System.Windows.Forms.TextBox tbxSiteA;
         private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.Button btnNewPO;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox tbxSiteB;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnCreateGarantee;
         private System.Windows.Forms.TextBox txbGaranteeValue;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;

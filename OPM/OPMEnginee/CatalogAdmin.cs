@@ -148,11 +148,11 @@ namespace OPM.OPMEnginee
             string strQuerry = String.Empty;
             if (null == strParent)
             {
-                strQuerry = "select ctlparent, ctlID, ctlname from CatalogAdmin where ctlparent is null";
+                strQuerry = "select ctlparent, ctlID, ctlname from CatalogAdmin where ctlparent is NULL ORDER BY ctlname";
             }
             else
             {
-                strQuerry = "select ctlparent, ctlID, ctlname from CatalogAdmin where ctlparent=" + "'" + strParent + "'";
+                strQuerry = "select ctlparent, ctlID, ctlname from CatalogAdmin where ctlparent=" + "'" + strParent + "' ORDER BY ctlname";
             }    
             int ret = OPMDBHandler.fQuerryData(strQuerry, ref ds);
             if (0 == ret)

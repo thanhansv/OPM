@@ -135,7 +135,7 @@ namespace OPM.GUI
             {
                 if (Exist(id))
                 {
-                    string query = string.Format("UPDATE dbo.Site_Info SET headquater_info = '{1}', address= '{2}', phonenumber = '{3}', tin= '{4}', account = '{5}',representative = '{6}' WHERE id = '{0}'", txbID.Text, txbhead.Text, txbAddress.Text, txbPhone.Text, txbFax.Text, txbAccount.Text, txbRepresen.Text);
+                    string query = string.Format("UPDATE dbo.Site_Info SET headquater_info = '{1}', address= N'{2}', phonenumber = N'{3}', tin= '{4}', account = '{5}',representative = N'{6}' WHERE id = '{0}'", txbID.Text, txbhead.Text, txbAddress.Text, txbPhone.Text, txbFax.Text, txbAccount.Text, txbRepresen.Text);
                     try
                     {
                         ret = DataProvider.ExecuteNonQuery(query);
@@ -148,7 +148,7 @@ namespace OPM.GUI
                 }
                 else
                 {
-                    string query = string.Format(@"INSERT INTO dbo.Site_Info(id, headquater_info, address, phonenumber, tin, account, representative) VALUES('{0}','{1}','{2}','{3}','{4}','{5}','{6}')", id, txbhead.Text, txbAddress.Text, txbPhone.Text, txbFax.Text, txbAccount.Text, txbRepresen.Text);
+                    string query = string.Format(@"INSERT INTO dbo.Site_Info(id, headquater_info, address, phonenumber, tin, account, representative) VALUES(N'{0}','{1}',N'{2}',N'{3}','{4}','{5}',N'{6}')", id, txbhead.Text, txbAddress.Text, txbPhone.Text, txbFax.Text, txbAccount.Text, txbRepresen.Text);
                     try
                     {
                         ret = DataProvider.ExecuteNonQuery(query);
