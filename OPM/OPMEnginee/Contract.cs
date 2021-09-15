@@ -3,12 +3,16 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
+using WordOffice = Microsoft.Office.Interop.Word;
+using System.Reflection;
+using OPM.WordHandler;
+using System.IO;
 
 namespace OPM.OPMEnginee
 {
     class Contract
     {
-        private string id= "104-2020/CUVT-ANSV/DTRR-KHMS";
+        private string id= "111-2020/CUVT-ANSV/DTRR-KHMS";
         private string namecontract = "namecontract";
         private string codeaccouting = "codeaccouting";
         private Nullable<System.DateTime> datesigned = DateTime.Now;
@@ -103,25 +107,6 @@ namespace OPM.OPMEnginee
                 ExperationDate = (DateTime)row["experationDate"];
                 Blvalue = (row["blvalue"]==DBNull.Value)?0:(int)row["blvalue"];
             }
-            //else
-            //{
-            //    Id = id;
-            //    Namecontract = "namecontract";
-            //    Codeaccouting = "codeaccouting";
-            //    Datesigned = DateTime.Now;
-            //    Typecontract = "typecontract";
-            //    Durationcontract = 0;
-            //    Activedate = DateTime.Now;
-            //    Valuecontract = 0;
-            //    Durationpo = 0;
-            //    Id_siteA = "ANSV";
-            //    Id_siteB = "SiteB";
-            //    Phuluc = "phuluc";
-            //    Vbgurantee = "vbgurantee";
-            //    KHMS = "kHMS";
-            //    ExperationDate = DateTime.Now;
-            //    Blvalue = 0;
-            //}
         }
         public List<Contract> GetList()
         {
@@ -187,6 +172,55 @@ namespace OPM.OPMEnginee
             }
             if (result != 0) MessageBox.Show("Bạn đã xoá hợp đồng thành công!");
             return result;
+        }
+        public string CreatContractGuarantee()
+        {
+            object filename = string.Format(@"D:\OPM\{0}\BLHD_{0}.docx", id.Trim().Replace('/', '-'));
+            WordOffice.Application wordApp = new WordOffice.Application();
+            object missing = Missing.Value;
+            WordOffice.Document myDoc = null;
+            object path = @"D:\OPM\Template\BLHD_Template.docx";
+            if (File.Exists(path.ToString()))
+            {
+                object readOnly = true;
+                //object isVisible = false;
+                wordApp.Visible = false;
+
+                myDoc = wordApp.Documents.Open(ref path, ref missing, ref readOnly,
+                                    ref missing, ref missing, ref missing,
+                                    ref missing, ref missing, ref missing,
+                                    ref missing, ref missing, ref missing,
+                                    ref missing, ref missing, ref missing, ref missing);
+                myDoc.Activate();
+                //find and replace
+                OpmWordHandler.FindAndReplace(wordApp, "<<ID>>", id.Trim());
+                OpmWordHandler.FindAndReplace(wordApp, "<<ID>>", id.Trim());
+                OpmWordHandler.FindAndReplace(wordApp, "<<ACTIVEDATE>>", activedate);
+                OpmWordHandler.FindAndReplace(wordApp, "<<NAMECONTRACT>>", namecontract);
+                OpmWordHandler.FindAndReplace(wordApp, "<<DATESIGNED>>", datesigned);
+                OpmWordHandler.FindAndReplace(wordApp, "<<ID_SITEB>>", id_siteB);
+                OpmWordHandler.FindAndReplace(wordApp, "<<BLVALUE>>", blvalue);
+                OpmWordHandler.FindAndReplace(wordApp, "<<DURATIONPO>>", durationpo);
+                //Tạo file BLHĐ trong thư mục D:\OPM
+                string folder = string.Format(@"D:\OPM\{0}", id.Trim().Replace('/', '-'));
+                Directory.CreateDirectory(folder);
+                try
+                {
+                    myDoc.SaveAs2(ref filename);
+                    MessageBox.Show(string.Format("Đã tạo file {0}",filename.ToString()));
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                }
+                myDoc.Close();
+                wordApp.Quit();
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy bản mẫu BLHD.docx! ");
+            }
+            return filename.ToString();
         }
     }
 }

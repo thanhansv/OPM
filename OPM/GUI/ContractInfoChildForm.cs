@@ -98,17 +98,13 @@ namespace OPM.GUI
 
         private void btnCreateGarantee_Click(object sender, EventArgs e)
         {
-
-        }
-
-/*        private void TextBox_Changed(object sender, EventArgs e)
-        {
-            if(tbxDurationContract.SelectionLength > 0)
+            if (Contract.Exist(tbContract.Text))
             {
-                dateTimePickerDurationDateContract.Value = dateTimePickerDateSignedPO.Value.AddDays(Convert.ToInt32(tbxDurationContract.Text));
+                Contract contract = new Contract(tbContract.Text);
+                contract.CreatContractGuarantee();
             }
-        }*/
-
+            else MessageBox.Show("Chưa có hợp đồng {0}",tbContract.Text);
+        }
         private void btnSave_Click(object sender, EventArgs e)
         {
             Contract contract = new Contract();
