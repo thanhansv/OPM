@@ -346,7 +346,6 @@ namespace OPM.GUI
 
             return;
         }
-
         public void UpdateCatalogNodes(TreeNode parentNode, string strNewnode)
         {
             TreeNode newTreeNode = new TreeNode(strNewnode);
