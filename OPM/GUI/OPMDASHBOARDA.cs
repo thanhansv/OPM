@@ -142,7 +142,7 @@ namespace OPM.GUI
             /*OK Important for Communication*/
 
             /*Check What Label Checked and it's parent Checked*/
-            MessageBox.Show(treeView1.SelectedNode.Name.ToString());
+            //MessageBox.Show(treeView1.SelectedNode.Name.ToString());
 
             string strNodeID = treeView1.SelectedNode.Name.ToString();
             if (null != treeView1.SelectedNode.Parent)
@@ -152,7 +152,7 @@ namespace OPM.GUI
             }    
             else
             {
-                MessageBox.Show("No Parent Node");
+                //MessageBox.Show("No Parent Node");
             }
             string[] temp = strNodeID.Split('_');
             temp[0] += "_";

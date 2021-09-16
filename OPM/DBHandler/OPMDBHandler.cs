@@ -7,11 +7,12 @@ namespace OPM.DBHandler
 
     class OPMDBHandler
     {
+        static string strconnection = @"Data Source=THANH\SQLEXPRESS;Initial Catalog=OpmDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        //string strconnection = @"Data Source = LEXUANTHANH\SQLEXPRESS;Initial Catalog = OpmDB; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         public static int GetConnection(ref SqlConnection con)
         {
             try 
             {
-                string strconnection = @"Data Source=LEXUANTHANH\SQLEXPRESS;Initial Catalog=OpmDB;Integrated Security=True";
                 con = new SqlConnection(strconnection);
                 return 1;
             }
@@ -23,7 +24,6 @@ namespace OPM.DBHandler
 
         public static int fInsertData(string strSqlCommand)
         {
-            string strconnection = @"Data Source=LEXUANTHANH\SQLEXPRESS;Initial Catalog=OpmDB;Integrated Security=True";
             SqlConnection con = new SqlConnection(strconnection);
 
             try
@@ -46,7 +46,6 @@ namespace OPM.DBHandler
         }
         public static int fQuerryData1(string strQuerry)
         {
-            string strconnection = @"Data Source=LEXUANTHANH\SQLEXPRESS;Initial Catalog=OpmDB;Integrated Security=True";
             SqlConnection con = new SqlConnection(strconnection);
             try
             {
@@ -83,7 +82,6 @@ namespace OPM.DBHandler
 
         public static int fQuerryData(string strQuerry, ref DataSet ds)
         {
-            string strconnection = @"Data Source=LEXUANTHANH\SQLEXPRESS;Initial Catalog=OpmDB;Integrated Security=True";
             SqlConnection con = new SqlConnection(strconnection);
             SqlDataAdapter adapter = new SqlDataAdapter();
             SqlCommand command;
