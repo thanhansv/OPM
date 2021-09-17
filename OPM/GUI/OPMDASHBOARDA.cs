@@ -399,12 +399,13 @@ namespace OPM.GUI
         {
             NTKTInfor nTKTInfor= new NTKTInfor();
             //nTKTInfor.UpdateCatalogPanel = new NTKTInfor.UpdateCatalogDelegate(GetCatalogvalue);
-            nTKTInfor.SetKHMS(strKHMS);
+            //nTKTInfor.SetKHMS(strKHMS);
             nTKTInfor.requestDashBoardPurchaseOderForm = new NTKTInfor.RequestDashBoardPurchaseOderForm(OpenPOForm);
-            strContractID = strContractID.Replace("Contract_","");
-            nTKTInfor.SetContractID(strContractID);
-            nTKTInfor.SetPOID(strPOID);
-            nTKTInfor.SetPONumber(strPONumber);
+            nTKTInfor.UpdateCatalogPanel = new NTKTInfor.UpdateCatalogDelegate(GetCatalogvalue);
+            //strContractID = strContractID.Replace("Contract_","");
+            //nTKTInfor.SetContractID(strContractID);
+            //nTKTInfor.SetPOID(strPOID);
+            // nTKTInfor.SetPONumber(strPONumber);
             OpenChidForm(nTKTInfor);
             return;
         }

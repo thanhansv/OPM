@@ -63,12 +63,14 @@ namespace OPM.GUI
             this.btnBack = new System.Windows.Forms.Button();
             this.txbNoD = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.dateTimePickerNTKTCreated = new System.Windows.Forms.DateTimePicker();
             this.gbContact.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(349, 454);
+            this.btnSave.Location = new System.Drawing.Point(349, 479);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 0;
@@ -124,7 +126,7 @@ namespace OPM.GUI
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 185);
+            this.label6.Location = new System.Drawing.Point(13, 210);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(110, 15);
             this.label6.TabIndex = 6;
@@ -146,7 +148,7 @@ namespace OPM.GUI
             this.gbContact.Controls.Add(this.label10);
             this.gbContact.Controls.Add(this.label12);
             this.gbContact.Controls.Add(this.label8);
-            this.gbContact.Location = new System.Drawing.Point(13, 250);
+            this.gbContact.Location = new System.Drawing.Point(13, 275);
             this.gbContact.Name = "gbContact";
             this.gbContact.Size = new System.Drawing.Size(411, 172);
             this.gbContact.TabIndex = 8;
@@ -279,6 +281,8 @@ namespace OPM.GUI
             this.txbKHMS.Name = "txbKHMS";
             this.txbKHMS.Size = new System.Drawing.Size(287, 23);
             this.txbKHMS.TabIndex = 9;
+            this.txbKHMS.Text = "Mua sắm tập trung thiết bị đầu cuối ONT loại (2FE/GE+Wifi singleband) tương thích" +
+    " hệ thống gpon cho nhu cầu năm 2020";
             // 
             // txbIDContract
             // 
@@ -286,6 +290,7 @@ namespace OPM.GUI
             this.txbIDContract.Name = "txbIDContract";
             this.txbIDContract.Size = new System.Drawing.Size(287, 23);
             this.txbIDContract.TabIndex = 9;
+            this.txbIDContract.Text = "111-2020/CUVT-ANSV/DTRR-KHMS";
             // 
             // txbPOID
             // 
@@ -293,6 +298,7 @@ namespace OPM.GUI
             this.txbPOID.Name = "txbPOID";
             this.txbPOID.Size = new System.Drawing.Size(287, 23);
             this.txbPOID.TabIndex = 9;
+            this.txbPOID.Text = "5133/CUVT-KV";
             // 
             // txbPONumber
             // 
@@ -300,6 +306,7 @@ namespace OPM.GUI
             this.txbPONumber.Name = "txbPONumber";
             this.txbPONumber.Size = new System.Drawing.Size(287, 23);
             this.txbPONumber.TabIndex = 9;
+            this.txbPONumber.Text = "PO4";
             // 
             // txbNTKTID
             // 
@@ -307,10 +314,11 @@ namespace OPM.GUI
             this.txbNTKTID.Name = "txbNTKTID";
             this.txbNTKTID.Size = new System.Drawing.Size(287, 23);
             this.txbNTKTID.TabIndex = 9;
+            this.txbNTKTID.Text = "NTKTxxx";
             // 
             // dateTimePickerNTKT
             // 
-            this.dateTimePickerNTKT.Location = new System.Drawing.Point(141, 176);
+            this.dateTimePickerNTKT.Location = new System.Drawing.Point(141, 204);
             this.dateTimePickerNTKT.Name = "dateTimePickerNTKT";
             this.dateTimePickerNTKT.Size = new System.Drawing.Size(200, 23);
             this.dateTimePickerNTKT.TabIndex = 10;
@@ -318,7 +326,7 @@ namespace OPM.GUI
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 216);
+            this.label7.Location = new System.Drawing.Point(12, 241);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(123, 15);
             this.label7.TabIndex = 6;
@@ -326,23 +334,24 @@ namespace OPM.GUI
             // 
             // textBox11
             // 
-            this.textBox11.Location = new System.Drawing.Point(141, 208);
+            this.textBox11.Location = new System.Drawing.Point(141, 233);
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(200, 23);
             this.textBox11.TabIndex = 9;
             // 
             // btnChoose
             // 
-            this.btnChoose.Location = new System.Drawing.Point(347, 208);
+            this.btnChoose.Location = new System.Drawing.Point(347, 233);
             this.btnChoose.Name = "btnChoose";
             this.btnChoose.Size = new System.Drawing.Size(77, 23);
             this.btnChoose.TabIndex = 11;
             this.btnChoose.Text = "Choose";
             this.btnChoose.UseVisualStyleBackColor = true;
+            this.btnChoose.Click += new System.EventHandler(this.btnChoose_Click);
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(13, 454);
+            this.btnBack.Location = new System.Drawing.Point(13, 479);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(75, 23);
             this.btnBack.TabIndex = 12;
@@ -352,19 +361,37 @@ namespace OPM.GUI
             // 
             // txbNoD
             // 
-            this.txbNoD.Location = new System.Drawing.Point(254, 237);
+            this.txbNoD.Location = new System.Drawing.Point(254, 262);
             this.txbNoD.Name = "txbNoD";
             this.txbNoD.Size = new System.Drawing.Size(87, 23);
             this.txbNoD.TabIndex = 13;
+            this.txbNoD.Text = "0";
+            this.txbNoD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(168, 244);
+            this.label16.Location = new System.Drawing.Point(168, 269);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(78, 15);
             this.label16.TabIndex = 14;
             this.label16.Text = "số lượng dive";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(13, 176);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(55, 15);
+            this.label17.TabIndex = 6;
+            this.label17.Text = "Ngày tạo";
+            // 
+            // dateTimePickerNTKTCreated
+            // 
+            this.dateTimePickerNTKTCreated.Location = new System.Drawing.Point(141, 170);
+            this.dateTimePickerNTKTCreated.Name = "dateTimePickerNTKTCreated";
+            this.dateTimePickerNTKTCreated.Size = new System.Drawing.Size(200, 23);
+            this.dateTimePickerNTKTCreated.TabIndex = 10;
             // 
             // NTKTInfor
             // 
@@ -376,6 +403,7 @@ namespace OPM.GUI
             this.Controls.Add(this.txbNoD);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnChoose);
+            this.Controls.Add(this.dateTimePickerNTKTCreated);
             this.Controls.Add(this.dateTimePickerNTKT);
             this.Controls.Add(this.textBox11);
             this.Controls.Add(this.txbNTKTID);
@@ -385,6 +413,7 @@ namespace OPM.GUI
             this.Controls.Add(this.txbKHMS);
             this.Controls.Add(this.gbContact);
             this.Controls.Add(this.label7);
+            this.Controls.Add(this.label17);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -439,5 +468,7 @@ namespace OPM.GUI
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.TextBox txbNoD;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.DateTimePicker dateTimePickerNTKTCreated;
     }
 }

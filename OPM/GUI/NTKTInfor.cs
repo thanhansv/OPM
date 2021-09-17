@@ -27,8 +27,13 @@ namespace OPM.GUI
         public NTKTInfor()
         {
             InitializeComponent();
+            LoadData();
         }
-
+        public void LoadData()
+        {
+            dateTimePickerNTKTCreated.Value = DateTime.Now;
+            dateTimePickerNTKT.Value = dateTimePickerNTKTCreated.Value.AddDays(2);
+        }
         public void SetKHMS(string value)
         {
             txbKHMS.Text = value;
@@ -71,7 +76,7 @@ namespace OPM.GUI
             /*Create Folder NTKT*/
             string strContractDirectory = txbIDContract.Text.Replace('/', '_');
             strContractDirectory = strContractDirectory.Replace('-', '_');
-            string strPODirectory = "F:\\OPM\\" + strContractDirectory + "\\" + txbPONumber.Text + "\\" + "NTKT_" +txbNTKTID.Text.ToString();
+            string strPODirectory = "E:\\OPM\\" + strContractDirectory + "\\" + txbPONumber.Text + "\\" + "NTKT_" +txbNTKTID.Text.ToString();
 
             ret = newNKTTObj.CheckExistNTKT(txbNTKTID.Text);
             if (0 == ret)
@@ -178,6 +183,11 @@ namespace OPM.GUI
         }
 
         private void NTKTInfor_Load(object sender, EventArgs e)
+        {
+            txbNoD.Text = "15";
+        }
+
+        private void btnChoose_Click(object sender, EventArgs e)
         {
 
         }
