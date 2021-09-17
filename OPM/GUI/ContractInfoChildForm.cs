@@ -53,30 +53,30 @@ namespace OPM.GUI
             txbGaranteeActiveDate.ReadOnly = state;
             tbxSiteA.ReadOnly = state;
             tbxSiteB.ReadOnly = state;
+            dateTimePickerActiveDateContract.Enabled = !state;
+            dateTimePickerDateSignedPO.Enabled = !state;
         }
 
         public void SetValueItemForm(string idContract)
         {
-            //Add New Comment+ Edit From local
-            //Add New Comment Level2+ Edit From Local Lan 2+Change Local Lan 2
-            ContractObj contract = new ContractObj();
-            contract.GetDisplayContract(idContract, ref contract);
-            this.txbKHMS.Text = contract.KHMS;
-            this.tbContract.Text = contract.IdContract;
-            this.tbBidName.Text = contract.NameContract;
-            this.tbAccountingCode.Text = contract.CodeAccounting;
-            dateTimePickerDateSignedPO.Value= (contract.DateSigned==null)?DateTime.Now:DateTime.ParseExact(contract.DateSigned,"mm-dd-yyyy",null);
-            dateTimePickerDurationDateContract.Value = dateTimePickerDateSignedPO.Value.AddDays(Convert.ToInt32(contract.DurationContract));
-            this.txbTypeContract.Text = contract.TypeContract;
-            this.tbxDurationContract.Text = contract.DurationContract;
-            dateTimePickerActiveDateContract.Value = (contract.ActiveDateContract == null) ? DateTime.Now : DateTime.ParseExact(contract.ActiveDateContract, "mm-dd-yyyy", null);
-            this.tbxValueContract.Text = contract.ValueContract;
-            this.tbxDurationPO.Text = contract.DurationGuranteePO;
-            this.tbxSiteA.Text = contract.SiteA;
-            this.tbxSiteB.Text = contract.SiteB;
-            this.ExpirationDate.Value = (contract.ExperationDate == null) ? DateTime.Now : DateTime.ParseExact(contract.ExperationDate, "mm-dd-yyyy", null);
+            Contract contract = new Contract(idContract);
+            txbKHMS.Text = contract.KHMS;
+            tbContract.Text = contract.Id;
+            tbBidName.Text = contract.Namecontract;
+            tbAccountingCode.Text = contract.Codeaccouting;
+            dateTimePickerDateSignedPO.Value= contract.Datesigned;
+            dateTimePickerDurationDateContract.Value = dateTimePickerDateSignedPO.Value.AddDays(Convert.ToInt32(contract.Durationcontract));
+            txbTypeContract.Text = contract.Typecontract;
+            tbxDurationContract.Text = contract.Durationcontract.ToString();
+            dateTimePickerActiveDateContract.Value = contract.Activedate;
+            tbxValueContract.Text = contract.Valuecontract.ToString();
+            tbxDurationPO.Text = contract.Durationpo.ToString();
+            tbxSiteA.Text = contract.Id_siteA;
+            tbxSiteB.Text = contract.Id_siteB;
+            ExpirationDate.Value = contract.ExperationDate;
+            txbGaranteeActiveDate.Text = (contract.ExperationDate - contract.Activedate).TotalDays.ToString();
+            txbGaranteeValue.Text = contract.Blvalue.ToString();
             State(true);
-
             return;
         }
 
@@ -90,8 +90,6 @@ namespace OPM.GUI
         private void btnNewPO_Click(object sender, EventArgs e)
         {
             string strContract = "Contract_" + tbContract.Text.ToString();
-            //OpenPurchaseOrderInforGUI(temp);
-            /*Request DashBoard Open PO Form*/
             RequestDashBoardOpenPOForm(strContract, txbKHMS.Text);
             return;
         }
@@ -126,80 +124,9 @@ namespace OPM.GUI
             contract.Durationpo = int.Parse(tbxDurationPO.Text);
             
             contract.InsertOrUpdate();
-            //int ret = 0;
-            ///*Save The Edited Contract Info */
-            ////ContractObj newContract = new ContractObj();
-            //newContract.KHMS = txbKHMS.Text;
-            //newContract.IdContract = tbContract.Text;
-            //newContract.NameContract = tbBidName.Text;
-            //newContract.CodeAccounting = tbAccountingCode.Text;
-            //newContract.DateSigned = dateTimePickerDateSignedPO.Value.ToString("yyyy-MM-dd");
-            //newContract.TypeContract = txbTypeContract.Text;
-            //newContract.DurationContract = tbxDurationContract.Text;
-            //dateTimePickerDurationDateContract.Value = dateTimePickerDateSignedPO.Value.AddDays(Convert.ToInt32(tbxDurationContract.Text));
-            //newContract.ActiveDateContract = dateTimePickerActiveDateContract.Value.ToString("yyyy-MM-dd");
-            //newContract.ValueContract = tbxValueContract.Text;
-            //newContract.DurationGuranteePO = tbxDurationPO.Text;
-            //newContract.SiteA = tbxSiteA.Text;
-            //newContract.SiteB = tbxSiteB.Text;
-            //newContract.ExperationDate = ExpirationDate.Value.ToString("yyyy-MM-dd");
-            //ret = newContract.GetDetailContract(tbContract.Text);
-            //if(0==ret)
-            //{
-            //    /*Create Folder Contract on F Disk*/
-            //    string strContractDirectory = "E:\\OPM\\" + tbContract.Text;
-            //    strContractDirectory = strContractDirectory.Replace('/','_');
-            //    strContractDirectory = strContractDirectory.Replace('-', '_');
-            //    if (!Directory.Exists(strContractDirectory))
-            //    {
-
-            //        Directory.CreateDirectory(strContractDirectory);
-            //        MessageBox.Show("Folder Contract have been created!!!");
-            //    }
-
-            //    else
-            //    {
-            //        MessageBox.Show("Folder already exist!!!");
-
-            //    }
-            //    //Tạo mới hợp đồng
-
-            //    //ret = newContract.InsertNewContract(newContract);
-            //    if (0 == ret)
-            //    {
-            //        MessageBox.Show(ConstantVar.CreateNewContractFail);
-            //    }
-            //    else
-            //    {
-            //        UpdateCatalogPanel(tbContract.Text);
-            //        /*Create Bao Lanh Thuc Hien Hop Dong*/
-            //        this.Cursor = Cursors.WaitCursor;
-            //        string filename = @"E:\LP\MSTT_Template.docx";
-            //        string strBLHPName = strContractDirectory + "\\Bao_Lanh_Hop_Dong.docx";
-            //        OpmWordHandler.CreateBLTH_Contract(filename, strBLHPName, tbContract.Text, tbBidName.Text, dateTimePickerDateSignedPO.Value.ToString(), tbxSiteB.Text, txbGaranteeValue.Text, txbGaranteeActiveDate.Text);
-            //        /*Send Email To DF*/
-            //        OPMEmailHandler.fSendEmail("Mail From DoanTD Gmail", strBLHPName);
-            //        this.Cursor = Cursors.Default;
-            //    }
-            //}
-            //else
-            //{
-            //    ret = newContract.UpdateExistedContract(newContract);
-
-            //    if (0 == ret)
-            //    {
-            //        MessageBox.Show(ConstantVar.CreateNewContractFail);
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Update Success");
-            //        State(true);
-            //    }
-            //}
             UpdateCatalogPanel(tbContract.Text);
             return;
         }
-
         private static bool isNumber(string val)
         {
             if (val != "")
@@ -208,7 +135,6 @@ namespace OPM.GUI
             }
               else return true;
         }
-
         private void tbxDurationContract_TextChanged(object sender, EventArgs e)
         {
             TextBox textBox = sender as TextBox;
@@ -252,6 +178,28 @@ namespace OPM.GUI
         {
             Contract.Delete(tbContract.Text);
             UpdateCatalogPanel(tbContract.Text);
+        }
+
+        private void ContractInfoChildForm_Load(object sender, EventArgs e)
+        {
+            this.txbKHMS.Text = "Mua sắm tập trung thiết bị đầu cuối ONT loại (2FE/GE+Wifi singleband) tương thích hệ thống gpon cho nhu cầu năm 2020";
+            this.tbContract.Text = "111-2020/CUVT-ANSV/DTRR-KHMS";
+            this.tbBidName.Text = "Mua sắm thiết bị đầu cuối ONT loại (2FE/GE+Wifi singleband)";
+            this.tbAccountingCode.Text = "12345678";
+            dateTimePickerDateSignedPO.Value = DateTime.Now;
+            dateTimePickerDurationDateContract.Value = dateTimePickerDateSignedPO.Value;
+            this.txbTypeContract.Text = "Theo đơn giá cố định";
+            this.tbxDurationContract.Text = "0";
+            dateTimePickerActiveDateContract.Value = dateTimePickerDateSignedPO.Value;
+            this.tbxValueContract.Text = "0";
+            this.tbxDurationPO.Text = "0";
+            this.tbxSiteA.Text = "TTCUVT-TPHCM";
+            this.tbxSiteB.Text = "ANSV";
+            txbGaranteeActiveDate.Text = "0";
+            this.ExpirationDate.Value = dateTimePickerActiveDateContract.Value;
+            ExpirationDate.Enabled = false;
+            dateTimePickerDurationDateContract.Enabled = false;
+
         }
     }
 }

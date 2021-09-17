@@ -166,13 +166,12 @@ namespace OPM.GUI
                     /*DASHBOAD GET REQEST FROM CONTRACT GUI*/
                     contractInfoChildForm.RequestDashBoardOpenPOForm = new ContractInfoChildForm.RequestDashBoardOpenChildForm(OpenPOForm);
                     
-                    contractInfoChildForm.SetValueItemForm(temp[1]);
-                    
 
                     //PurchaseOderInfor purchaseOderInfor1 = new PurchaseOderInfor();
                     //purchaseOderInfor1.requestDashBoardOpenNTKTForm = new PurchaseOderInfor.RequestDashBoardOpenNTKTForm(OpenNTKTForm);
 
                     OpenChidForm(contractInfoChildForm);
+                    contractInfoChildForm.SetValueItemForm(temp[1]);
                     contractInfoChildForm.requestDashBoardOpendescriptionForm = new ContractInfoChildForm.RequestDashBoardOpenDescriptionForm(OpenDescription);
                     break;
                 case ConstantVar.POType:

@@ -393,6 +393,7 @@ namespace OPM.GUI
             // 
             // dateTimePickerDurationDateContract
             // 
+            this.dateTimePickerDurationDateContract.CustomFormat = "d-m-y";
             this.dateTimePickerDurationDateContract.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerDurationDateContract.Location = new System.Drawing.Point(350, 258);
             this.dateTimePickerDurationDateContract.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -516,6 +517,7 @@ namespace OPM.GUI
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ContractInfoChildForm";
             this.Text = "ContractInfoChildForm";
+            this.Load += new System.EventHandler(this.ContractInfoChildForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

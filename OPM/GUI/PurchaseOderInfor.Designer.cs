@@ -71,9 +71,10 @@ namespace OPM.GUI
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(8, 515);
+            this.btnSave.Location = new System.Drawing.Point(11, 858);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(41, 23);
+            this.btnSave.Size = new System.Drawing.Size(59, 38);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -81,25 +82,28 @@ namespace OPM.GUI
             // 
             // txbPOCode
             // 
-            this.txbPOCode.Location = new System.Drawing.Point(132, 70);
+            this.txbPOCode.Location = new System.Drawing.Point(189, 117);
+            this.txbPOCode.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txbPOCode.Name = "txbPOCode";
-            this.txbPOCode.Size = new System.Drawing.Size(312, 23);
+            this.txbPOCode.Size = new System.Drawing.Size(444, 31);
             this.txbPOCode.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 75);
+            this.label1.Location = new System.Drawing.Point(14, 125);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 15);
+            this.label1.Size = new System.Drawing.Size(66, 25);
             this.label1.TabIndex = 2;
             this.label1.Text = "Mã PO";
             // 
             // btnNewDP
             // 
-            this.btnNewDP.Location = new System.Drawing.Point(380, 515);
+            this.btnNewDP.Location = new System.Drawing.Point(543, 858);
+            this.btnNewDP.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnNewDP.Name = "btnNewDP";
-            this.btnNewDP.Size = new System.Drawing.Size(75, 23);
+            this.btnNewDP.Size = new System.Drawing.Size(107, 38);
             this.btnNewDP.TabIndex = 3;
             this.btnNewDP.Text = "New DP";
             this.btnNewDP.UseVisualStyleBackColor = true;
@@ -107,169 +111,191 @@ namespace OPM.GUI
             // 
             // txbIDContract
             // 
-            this.txbIDContract.Location = new System.Drawing.Point(132, 40);
+            this.txbIDContract.Location = new System.Drawing.Point(189, 67);
+            this.txbIDContract.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txbIDContract.Name = "txbIDContract";
-            this.txbIDContract.Size = new System.Drawing.Size(312, 23);
+            this.txbIDContract.Size = new System.Drawing.Size(444, 31);
             this.txbIDContract.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 45);
+            this.label2.Location = new System.Drawing.Point(14, 75);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 15);
+            this.label2.Size = new System.Drawing.Size(127, 25);
             this.label2.TabIndex = 2;
             this.label2.Text = "Mã Hợp Đồng";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 105);
+            this.label3.Location = new System.Drawing.Point(14, 175);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 15);
+            this.label3.Size = new System.Drawing.Size(106, 25);
             this.label3.TabIndex = 2;
             this.label3.Text = "PO Number";
             // 
             // txbPOName
             // 
-            this.txbPOName.Location = new System.Drawing.Point(132, 100);
+            this.txbPOName.Location = new System.Drawing.Point(189, 167);
+            this.txbPOName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txbPOName.Name = "txbPOName";
-            this.txbPOName.Size = new System.Drawing.Size(312, 23);
+            this.txbPOName.Size = new System.Drawing.Size(444, 31);
             this.txbPOName.TabIndex = 1;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(10, 135);
+            this.label4.Location = new System.Drawing.Point(14, 225);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 15);
+            this.label4.Size = new System.Drawing.Size(117, 25);
             this.label4.TabIndex = 2;
             this.label4.Text = "Ngày Tạo PO";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(10, 165);
+            this.label5.Location = new System.Drawing.Point(14, 275);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(99, 15);
+            this.label5.Size = new System.Drawing.Size(151, 25);
             this.label5.TabIndex = 2;
             this.label5.Text = "Số Lượng Thiết Bị";
             // 
             // txbNumberDevice
             // 
-            this.txbNumberDevice.Location = new System.Drawing.Point(132, 160);
+            this.txbNumberDevice.Location = new System.Drawing.Point(189, 267);
+            this.txbNumberDevice.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txbNumberDevice.Name = "txbNumberDevice";
-            this.txbNumberDevice.Size = new System.Drawing.Size(312, 23);
+            this.txbNumberDevice.Size = new System.Drawing.Size(444, 31);
             this.txbNumberDevice.TabIndex = 1;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 195);
+            this.label6.Location = new System.Drawing.Point(17, 325);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(102, 15);
+            this.label6.Size = new System.Drawing.Size(152, 25);
             this.label6.TabIndex = 2;
             this.label6.Text = "Thời Hạn Confirm";
             // 
             // txbDurationConfirm
             // 
-            this.txbDurationConfirm.Location = new System.Drawing.Point(132, 190);
+            this.txbDurationConfirm.Location = new System.Drawing.Point(189, 317);
+            this.txbDurationConfirm.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txbDurationConfirm.Name = "txbDurationConfirm";
-            this.txbDurationConfirm.Size = new System.Drawing.Size(80, 23);
+            this.txbDurationConfirm.Size = new System.Drawing.Size(113, 31);
             this.txbDurationConfirm.TabIndex = 1;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 225);
+            this.label7.Location = new System.Drawing.Point(17, 375);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(114, 15);
+            this.label7.Size = new System.Drawing.Size(171, 25);
             this.label7.TabIndex = 2;
             this.label7.Text = "Default PO Hiệu Lực";
             // 
             // TimePickerDateConfirmPO
             // 
-            this.TimePickerDateConfirmPO.Location = new System.Drawing.Point(244, 190);
+            this.TimePickerDateConfirmPO.Location = new System.Drawing.Point(349, 317);
+            this.TimePickerDateConfirmPO.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TimePickerDateConfirmPO.Name = "TimePickerDateConfirmPO";
-            this.TimePickerDateConfirmPO.Size = new System.Drawing.Size(200, 23);
+            this.TimePickerDateConfirmPO.Size = new System.Drawing.Size(284, 31);
             this.TimePickerDateConfirmPO.TabIndex = 4;
             // 
             // TimepickerDefaultActive
             // 
-            this.TimepickerDefaultActive.Location = new System.Drawing.Point(244, 220);
+            this.TimepickerDefaultActive.Location = new System.Drawing.Point(349, 367);
+            this.TimepickerDefaultActive.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TimepickerDefaultActive.Name = "TimepickerDefaultActive";
-            this.TimepickerDefaultActive.Size = new System.Drawing.Size(200, 23);
+            this.TimepickerDefaultActive.Size = new System.Drawing.Size(284, 31);
             this.TimepickerDefaultActive.TabIndex = 4;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 255);
+            this.label9.Location = new System.Drawing.Point(17, 425);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(75, 15);
+            this.label9.Size = new System.Drawing.Size(114, 25);
             this.label9.TabIndex = 2;
             this.label9.Text = "DeadLine PO";
             // 
             // TimePickerDeadLinePO
             // 
-            this.TimePickerDeadLinePO.Location = new System.Drawing.Point(244, 250);
+            this.TimePickerDeadLinePO.Location = new System.Drawing.Point(349, 417);
+            this.TimePickerDeadLinePO.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TimePickerDeadLinePO.Name = "TimePickerDeadLinePO";
-            this.TimePickerDeadLinePO.Size = new System.Drawing.Size(200, 23);
+            this.TimePickerDeadLinePO.Size = new System.Drawing.Size(284, 31);
             this.TimePickerDeadLinePO.TabIndex = 4;
             // 
             // txbDeadLine
             // 
-            this.txbDeadLine.Location = new System.Drawing.Point(132, 250);
+            this.txbDeadLine.Location = new System.Drawing.Point(189, 417);
+            this.txbDeadLine.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txbDeadLine.Name = "txbDeadLine";
-            this.txbDeadLine.Size = new System.Drawing.Size(80, 23);
+            this.txbDeadLine.Size = new System.Drawing.Size(113, 31);
             this.txbDeadLine.TabIndex = 1;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(12, 285);
+            this.label11.Location = new System.Drawing.Point(17, 475);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(99, 15);
+            this.label11.Size = new System.Drawing.Size(152, 25);
             this.label11.TabIndex = 2;
             this.label11.Text = "Giá Trị PO No VAT";
             // 
             // txbValuePO
             // 
-            this.txbValuePO.Location = new System.Drawing.Point(132, 280);
+            this.txbValuePO.Location = new System.Drawing.Point(189, 467);
+            this.txbValuePO.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txbValuePO.Name = "txbValuePO";
-            this.txbValuePO.Size = new System.Drawing.Size(232, 23);
+            this.txbValuePO.Size = new System.Drawing.Size(330, 31);
             this.txbValuePO.TabIndex = 1;
             // 
             // dataGridViewPO
             // 
             this.dataGridViewPO.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewPO.Location = new System.Drawing.Point(12, 367);
+            this.dataGridViewPO.Location = new System.Drawing.Point(17, 612);
+            this.dataGridViewPO.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridViewPO.Name = "dataGridViewPO";
+            this.dataGridViewPO.RowHeadersWidth = 62;
             this.dataGridViewPO.RowTemplate.Height = 25;
-            this.dataGridViewPO.Size = new System.Drawing.Size(431, 142);
+            this.dataGridViewPO.Size = new System.Drawing.Size(616, 237);
             this.dataGridViewPO.TabIndex = 5;
             // 
             // TimePickerDateCreatedPO
             // 
-            this.TimePickerDateCreatedPO.Location = new System.Drawing.Point(244, 130);
+            this.TimePickerDateCreatedPO.Location = new System.Drawing.Point(349, 217);
+            this.TimePickerDateCreatedPO.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TimePickerDateCreatedPO.Name = "TimePickerDateCreatedPO";
-            this.TimePickerDateCreatedPO.Size = new System.Drawing.Size(200, 23);
+            this.TimePickerDateCreatedPO.Size = new System.Drawing.Size(284, 31);
             this.TimePickerDateCreatedPO.TabIndex = 4;
             // 
             // txbTUPO
             // 
-            this.txbTUPO.Location = new System.Drawing.Point(132, 310);
+            this.txbTUPO.Location = new System.Drawing.Point(189, 517);
+            this.txbTUPO.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txbTUPO.Name = "txbTUPO";
-            this.txbTUPO.Size = new System.Drawing.Size(100, 23);
+            this.txbTUPO.Size = new System.Drawing.Size(141, 31);
             this.txbTUPO.TabIndex = 6;
             this.txbTUPO.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(12, 315);
+            this.label12.Location = new System.Drawing.Point(17, 525);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(74, 15);
+            this.label12.Size = new System.Drawing.Size(114, 25);
             this.label12.TabIndex = 2;
             this.label12.Text = "Tạm Ứng PO";
             // 
@@ -277,41 +303,46 @@ namespace OPM.GUI
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(232, 313);
+            this.label13.Location = new System.Drawing.Point(331, 522);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(21, 20);
+            this.label13.Size = new System.Drawing.Size(33, 31);
             this.label13.TabIndex = 2;
             this.label13.Text = "%";
             // 
             // txbActiveAfter
             // 
-            this.txbActiveAfter.Location = new System.Drawing.Point(132, 220);
+            this.txbActiveAfter.Location = new System.Drawing.Point(189, 367);
+            this.txbActiveAfter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txbActiveAfter.Name = "txbActiveAfter";
-            this.txbActiveAfter.Size = new System.Drawing.Size(80, 23);
+            this.txbActiveAfter.Size = new System.Drawing.Size(113, 31);
             this.txbActiveAfter.TabIndex = 1;
             this.txbActiveAfter.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(10, 15);
+            this.label15.Location = new System.Drawing.Point(14, 25);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(111, 15);
+            this.label15.Size = new System.Drawing.Size(167, 25);
             this.label15.TabIndex = 7;
             this.label15.Text = "Kế Hoạch Mua Sắm";
             // 
             // txbKHMS
             // 
-            this.txbKHMS.Location = new System.Drawing.Point(132, 10);
+            this.txbKHMS.Location = new System.Drawing.Point(189, 17);
+            this.txbKHMS.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txbKHMS.Name = "txbKHMS";
-            this.txbKHMS.Size = new System.Drawing.Size(312, 23);
+            this.txbKHMS.Size = new System.Drawing.Size(444, 31);
             this.txbKHMS.TabIndex = 8;
             // 
             // btnNTKT
             // 
-            this.btnNTKT.Location = new System.Drawing.Point(299, 515);
+            this.btnNTKT.Location = new System.Drawing.Point(427, 858);
+            this.btnNTKT.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnNTKT.Name = "btnNTKT";
-            this.btnNTKT.Size = new System.Drawing.Size(75, 23);
+            this.btnNTKT.Size = new System.Drawing.Size(107, 38);
             this.btnNTKT.TabIndex = 9;
             this.btnNTKT.Text = "New NTKT";
             this.btnNTKT.UseVisualStyleBackColor = true;
@@ -319,9 +350,10 @@ namespace OPM.GUI
             // 
             // btnBaoHiem
             // 
-            this.btnBaoHiem.Location = new System.Drawing.Point(218, 515);
+            this.btnBaoHiem.Location = new System.Drawing.Point(311, 858);
+            this.btnBaoHiem.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnBaoHiem.Name = "btnBaoHiem";
-            this.btnBaoHiem.Size = new System.Drawing.Size(75, 23);
+            this.btnBaoHiem.Size = new System.Drawing.Size(107, 38);
             this.btnBaoHiem.TabIndex = 10;
             this.btnBaoHiem.Text = "Bảo Hiểm";
             this.btnBaoHiem.UseVisualStyleBackColor = true;
@@ -329,9 +361,10 @@ namespace OPM.GUI
             // 
             // btnConfirmPO
             // 
-            this.btnConfirmPO.Location = new System.Drawing.Point(137, 515);
+            this.btnConfirmPO.Location = new System.Drawing.Point(196, 858);
+            this.btnConfirmPO.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnConfirmPO.Name = "btnConfirmPO";
-            this.btnConfirmPO.Size = new System.Drawing.Size(75, 23);
+            this.btnConfirmPO.Size = new System.Drawing.Size(107, 38);
             this.btnConfirmPO.TabIndex = 11;
             this.btnConfirmPO.Text = "ConfirmPO";
             this.btnConfirmPO.UseVisualStyleBackColor = true;
@@ -339,9 +372,10 @@ namespace OPM.GUI
             // 
             // btnKTKT
             // 
-            this.btnKTKT.Location = new System.Drawing.Point(55, 515);
+            this.btnKTKT.Location = new System.Drawing.Point(79, 858);
+            this.btnKTKT.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnKTKT.Name = "btnKTKT";
-            this.btnKTKT.Size = new System.Drawing.Size(76, 23);
+            this.btnKTKT.Size = new System.Drawing.Size(109, 38);
             this.btnKTKT.TabIndex = 12;
             this.btnKTKT.Text = "Export KTKT";
             this.btnKTKT.UseVisualStyleBackColor = true;
@@ -349,9 +383,10 @@ namespace OPM.GUI
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(15, 553);
+            this.button1.Location = new System.Drawing.Point(21, 922);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(99, 23);
+            this.button1.Size = new System.Drawing.Size(141, 38);
             this.button1.TabIndex = 13;
             this.button1.Text = "Import Excel";
             this.button1.UseVisualStyleBackColor = true;
@@ -359,16 +394,18 @@ namespace OPM.GUI
             // 
             // txbnamefilePO
             // 
-            this.txbnamefilePO.Location = new System.Drawing.Point(132, 339);
+            this.txbnamefilePO.Location = new System.Drawing.Point(189, 565);
+            this.txbnamefilePO.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txbnamefilePO.Name = "txbnamefilePO";
-            this.txbnamefilePO.Size = new System.Drawing.Size(100, 23);
+            this.txbnamefilePO.Size = new System.Drawing.Size(141, 31);
             this.txbnamefilePO.TabIndex = 14;
             // 
             // importPO
             // 
-            this.importPO.Location = new System.Drawing.Point(254, 339);
+            this.importPO.Location = new System.Drawing.Point(363, 565);
+            this.importPO.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.importPO.Name = "importPO";
-            this.importPO.Size = new System.Drawing.Size(91, 23);
+            this.importPO.Size = new System.Drawing.Size(130, 38);
             this.importPO.TabIndex = 15;
             this.importPO.Text = "Import file PO";
             this.importPO.UseVisualStyleBackColor = true;
@@ -377,18 +414,19 @@ namespace OPM.GUI
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(1, 342);
+            this.label8.Location = new System.Drawing.Point(1, 570);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(130, 15);
+            this.label8.Size = new System.Drawing.Size(200, 25);
             this.label8.TabIndex = 16;
             this.label8.Text = "File phân bổ hợp đồng ";
             // 
             // PurchaseOderInfor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Yellow;
-            this.ClientSize = new System.Drawing.Size(476, 593);
+            this.ClientSize = new System.Drawing.Size(680, 988);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.importPO);
             this.Controls.Add(this.txbnamefilePO);
@@ -427,6 +465,7 @@ namespace OPM.GUI
             this.Controls.Add(this.txbPOCode);
             this.Controls.Add(this.btnSave);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "PurchaseOderInfor";
             this.Text = "Purchase Oder Infor";
             this.Load += new System.EventHandler(this.PurchaseOderInfor_Load);
