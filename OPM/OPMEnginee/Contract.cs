@@ -140,13 +140,13 @@ namespace OPM.OPMEnginee
             {
                 if (Exist(id))
                 {
-                    string query = string.Format("SET DATEFORMAT DMY UPDATE dbo.Contract SET namecontract = N'{1}', codeaccouting = N'{2}', datesigned = '{3}',typecontract = '{4}', durationcontract = {5},activedate = '{6}',valuecontract = {7},durationpo = {8},id_siteA = N'{9}',id_siteB = N'{10}',phuluc = '{11}',vbgurantee = '{12}',KHMS = N'{13}',experationDate = '{14}',blvalue = {15} WHERE id = '{0}'", id, namecontract, codeaccouting, datesigned.ToString("dd/mm/yyyy"), typecontract, durationcontract, activedate.ToString("dd/mm/yyyy"), valuecontract, durationpo, id_siteA, id_siteB, phuluc, vbgurantee, kHMS, experationDate.ToString("dd/mm/yyyy"), blvalue);
+                    string query = string.Format("SET DATEFORMAT MDY UPDATE dbo.Contract SET namecontract = N'{1}', codeaccouting = N'{2}', datesigned = '{3}',typecontract = '{4}', durationcontract = {5},activedate = '{6}',valuecontract = {7},durationpo = {8},id_siteA = N'{9}',id_siteB = N'{10}',phuluc = '{11}',vbgurantee = '{12}',KHMS = N'{13}',experationDate = '{14}',blvalue = {15} WHERE id = '{0}'", id, namecontract, codeaccouting, datesigned.ToString("dd/mm/yyyy"), typecontract, durationcontract, activedate.ToString("dd/mm/yyyy"), valuecontract, durationpo, id_siteA, id_siteB, phuluc, vbgurantee, kHMS, experationDate.ToString("dd/mm/yyyy"), blvalue);
                     DataProvider.ExecuteNonQuery(query);
                     MessageBox.Show(string.Format("Cập nhật thành công hợp đồng {0} !", id));
                 }
                 else
                 {
-                    string query = string.Format(@"SET DATEFORMAT DMY  INSERT INTO dbo.Contract(id,namecontract,codeaccouting,datesigned,typecontract,durationcontract,activedate,valuecontract,durationpo,id_siteA,id_siteB,phuluc,vbgurantee,KHMS,experationDate,blvalue) VALUES('{0}',N'{1}',N'{2}','{3}',N'{4}',{5},'{6}',{7},{8},N'{9}',N'{10}','{11}','{12}',N'{13}','{14}',{15})", id, namecontract, codeaccouting, datesigned.ToString("dd/mm/yyyy"), typecontract, durationcontract, activedate.ToString("dd/mm/yyyy"), valuecontract, durationpo, id_siteA, id_siteB, phuluc, vbgurantee, kHMS, experationDate.ToString("dd/mm/yyyy"), blvalue);
+                    string query = string.Format(@"SET DATEFORMAT MDY  INSERT INTO dbo.Contract(id,namecontract,codeaccouting,datesigned,typecontract,durationcontract,activedate,valuecontract,durationpo,id_siteA,id_siteB,phuluc,vbgurantee,KHMS,experationDate,blvalue) VALUES('{0}',N'{1}',N'{2}','{3}',N'{4}',{5},'{6}',{7},{8},N'{9}',N'{10}','{11}','{12}',N'{13}','{14}',{15})", id, namecontract, codeaccouting, datesigned.ToString("dd/mm/yyyy"), typecontract, durationcontract, activedate.ToString("dd/mm/yyyy"), valuecontract, durationpo, id_siteA, id_siteB, phuluc, vbgurantee, kHMS, experationDate.ToString("dd/mm/yyyy"), blvalue);
                     DataProvider.ExecuteNonQuery(query);
                     MessageBox.Show(string.Format("Tạo mới thành công hợp đồng {0} !",id));
                 }
