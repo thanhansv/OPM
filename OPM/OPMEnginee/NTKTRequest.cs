@@ -77,13 +77,13 @@ namespace OPM.OPMEnginee
                 if (Exist(id))
                 {
                     string query = string.Format("SET DATEFORMAT DMY UPDATE dbo.NTKT SET deliver_date_expected = '{1}', create_date = '{2}' Where id = '{0}'",id, deliver_date_expected.ToString("d", CultureInfo.CreateSpecificCulture("en-NZ")), create_date.ToString("d", CultureInfo.CreateSpecificCulture("en-NZ")));
-                    DataProvider.ExecuteNonQuery(query);
+                    OPMDBHandler.ExecuteNonQuery(query);
                     MessageBox.Show(string.Format("Cập nhật thành công Yêu cầu NTKT {0} của PO {1}!", id, id_po));
                 }
                 else
                 {
                     string query = string.Format(@"SET DATEFORMAT DMY INSERT INTO dbo.NTKT(id, id_po, deliver_date_expected,create_date) VALUES('{0}','{1}','{2}','{3}') INSERT INTO dbo.CatalogAdmin (ctlID, ctlname, ctlparent, haveparent) VALUES ('NTKT_{0}', 'YCNTKT{0}', 'PO_{1}', 1)", id, id_po, deliver_date_expected.ToString("d", CultureInfo.CreateSpecificCulture("en-NZ")), create_date.ToString("d", CultureInfo.CreateSpecificCulture("en-NZ")));
-                    DataProvider.ExecuteNonQuery(query);
+                    OPMDBHandler.ExecuteNonQuery(query);
                     MessageBox.Show(string.Format("Tạo mới thành công Yêu cầu NTKT {0} của PO {1}!", id, id_po));
                 }
             }
