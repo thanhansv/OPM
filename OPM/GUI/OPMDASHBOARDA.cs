@@ -160,19 +160,15 @@ namespace OPM.GUI
             switch (temp[0])
             {
                 case ConstantVar.ContractType:
-                    /*DASHBOARD Display Gui Contract*/
-                    ContractInfoChildForm contractInfoChildForm = new ContractInfoChildForm();
+                    //Khai báo contractInfoChildForm ứng với IdContract
+                    ContractInfoChildForm contractInfoChildForm = new ContractInfoChildForm(temp[1]);
                     contractInfoChildForm.UpdateCatalogPanel = new ContractInfoChildForm.UpdateCatalogDelegate(GetCatalogvalue);
-                    /*DASHBOAD GET REQEST FROM CONTRACT GUI*/
+                    //DASHBOAD nhận yêu cầu mở PurchaseOderInfor từ ContractInfoChildForm
                     contractInfoChildForm.RequestDashBoardOpenPOForm = new ContractInfoChildForm.RequestDashBoardOpenChildForm(OpenPOForm);
-                    
-
-                    //PurchaseOderInfor purchaseOderInfor1 = new PurchaseOderInfor();
-                    //purchaseOderInfor1.requestDashBoardOpenNTKTForm = new PurchaseOderInfor.RequestDashBoardOpenNTKTForm(OpenNTKTForm);
-
-                    OpenChidForm(contractInfoChildForm);
-                    contractInfoChildForm.SetValueItemForm(temp[1]);
+                    //DASHBOAD nhận yêu cầu mở DescriptionSiteForm từ ContractInfoChildForm
                     contractInfoChildForm.requestDashBoardOpendescriptionForm = new ContractInfoChildForm.RequestDashBoardOpenDescriptionForm(OpenDescription);
+                    //Mở ContractInfoChildForm
+                    OpenChidForm(contractInfoChildForm);
                     break;
                 case ConstantVar.POType:
                     /*Display PO */
@@ -437,21 +433,21 @@ namespace OPM.GUI
         //    OpenChidForm1(descriptionSiteForm);
         //    return;
         //}
-        public void OpenDescription(String idSite, DescriptionSiteForm.SetIdSite setIdSite)
+        public void OpenDescription(string id, DescriptionSiteForm.SetIdSite setIdSite)
         {
-            DescriptionSiteForm descriptionSiteForm = new DescriptionSiteForm();
-            SiteInfo siteInfo = new SiteInfo();
-            siteInfo.GetSiteInfo(idSite, ref siteInfo);
-            descriptionSiteForm.setId(siteInfo.Id);
-            descriptionSiteForm.setAccount(siteInfo.Account);
-            descriptionSiteForm.setAddress(siteInfo.Address);
-            descriptionSiteForm.setFax(siteInfo.Tin);
-            descriptionSiteForm.setHeadquater(siteInfo.HeadquaterInfo);
-            descriptionSiteForm.setPhone(siteInfo.Phonenumber);
-            descriptionSiteForm.setRepresentative(siteInfo.Representative);
+            DescriptionSiteForm descriptionSiteForm = new DescriptionSiteForm(id);
+            //SiteInfo siteInfo = new SiteInfo();
+            //siteInfo.GetSiteInfo(idSite, ref siteInfo);
+            //descriptionSiteForm.setId(siteInfo.Id);
+            //descriptionSiteForm.setAccount(siteInfo.Account);
+            //descriptionSiteForm.setAddress(siteInfo.Address);
+            //descriptionSiteForm.setFax(siteInfo.Tin);
+            //descriptionSiteForm.setHeadquater(siteInfo.HeadquaterInfo);
+            //descriptionSiteForm.setPhone(siteInfo.Phonenumber);
+            //descriptionSiteForm.setRepresentative(siteInfo.Representative);
+            
             OpenChidForm1(descriptionSiteForm);
             descriptionSiteForm.setIdSite = setIdSite;
-            return;
         }
         public void OpenExcel()
         {

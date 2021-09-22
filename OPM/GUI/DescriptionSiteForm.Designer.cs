@@ -45,6 +45,8 @@ namespace OPM.GUI
             this.txbRepresen = new System.Windows.Forms.TextBox();
             this.edit = new System.Windows.Forms.Button();
             this.save = new System.Windows.Forms.Button();
+            this.textBoxTaxCode = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txbID
@@ -53,82 +55,88 @@ namespace OPM.GUI
             this.txbID.Name = "txbID";
             this.txbID.Size = new System.Drawing.Size(130, 23);
             this.txbID.TabIndex = 0;
+            this.txbID.Text = "Công ty TNHH thiết bị Viễn thông ANSV";
             // 
             // txbhead
             // 
-            this.txbhead.Location = new System.Drawing.Point(107, 102);
+            this.txbhead.Location = new System.Drawing.Point(107, 91);
             this.txbhead.Name = "txbhead";
             this.txbhead.Size = new System.Drawing.Size(130, 23);
             this.txbhead.TabIndex = 1;
+            this.txbhead.Text = "124 Hoàng Quốc Việt, Phường Nghĩa Tân, Quận Cầu Giấy, TP.Hà Nội";
             // 
             // txbAddress
             // 
-            this.txbAddress.Location = new System.Drawing.Point(108, 170);
+            this.txbAddress.Location = new System.Drawing.Point(108, 145);
             this.txbAddress.Name = "txbAddress";
-            this.txbAddress.Size = new System.Drawing.Size(129, 23);
+            this.txbAddress.Size = new System.Drawing.Size(130, 23);
             this.txbAddress.TabIndex = 2;
+            this.txbAddress.Text = "124 Hoàng Quốc Việt, Phường Nghĩa Tân, Quận Cầu Giấy, TP.Hà Nội";
             // 
             // txbPhone
             // 
-            this.txbPhone.Location = new System.Drawing.Point(107, 243);
+            this.txbPhone.Location = new System.Drawing.Point(107, 199);
             this.txbPhone.Name = "txbPhone";
             this.txbPhone.Size = new System.Drawing.Size(130, 23);
             this.txbPhone.TabIndex = 3;
+            this.txbPhone.Text = "02438362094";
             // 
             // txbFax
             // 
-            this.txbFax.Location = new System.Drawing.Point(107, 303);
+            this.txbFax.Location = new System.Drawing.Point(107, 256);
             this.txbFax.Name = "txbFax";
             this.txbFax.Size = new System.Drawing.Size(130, 23);
             this.txbFax.TabIndex = 4;
+            this.txbFax.Text = "02433861195";
             // 
             // txbAccount
             // 
-            this.txbAccount.Location = new System.Drawing.Point(108, 359);
+            this.txbAccount.Location = new System.Drawing.Point(108, 361);
             this.txbAccount.Name = "txbAccount";
-            this.txbAccount.Size = new System.Drawing.Size(129, 23);
+            this.txbAccount.Size = new System.Drawing.Size(130, 23);
             this.txbAccount.TabIndex = 5;
+            this.txbAccount.Text = "26010000554593";
             // 
             // ID
             // 
             this.ID.AutoSize = true;
-            this.ID.Location = new System.Drawing.Point(12, 40);
+            this.ID.Location = new System.Drawing.Point(7, 40);
             this.ID.Name = "ID";
-            this.ID.Size = new System.Drawing.Size(18, 15);
+            this.ID.Size = new System.Drawing.Size(25, 15);
             this.ID.TabIndex = 6;
-            this.ID.Text = "ID";
+            this.ID.Text = "Tên";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 105);
+            this.label1.Location = new System.Drawing.Point(7, 94);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 15);
+            this.label1.Size = new System.Drawing.Size(71, 15);
             this.label1.TabIndex = 7;
-            this.label1.Text = "Headquater Infor";
+            this.label1.Text = "Trụ sở chính";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 173);
+            this.label2.Location = new System.Drawing.Point(7, 148);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 15);
+            this.label2.Size = new System.Drawing.Size(43, 15);
             this.label2.TabIndex = 8;
-            this.label2.Text = "Address";
+            this.label2.Text = "Địa chỉ";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(4, 246);
+            this.label3.Location = new System.Drawing.Point(7, 202);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 15);
+            this.label3.Size = new System.Drawing.Size(61, 15);
             this.label3.TabIndex = 9;
-            this.label3.Text = "Phone Number";
+            this.label3.Text = "Điện thoại";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(5, 306);
+            this.label4.Location = new System.Drawing.Point(7, 256);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(25, 15);
             this.label4.TabIndex = 10;
@@ -137,28 +145,28 @@ namespace OPM.GUI
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(4, 362);
+            this.label5.Location = new System.Drawing.Point(7, 364);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(52, 15);
+            this.label5.Size = new System.Drawing.Size(78, 15);
             this.label5.TabIndex = 11;
-            this.label5.Text = "Account";
+            this.label5.Text = "Tài khoản NH";
             // 
             // Representative
             // 
             this.Representative.AutoSize = true;
-            this.Representative.Location = new System.Drawing.Point(7, 420);
+            this.Representative.Location = new System.Drawing.Point(7, 418);
             this.Representative.Name = "Representative";
-            this.Representative.Size = new System.Drawing.Size(84, 15);
+            this.Representative.Size = new System.Drawing.Size(50, 15);
             this.Representative.TabIndex = 12;
-            this.Representative.Text = "Representative";
-            this.Representative.Click += new System.EventHandler(this.label6_Click);
+            this.Representative.Text = "Đại diện";
             // 
             // txbRepresen
             // 
-            this.txbRepresen.Location = new System.Drawing.Point(107, 420);
+            this.txbRepresen.Location = new System.Drawing.Point(107, 415);
             this.txbRepresen.Name = "txbRepresen";
             this.txbRepresen.Size = new System.Drawing.Size(130, 23);
             this.txbRepresen.TabIndex = 13;
+            this.txbRepresen.Text = "Nguyễn Văn Nam";
             // 
             // edit
             // 
@@ -180,6 +188,23 @@ namespace OPM.GUI
             this.save.UseVisualStyleBackColor = true;
             this.save.Click += new System.EventHandler(this.save_Click);
             // 
+            // textBoxTaxCode
+            // 
+            this.textBoxTaxCode.Location = new System.Drawing.Point(107, 307);
+            this.textBoxTaxCode.Name = "textBoxTaxCode";
+            this.textBoxTaxCode.Size = new System.Drawing.Size(130, 23);
+            this.textBoxTaxCode.TabIndex = 5;
+            this.textBoxTaxCode.Text = "0100113871";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 310);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(66, 15);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Mã số thuế";
+            // 
             // DescriptionSiteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -189,12 +214,14 @@ namespace OPM.GUI
             this.Controls.Add(this.edit);
             this.Controls.Add(this.txbRepresen);
             this.Controls.Add(this.Representative);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ID);
+            this.Controls.Add(this.textBoxTaxCode);
             this.Controls.Add(this.txbAccount);
             this.Controls.Add(this.txbFax);
             this.Controls.Add(this.txbPhone);
@@ -229,5 +256,7 @@ namespace OPM.GUI
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button Save;
         private System.Windows.Forms.Button save;
+        private System.Windows.Forms.TextBox textBoxTaxCode;
+        private System.Windows.Forms.Label label6;
     }
 }

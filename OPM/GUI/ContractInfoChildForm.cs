@@ -21,7 +21,7 @@ namespace OPM.GUI
         public RequestDashBoardOpenChildForm RequestDashBoardOpenPOForm;
 
         /*Delegate For Request Dashboard Open Description Form*/
-        public delegate void RequestDashBoardOpenDescriptionForm(string siteId, DescriptionSiteForm.SetIdSite setIdSite);
+        public delegate void RequestDashBoardOpenDescriptionForm(string id, DescriptionSiteForm.SetIdSite setIdSite);
         public RequestDashBoardOpenDescriptionForm requestDashBoardOpendescriptionForm;
 
         /*Object Contract for Contract form*/
@@ -31,20 +31,27 @@ namespace OPM.GUI
         {
             InitializeComponent();
         }
-        void SetIdSiteA(string value)
+        public ContractInfoChildForm(string idContract)
+        {
+            InitializeComponent();
+            SetValueItemForm(idContract);
+        }
+        void SetIdSiteA(string value, int stt)
         {
             tbxSiteA.Text = value;
+            tbxSiteA.Tag = stt;
         }
-        void SetIdSiteB(string value)
+        void SetIdSiteB(string value, int stt)
         {
             tbxSiteB.Text = value;
+            tbxSiteB.Tag = stt;
         }
         public void State(bool state)
         {
             txbKHMS.ReadOnly = state;
             tbContract.ReadOnly = state;
             tbBidName.ReadOnly = state;
-            tbAccountingCode.ReadOnly = state;
+            tbxAccountingCode.ReadOnly = state;
             tbxDurationContract.ReadOnly = state;
             txbTypeContract.ReadOnly = state;
             tbxValueContract.ReadOnly = state;
@@ -57,13 +64,13 @@ namespace OPM.GUI
             dateTimePickerDateSignedPO.Enabled = !state;
         }
 
-        public void SetValueItemForm(string idContract)
+        void SetValueItemForm(string idContract)
         {
             Contract contract = new Contract(idContract);
             txbKHMS.Text = contract.KHMS;
             tbContract.Text = contract.Id;
             tbBidName.Text = contract.Namecontract;
-            tbAccountingCode.Text = contract.Codeaccouting;
+            tbxAccountingCode.Text = contract.Codeaccouting;
             dateTimePickerDateSignedPO.Value= contract.Datesigned;
             dateTimePickerDurationDateContract.Value = dateTimePickerDateSignedPO.Value.AddDays(Convert.ToInt32(contract.Durationcontract));
             txbTypeContract.Text = contract.Typecontract;
@@ -83,10 +90,12 @@ namespace OPM.GUI
         private IContract contract = new ContractObj();
         private void IdSiteA_Click(object sender, EventArgs e)
         {
-            requestDashBoardOpendescriptionForm(tbxSiteA.Text.ToString(),SetIdSiteA);
-            return;
+            requestDashBoardOpendescriptionForm(tbxSiteA.Text, SetIdSiteA);
         }
-
+        private void IdSiteB_Click(object sender, EventArgs e)
+        {
+            requestDashBoardOpendescriptionForm(tbxSiteB.Text, SetIdSiteB);
+        }
         private void btnNewPO_Click(object sender, EventArgs e)
         {
             string strContract = "Contract_" + tbContract.Text.ToString();
@@ -109,7 +118,7 @@ namespace OPM.GUI
             contract.KHMS = txbKHMS.Text;
             contract.Id = tbContract.Text;
             contract.Namecontract = tbBidName.Text;
-            contract.Codeaccouting = tbAccountingCode.Text;
+            contract.Codeaccouting = tbxAccountingCode.Text;
             contract.Typecontract = txbTypeContract.Text;
             contract.Valuecontract = double.Parse(tbxValueContract.Text);
             contract.Blvalue = int.Parse(txbGaranteeValue.Text);
@@ -122,8 +131,8 @@ namespace OPM.GUI
             contract.ExperationDate = ExpirationDate.Value;
             contract.Durationcontract = int.Parse(tbxDurationContract.Text);
             contract.Durationpo = int.Parse(tbxDurationPO.Text);
-            
-            contract.InsertOrUpdate();
+            if (contract.Exist()) contract.Update();
+            else contract.Insert();            
             UpdateCatalogPanel(tbContract.Text);
             return;
         }
@@ -148,11 +157,6 @@ namespace OPM.GUI
             }
         }
 
-        private void IdSiteB_Click(object sender, EventArgs e)
-        {
-            requestDashBoardOpendescriptionForm(tbxSiteB.Text.ToString(),SetIdSiteB);
-            return;
-        }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -179,27 +183,25 @@ namespace OPM.GUI
             Contract.Delete(tbContract.Text);
             UpdateCatalogPanel(tbContract.Text);
         }
-
-        private void ContractInfoChildForm_Load(object sender, EventArgs e)
-        {
-            this.txbKHMS.Text = "Mua sắm tập trung thiết bị đầu cuối ONT loại (2FE/GE+Wifi singleband) tương thích hệ thống gpon cho nhu cầu năm 2020";
-            this.tbContract.Text = "111-2020/CUVT-ANSV/DTRR-KHMS";
-            this.tbBidName.Text = "Mua sắm thiết bị đầu cuối ONT loại (2FE/GE+Wifi singleband)";
-            this.tbAccountingCode.Text = "12345678";
-            dateTimePickerDateSignedPO.Value = DateTime.Now;
-            dateTimePickerDurationDateContract.Value = dateTimePickerDateSignedPO.Value;
-            this.txbTypeContract.Text = "Theo đơn giá cố định";
-            this.tbxDurationContract.Text = "0";
-            dateTimePickerActiveDateContract.Value = dateTimePickerDateSignedPO.Value;
-            this.tbxValueContract.Text = "0";
-            this.tbxDurationPO.Text = "0";
-            this.tbxSiteA.Text = "TTCUVT-TPHCM";
-            this.tbxSiteB.Text = "ANSV";
-            txbGaranteeActiveDate.Text = "0";
-            this.ExpirationDate.Value = dateTimePickerActiveDateContract.Value;
-            ExpirationDate.Enabled = false;
-            dateTimePickerDurationDateContract.Enabled = false;
-
-        }
+        //private void ContractInfoChildForm_Load(object sender, EventArgs e)
+        //{
+        //    this.txbKHMS.Text = "Mua sắm tập trung thiết bị đầu cuối ONT loại (2FE/GE+Wifi singleband) tương thích hệ thống gpon cho nhu cầu năm 2020";
+        //    this.tbContract.Text = "111-2020/CUVT-ANSV/DTRR-KHMS";
+        //    this.tbBidName.Text = "Mua sắm thiết bị đầu cuối ONT loại (2FE/GE+Wifi singleband)";
+        //    this.tbxAccountingCode.Text = "C01007";
+        //    dateTimePickerDateSignedPO.Value = DateTime.Now;
+        //    dateTimePickerDurationDateContract.Value = dateTimePickerDateSignedPO.Value;
+        //    this.txbTypeContract.Text = "Theo đơn giá cố định";
+        //    this.tbxDurationContract.Text = "0";
+        //    dateTimePickerActiveDateContract.Value = dateTimePickerDateSignedPO.Value;
+        //    this.tbxValueContract.Text = "0";
+        //    this.tbxDurationPO.Text = "0";
+        //    this.tbxSiteA.Text = "TTCUVT-TPHCM";
+        //    this.tbxSiteB.Text = "ANSV";
+        //    txbGaranteeActiveDate.Text = "0";
+        //    this.ExpirationDate.Value = dateTimePickerActiveDateContract.Value;
+        //    ExpirationDate.Enabled = false;
+        //    dateTimePickerDurationDateContract.Enabled = false;
+        //}
     }
 }

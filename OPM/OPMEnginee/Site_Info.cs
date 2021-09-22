@@ -19,7 +19,6 @@ namespace OPM.OPMEnginee
         string tin= "02433861195";
         string account= "0071001103933";
         string representative="Ông Nguyễn Văn Nam - Tổng giám đốc";
-        int stt = 0;
 
         public string Id { get => id; set => id = value; }
         public string Type { get => type; set => type = value; }
@@ -29,10 +28,9 @@ namespace OPM.OPMEnginee
         public string Tin { get => tin; set => tin = value; }
         public string Account { get => account; set => account = value; }
         public string Representative { get => representative; set => representative = value; }
-        public int Stt { get => stt; set => stt = value; }
 
         public Site_Info() { }
-        public Site_Info(string id,string type,string headquater_info,string address,string phonenumber,string tin,string account,string representative, int stt) 
+        public Site_Info(string id,string type,string headquater_info,string address,string phonenumber,string tin,string account,string representative) 
         {
             Id = id;
             Type = type;
@@ -42,7 +40,6 @@ namespace OPM.OPMEnginee
             Tin = tin;
             Account = account;
             Representative = representative;
-            Stt = stt;
         }
         public Site_Info(DataRow row)
         {
@@ -54,12 +51,11 @@ namespace OPM.OPMEnginee
             Tin = row["tin"].ToString();
             Account = row["account"].ToString();
             Representative = row["representative"].ToString();
-            Stt = (int)row["stt"];
         }
-        public Site_Info(int stt)
+        public Site_Info(string id)
         {
-            Stt = stt;
-            string query = string.Format("SELECT * FROM dbo.Site_Info WHERE stt = {0}", stt);
+            Id = id;
+            string query = string.Format("SELECT * FROM dbo.Site_Info WHERE id = '{0}'", id);
             DataTable table = OPMDBHandler.ExecuteQuery(query);
             if (table.Rows.Count > 0)
             {
@@ -76,13 +72,13 @@ namespace OPM.OPMEnginee
         }
         public bool Exist()
         {
-            string query = string.Format("SELECT * FROM dbo.Site_Info WHERE stt = {0}", stt);
+            string query = string.Format("SELECT * FROM dbo.Site_Info WHERE id = N'{0}'", id);
             DataTable table = OPMDBHandler.ExecuteQuery(query);
             return table.Rows.Count > 0;
         }
-        public static bool Exist(int stt)
+        public static bool Exist(string id)
         {
-            string query = string.Format("SELECT * FROM dbo.Site_Info WHERE stt = {0}", stt);
+            string query = string.Format("SELECT * FROM dbo.Site_Info WHERE id = N'{0}'", id);
             DataTable table = OPMDBHandler.ExecuteQuery(query);
             return table.Rows.Count > 0;
         }
@@ -110,7 +106,7 @@ namespace OPM.OPMEnginee
                 MessageBox.Show("Id chưa khởi tạo!");
             else
             {
-                string query = string.Format("UPDATE dbo.Site_Info SET id = N'{0}', type = '{1}', headquater_info = N'{2}', address= N'{3}', phonenumber = '{4}', tin= '{5}', account = '{6}',representative = N'{7}' WHERE stt = '{8}'", id, type, headquater_info, address, phonenumber, tin, account, representative,stt);
+                string query = string.Format("UPDATE dbo.Site_Info SET type = '{1}', headquater_info = N'{2}', address= N'{3}', phonenumber = '{4}', tin= '{5}', account = '{6}',representative = N'{7}' WHERE id = N'{0}'", id, type, headquater_info, address, phonenumber, tin, account, representative);
                 OPMDBHandler.ExecuteNonQuery(query);
                 MessageBox.Show(string.Format("Cập nhật thành công Site_Info {0} !", id));
             }
@@ -123,7 +119,7 @@ namespace OPM.OPMEnginee
         public void Delete()
         {
             if (MessageBox.Show(string.Format("Có chắc chắn xoá không?"), "Thông báo!", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel) return; 
-            string query = string.Format("DELETE FROM dbo.Site_Info WHERE stt = {0}", stt);
+            string query = string.Format("DELETE FROM dbo.Site_Info WHERE id = N'{0}'", id);
             try
             {
                 OPMDBHandler.ExecuteNonQuery(query);

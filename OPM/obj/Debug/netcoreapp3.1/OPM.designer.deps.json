@@ -52,14 +52,6 @@
           }
         }
       },
-      "RawPrint/0.5.0": {
-        "runtime": {
-          "lib/net40/RawPrint.dll": {
-            "assemblyVersion": "0.5.0.0",
-            "fileVersion": "0.5.0.0"
-          }
-        }
-      },
       "runtime.native.System.Data.SqlClient.sni/4.7.0": {
         "dependencies": {
           "runtime.win-arm64.runtime.native.System.Data.SqlClient.sni": "4.4.0",
@@ -193,13 +185,6 @@
       "sha512": "sha512-KSrRMb5vNi0CWSGG1++id2ZOs/1QhRqROt+qgbEAdQuGjGrFcl4AOl4/exGPUYz2wUnU42nvJqon1T3U0kPXLA==",
       "path": "microsoft.win32.registry/4.7.0",
       "hashPath": "microsoft.win32.registry.4.7.0.nupkg.sha512"
-    },
-    "RawPrint/0.5.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-MbQu5siz3sXUXht1IeXIQbb5daTPDmEOxo6Crms+b5N2F7tqCOXl3Rn6r5Y+ystz/Cy8lRBPfkMDpZGQnzzxcQ==",
-      "path": "rawprint/0.5.0",
-      "hashPath": "rawprint.0.5.0.nupkg.sha512"
     },
     "runtime.native.System.Data.SqlClient.sni/4.7.0": {
       "type": "package",

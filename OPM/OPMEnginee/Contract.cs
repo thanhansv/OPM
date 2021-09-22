@@ -22,8 +22,8 @@ namespace OPM.OPMEnginee
         private DateTime activedate = DateTime.Now;
         private double valuecontract=0;
         private int durationpo=0;
-        private int id_siteA= 0;
-        private int id_siteB= 0;
+        private string id_siteA= "Trung tâm cung ứng vật tư - Viễn thông TP.HCM";
+        private string id_siteB= "Công ty TNHH thiết bị Viễn thông ANSV";
         private string phuluc= "phuluc";
         private string vbgurantee="vbgurantee";
         private string kHMS= "Mua sắm tập trung thiết bị đầu cuối ONT loại (2FE/GE+Wifi singleband) tương thích hệ thống gpon cho nhu cầu năm 2020";
@@ -38,15 +38,15 @@ namespace OPM.OPMEnginee
         public DateTime Activedate { get => activedate; set => activedate = value; }
         public double Valuecontract { get => valuecontract; set => valuecontract = value; }
         public int Durationpo { get => durationpo; set => durationpo = value; }
-        public int Id_siteA { get => id_siteA; set => id_siteA = value; }
-        public int Id_siteB { get => id_siteB; set => id_siteB = value; }
+        public string Id_siteA { get => id_siteA; set => id_siteA = value; }
+        public string Id_siteB { get => id_siteB; set => id_siteB = value; }
         public string Phuluc { get => phuluc; set => phuluc = value; }
         public string Vbgurantee { get => vbgurantee; set => vbgurantee = value; }
         public string KHMS { get => kHMS; set => kHMS = value; }
         public DateTime ExperationDate { get => experationDate; set => experationDate = value; }
         public int Blvalue { get => blvalue; set => blvalue = value; }
         public Contract() { }
-        public Contract(string id, string namecontract, string codeaccouting, DateTime datesigned, string typecontract, int durationcontract, DateTime activedate, double valuecontract, int durationpo, int id_siteA, int id_siteB, string phuluc, string vbgurantee, string kHMS, DateTime experationDate, int blvalue)
+        public Contract(string id, string namecontract, string codeaccouting, DateTime datesigned, string typecontract, int durationcontract, DateTime activedate, double valuecontract, int durationpo, string id_siteA, string id_siteB, string phuluc, string vbgurantee, string kHMS, DateTime experationDate, int blvalue)
         {
             Id = id;
             Namecontract = namecontract;
@@ -76,8 +76,8 @@ namespace OPM.OPMEnginee
             Activedate = (row["activedate"] == DBNull.Value) ? DateTime.Now : (DateTime)row["activedate"];
             Valuecontract = (double)row["valuecontract"];
             Durationpo = (int)row["durationpo"];
-            Id_siteA = (int)row["id_siteA"];
-            Id_siteB = (int)row["id_siteB"];
+            Id_siteA = row["id_siteA"].ToString();
+            Id_siteB = row["id_siteB"].ToString();
             Phuluc = row["phuluc"].ToString();
             Vbgurantee = row["vbgurantee"].ToString();
             KHMS = row["kHMS"].ToString();
@@ -100,8 +100,8 @@ namespace OPM.OPMEnginee
                 Activedate = (row["activedate"] == DBNull.Value) ? DateTime.Now : (DateTime)row["activedate"];
                 Valuecontract = (double)row["valuecontract"];
                 Durationpo = (int)row["durationpo"];
-                Id_siteA = int.Parse(row["id_siteA"].ToString());
-                Id_siteB = int.Parse(row["id_siteB"].ToString());
+                Id_siteA = row["id_siteA"].ToString();
+                Id_siteB = row["id_siteB"].ToString();
                 Phuluc = row["phuluc"].ToString();
                 Vbgurantee = row["vbgurantee"].ToString();
                 KHMS = row["kHMS"].ToString();
