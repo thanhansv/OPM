@@ -11,7 +11,7 @@ using System.Globalization;
 
 namespace OPM.OPMEnginee
 {
-    class Contract
+    public class Contract
     {
         private string id= "111-2020/CUVT-ANSV/DTRR-KHMS";
         private string namecontract = "Mua sắm thiết bị đầu cuối ONT loại (2FE/GE+Wifi singleband)";
@@ -21,7 +21,7 @@ namespace OPM.OPMEnginee
         private int durationcontract = 0;
         private DateTime activedate = DateTime.Now;
         private double valuecontract=0;
-        private int durationpo=0;
+        private int durationpo=5;
         private string id_siteA= "Trung tâm cung ứng vật tư - Viễn thông TP.HCM";
         private string id_siteB= "Công ty TNHH thiết bị Viễn thông ANSV";
         private string phuluc= "phuluc";
@@ -135,7 +135,8 @@ namespace OPM.OPMEnginee
         }
         public void Insert()
         {
-            string query = string.Format(@"SET DATEFORMAT DMY INSERT INTO dbo.Contract(id,namecontract,codeaccouting,datesigned,typecontract,durationcontract,activedate,valuecontract,durationpo,id_siteA,id_siteB,phuluc,vbgurantee,KHMS,experationDate,blvalue) VALUES('{0}',N'{1}',N'{2}','{3}',N'{4}',{5},'{6}',{7},{8},N'{9}',N'{10}','{11}','{12}',N'{13}','{14}',{15}) --INSERT INTO dbo.CatalogAdmin (ctlID, ctlname) VALUES ('Contract_{0}', '{0}')", id, namecontract, codeaccouting, datesigned.ToString("d", CultureInfo.CreateSpecificCulture("en-NZ")), typecontract, durationcontract, activedate.ToString("d", CultureInfo.CreateSpecificCulture("en-NZ")), valuecontract, durationpo, id_siteA, id_siteB, phuluc, vbgurantee, kHMS, experationDate.ToString("d", CultureInfo.CreateSpecificCulture("en-NZ")), blvalue);
+            //string query = string.Format(@"SET DATEFORMAT DMY INSERT INTO dbo.Contract(id,namecontract,codeaccouting,datesigned,typecontract,durationcontract,activedate,valuecontract,durationpo,id_siteA,id_siteB,phuluc,vbgurantee,KHMS,experationDate,blvalue) VALUES('{0}',N'{1}',N'{2}','{3}',N'{4}',{5},'{6}',{7},{8},N'{9}',N'{10}','{11}','{12}',N'{13}','{14}',{15}) --INSERT INTO dbo.CatalogAdmin (ctlID, ctlname) VALUES ('Contract_{0}', '{0}')", id, namecontract, codeaccouting, datesigned.ToString("d", CultureInfo.CreateSpecificCulture("en-NZ")), typecontract, durationcontract, activedate.ToString("d", CultureInfo.CreateSpecificCulture("en-NZ")), valuecontract, durationpo, id_siteA, id_siteB, phuluc, vbgurantee, kHMS, experationDate.ToString("d", CultureInfo.CreateSpecificCulture("en-NZ")), blvalue);
+            string query = string.Format(@"SET DATEFORMAT DMY INSERT INTO dbo.Contract(id,namecontract,codeaccouting,datesigned,typecontract,durationcontract,activedate,valuecontract,durationpo,id_siteA,id_siteB,phuluc,vbgurantee,KHMS,experationDate,blvalue) VALUES('{0}',N'{1}',N'{2}','{3}',N'{4}',{5},'{6}',{7},{8},N'{9}',N'{10}','{11}','{12}',N'{13}','{14}',{15}) INSERT INTO dbo.CatalogAdmin (ctlID, ctlname) VALUES ('Contract_{0}', '{0}')", id, namecontract, codeaccouting, datesigned.ToString("d", CultureInfo.CreateSpecificCulture("en-NZ")), typecontract, durationcontract, activedate.ToString("d", CultureInfo.CreateSpecificCulture("en-NZ")), valuecontract, durationpo, id_siteA, id_siteB, phuluc, vbgurantee, kHMS, experationDate.ToString("d", CultureInfo.CreateSpecificCulture("en-NZ")), blvalue);
             OPMDBHandler.ExecuteNonQuery(query);
             MessageBox.Show(string.Format("Tạo mới thành công hợp đồng {0} !",id));
         }
@@ -172,7 +173,7 @@ namespace OPM.OPMEnginee
             WordOffice.Application wordApp = new WordOffice.Application();
             object missing = Missing.Value;
             WordOffice.Document myDoc = null;
-            object path = @"D:\OPM\Template\BLHD_Template.docx";
+            object path = @"D:\OPM\Template\Đề nghị mở bảo lãnh thực hiện HĐ.docx";
             if (File.Exists(path.ToString()))
             {
                 object readOnly = true;
@@ -190,14 +191,13 @@ namespace OPM.OPMEnginee
                 Directory.CreateDirectory(folder);
 
                 //find and replace
-                OpmWordHandler.FindAndReplace(wordApp, "<<ID>>", id.Trim());
-                OpmWordHandler.FindAndReplace(wordApp, "<<ID>>", id.Trim());
-                OpmWordHandler.FindAndReplace(wordApp, "<<ACTIVEDATE>>", activedate.ToString("dd/mm/yyyy"));
-                OpmWordHandler.FindAndReplace(wordApp, "<<NAMECONTRACT>>", namecontract);
-                OpmWordHandler.FindAndReplace(wordApp, "<<DATESIGNED>>", datesigned.ToString("dd/mm/yyyy"));
-                OpmWordHandler.FindAndReplace(wordApp, "<<ID_SITEB>>", id_siteB);
-                OpmWordHandler.FindAndReplace(wordApp, "<<BLVALUE>>", blvalue);
-                OpmWordHandler.FindAndReplace(wordApp, "<<DURATIONPO>>", durationpo);
+                OpmWordHandler.FindAndReplace(wordApp, "<Contract_Code>", id.Trim());
+                OpmWordHandler.FindAndReplace(wordApp, "<Now>", activedate.ToString("d", CultureInfo.CreateSpecificCulture("en-NZ")));
+                OpmWordHandler.FindAndReplace(wordApp, "<Contract_Name>", namecontract);
+                OpmWordHandler.FindAndReplace(wordApp, "<Signed_Date>", datesigned.ToString("d", CultureInfo.CreateSpecificCulture("en-NZ")));
+                OpmWordHandler.FindAndReplace(wordApp, "<Site_B>", id_siteB);
+                OpmWordHandler.FindAndReplace(wordApp, "<blvalue>", blvalue);
+                OpmWordHandler.FindAndReplace(wordApp, "<durationpo>", durationpo);
                 //Tạo file BLHĐ trong thư mục D:\OPM
                 try
                 {

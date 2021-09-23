@@ -107,14 +107,29 @@ namespace OPM.OPMEnginee
             else
             {
                 string query = string.Format("UPDATE dbo.Site_Info SET type = '{1}', headquater_info = N'{2}', address= N'{3}', phonenumber = '{4}', tin= '{5}', account = '{6}',representative = N'{7}' WHERE id = N'{0}'", id, type, headquater_info, address, phonenumber, tin, account, representative);
-                OPMDBHandler.ExecuteNonQuery(query);
-                MessageBox.Show(string.Format("Cập nhật thành công Site_Info {0} !", id));
+                try
+                {
+                    OPMDBHandler.ExecuteNonQuery(query);
+                    MessageBox.Show(string.Format("Cập nhật thành công Site_Info {0} !", id));
+                }
+                catch
+                {
+                    MessageBox.Show("Xoá thất bại!");
+                }
             }
         }
-        public object Insert()
+        public void Insert()
         {
-            string query = string.Format(@"INSERT INTO dbo.Site_Info(id, type, headquater_info, address, phonenumber, tin, account, representative) VALUES(N'{0}','{1}',N'{2}',N'{3}','{4}','{5}','{6}',N'{7}') SELECT SCOPE_IDENTITY()as LastSTT", id, type, headquater_info, address, phonenumber, tin, account, representative);
-            return OPMDBHandler.ExecuteScalar(query);
+            string query = string.Format(@"INSERT INTO dbo.Site_Info(id, type, headquater_info, address, phonenumber, tin, account, representative) VALUES(N'{0}','{1}',N'{2}',N'{3}','{4}','{5}','{6}',N'{7}')", id, type, headquater_info, address, phonenumber, tin, account, representative);
+            try
+            {
+                OPMDBHandler.ExecuteNonQuery(query);
+                MessageBox.Show(string.Format("Thêm mới thành công Site_Info {0} !", id));
+            }
+            catch
+            {
+                MessageBox.Show("Thêm mới thất bại!");
+            }
         }
         public void Delete()
         {

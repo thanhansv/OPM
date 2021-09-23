@@ -1,9 +1,12 @@
 ﻿using OPM.DBHandler;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
 using System.Windows.Forms;
+using WordOffice = Microsoft.Office.Interop.Word;
+using System.Reflection;
+using OPM.WordHandler;
+using System.IO;
 
 namespace OPM.OPMEnginee
 {
@@ -15,7 +18,6 @@ namespace OPM.OPMEnginee
         private DateTime deliver_date_expected;
         private string email_request_status;
         private DateTime create_date;
-
         public string Id { get => id; set => id = value; }
         public string Id_po { get => id_po; set => id_po = value; }
         public int Numberofdevice { get => numberofdevice; set => numberofdevice = value; }
@@ -88,5 +90,63 @@ namespace OPM.OPMEnginee
                 }
             }
         }
+        string CreatNTKTRequest()
+        {
+            PO_Thanh pO = new PO_Thanh(id_po);
+            Contract contract = new Contract(pO.Id_contract);
+            object filename = string.Format(@"D:\OPM\{0}\{1}\YCNTKT_{2}.docx", contract.Id.Replace('/', '-'), pO.Po_number.Trim().Replace('/', '-'), Id.Trim().Replace('/', '-'));
+            WordOffice.Application wordApp = new WordOffice.Application();
+            object missing = Missing.Value;
+            WordOffice.Document myDoc = null;
+            object path = @"D:\OPM\Template\Văn bản đề nghị nghiệm thu kỹ thuật.docx";
+            if (File.Exists(path.ToString()))
+            {
+                object readOnly = true;
+                //object isVisible = false;
+                wordApp.Visible = false;
+
+                myDoc = wordApp.Documents.Open(ref path, ref missing, ref readOnly,
+                                    ref missing, ref missing, ref missing,
+                                    ref missing, ref missing, ref missing,
+                                    ref missing, ref missing, ref missing,
+                                    ref missing, ref missing, ref missing, ref missing);
+                myDoc.Activate();
+                //Tạo thư mục
+                string folder = string.Format(@"D:\OPM\{0}\{1}", txbIDContract.Text.Trim().Replace('/', '-'), txbPONumber.Text.Trim().Replace('/', '-'));
+                Directory.CreateDirectory(folder);
+
+                //Find and Replace
+                OpmWordHandler.FindAndReplace(wordApp, "<NTKT_ID>", id);
+                OpmWordHandler.FindAndReplace(wordApp, "<PO_Number>", txbPONumber.Text.Trim());
+                OpmWordHandler.FindAndReplace(wordApp, "<Contract_ID>", txbIDContract.Text.Trim());
+                OpmWordHandler.FindAndReplace(wordApp, "<NTKT_ID>", txbNTKTID.Text.Trim());
+                OpmWordHandler.FindAndReplace(wordApp, "<NTKT_ID>", txbNTKTID.Text.Trim());
+                OpmWordHandler.FindAndReplace(wordApp, "<NTKT_ID>", txbNTKTID.Text.Trim());
+
+                //OpmWordHandler.FindAndReplace(wordApp, "<Now>", activedate.ToString("d", CultureInfo.CreateSpecificCulture("en-NZ")));
+                //OpmWordHandler.FindAndReplace(wordApp, "<Signed_Date>", datesigned.ToString("d", CultureInfo.CreateSpecificCulture("en-NZ")));
+                //OpmWordHandler.FindAndReplace(wordApp, "<Site_B>", id_siteB);
+                //OpmWordHandler.FindAndReplace(wordApp, "<blvalue>", blvalue);
+                //OpmWordHandler.FindAndReplace(wordApp, "<durationpo>", durationpo);
+                //Tạo file BLHĐ trong thư mục D:\OPM
+                try
+                {
+                    myDoc.SaveAs2(ref filename);
+                    MessageBox.Show(string.Format("Đã tạo file {0}", filename.ToString()));
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                }
+                myDoc.Close();
+                wordApp.Quit();
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy bản mẫu BLHD.docx! ");
+            }
+            return filename.ToString();
+        }
+
     }
 }

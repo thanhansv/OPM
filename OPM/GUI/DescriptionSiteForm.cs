@@ -11,14 +11,14 @@ namespace OPM.GUI
 {
     public partial class DescriptionSiteForm : Form
     {
-        public delegate void UpdateCatalogDelegate(string value);
-        public UpdateCatalogDelegate UpdateCatalogPanel;
+        //public delegate void UpdateCatalogDelegate(string value);
+        //public UpdateCatalogDelegate UpdateCatalogPanel;
 
-        public delegate void RequestDashBoardOpenDescriptionForm(string siteId);
-        public RequestDashBoardOpenDescriptionForm requestDashBoardOpendescriptionForm;
+        //public delegate void RequestDashBoardOpenDescriptionForm(string siteId);
+        //public RequestDashBoardOpenDescriptionForm requestDashBoardOpendescriptionForm;
 
         //Truyền giá trị của Id_Site về Form Contract
-        public delegate void SetIdSite(string idSite, int stt);
+        public delegate void SetIdSite(string idSite);
         public SetIdSite setIdSite;
 
 
@@ -32,44 +32,44 @@ namespace OPM.GUI
         //    txbRepresen.Clear();
         //    txbAccount.Clear();
         //}
-        public void setId(string value)
-        {
-            txbID.Text = value;
-            return;
-        }
-        public void setHeadquater(string value)
-        {
-            txbhead.Text = value;
-            return;
-        }
-        public void setAddress(string value)
-        {
-            txbAddress.Text = value;
-            return;
-        }
-        public void setPhone(string value)
-        {
-            txbPhone.Text = value;
-            return;
-        }
-        public void setFax(string value)
-        {
-            txbFax.Text = value;
-            return;
+        //public void setId(string value)
+        //{
+        //    txbID.Text = value;
+        //    return;
+        //}
+        //public void setHeadquater(string value)
+        //{
+        //    txbhead.Text = value;
+        //    return;
+        //}
+        //public void setAddress(string value)
+        //{
+        //    txbAddress.Text = value;
+        //    return;
+        //}
+        //public void setPhone(string value)
+        //{
+        //    txbPhone.Text = value;
+        //    return;
+        //}
+        //public void setFax(string value)
+        //{
+        //    txbFax.Text = value;
+        //    return;
 
-        }
-        public void setAccount(string value)
-        {
-            txbAccount.Text = value;
-            return;
+        //}
+        //public void setAccount(string value)
+        //{
+        //    txbAccount.Text = value;
+        //    return;
 
-        }
-        public void setRepresentative(string value)
-        {
-            txbRepresen.Text = value;
-            return;
+        //}
+        //public void setRepresentative(string value)
+        //{
+        //    txbRepresen.Text = value;
+        //    return;
 
-        }
+        //}
         public void state(bool state)
         {
             txbID.ReadOnly = state;
@@ -111,10 +111,9 @@ namespace OPM.GUI
         {
             state(false);
         }
-
         private void save_Click(object sender, EventArgs e)
         {
-            //Cập nhật hoặc thêm mới Site_Info
+            //Cập nhật (nếu ID đã tồn tại) hoặc thêm mới Site_Info và cập nhật vào Form Contract
             Site_Info site_Info = new Site_Info();
             site_Info.Id = txbID.Text;
             site_Info.Headquater_info = txbhead.Text;
@@ -124,11 +123,13 @@ namespace OPM.GUI
             site_Info.Tin = txbFax.Text;
             site_Info.Account = txbAccount.Text;
             site_Info.Representative = txbRepresen.Text;
-            if (site_Info.Exist()) site_Info.Update();
+            if (Site_Info.Exist(txbID.Text.Trim())) site_Info.Update(); //Cập nhật vào dbo.Site_Info
             else
             {
-                site_Info.Insert();
+                site_Info.Insert();             //Thêm mới vào dbo.Site_Info
+                setIdSite(txbID.Text.Trim()); //Cập nhật vào Form Contract
             }
+            this.Close();
         }
 
     }

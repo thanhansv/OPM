@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\XUANTHANH\\Desktop\\OPM\\OPM\\OPM.csproj": {}
+    "D:\\Users\\thanh\\OneDrive\\Desktop\\OPM\\OPM23092021\\OPM\\OPM.csproj": {}
   },
   "projects": {
-    "C:\\Users\\XUANTHANH\\Desktop\\OPM\\OPM\\OPM.csproj": {
+    "D:\\Users\\thanh\\OneDrive\\Desktop\\OPM\\OPM23092021\\OPM\\OPM.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\XUANTHANH\\Desktop\\OPM\\OPM\\OPM.csproj",
+        "projectUniqueName": "D:\\Users\\thanh\\OneDrive\\Desktop\\OPM\\OPM23092021\\OPM\\OPM.csproj",
         "projectName": "OPM",
-        "projectPath": "C:\\Users\\XUANTHANH\\Desktop\\OPM\\OPM\\OPM.csproj",
-        "packagesPath": "C:\\Users\\XUANTHANH\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\XUANTHANH\\Desktop\\OPM\\OPM\\obj\\",
+        "projectPath": "D:\\Users\\thanh\\OneDrive\\Desktop\\OPM\\OPM23092021\\OPM\\OPM.csproj",
+        "packagesPath": "C:\\Users\\thanh\\.nuget\\packages\\",
+        "outputPath": "D:\\Users\\thanh\\OneDrive\\Desktop\\OPM\\OPM23092021\\OPM\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\XUANTHANH\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\thanh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

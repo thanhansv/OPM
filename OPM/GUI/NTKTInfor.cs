@@ -1,12 +1,5 @@
 ﻿using OPM.OPMEnginee;
-using OPM.WordHandler;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Text;
 using System.Windows.Forms;
 
 namespace OPM.GUI
@@ -22,7 +15,12 @@ namespace OPM.GUI
         public delegate void RequestDashBoardPurchaseOderForm(string strIDPO, string KHMS);
         public RequestDashBoardPurchaseOderForm requestDashBoardPurchaseOderForm;
 
-        
+        //Khai báo các Contract và PO đi kem với NTKT hiện tại
+        Contract contractNTKT;
+        //PO pONTKT;
+
+        public Contract ContractNTKT { get => contractNTKT; set => contractNTKT = value; }
+        //public PO PONTKT { get => pONTKT; set => pONTKT = value; }
 
         public NTKTInfor()
         {
@@ -34,28 +32,29 @@ namespace OPM.GUI
             dateTimePickerNTKTCreated.Value = DateTime.Now;
             dateTimePickerNTKT.Value = dateTimePickerNTKTCreated.Value.AddDays(2);
         }
-        public void SetKHMS(string value)
-        {
-            txbKHMS.Text = value;
-            return;
-        }
-        public void SetContractID(string value)
-        {
-            txbIDContract.Text = value;
-            return;
-        }
-        public void SetPOID(string value)
-        {
-            txbPOID.Text = value;
-            return;
-        }
-        public void SetPONumber(string value)
-        {
-            txbPONumber.Text = value;
-            return;
-        }
+        //public void SetKHMS(string value)
+        //{
+        //    txbKHMS.Text = value;
+        //    return;
+        //}
+        //public void SetContractID(string value)
+        //{
+        //    txbIDContract.Text = value;
+        //    return;
+        //}
+        //public void SetPOID(string value)
+        //{
+        //    txbPOID.Text = value;
+        //    return;
+        //}
+        //public void SetPONumber(string value)
+        //{
+        //    txbPONumber.Text = value;
+        //    return;
+        //}
         private void btnSave_Click(object sender, EventArgs e)
         {
+            //CreatNTKTRequest(); //Tạo yêu cầu NTKT
             //NTKT newNKTTObj = new NTKT();
             //newNKTTObj.KHMS = txbKHMS.Text;
             //newNKTTObj.IDContract = txbIDContract.Text;
