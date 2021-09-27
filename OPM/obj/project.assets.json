@@ -526,11 +526,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Users\\thanh\\OneDrive\\Desktop\\OPM\\OPM23092021\\OPM\\OPM.csproj",
+      "projectUniqueName": "D:\\Users\\thanh\\OneDrive\\Desktop\\OPM23092021\\OPM\\OPM.csproj",
       "projectName": "OPM",
-      "projectPath": "D:\\Users\\thanh\\OneDrive\\Desktop\\OPM\\OPM23092021\\OPM\\OPM.csproj",
+      "projectPath": "D:\\Users\\thanh\\OneDrive\\Desktop\\OPM23092021\\OPM\\OPM.csproj",
       "packagesPath": "C:\\Users\\thanh\\.nuget\\packages\\",
-      "outputPath": "D:\\Users\\thanh\\OneDrive\\Desktop\\OPM\\OPM23092021\\OPM\\obj\\",
+      "outputPath": "D:\\Users\\thanh\\OneDrive\\Desktop\\OPM23092021\\OPM\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
