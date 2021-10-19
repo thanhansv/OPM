@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ShowAllFiles>true</ShowAllFiles>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="GUI\ConfirmPOInfor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\ContractInfoChildForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\GoodsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\DeliverPartInforDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\FormDPWarranty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\HandlerExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\KHGH_PO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\NTKTInfor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\OPMDASHBOARDA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\PackageListInfor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\PhuLucSerial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\PurchaseOderInfor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\SiteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\TestTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
