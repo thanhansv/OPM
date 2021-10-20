@@ -54,12 +54,12 @@ namespace OPM.OPMEnginee
         }
         public static void ResetQuantityByIdPO(string idPO)
         {
-            string query = string.Format("UPDATE dbo.DeliveryPlan SET quantity = 0 WHERE idPO_Thanh = '{0}'", idPO);
+            string query = string.Format("UPDATE dbo.DeliveryPlan SET expectedQuantity = 0 WHERE idPO_Thanh = '{0}'", idPO);
             OPMDBHandler.ExecuteNonQuery(query);
         }
         public static void ResetQuantityByIdPOAndTimes(string idPO, int times)
         {
-            string query = string.Format("UPDATE dbo.DeliveryPlan SET quantity = 0 WHERE idPO_Thanh = '{0}' And phase = {1}", idPO, times);
+            string query = string.Format("UPDATE dbo.DeliveryPlan SET expectedQuantity = 0 WHERE idPO_Thanh = '{0}' And phase = {1}", idPO, times);
             OPMDBHandler.ExecuteNonQuery(query);
         }
         public static List<DeliveryPlan> GetListByProvince(string province)
@@ -86,10 +86,10 @@ namespace OPM.OPMEnginee
             }
             return list;
         }
-        public static List<DeliveryPlan> GetListByIdPOAndTimes(string idPO, int times)
+        public static List<DeliveryPlan> GetListByIdPOAndTimes(string idPO, int phase)
         {
             List<DeliveryPlan> list = new List<DeliveryPlan>();
-            string query = string.Format("SELECT * FROM dbo.DeliveryPlan Where idPO_Thanh = '{0}' AND Times = {1} Order By Province", idPO, times);
+            string query = string.Format("SELECT * FROM dbo.DeliveryPlan Where idPO_Thanh = '{0}' AND phase = {1} Order By Province", idPO, phase);
             DataTable dataTable = OPMDBHandler.ExecuteQuery(query);
             foreach (DataRow item in dataTable.Rows)
             {
@@ -127,26 +127,26 @@ namespace OPM.OPMEnginee
         }
         public DeliveryPlan(DataRow row)
         {
-            IdPO_Thanh = row["IdPO"].ToString();
+            IdPO_Thanh = row["IdPO_Thanh"].ToString();
             Province = row["Province"].ToString();
-            Phase = (int)row["Times"];
-            ExpectedQuantity = (row["Quantity"] == null || row["Quantity"] == DBNull.Value) ? 0 : (int)row["Quantity"];
-            ExpectedDate = (row["DateDelivery"] == null || row["DateDelivery"] == DBNull.Value) ? DateTime.Now : (DateTime)row["DateDelivery"];
+            Phase = (int)row["Phase"];
+            ExpectedQuantity = (row["ExpectedQuantity"] == null || row["ExpectedQuantity"] == DBNull.Value) ? 0 : (int)row["ExpectedQuantity"];
+            ExpectedDate = (row["ExpectedDate"] == null || row["ExpectedDate"] == DBNull.Value) ? DateTime.Now : (DateTime)row["ExpectedDate"];
         }
         public DeliveryPlan(string idPO, string province, int times)
         {
             IdPO_Thanh = idPO;
             Province = province;
             Phase = times;
-            string query = string.Format("SELECT * FROM dbo.DeliveryPlan WHERE IdPO = '{0}' AND Province = N'{1}' AND Times = {2}", idPO, province, times);
+            string query = string.Format("SELECT * FROM dbo.DeliveryPlan WHERE IdPO_Thanh = '{0}' AND Province = N'{1}' AND Phase = {2}", idPO, province, times);
             try
             {
                 DataTable table = OPMDBHandler.ExecuteQuery(query);
                 if (table.Rows.Count > 0)
                 {
                     DataRow row = table.Rows[0];
-                    ExpectedQuantity = (row["Quantity"] == null || row["Quantity"] == DBNull.Value) ? 0 : (int)row["Quantity"];
-                    ExpectedDate = (row["DateDelivery"] == null || row["DateDelivery"] == DBNull.Value) ? DateTime.Now : (DateTime)row["DateDelivery"];
+                    ExpectedQuantity = (row["ExpectedQuantity"] == null || row["ExpectedQuantity"] == DBNull.Value) ? 0 : (int)row["ExpectedQuantity"];
+                    ExpectedDate = (row["ExpectedDate"] == null || row["ExpectedDate"] == DBNull.Value) ? DateTime.Now : (DateTime)row["ExpectedDate"];
                 }
             }
             catch
@@ -156,7 +156,7 @@ namespace OPM.OPMEnginee
         }
         public bool Exist()
         {
-            string query = string.Format("SELECT * FROM dbo.DeliveryPlan WHERE IdPO = '{0}' AND Province = N'{1}' AND Times = {2}", idPO_Thanh, province, phase);
+            string query = string.Format("SELECT * FROM dbo.DeliveryPlan WHERE IdPO_Thanh = '{0}' AND Province = N'{1}' AND Phase = {2}", idPO_Thanh, province, phase);
             DataTable table = OPMDBHandler.ExecuteQuery(query);
             return table.Rows.Count > 0;
         }
