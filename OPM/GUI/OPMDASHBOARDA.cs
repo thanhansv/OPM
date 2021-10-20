@@ -138,11 +138,8 @@ namespace OPM.GUI
         {
             try
             {
+                treeViewOPM.Tag = treeViewOPM.SelectedNode;
                 string strNodeID = treeViewOPM.SelectedNode.Name.ToString();
-                //if (null != treeViewOPM.SelectedNode.Parent)
-                //{
-                //    string strParentNodeID = treeViewOPM.SelectedNode.Parent.Name.ToString();
-                //}
                 string[] temp = strNodeID.Split('_', 2);
                 /*Get Detail Infor On Database*/
                 switch (temp[0])
