@@ -11,9 +11,9 @@ using System.Runtime.InteropServices;
 
 namespace OPM.GUI
 {
-    public partial class TestTableForm : Form
+    public partial class TestTable : Form
     {
-        public TestTableForm()
+        public TestTable()
         {
             InitializeComponent();
         }
@@ -207,11 +207,85 @@ namespace OPM.GUI
                 return e.Message;
             }
         }
+        public static string Filename()
+        {
+            OpenFileDialog openFileExcel = new OpenFileDialog();
+            openFileExcel.Multiselect = false;
+            openFileExcel.Filter = "Excel Files(.xls)|*.xls|Excel Files(.xlsx)|*.xlsx|Excel Files(*.xlsm)|*.xlsm";
+            openFileExcel.FilterIndex = 2;
+            if (openFileExcel.ShowDialog() == DialogResult.OK)
+                if (File.Exists(openFileExcel.FileName))
+                    return openFileExcel.FileName;
+            return null;
+        }
+        public static System.Data.DataTable ExcelToDatatable(string filename, int sheetIndex = 0)
+        {
+            System.Data.DataTable dataTable = new System.Data.DataTable();
+            ExcelOffice.Range xlRange = null;
+            ExcelOffice.Workbook xlWorkbook = null;
+            ExcelOffice.Application xlApp = null;
+            ExcelOffice._Worksheet xlWorksheet = null;
+            DataRow row;
+            try
+            {
+                xlApp = new ExcelOffice.Application();
+                xlWorkbook = xlApp.Workbooks.Open(filename);
+                xlWorksheet = (ExcelOffice._Worksheet)xlWorkbook.Sheets[sheetIndex];
+                xlRange = xlWorksheet.UsedRange;
 
+                int rowCount = xlRange.Rows.Count;      //hàng
+                int colCount = xlRange.Columns.Count;   //cột
+
+                for (int i = 1; i <= rowCount; i++)
+                {
+                    row = dataTable.NewRow();
+                    for (int j = 1; j <= colCount; j++)
+                    {
+                        //row[j-1] = (xlRange.Cells[i, j] as ExcelOffice.Range).Text;
+                        //MessageBox.Show((string)(xlRange.Cells[i, j] as ExcelOffice.Range).Text);
+                        //row[j - 1] = (xlRange.Cells[i, j] as ExcelOffice.Range).Value; 
+                        MessageBox.Show((string)(xlRange.Cells[i, j] as ExcelOffice.Range).Value2);
+                    }
+                    dataTable.Rows.Add(row);
+                }
+                //cleanup  
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                //rule of thumb for releasing com objects:  
+                //  never use two dots, all COM objects must be referenced and released individually  
+                //  ex: [somthing].[something].[something] is bad  
+                //release com objects to fully kill excel process from running in the background  
+                Marshal.ReleaseComObject(xlRange);
+                Marshal.ReleaseComObject(xlWorksheet);
+                //close and release  
+                xlWorkbook.Close();
+                Marshal.ReleaseComObject(xlWorkbook);
+                //quit and release  
+                xlApp.Quit();
+                Marshal.ReleaseComObject(xlApp);
+                return dataTable;
+            }
+            catch (Exception)
+            {
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                Marshal.ReleaseComObject(xlRange);
+                Marshal.ReleaseComObject(xlWorksheet);
+                xlWorkbook.Close();
+                Marshal.ReleaseComObject(xlWorkbook);
+                xlApp.Quit();
+                Marshal.ReleaseComObject(xlApp);
+                return dataTable;
+            }
+        }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            
+
+            string str = Filename();
+            MessageBox.Show(str);
+            System.Data.DataTable dataTable = ExcelToDatatable(str, 1);
+            dataGridViewTest.DataSource = dataTable;
         }
     }
 }

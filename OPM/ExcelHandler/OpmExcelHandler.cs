@@ -17,7 +17,18 @@ namespace OPM.ExcelHandler
     class OpmExcelHandler : IExcelHandler
     {
         //Lấy dữa liệu từ file Excel DeliveryPlan vào DataTable DeliveryPlanTable
-        public static DataTable DeliveryPlanTable(string fname)
+        public static string Filename()
+        {
+            OpenFileDialog openFileExcel = new OpenFileDialog();
+            openFileExcel.Multiselect = false;
+            openFileExcel.Filter = "Excel Files(.xls)|*.xls|Excel Files(.xlsx)|*.xlsx|Excel Files(*.xlsm)|*.xlsm";
+            openFileExcel.FilterIndex = 2;
+            if (openFileExcel.ShowDialog() == DialogResult.OK)
+                if (File.Exists(openFileExcel.FileName))
+                    return openFileExcel.FileName;
+            return null;
+        }
+        public static DataTable ExcelToDatatable(string filename, int sheetIndex=0)
         {
             DataTable dataTable = new DataTable();
             ExcelOffice.Range xlRange = null;
@@ -28,74 +39,24 @@ namespace OPM.ExcelHandler
             try
             {
                 xlApp = new ExcelOffice.Application();
-                xlWorkbook = xlApp.Workbooks.Open(fname);
-                //xlWorksheet = (ExcelOffice._Worksheet)xlWorkbook.Sheets[3];
-                //Hiện giờ chỉ có 1 sheet đầu tiên nên Sheet[1]
-                xlWorksheet = (ExcelOffice._Worksheet)xlWorkbook.Sheets[1];
+                xlWorkbook = xlApp.Workbooks.Open(filename);
+                xlWorksheet = (ExcelOffice._Worksheet)xlWorkbook.Sheets[sheetIndex];
                 xlRange = xlWorksheet.UsedRange;
 
-                string xName = xlWorksheet.Name.ToString();
-                int rowCount = xlRange.Rows.Count;
-                //Hiển thị xem có tổng cộng bao nhiêu hàng
-                //MessageBox.Show(rowCount.ToString()); 72
-                int colCount = xlRange.Columns.Count;
-                //Hiển thị xem có tổng cộng bao nhiêu cột
-                //MessageBox.Show(colCount.ToString()); 82
-                int[] arrcolum = { 1, 2, 3, 4, 5 };
-                int rowCounter;
-                int StartCells = 0;
-                int CountCells = 0;
-                dataTable.Columns.Add("STT");
-                dataTable.Columns.Add("VNPT Tỉnh/ Thành phố");
-                dataTable.Columns.Add("Tổng số PO");
-                dataTable.Columns.Add("Số lượng");
-                dataTable.Columns.Add("Ngày giao hàng");
-                //Tìm hàng bắt đầy chạy STT
+                int rowCount = xlRange.Rows.Count;      //hàng
+                int colCount = xlRange.Columns.Count;   //cột
+
                 for (int i = 1; i <= rowCount; i++)
                 {
                     row = dataTable.NewRow();
-                    if (xlRange.Cells[i, 1] != null)
-                    {
-                        row[1] = (xlRange.Cells[i, 1] as ExcelOffice.Range).Text;
-                        if (row[1].ToString() == "STT")
-                        {
-                            StartCells = i;
-                            break;
-                        }
-                    }
-                }
-                //Tim tong so hang can hien thi len man hinh
-                for (int i = StartCells + 2; i <= rowCount; i++)
-                {
-                    row = dataTable.NewRow();
-                    if (xlRange.Cells[i, 1] != null)
-                    {
-                        row[1] = (xlRange.Cells[i, 1] as ExcelOffice.Range).Text;
-                        if (row[1].ToString() == "Tổng số")
-                        {
-                            CountCells = i - 1;
-                            break;
-                        }
-                    }
-                }
-                //
-                for (int i = StartCells + 2; i <= CountCells; i++)
-                {
-                    row = dataTable.NewRow();
-                    rowCounter = 0;
-                    foreach (int j in arrcolum)
-                    {
-                        if (xlRange.Cells[i, j] != null)
-                        {
-                            row[rowCounter] = (xlRange.Cells[i, j] as ExcelOffice.Range).Text;
-                        }
-                        else
-                        {
-                            row[i] = "";
-                        }
-                        rowCounter++;
-                    }
-                    dataTable.Rows.Add(row);
+
+                    //for(int j=1;j<= colCount; j++)
+                    //{
+                    //    row[j-1]= (xlRange.Cells[i, j] as ExcelOffice.Range).Text;
+                    //    MessageBox.Show((string)(xlRange.Cells[i, j] as ExcelOffice.Range).Text);
+                    //    //row[j - 1] = (xlRange.Cells[i, j] as ExcelOffice.Range).Value; 
+                    //    //MessageBox.Show((string)(xlRange.Cells[i, j] as ExcelOffice.Range).Value);
+                    //}
                 }
                 //cleanup  
                 GC.Collect();
@@ -103,15 +64,12 @@ namespace OPM.ExcelHandler
                 //rule of thumb for releasing com objects:  
                 //  never use two dots, all COM objects must be referenced and released individually  
                 //  ex: [somthing].[something].[something] is bad  
-
                 //release com objects to fully kill excel process from running in the background  
                 Marshal.ReleaseComObject(xlRange);
                 Marshal.ReleaseComObject(xlWorksheet);
-
                 //close and release  
                 xlWorkbook.Close();
                 Marshal.ReleaseComObject(xlWorkbook);
-
                 //quit and release  
                 xlApp.Quit();
                 Marshal.ReleaseComObject(xlApp);
@@ -121,19 +79,10 @@ namespace OPM.ExcelHandler
             {
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
-                //rule of thumb for releasing com objects:  
-                //  never use two dots, all COM objects must be referenced and released individually  
-                //  ex: [somthing].[something].[something] is bad  
-
-                //release com objects to fully kill excel process from running in the background  
                 Marshal.ReleaseComObject(xlRange);
                 Marshal.ReleaseComObject(xlWorksheet);
-
-                //close and release  
                 xlWorkbook.Close();
                 Marshal.ReleaseComObject(xlWorkbook);
-
-                //quit and release  
                 xlApp.Quit();
                 Marshal.ReleaseComObject(xlApp);
                 return dataTable;
