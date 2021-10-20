@@ -117,12 +117,12 @@ namespace OPM.OPMEnginee
         }
         public void Update()
         {
-            string query = string.Format("SET DATEFORMAT DMY UPDATE dbo.DeliveryPlan SET quantity = {3}, dateDelivery = '{4}' WHERE idPO = '{0}' AND province = N'{1}' AND times = {2})", idPO_Thanh, province, phase, expectedQuantity, expectedDate.ToString("d", CultureInfo.CreateSpecificCulture("en-NZ")));
+            string query = string.Format("SET DATEFORMAT DMY UPDATE dbo.DeliveryPlan SET ExpectedQuantity = {3}, ExpectedDate = '{4}' WHERE IdPO_Thanh = '{0}' AND Province = N'{1}' AND Phase = {2})", idPO_Thanh, province, phase, expectedQuantity, expectedDate.ToString("d", CultureInfo.CreateSpecificCulture("en-NZ")));
             OPMDBHandler.ExecuteNonQuery(query);
         }
         public void Insert()
         {
-            string query = string.Format(@"SET DATEFORMAT DMY INSERT INTO dbo.DeliveryPlan(idPO,province,times,quantity,dateDelivery) VALUES('{0}',N'{1}',{2},{3},'{4}')", idPO_Thanh, province, phase, expectedQuantity, expectedDate.ToString("d", CultureInfo.CreateSpecificCulture("en-NZ")));
+            string query = string.Format(@"SET DATEFORMAT DMY INSERT INTO dbo.DeliveryPlan(IdPO_Thanh,Province,Phase,ExpectedQuantity,ExpectedDate) VALUES('{0}',N'{1}',{2},{3},'{4}')", idPO_Thanh, province, phase, expectedQuantity, expectedDate.ToString("d", CultureInfo.CreateSpecificCulture("en-NZ")));
             OPMDBHandler.ExecuteNonQuery(query);
         }
         public DeliveryPlan(DataRow row)

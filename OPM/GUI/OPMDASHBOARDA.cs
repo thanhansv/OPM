@@ -14,7 +14,8 @@ namespace OPM.GUI
         //0: đang ở Form tạo mới hợp đồng
         //1: đang ở Form chỉnh sửa hợp đồng
         //2:
-        //3:
+        //3: Đang ở Form tạo mới PO
+        //4: Đang ở Form chỉnh sửa PO
         Contract_Thanh contract = new Contract_Thanh();
         PO_Thanh po=new PO_Thanh();
         Goods_Thanh goods=new Goods_Thanh();
