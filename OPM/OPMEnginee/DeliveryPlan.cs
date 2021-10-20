@@ -160,6 +160,5 @@ namespace OPM.OPMEnginee
             DataTable table = OPMDBHandler.ExecuteQuery(query);
             return table.Rows.Count > 0;
         }
-
     }
 }
