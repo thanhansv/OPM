@@ -316,8 +316,8 @@ namespace OPM.GUI
         static public string IDVBXN = "";
         static public string IPPO = "";
 
-
-        private void button3_Click(object sender, EventArgs e)
+        
+        private void btnDeliveryPlan_Click(object sender, EventArgs e)
         {
             //openFileExcel.Multiselect = true;
             //openFileExcel.Filter = "Excel Files(.xls)|*.xls| Excel Files(.xlsx)| *.xlsx | Excel Files(*.xlsm) | *.xlsm";
@@ -325,7 +325,6 @@ namespace OPM.GUI
             {
                 if (File.Exists(openFileExcel.FileName))
                 {
-                    txbnamefileKHGH.Text = openFileExcel.FileName;
                     string filename = openFileExcel.FileName;
                     int ret = OpmExcelHandler.SaveFileInDelivery_PO(filename, ref dtkhgh);
                     if (ret == 1)

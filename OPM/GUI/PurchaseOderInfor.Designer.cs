@@ -70,8 +70,7 @@ namespace OPM.GUI
             this.label21 = new System.Windows.Forms.Label();
             this.dtpPerformDate = new System.Windows.Forms.DateTimePicker();
             this.label22 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.txbnamefileKHGH = new System.Windows.Forms.TextBox();
+            this.btnDeliveryPlan = new System.Windows.Forms.Button();
             this.txtIdAdvanceRequest = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.txtIdConfirm = new System.Windows.Forms.TextBox();
@@ -90,7 +89,7 @@ namespace OPM.GUI
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(361, 744);
+            this.btnSave.Location = new System.Drawing.Point(361, 785);
             this.btnSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(102, 38);
@@ -121,7 +120,7 @@ namespace OPM.GUI
             // 
             // btnNewDP
             // 
-            this.btnNewDP.Location = new System.Drawing.Point(593, 744);
+            this.btnNewDP.Location = new System.Drawing.Point(593, 785);
             this.btnNewDP.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnNewDP.Name = "btnNewDP";
             this.btnNewDP.Size = new System.Drawing.Size(102, 38);
@@ -289,7 +288,7 @@ namespace OPM.GUI
             // dataGridViewPO
             // 
             this.dataGridViewPO.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewPO.Location = new System.Drawing.Point(16, 600);
+            this.dataGridViewPO.Location = new System.Drawing.Point(16, 641);
             this.dataGridViewPO.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridViewPO.Name = "dataGridViewPO";
             this.dataGridViewPO.RowHeadersWidth = 62;
@@ -310,7 +309,7 @@ namespace OPM.GUI
             // 
             // txtAdvancePercentage
             // 
-            this.txtAdvancePercentage.Location = new System.Drawing.Point(221, 387);
+            this.txtAdvancePercentage.Location = new System.Drawing.Point(221, 428);
             this.txtAdvancePercentage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtAdvancePercentage.Name = "txtAdvancePercentage";
             this.txtAdvancePercentage.Size = new System.Drawing.Size(164, 31);
@@ -322,7 +321,7 @@ namespace OPM.GUI
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(16, 391);
+            this.label12.Location = new System.Drawing.Point(16, 432);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(114, 25);
@@ -333,7 +332,7 @@ namespace OPM.GUI
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(394, 430);
+            this.label13.Location = new System.Drawing.Point(394, 471);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(33, 31);
@@ -342,7 +341,7 @@ namespace OPM.GUI
             // 
             // btnNTKT
             // 
-            this.btnNTKT.Location = new System.Drawing.Point(477, 744);
+            this.btnNTKT.Location = new System.Drawing.Point(477, 785);
             this.btnNTKT.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnNTKT.Name = "btnNTKT";
             this.btnNTKT.Size = new System.Drawing.Size(102, 38);
@@ -353,7 +352,7 @@ namespace OPM.GUI
             // 
             // btnNewPO
             // 
-            this.btnNewPO.Location = new System.Drawing.Point(129, 744);
+            this.btnNewPO.Location = new System.Drawing.Point(129, 785);
             this.btnNewPO.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnNewPO.Name = "btnNewPO";
             this.btnNewPO.Size = new System.Drawing.Size(102, 38);
@@ -364,7 +363,7 @@ namespace OPM.GUI
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(245, 744);
+            this.btnDelete.Location = new System.Drawing.Point(245, 785);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(102, 38);
@@ -376,7 +375,7 @@ namespace OPM.GUI
             // txbnamefilePO
             // 
             this.txbnamefilePO.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.txbnamefilePO.Location = new System.Drawing.Point(221, 560);
+            this.txbnamefilePO.Location = new System.Drawing.Point(221, 601);
             this.txbnamefilePO.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txbnamefilePO.Name = "txbnamefilePO";
             this.txbnamefilePO.Size = new System.Drawing.Size(265, 31);
@@ -384,7 +383,7 @@ namespace OPM.GUI
             // 
             // importPO
             // 
-            this.importPO.Location = new System.Drawing.Point(538, 554);
+            this.importPO.Location = new System.Drawing.Point(538, 595);
             this.importPO.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.importPO.Name = "importPO";
             this.importPO.Size = new System.Drawing.Size(160, 38);
@@ -396,7 +395,7 @@ namespace OPM.GUI
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(16, 555);
+            this.label8.Location = new System.Drawing.Point(16, 596);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(200, 25);
@@ -406,7 +405,7 @@ namespace OPM.GUI
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(16, 432);
+            this.label10.Location = new System.Drawing.Point(16, 473);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(153, 25);
@@ -415,7 +414,7 @@ namespace OPM.GUI
             // 
             // txtAdvanceGuaranteePercentage
             // 
-            this.txtAdvanceGuaranteePercentage.Location = new System.Drawing.Point(221, 433);
+            this.txtAdvanceGuaranteePercentage.Location = new System.Drawing.Point(221, 474);
             this.txtAdvanceGuaranteePercentage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtAdvanceGuaranteePercentage.Name = "txtAdvanceGuaranteePercentage";
             this.txtAdvanceGuaranteePercentage.Size = new System.Drawing.Size(164, 31);
@@ -428,7 +427,7 @@ namespace OPM.GUI
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(393, 388);
+            this.label14.Location = new System.Drawing.Point(393, 429);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(33, 31);
@@ -448,7 +447,7 @@ namespace OPM.GUI
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(422, 388);
+            this.label19.Location = new System.Drawing.Point(422, 429);
             this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(54, 25);
@@ -459,7 +458,7 @@ namespace OPM.GUI
             // 
             this.dtpAdvanceCreatedDate.CustomFormat = "dd/MM/yyyy";
             this.dtpAdvanceCreatedDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpAdvanceCreatedDate.Location = new System.Drawing.Point(484, 383);
+            this.dtpAdvanceCreatedDate.Location = new System.Drawing.Point(484, 424);
             this.dtpAdvanceCreatedDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtpAdvanceCreatedDate.Name = "dtpAdvanceCreatedDate";
             this.dtpAdvanceCreatedDate.Size = new System.Drawing.Size(214, 31);
@@ -469,7 +468,7 @@ namespace OPM.GUI
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(422, 431);
+            this.label20.Location = new System.Drawing.Point(422, 472);
             this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(54, 25);
@@ -480,7 +479,7 @@ namespace OPM.GUI
             // 
             this.dtpAdvanceGuaranteeCreatedDate.CustomFormat = "dd/MM/yyyy";
             this.dtpAdvanceGuaranteeCreatedDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpAdvanceGuaranteeCreatedDate.Location = new System.Drawing.Point(484, 424);
+            this.dtpAdvanceGuaranteeCreatedDate.Location = new System.Drawing.Point(484, 465);
             this.dtpAdvanceGuaranteeCreatedDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtpAdvanceGuaranteeCreatedDate.Name = "dtpAdvanceGuaranteeCreatedDate";
             this.dtpAdvanceGuaranteeCreatedDate.Size = new System.Drawing.Size(214, 31);
@@ -511,36 +510,27 @@ namespace OPM.GUI
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(16, 514);
+            this.label22.Location = new System.Drawing.Point(17, 384);
             this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(199, 25);
             this.label22.TabIndex = 21;
             this.label22.Text = "File kế hoạch giao hàng";
             // 
-            // button3
+            // btnDeliveryPlan
             // 
-            this.button3.Location = new System.Drawing.Point(539, 510);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(159, 38);
-            this.button3.TabIndex = 20;
-            this.button3.Text = "Import file KHGH";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // txbnamefileKHGH
-            // 
-            this.txbnamefileKHGH.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.txbnamefileKHGH.Location = new System.Drawing.Point(221, 519);
-            this.txbnamefileKHGH.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txbnamefileKHGH.Name = "txbnamefileKHGH";
-            this.txbnamefileKHGH.Size = new System.Drawing.Size(265, 31);
-            this.txbnamefileKHGH.TabIndex = 19;
+            this.btnDeliveryPlan.Location = new System.Drawing.Point(221, 380);
+            this.btnDeliveryPlan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnDeliveryPlan.Name = "btnDeliveryPlan";
+            this.btnDeliveryPlan.Size = new System.Drawing.Size(478, 38);
+            this.btnDeliveryPlan.TabIndex = 20;
+            this.btnDeliveryPlan.Text = "Import file kế hoạch giao hàng";
+            this.btnDeliveryPlan.UseVisualStyleBackColor = true;
+            this.btnDeliveryPlan.Click += new System.EventHandler(this.btnDeliveryPlan_Click);
             // 
             // txtIdAdvanceRequest
             // 
-            this.txtIdAdvanceRequest.Location = new System.Drawing.Point(221, 473);
+            this.txtIdAdvanceRequest.Location = new System.Drawing.Point(221, 514);
             this.txtIdAdvanceRequest.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtIdAdvanceRequest.Name = "txtIdAdvanceRequest";
             this.txtIdAdvanceRequest.Size = new System.Drawing.Size(164, 31);
@@ -552,7 +542,7 @@ namespace OPM.GUI
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(16, 473);
+            this.label23.Location = new System.Drawing.Point(16, 514);
             this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(182, 25);
@@ -604,7 +594,7 @@ namespace OPM.GUI
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(422, 473);
+            this.label2.Location = new System.Drawing.Point(422, 514);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 25);
@@ -615,7 +605,7 @@ namespace OPM.GUI
             // 
             this.dtpAdvanceRequestDate.CustomFormat = "dd/MM/yyyy";
             this.dtpAdvanceRequestDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpAdvanceRequestDate.Location = new System.Drawing.Point(484, 470);
+            this.dtpAdvanceRequestDate.Location = new System.Drawing.Point(484, 511);
             this.dtpAdvanceRequestDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtpAdvanceRequestDate.Name = "dtpAdvanceRequestDate";
             this.dtpAdvanceRequestDate.Size = new System.Drawing.Size(214, 31);
@@ -654,7 +644,7 @@ namespace OPM.GUI
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(13, 744);
+            this.btnBack.Location = new System.Drawing.Point(13, 785);
             this.btnBack.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(102, 38);
@@ -665,7 +655,7 @@ namespace OPM.GUI
             // 
             // btnCreatDoc
             // 
-            this.btnCreatDoc.Location = new System.Drawing.Point(361, 792);
+            this.btnCreatDoc.Location = new System.Drawing.Point(361, 833);
             this.btnCreatDoc.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCreatDoc.Name = "btnCreatDoc";
             this.btnCreatDoc.Size = new System.Drawing.Size(102, 38);
@@ -679,7 +669,7 @@ namespace OPM.GUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightYellow;
-            this.ClientSize = new System.Drawing.Size(711, 833);
+            this.ClientSize = new System.Drawing.Size(711, 925);
             this.Controls.Add(this.dtpConfirmCreatedDate);
             this.Controls.Add(this.txtIdAdvanceRequest);
             this.Controls.Add(this.label16);
@@ -690,8 +680,7 @@ namespace OPM.GUI
             this.Controls.Add(this.label23);
             this.Controls.Add(this.txtIdConfirm);
             this.Controls.Add(this.label22);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.txbnamefileKHGH);
+            this.Controls.Add(this.btnDeliveryPlan);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.importPO);
@@ -791,8 +780,7 @@ namespace OPM.GUI
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.DateTimePicker dtpPerformDate;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox txbnamefileKHGH;
+        private System.Windows.Forms.Button btnDeliveryPlan;
         private System.Windows.Forms.TextBox txtIdAdvanceRequest;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.TextBox txtIdConfirm;

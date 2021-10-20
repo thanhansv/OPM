@@ -258,6 +258,7 @@ namespace OPM.GUI
         {
             NTKTInfor nTKTInfor = new NTKTInfor();
             Text = string.Format(@"Hợp đồng số {2} - {1} - Đợt NTKT{0}", ntkt.Number, po.POName,contract.Id);
+            ntkt.Id_po = po.Id;
             InitCatalogByNodeName("NTKT_" + ntkt.Id);
             OpenChildForm(nTKTInfor);
         }

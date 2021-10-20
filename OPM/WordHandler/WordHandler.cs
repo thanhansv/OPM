@@ -1146,7 +1146,6 @@ namespace OPM.WordHandler
                 ref matchDiactitics, ref matchAlefHamza,
                 ref matchControl);
         }
-        private static ConvertDateFormat convertDateFormat = new ConvertDateFormat();
         //public static void PrintDocument(object filename)
         //{
         //    WordOffice.Application wordApp = new WordOffice.Application();
@@ -1216,18 +1215,18 @@ namespace OPM.WordHandler
                     FindAndReplace(wordApp, "<yyyy>", " " + DateTime.Now.ToString("yyyy") + " ");
 
                     FindAndReplace(wordApp, "<XNDH_ID>", " " + confirmPO.ConfirmPOID + " ");
-                    string[] dateNow = convertDateFormat.ConvertFormatDate(DateTime.Now.ToString("dd-MM-yyyy"), "dd-MM-yyyy", "dd/MM/yyyy");
-                    FindAndReplace(wordApp, "<DateNow>", " " + dateNow[0] + "/" + dateNow[1] + "/" + dateNow[2]);
+                    //string[] dateNow = convertDateFormat.ConvertFormatDate(DateTime.Now.ToString("dd-MM-yyyy"), "dd-MM-yyyy", "dd/MM/yyyy");
+                    //FindAndReplace(wordApp, "<DateNow>", " " + dateNow[0] + "/" + dateNow[1] + "/" + dateNow[2]);
                     FindAndReplace(wordApp, "<PO_Number>", " " + confirmPO.PONumber + " ");
                     FindAndReplace(wordApp, "<PO_ID>", " " + confirmPO.POID + " ");
-                    string[] PO_CreatedDate = convertDateFormat.ConvertFormatDate(objPO.DateCreatedPO, "yyyy-MM-dd", "dd/MM/yyyy");
-                    FindAndReplace(wordApp, "<PO_DateCreated>", " " + PO_CreatedDate[0] + "/" + PO_CreatedDate[1] + "/" + PO_CreatedDate[2]);
+                    //string[] PO_CreatedDate = convertDateFormat.ConvertFormatDate(objPO.DateCreatedPO, "yyyy-MM-dd", "dd/MM/yyyy");
+                    //FindAndReplace(wordApp, "<PO_DateCreated>", " " + PO_CreatedDate[0] + "/" + PO_CreatedDate[1] + "/" + PO_CreatedDate[2]);
 
                     FindAndReplace(wordApp, "<KHMS>", " " + confirmPO.KHMS + " ");
                     FindAndReplace(wordApp, "<Contract_ID>", " " + confirmPO.IDContract + " ");
                     FindAndReplace(wordApp, "<Contract_Name>", " " + contractObj.NameContract + " ");
-                    string[] Contract_DateSigned = convertDateFormat.ConvertFormatDate(contractObj.DateSigned, "dd-MM-yyyy", "dd/MM/yyyy");
-                    FindAndReplace(wordApp, "<Contract_DateSigned>", " " + Contract_DateSigned[0] + "/" + Contract_DateSigned[1] + "/" + Contract_DateSigned[2]);
+                    //string[] Contract_DateSigned = convertDateFormat.ConvertFormatDate(contractObj.DateSigned, "dd-MM-yyyy", "dd/MM/yyyy");
+                    //FindAndReplace(wordApp, "<Contract_DateSigned>", " " + Contract_DateSigned[0] + "/" + Contract_DateSigned[1] + "/" + Contract_DateSigned[2]);
                     FindAndReplace(wordApp, "<Site_B>", " " + contractObj.SiteB + " ");
 
                     FindAndReplace(wordApp, "<MrPhoBan>", " " + confirmPO.MrPhoBan + " ");
@@ -1295,8 +1294,8 @@ namespace OPM.WordHandler
                     FindAndReplace(wordApp, "<NoD>", " " + (numoD).ToString() + " ");
                     FindAndReplace(wordApp, "<NoD0.98>", " " + (numoD - Math.Round((numoD) * 0.02)).ToString() + " ");
                     FindAndReplace(wordApp, "<NoD0.02>", " " + Math.Round((numoD) * 0.02).ToString() + " ");
-                    string[] dateNow = convertDateFormat.ConvertFormatDate(DateTime.Now.ToString("dd-MM-yyyy"), "dd-MM-yyyy", "dd/MM/yyyy");
-                    FindAndReplace(wordApp, "<DateNow>", " " + dateNow[0] + "/" + dateNow[1] + "/" + dateNow[2]);
+                    //string[] dateNow = convertDateFormat.ConvertFormatDate(DateTime.Now.ToString("dd-MM-yyyy"), "dd-MM-yyyy", "dd/MM/yyyy");
+                    //FindAndReplace(wordApp, "<DateNow>", " " + dateNow[0] + "/" + dateNow[1] + "/" + dateNow[2]);
                 }
                 else
                 {
@@ -1351,8 +1350,8 @@ namespace OPM.WordHandler
                     FindAndReplace(wordApp, "<Total>", " " + (Nod).ToString() + " ");
                     FindAndReplace(wordApp, "<NofDe>", " " + (Nod - Math.Round((Nod) * 0.02)).ToString() + " ");
                     FindAndReplace(wordApp, "<BHD>", " " + Math.Round((Nod) * 0.02).ToString() + " ");
-                    string[] dateNow = convertDateFormat.ConvertFormatDate(DateTime.Now.ToString("dd-MM-yyyy"), "dd-MM-yyyy", "dd/MM/yyyy");
-                    FindAndReplace(wordApp, "<dd>/<MM>/<yyyy>", " " + dateNow[0] + "/" + dateNow[1] + "/" + dateNow[2]);
+                    //string[] dateNow = convertDateFormat.ConvertFormatDate(DateTime.Now.ToString("dd-MM-yyyy"), "dd-MM-yyyy", "dd/MM/yyyy");
+                    //FindAndReplace(wordApp, "<dd>/<MM>/<yyyy>", " " + dateNow[0] + "/" + dateNow[1] + "/" + dateNow[2]);
                 }
                 else
                 {
