@@ -16,6 +16,104 @@ namespace OPM.ExcelHandler
 {
     class OpmExcelHandler : IExcelHandler
     {
+        public static string GetNameOfExcelFile()
+        {
+            OpenFileDialog openFileExcel = new OpenFileDialog();
+            openFileExcel.Multiselect = false;
+            openFileExcel.Filter = "Excel Files(.xls)|*.xls|Excel Files(.xlsx)|*.xlsx|Excel Files(*.xlsm)|*.xlsm";
+            openFileExcel.FilterIndex = 2;
+            if (openFileExcel.ShowDialog() == DialogResult.OK)
+                if (File.Exists(openFileExcel.FileName))
+                    return openFileExcel.FileName;
+            return null;
+        }
+        public static int GetIndexDataRowInDataTable(DataTable table, string[] identifyings)
+        {
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                if ((table.Rows[i][0].ToString() == identifyings[0]) && (table.Rows[i][1].ToString() == identifyings[1])) return (i + 1);
+            }
+            return 0;
+        }
+        public static System.Data.DataTable ReadExcelToDataTable(string nameExcelFile, int indexWorksheet, int indexHeaderLine, int indexStartColumn)
+        {
+            System.Data.DataTable dataTable = new System.Data.DataTable();
+            Microsoft.Office.Interop.Excel.Application excel = null;
+            Microsoft.Office.Interop.Excel.Workbook workbook = null;
+            Microsoft.Office.Interop.Excel.Worksheet sheet = null;
+            Microsoft.Office.Interop.Excel.Range range = null;
+            try
+            {
+                // Get Application object.
+                excel = new Microsoft.Office.Interop.Excel.Application
+                {
+                    Visible = false,
+                    DisplayAlerts = false
+                };
+                // Open Workbook
+                workbook = excel.Workbooks.Open(nameExcelFile);
+                // Worksheet
+                sheet = (Microsoft.Office.Interop.Excel.Worksheet)workbook.Worksheets.Item[indexWorksheet];
+                range = sheet.UsedRange;
+                if (range.Rows.Count < indexHeaderLine || range.Columns.Count < indexStartColumn)
+                {
+                    MessageBox.Show(string.Format("Giá trị indexHeaderLine và indexStartColumn không phù hợp với File Excel"));
+                    GC.Collect();
+                    GC.WaitForPendingFinalizers();
+                    Marshal.ReleaseComObject(range);
+                    Marshal.ReleaseComObject(sheet);
+                    workbook.Close();
+                    Marshal.ReleaseComObject(workbook);
+                    excel.Quit();
+                    Marshal.ReleaseComObject(excel);
+                    return null;
+                }
+                int countOfColumns = range.Columns.Count;
+                // Tổng số dòng
+                int countOfRows = range.Rows.Count; ;
+                //Tạo Headder cho Datatable (Kiểu là String)
+                for (int j = indexStartColumn; j <= countOfColumns; j++)
+                {
+                    dataTable.Columns.Add(string.Format(@"{0} {1}", Convert.ToString((range.Cells[indexHeaderLine, j] as Microsoft.Office.Interop.Excel.Range).Value2), j), typeof(string));
+                }
+                //filling the table from  excel file                
+                for (int i = indexHeaderLine + 1; i <= countOfRows; i++)
+                {
+                    DataRow dr = dataTable.NewRow();
+                    for (int j = indexStartColumn; j <= countOfColumns; j++)
+                    {
+
+                        dr[j - indexStartColumn] = Convert.ToString((range.Cells[i, j] as Microsoft.Office.Interop.Excel.Range).Value2);
+                    }
+
+                    dataTable.Rows.InsertAt(dr, dataTable.Rows.Count + 1);
+                }
+
+                //now close the workbook and make the function return the data table
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                Marshal.ReleaseComObject(range);
+                Marshal.ReleaseComObject(sheet);
+                workbook.Close();
+                Marshal.ReleaseComObject(workbook);
+                excel.Quit();
+                Marshal.ReleaseComObject(excel);
+                return dataTable;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                Marshal.ReleaseComObject(range);
+                Marshal.ReleaseComObject(sheet);
+                workbook.Close();
+                Marshal.ReleaseComObject(workbook);
+                excel.Quit();
+                Marshal.ReleaseComObject(excel);
+                return null;
+            }
+        }
         //Lấy dữa liệu từ file Excel DeliveryPlan vào DataTable DeliveryPlanTable
         public static string Filename()
         {

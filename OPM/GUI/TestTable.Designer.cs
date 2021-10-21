@@ -128,7 +128,6 @@ namespace OPM.GUI
             this.Controls.Add(this.buttonAdd);
             this.Name = "TestTableForm";
             this.Text = "Thử tí thôi nhé";
-            this.Load += new System.EventHandler(this.TestTableForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTest)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
