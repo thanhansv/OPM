@@ -9,6 +9,7 @@ using ExcelOffice = Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;
 using DataTable = System.Data.DataTable;
+using System.Globalization;
 
 namespace OPM.GUI
 {
@@ -102,7 +103,7 @@ namespace OPM.GUI
                     return openFileExcel.FileName;
             return null;
         }
-        public static System.Data.DataTable ReadExcelToDataTable(string fileName, int indexWorksheet, int indexHeaderLine, int indexStartColumn)
+        public static System.Data.DataTable ReadExcelToDataTable(string nameOfExcelFile, int indexWorksheet, int indexHeaderLine, int indexStartColumn)
         {
             System.Data.DataTable dataTable = new System.Data.DataTable();
             Microsoft.Office.Interop.Excel.Application excel=null;
@@ -118,7 +119,8 @@ namespace OPM.GUI
                     DisplayAlerts = false
                 };
                 // Open Workbook
-                workbook = excel.Workbooks.Open(fileName);
+                object m = Type.Missing;
+                workbook = excel.Workbooks.Open(nameOfExcelFile, m, false, m, m, m, m, m, m, m, m, m, m, m, m);
                 // Worksheet
                 sheet = (Microsoft.Office.Interop.Excel.Worksheet) workbook.Worksheets.Item[indexWorksheet];
                 range = sheet.UsedRange;
@@ -205,30 +207,59 @@ namespace OPM.GUI
                     DisplayAlerts = false
                 };
                 // Open Workbook
-                workbook = excel.Workbooks.Open(nameOfExcelFile);
+                object m = Type.Missing;
+                workbook = excel.Workbooks.Open(nameOfExcelFile, m, false, m, m, m, m, m, m, m, m, m, m, m, m);
                 // Worksheet
                 sheet = (Microsoft.Office.Interop.Excel.Worksheet)workbook.Worksheets.Item[1];
                 range = sheet.UsedRange;
-                int indexHeaderLine = GetIndexDataRowInDataTable(ReadExcelToDataTable(nameOfExcelFile, 1, 1, 1), "1");
+                int indexHeaderRows = 4;
                 int countOfColumns = range.Columns.Count;
                 // Tổng số dòng
-                int countOfRows = range.Rows.Count; ;
-                //Tạo Headder cho Datatable (Kiểu là String)
-                for (int j = 1; j <= countOfColumns; j++)
+                int countOfEndRows = range.Rows.Count;
+                for (int i= indexHeaderRows; i< range.Rows.Count; i++)
                 {
-                    dataTable.Columns.Add(string.Format(@"{0} {1}", Convert.ToString((range.Cells[indexHeaderLine, j] as Microsoft.Office.Interop.Excel.Range).Value2), j), typeof(string));
-                }
-                //filling the table from  excel file                
-                for (int i = indexHeaderLine + 1; i <= countOfRows; i++)
-                {
-                    DataRow dr = dataTable.NewRow();
-                    for (int j = 1; j <= countOfColumns; j++)
+                    if ((Convert.ToString((range.Cells[i, 2] as Microsoft.Office.Interop.Excel.Range).Text) == "Tổng cộng:")|| (Convert.ToString((range.Cells[i, 1] as Microsoft.Office.Interop.Excel.Range).Text) == "Tổng cộng:"))
                     {
-                        dr[j - 1] = ((range.Cells[i, j] as Microsoft.Office.Interop.Excel.Range).Value2==null)?null:(range.Cells[i, j] as Microsoft.Office.Interop.Excel.Range).Value2.ToString();
+                        countOfEndRows = i;
+                        break;
+                    }
+                }
+                //MessageBox.Show(countOfEndRows.ToString());
+
+                //Tạo Headder cho Datatable DeliveryPlan
+                dataTable.Columns.Add("Province", typeof(string));
+                dataTable.Columns.Add("Phase", typeof(int));
+                dataTable.Columns.Add("ExpectedQuantity", typeof(int));
+                dataTable.Columns.Add("ExpectedDate", typeof(string));
+                //filling the table from  excel file                
+                for (int i = indexHeaderRows + 1; i < countOfEndRows; i++)
+                {
+                    DataRow row = dataTable.NewRow();
+                    row["Province"] = (range.Cells[i, 2] as Microsoft.Office.Interop.Excel.Range).Value2;
+                    row["Phase"] = 0;
+                    row["ExpectedQuantity"] = (range.Cells[i, 3] as Microsoft.Office.Interop.Excel.Range).Value2;
+                    dataTable.Rows.Add(row);
+                    for (int j = 1; 2 * j <= (countOfColumns - 3); j++)
+                    {
+                        row = dataTable.NewRow();
+                        row["Province"] = (range.Cells[i, 2] as Microsoft.Office.Interop.Excel.Range).Value2;
+                        row["Phase"] = j;
+                        row["ExpectedQuantity"] = ((range.Cells[i, 2 + 2 * j] as Microsoft.Office.Interop.Excel.Range).Value2==null)?DBNull.Value:(range.Cells[i, 2 + 2 * j] as Microsoft.Office.Interop.Excel.Range).Value2;
+                        if(((range.Cells[i, 3 + 2 * j] as Microsoft.Office.Interop.Excel.Range).Value2 == null))
+                        {
+                            row["ExpectedDate"] = DBNull.Value;
+                        }
+                        else
+                        {
+                            row["ExpectedDate"] = DateTime.FromOADate((double)((range.Cells[i, 3 + 2 * j] as Microsoft.Office.Interop.Excel.Range).Value2)).ToString("d", CultureInfo.CreateSpecificCulture("en-NZ"));
+                        }
+                        //row["ExpectedDate"] =((range.Cells[i, 3 + 2 * j] as Microsoft.Office.Interop.Excel.Range).Value2 == null)? DBNull.Value : (range.Cells[i, 3 + 2 * j] as Microsoft.Office.Interop.Excel.Range).Value2;
+                        dataTable.Rows.Add(row);
+
+                        //row[j - 1] = ((range.Cells[i, j] as Microsoft.Office.Interop.Excel.Range).Value2 == null) ? null : (range.Cells[i, j] as Microsoft.Office.Interop.Excel.Range).Value2.ToString();
                         //dr[j - 1] = Convert.ToString((range.Cells[i, j] as Microsoft.Office.Interop.Excel.Range).Value2);
                     }
 
-                    dataTable.Rows.InsertAt(dr, dataTable.Rows.Count + 1);
                 }
                 //now close the workbook and make the function return the data table
                 GC.Collect();
@@ -259,11 +290,8 @@ namespace OPM.GUI
         {
 
             string str = GetNameOfExcelFile();
-            MessageBox.Show(str);
-            System.Data.DataTable dataTable = ReadExcelToDataTable(str,1, 1, 1);
-            MessageBox.Show(GetIndexDataRowInDataTable(dataTable, "1").ToString());
-            System.Data.DataTable dataTable1 = DataTableDeliveryPlanFromExcelFile(str);
-            dataGridViewTest.DataSource = dataTable1;
+            System.Data.DataTable dataTable = DataTableDeliveryPlanFromExcelFile(str);
+            dataGridViewTest.DataSource = dataTable;
         }
     }
 }

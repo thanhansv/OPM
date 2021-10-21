@@ -4,6 +4,7 @@ using OPM.OPMEnginee;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -34,6 +35,101 @@ namespace OPM.ExcelHandler
                 if ((table.Rows[i][0].ToString() == identifyings[0]) && (table.Rows[i][1].ToString() == identifyings[1])) return (i + 1);
             }
             return 0;
+        }
+        public static DataTable DataTableDeliveryPlanFromExcelFile(string nameOfExcelFile)
+        {
+            System.Data.DataTable dataTable = new System.Data.DataTable();
+            Microsoft.Office.Interop.Excel.Application excel = null;
+            Microsoft.Office.Interop.Excel.Workbook workbook = null;
+            Microsoft.Office.Interop.Excel.Worksheet sheet = null;
+            Microsoft.Office.Interop.Excel.Range range = null;
+            try
+            {
+                // Get Application object.
+                excel = new Microsoft.Office.Interop.Excel.Application
+                {
+                    Visible = false,
+                    DisplayAlerts = false
+                };
+                // Open Workbook
+                object m = Type.Missing;
+                workbook = excel.Workbooks.Open(nameOfExcelFile, m, false, m, m, m, m, m, m, m, m, m, m, m, m);
+                // Worksheet
+                sheet = (Microsoft.Office.Interop.Excel.Worksheet)workbook.Worksheets.Item[1];
+                range = sheet.UsedRange;
+                int indexHeaderRows = 4;
+                int countOfColumns = range.Columns.Count;
+                // Tổng số dòng
+                int countOfEndRows = range.Rows.Count;
+                for (int i = indexHeaderRows; i < range.Rows.Count; i++)
+                {
+                    if ((Convert.ToString((range.Cells[i, 2] as Microsoft.Office.Interop.Excel.Range).Text) == "Tổng cộng:") || (Convert.ToString((range.Cells[i, 1] as Microsoft.Office.Interop.Excel.Range).Text) == "Tổng cộng:"))
+                    {
+                        countOfEndRows = i;
+                        break;
+                    }
+                }
+                //MessageBox.Show(countOfEndRows.ToString());
+
+                //Tạo Headder cho Datatable DeliveryPlan
+                dataTable.Columns.Add("Province", typeof(string));
+                dataTable.Columns.Add("Phase", typeof(int));
+                dataTable.Columns.Add("ExpectedQuantity", typeof(int));
+                dataTable.Columns.Add("ExpectedDate", typeof(string));
+                //filling the table from  excel file                
+                for (int i = indexHeaderRows + 1; i < countOfEndRows; i++)
+                {
+                    DataRow row = dataTable.NewRow();
+                    row["Province"] = (range.Cells[i, 2] as Microsoft.Office.Interop.Excel.Range).Value2;
+                    row["Phase"] = 0;
+                    row["ExpectedQuantity"] = (range.Cells[i, 3] as Microsoft.Office.Interop.Excel.Range).Value2;
+                    dataTable.Rows.Add(row);
+                    for (int j = 1; 2 * j <= (countOfColumns - 3); j++)
+                    {
+                        row = dataTable.NewRow();
+                        row["Province"] = (range.Cells[i, 2] as Microsoft.Office.Interop.Excel.Range).Value2;
+                        row["Phase"] = j;
+                        row["ExpectedQuantity"] = ((range.Cells[i, 2 + 2 * j] as Microsoft.Office.Interop.Excel.Range).Value2 == null) ? DBNull.Value : (range.Cells[i, 2 + 2 * j] as Microsoft.Office.Interop.Excel.Range).Value2;
+                        if (((range.Cells[i, 3 + 2 * j] as Microsoft.Office.Interop.Excel.Range).Value2 == null))
+                        {
+                            row["ExpectedDate"] = DBNull.Value;
+                        }
+                        else
+                        {
+                            row["ExpectedDate"] = DateTime.FromOADate((double)((range.Cells[i, 3 + 2 * j] as Microsoft.Office.Interop.Excel.Range).Value2)).ToString("d", CultureInfo.CreateSpecificCulture("en-NZ"));
+                        }
+                        //row["ExpectedDate"] =((range.Cells[i, 3 + 2 * j] as Microsoft.Office.Interop.Excel.Range).Value2 == null)? DBNull.Value : (range.Cells[i, 3 + 2 * j] as Microsoft.Office.Interop.Excel.Range).Value2;
+                        dataTable.Rows.Add(row);
+
+                        //row[j - 1] = ((range.Cells[i, j] as Microsoft.Office.Interop.Excel.Range).Value2 == null) ? null : (range.Cells[i, j] as Microsoft.Office.Interop.Excel.Range).Value2.ToString();
+                        //dr[j - 1] = Convert.ToString((range.Cells[i, j] as Microsoft.Office.Interop.Excel.Range).Value2);
+                    }
+
+                }
+                //now close the workbook and make the function return the data table
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                Marshal.ReleaseComObject(range);
+                Marshal.ReleaseComObject(sheet);
+                workbook.Close();
+                Marshal.ReleaseComObject(workbook);
+                excel.Quit();
+                Marshal.ReleaseComObject(excel);
+                return dataTable;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                Marshal.ReleaseComObject(range);
+                Marshal.ReleaseComObject(sheet);
+                workbook.Close();
+                Marshal.ReleaseComObject(workbook);
+                excel.Quit();
+                Marshal.ReleaseComObject(excel);
+                return null;
+            }
         }
         public static System.Data.DataTable ReadExcelToDataTable(string nameExcelFile, int indexWorksheet, int indexHeaderLine, int indexStartColumn)
         {
