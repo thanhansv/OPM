@@ -1,5 +1,4 @@
 ﻿using OPM.DBHandler;
-using OPM.GUI;
 using OPM.OPMEnginee;
 using System;
 using System.Data;
@@ -98,7 +97,11 @@ namespace OPM.WordHandler
                 //Tạo file BLHĐ trong thư mục D:\OPM
                 string folder = string.Format(@"D:\OPM\{0}\{1}", contract.Id.Trim().Replace('/', '-'), po.POName.Replace('/', '-'));
                 Directory.CreateDirectory(folder);
-                myDoc.SaveAs2(ref filename);
+                myDoc.SaveAs2(ref filename, ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing);
                 MessageBox.Show(string.Format("Đã tạo file {0}", filename.ToString()));
                 myDoc.Close();
                 wordApp.Quit();
@@ -196,7 +199,11 @@ namespace OPM.WordHandler
                 //Tạo file BLHĐ trong thư mục D:\OPM
                 string folder = string.Format(@"D:\OPM\{0}\{1}", contract.Id.Trim().Replace('/', '-'), po.POName.Replace('/', '-'));
                 Directory.CreateDirectory(folder);
-                myDoc.SaveAs2(ref filename);
+                myDoc.SaveAs2(ref filename, ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing);
                 MessageBox.Show(string.Format("Đã tạo file {0}", filename.ToString()));
                 myDoc.Close();
                 wordApp.Quit();
@@ -297,7 +304,11 @@ namespace OPM.WordHandler
                 //Tạo file BLHĐ trong thư mục D:\OPM
                 string folder = string.Format(@"D:\OPM\{0}\{1}", contract.Id.Trim().Replace('/', '-'), po.POName.Replace('/', '-'));
                 Directory.CreateDirectory(folder);
-                myDoc.SaveAs2(ref filename);
+                myDoc.SaveAs2(ref filename, ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing);
                 MessageBox.Show(string.Format("Đã tạo file {0}", filename.ToString()));
                 myDoc.Close();
                 wordApp.Quit();
@@ -400,7 +411,11 @@ namespace OPM.WordHandler
                 //Tạo file BLHĐ trong thư mục D:\OPM
                 string folder = string.Format(@"D:\OPM\{0}\{1}", contract.Id.Trim().Replace('/', '-'), po.POName.Replace('/', '-'));
                 Directory.CreateDirectory(folder);
-                myDoc.SaveAs2(ref filename);
+                myDoc.SaveAs2(ref filename, ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing);
                 MessageBox.Show(string.Format("Đã tạo file {0}", filename.ToString()));
                 myDoc.Close();
                 wordApp.Quit();
@@ -496,7 +511,11 @@ namespace OPM.WordHandler
                 //Tạo file BLHĐ trong thư mục D:\OPM
                 string folder = string.Format(@"D:\OPM\{0}\{1}\NTKT{2}", contract.Id.Trim().Replace('/', '-'), po.POName.Replace('/', '-'), ntkt.Number);
                 Directory.CreateDirectory(folder);
-                myDoc.SaveAs2(ref filename);
+                myDoc.SaveAs2(ref filename, ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing);
                 MessageBox.Show(string.Format("Đã tạo file {0}", filename.ToString()));
                 myDoc.Close();
                 wordApp.Quit();
@@ -593,7 +612,11 @@ namespace OPM.WordHandler
                 //Tạo file BLHĐ trong thư mục D:\OPM
                 string folder = string.Format(@"D:\OPM\{0}\{1}\NTKT{2}", contract.Id.Trim().Replace('/', '-'), po.POName.Replace('/', '-'), ntkt.Number);
                 Directory.CreateDirectory(folder);
-                myDoc.SaveAs2(ref filename);
+                myDoc.SaveAs2(ref filename, ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing);
                 MessageBox.Show(string.Format("Đã tạo file {0}", filename.ToString()));
                 myDoc.Close();
                 wordApp.Quit();
@@ -691,7 +714,11 @@ namespace OPM.WordHandler
                 //Tạo file BLHĐ trong thư mục D:\OPM
                 string folder = string.Format(@"D:\OPM\{0}\{1}\NTKT{2}", contract.Id.Trim().Replace('/', '-'), po.POName.Replace('/', '-'), ntkt.Number);
                 Directory.CreateDirectory(folder);
-                myDoc.SaveAs2(ref filename);
+                myDoc.SaveAs2(ref filename, ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing);
                 MessageBox.Show(string.Format("Đã tạo file {0}", filename.ToString()));
                 myDoc.Close();
                 wordApp.Quit();
@@ -752,7 +779,11 @@ namespace OPM.WordHandler
                 //Tạo file BLHĐ trong thư mục D:\OPM
                 string folder = string.Format(@"D:\OPM\{0}\{1}\NTKT{2}", contract.Id.Trim().Replace('/', '-'), po.POName.Replace('/', '-'), ntkt.Number);
                 Directory.CreateDirectory(folder);
-                myDoc.SaveAs2(ref filename);
+                myDoc.SaveAs2(ref filename, ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing);
                 MessageBox.Show(string.Format("Đã tạo file {0}", filename.ToString()));
                 myDoc.Close();
                 wordApp.Quit();
@@ -1054,7 +1085,11 @@ namespace OPM.WordHandler
                 //Tạo file BLHĐ trong thư mục D:\OPM
                 string folder = string.Format(@"D:\OPM\{0}\{1}", contract.Id.Trim().Replace('/', '-'), po.POName.Replace('/', '-'));
                 Directory.CreateDirectory(folder);
-                myDoc.SaveAs2(ref filename);
+                myDoc.SaveAs2(ref filename, ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing);
                 MessageBox.Show(string.Format("Đã tạo file {0}", filename.ToString()));
                 myDoc.Close();
                 wordApp.Quit();
@@ -1071,7 +1106,7 @@ namespace OPM.WordHandler
         //Tạo mẫu 1
         public static string Temp1_CreatContractGuarantee(string id)
         {
-            object path = @"D:\OPM\Template\Mẫu 1. Đề nghị mở bảo lãnh thực hiện HĐ.docx";
+            object path = @"D:\OPM\Template\Mẫu 1. Đề nghị mở bảo lãnh thực hiện hợp đồng.docx";
             if (!File.Exists(path.ToString()))
             {
                 MessageBox.Show(string.Format(@"Không tìm thấy {0}", path.ToString()));
@@ -1105,7 +1140,11 @@ namespace OPM.WordHandler
                 //Tạo file BLHĐ trong thư mục D:\OPM
                 string folder = string.Format(@"D:\OPM\{0}", id.Trim().Replace('/', '-'));
                 Directory.CreateDirectory(folder);
-                myDoc.SaveAs2(ref filename);
+                myDoc.SaveAs2(ref filename, ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing);
                 MessageBox.Show(string.Format("Đã tạo file {0}", filename.ToString()));
                 myDoc.Close();
                 wordApp.Quit();
@@ -1115,7 +1154,7 @@ namespace OPM.WordHandler
             {
                 myDoc.Close();
                 wordApp.Quit();
-                MessageBox.Show(e.Message);
+                MessageBox.Show("Không đọc được file mẫu 1 "+ e.Message);
                 return e.Message;
             }
         }

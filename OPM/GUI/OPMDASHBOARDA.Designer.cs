@@ -137,7 +137,7 @@ namespace OPM.GUI
             this.panCatalog.Location = new System.Drawing.Point(13, 167);
             this.panCatalog.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panCatalog.Name = "panCatalog";
-            this.panCatalog.Size = new System.Drawing.Size(351, 840);
+            this.panCatalog.Size = new System.Drawing.Size(351, 991);
             this.panCatalog.TabIndex = 1;
             // 
             // treeViewOPM
@@ -152,7 +152,7 @@ namespace OPM.GUI
             this.treeViewOPM.Location = new System.Drawing.Point(0, 0);
             this.treeViewOPM.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.treeViewOPM.Name = "treeViewOPM";
-            this.treeViewOPM.Size = new System.Drawing.Size(350, 837);
+            this.treeViewOPM.Size = new System.Drawing.Size(350, 988);
             this.treeViewOPM.TabIndex = 0;
             this.treeViewOPM.DoubleClick += new System.EventHandler(this.treeViewOPM_DoubleClick);
             // 
@@ -209,14 +209,14 @@ namespace OPM.GUI
             this.panContent.Location = new System.Drawing.Point(373, 8);
             this.panContent.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panContent.Name = "panContent";
-            this.panContent.Size = new System.Drawing.Size(1030, 998);
+            this.panContent.Size = new System.Drawing.Size(1474, 1149);
             this.panContent.TabIndex = 2;
             // 
             // OPMDASHBOARDA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1416, 1017);
+            this.ClientSize = new System.Drawing.Size(1860, 1168);
             this.Controls.Add(this.panContent);
             this.Controls.Add(this.panCatalog);
             this.Controls.Add(this.panHeader);

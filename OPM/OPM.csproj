@@ -19,14 +19,6 @@
       <Lcid>0</Lcid>
       <Isolated>false</Isolated>
     </COMReference>
-    <COMReference Include="Microsoft.Office.Word.dll">
-      <WrapperTool>tlbimp</WrapperTool>
-      <VersionMinor>5</VersionMinor>
-      <VersionMajor>8</VersionMajor>
-      <Guid>00020905-0000-0000-c000-000000000046</Guid>
-      <Lcid>0</Lcid>
-      <Isolated>false</Isolated>
-    </COMReference>
     <COMReference Include="Microsoft.Office.Excel.dll">
       <WrapperTool>tlbimp</WrapperTool>
       <VersionMinor>6</VersionMinor>
@@ -44,7 +36,13 @@
   <ItemGroup>
     <PackageReference Include="ExcelDataReader" Version="3.6.0" />
     <PackageReference Include="ExcelDataReader.DataSet" Version="3.6.0" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Interop.Microsoft.Office.Interop.Word">
+      <HintPath>..\..\Users\thanh\Downloads\OPM-main\OPM\bin\Debug\netcoreapp3.1\Interop.Microsoft.Office.Interop.Word.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

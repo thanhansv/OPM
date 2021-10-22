@@ -15,9 +15,9 @@ namespace OPM
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new OPMDASHBOARDA());
+            Application.Run(new OPMDASHBOARDA());
             //Application.Run(new SiteForm());
-            Application.Run(new TestTable());
+            //Application.Run(new TestTable());
             //Application.Run(new Contract_Goods_Form());
 
         }

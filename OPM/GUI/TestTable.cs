@@ -4,7 +4,6 @@ using System.Data;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
-using WordOffice = Microsoft.Office.Interop.Word;
 using ExcelOffice = Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;

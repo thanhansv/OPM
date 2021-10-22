@@ -318,10 +318,10 @@ namespace OPM.GUI
             // 
             // btnNewPO
             // 
-            this.btnNewPO.Location = new System.Drawing.Point(541, 805);
+            this.btnNewPO.Location = new System.Drawing.Point(553, 809);
             this.btnNewPO.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnNewPO.Name = "btnNewPO";
-            this.btnNewPO.Size = new System.Drawing.Size(102, 38);
+            this.btnNewPO.Size = new System.Drawing.Size(94, 43);
             this.btnNewPO.TabIndex = 17;
             this.btnNewPO.Text = "New PO";
             this.btnNewPO.UseVisualStyleBackColor = true;
@@ -329,10 +329,10 @@ namespace OPM.GUI
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(223, 805);
+            this.btnEdit.Location = new System.Drawing.Point(229, 809);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(102, 38);
+            this.btnEdit.Size = new System.Drawing.Size(97, 43);
             this.btnEdit.TabIndex = 18;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -340,10 +340,10 @@ namespace OPM.GUI
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(117, 805);
+            this.btnDelete.Location = new System.Drawing.Point(120, 809);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(102, 38);
+            this.btnDelete.Size = new System.Drawing.Size(97, 43);
             this.btnDelete.TabIndex = 19;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -351,10 +351,10 @@ namespace OPM.GUI
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(327, 805);
+            this.btnSave.Location = new System.Drawing.Point(338, 809);
             this.btnSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(102, 38);
+            this.btnSave.Size = new System.Drawing.Size(97, 43);
             this.btnSave.TabIndex = 16;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -592,10 +592,10 @@ namespace OPM.GUI
             // 
             // btnCreatDocument
             // 
-            this.btnCreatDocument.Location = new System.Drawing.Point(431, 805);
+            this.btnCreatDocument.Location = new System.Drawing.Point(447, 809);
             this.btnCreatDocument.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCreatDocument.Name = "btnCreatDocument";
-            this.btnCreatDocument.Size = new System.Drawing.Size(102, 38);
+            this.btnCreatDocument.Size = new System.Drawing.Size(94, 43);
             this.btnCreatDocument.TabIndex = 16;
             this.btnCreatDocument.Text = "CreatDoc";
             this.btnCreatDocument.UseVisualStyleBackColor = true;
@@ -603,10 +603,10 @@ namespace OPM.GUI
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(11, 805);
+            this.btnNew.Location = new System.Drawing.Point(11, 809);
             this.btnNew.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(102, 38);
+            this.btnNew.Size = new System.Drawing.Size(97, 43);
             this.btnNew.TabIndex = 19;
             this.btnNew.Text = "New";
             this.btnNew.UseVisualStyleBackColor = true;
@@ -614,12 +614,12 @@ namespace OPM.GUI
             // 
             // ContractInfoChildForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(651, 862);
+            this.ClientSize = new System.Drawing.Size(792, 1005);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.ttxtKHMS);
             this.Controls.Add(this.label16);

@@ -506,12 +506,12 @@ namespace OPM.GUI
             //Tạo mẫu 4
 
             //Tạo mẫu 3
-            //OpmWordHandler.Temp3_CreatPOConfirm((Tag as OPMDASHBOARDA).PO.Id);
+            OpmWordHandler.Temp3_CreatPOConfirm((Tag as OPMDASHBOARDA).PO.Id);
             //Tạo các mẫu 23,24,36,37
-            //OpmWordHandler.Temp23_CNCL_TongHop((Tag as OPMDASHBOARDA).PO.Id);
-            //OpmWordHandler.Temp24_CNCLNMTongHop((Tag as OPMDASHBOARDA).PO.Id);
-            //OpmWordHandler.Temp36_BBNTLicense((Tag as OPMDASHBOARDA).PO.Id);
-            //OpmWordHandler.Temp37_BBXNCDLicense((Tag as OPMDASHBOARDA).PO.Id);
+            OpmWordHandler.Temp23_CNCL_TongHop((Tag as OPMDASHBOARDA).PO.Id);
+            OpmWordHandler.Temp24_CNCLNMTongHop((Tag as OPMDASHBOARDA).PO.Id);
+            OpmWordHandler.Temp36_BBNTLicense((Tag as OPMDASHBOARDA).PO.Id);
+            OpmWordHandler.Temp37_BBXNCDLicense((Tag as OPMDASHBOARDA).PO.Id);
         }
     }
 }
